@@ -3,8 +3,8 @@ package fr.ensimag.deca.tree;
 /**
  * Visibility of a field.
  *
- * @author @AUTHOR@
- * @date @DATE@
+ * @author gl11
+ * @date 01/01/2023
  */
 
 public enum Visibility {
