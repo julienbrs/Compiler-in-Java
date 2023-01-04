@@ -18,7 +18,7 @@ options {
 // Liste token de base
 OBRACE : '{';
 CBRACE : '}';
-SEMI : ':';
+COLON : ':';
 COMMA : ',';
 EQUALS : '=';
 PRINT : 'print';
@@ -68,13 +68,13 @@ MULTI_LINE_STRING : '"' (STRING_CAR | '\\"' | '\\\\' | '\n')* '"';
 SPACE : ' ' { skip(); };
 
 // Spe char
-LF : '\n';
+LF : '\n'{ skip(); };
 CR : '\r';
 TAB : '\t';
 BCKSLASH : '\\';
 QUOTE : '\'';
 fragment DQUOTE : '"';
-SEMICOLON : ';';
+SEMI : ';';
 UNDESCORE : '_';
 
 // Chiffre et mots
