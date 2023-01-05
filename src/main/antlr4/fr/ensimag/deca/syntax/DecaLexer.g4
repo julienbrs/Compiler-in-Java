@@ -71,11 +71,11 @@ SPACE : ' ' { skip(); };
 LF : '\n'{ skip(); };
 CR : '\r';
 TAB : '\t';
-BCKSLASH : '\\';
+BACKSLASH : '\\';
 QUOTE : '\'';
 fragment DQUOTE : '"';
 SEMI : ';';
-UNDESCORE : '_';
+UNDERSCORE : '_';
 
 // Chiffre et mots
 fragment LETTER : ('a'..'z'|'A'..'Z');
