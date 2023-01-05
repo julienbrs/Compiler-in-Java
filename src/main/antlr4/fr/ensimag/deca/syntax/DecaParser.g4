@@ -7,7 +7,7 @@ options {
 
     // Use a superclass to implement all helper
     // methods, instance variables and overrides
-    // of ANTLR default methods, such as error
+    // of ANTLR default methods, such as erro
     // handling.
     //
     superClass = AbstractDecaParser;
@@ -107,8 +107,10 @@ list_inst returns[ListInst tree]
     $tree=new ListInst();
 }
     : (inst {
+        if($inst.tree != null){
         $tree.add($inst.tree);
         }
+    }
       )*
     ;
 
@@ -119,7 +121,7 @@ inst returns[AbstractInst tree]
             assert($e1.tree != null);
         }
     | SEMI {
-
+       $tree=null; 
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
             assert($list_expr.tree != null);
@@ -286,16 +288,17 @@ sum_expr returns[AbstractExpr tree]
 
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
-        setLocation($tree, $unary_expr.start);
+        
         $tree=$e.tree;
+        setLocation($tree, $unary_expr.start);
         assert($e.tree != null);
         }
     | e1=mult_expr TIMES e2=unary_expr {
-        setLocation($tree, $mult_expr.start);
 
             assert($e1.tree != null);                                         
             assert($e2.tree != null);
             $tree=new Multiply($e1.tree,$e2.tree);
+            setLocation($tree, $e2.start);
         }
     | e1=mult_expr SLASH e2=unary_expr {
             assert($e1.tree != null);                                         
