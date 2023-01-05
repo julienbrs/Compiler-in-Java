@@ -18,7 +18,7 @@ public class Program extends AbstractProgram {
     private static final Logger LOG = Logger.getLogger(Program.class);
     
     public Program(ListDeclClass classes, AbstractMain main) {
-        Validate.notNull(classes);
+     //   Validate.notNull(classes);
         Validate.notNull(main);
         this.classes = classes;
         this.main = main;
@@ -60,7 +60,7 @@ public class Program extends AbstractProgram {
     }
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        classes.prettyPrint(s, prefix, false);
+      //  classes.prettyPrint(s, prefix, false);
         main.prettyPrint(s, prefix, true);
     }
 }
