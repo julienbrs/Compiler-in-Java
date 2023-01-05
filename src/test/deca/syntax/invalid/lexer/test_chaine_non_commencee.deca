@@ -1,0 +1,10 @@
+// Description:
+//    tests de programme incorrect lexicalement (chaine non commencee)
+//
+// Resultats:
+//    ligne 10 : Erreur, chaine non commencee (sur fin de fichier)
+//
+// Historique:
+//    cree le 05/01/2023
+
+chaine pas commencee"

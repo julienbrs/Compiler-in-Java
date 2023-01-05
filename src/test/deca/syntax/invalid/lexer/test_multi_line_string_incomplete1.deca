@@ -1,0 +1,13 @@
+// Description:
+//    tests de programme incorrect lexicalement (Multi-line string non fermee)
+//
+// Resultats:
+/*INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=10
+src/test/deca/syntax/invalid/lexer/test_multi_line_string:10:0: token recognition error at: '"Blabla \n'
+*/
+//
+// Historique:
+//    cree le 05/01/2023
+
+"abc \n
+def

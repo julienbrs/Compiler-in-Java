@@ -1,0 +1,17 @@
+// Description:
+//    tests de programme incorrect lexicalement (Multi-line string non commencee)
+//
+// Resultats:
+/*IDENT: [@0,421:426='Blabla',<42>,12:0]
+BACKSLASH: [@1,428:428='\',<52>,12:7]
+IDENT: [@2,429:429='n',<42>,12:8]
+IDENT: [@3,431:437='blablad',<42>,13:0]
+INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=13
+src/test/deca/syntax/invalid/lexer/test_multi_line_string_incomplete2.deca:13:7: token recognition error at: '"'
+*/
+//
+// Historique:
+//    cree le 05/01/2023
+
+abc \n
+def"

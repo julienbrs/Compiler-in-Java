@@ -1,0 +1,10 @@
+// Description:
+//    tests de programme incorrect lexicalement (backslash non echape dans string)
+//
+// Resultats:
+//    ligne 10 : Erreur, backslash seul
+//
+// Historique:
+//    cree le 05/01/2023
+
+"This string contains an unescaped backslash: \."

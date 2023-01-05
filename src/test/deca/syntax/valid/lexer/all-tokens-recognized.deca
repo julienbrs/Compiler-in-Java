@@ -1,0 +1,53 @@
+// Description:
+//    Programme affichant tous les tokens dans l'ordre
+//
+// Resultats:
+//    affiche 
+//
+// Historique:
+//    cree le 05/01/2023
+
+{
+}
+:
+,
+=
+print
+(
+)
+println
+printx
+printlnx
+while
+return
+if
+else
+||
+&&
+==
+!=
+<=
+>=
+>
+<
+instanceof
++
+-
+*
+/
+%
+!
+.
+readInt
+readFloat
+new
+0
+5
+1.54
+0x5
+"This is a string with backslash \\"
+$abc
+_abc
+abc
+"This is a multiline string 
+on two lines with backslash \\"

@@ -1,0 +1,13 @@
+// Description:
+//    tests de programme incorrect lexicalement (chaine contient guillemet non echapee)
+//
+// Resultats:
+/*STRING: [@0,200:251='"This string contains an unescaped quotation mark: "',<37>,10:0]
+EXCLAM: [@1,253:253='!',<30>,10:53]
+INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=10
+src/test/deca/syntax/invalid/lexer/test_chaine_quotation_mark.deca:10:55: token recognition error at: '"'
+*/
+// Historique:
+//    cree le 05/01/2023
+
+"This string contains an unescaped quotation mark: " ! "
