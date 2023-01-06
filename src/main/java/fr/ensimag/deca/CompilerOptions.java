@@ -72,21 +72,30 @@ public class CompilerOptions {
         for (String string : args) {
             if(string.equals("-b")){
                 printBanner = true;
+                parallel = false;
+                verification = false;
+                noCheck = false;
+                parse = false;
             }
             else if(string.equals("-P")){
+                printBanner = false;
                 parallel = true;
             }
             else if(string.equals("-v")){
+                printBanner = false;
                 verification = true;
             }
             else if(string.equals("-p")){
+                printBanner = false;
                 parse = true;
             }
             else if(string.equals("-n")){
+                printBanner = false;
                 noCheck = true;
             }
             else {
                 sourceFiles.add(new File(string));
+                printBanner = false;
             }
 
         }
