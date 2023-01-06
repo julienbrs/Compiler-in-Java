@@ -27,6 +27,7 @@ public class DecacMain {
         }
         if (options.getPrintBanner()) {
             System.out.println(" ----------GL11----------");
+            System.exit(1);
            // throw new UnsupportedOperationException("decac -b not yet implemented");
         }
         if (options.getSourceFiles().isEmpty()) {

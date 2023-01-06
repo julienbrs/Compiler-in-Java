@@ -190,7 +190,10 @@ public class DecacCompiler {
             return true;
         }
         assert(prog.checkAllLocations());
-
+        if(compilerOptions.getParse()){
+           System.out.println( prog.decompile());
+            return true;
+        }
 
         prog.verifyProgram(this);
         assert(prog.checkAllDecorations());
