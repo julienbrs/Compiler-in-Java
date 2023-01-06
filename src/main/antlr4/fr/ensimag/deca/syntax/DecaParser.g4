@@ -78,9 +78,10 @@ decl_var_set[ListDeclVar l]
     ;
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
-    : dv1=decl_var[$t] {
-        $l.add($dv1.tree);
-        } (COMMA dv2=decl_var[$t] {
+    : dv1 = decl_var[$t] {
+            $l.add($dv1.tree);
+        } (COMMA dv2 = decl_var[$t] {
+            $l.add($dv2.tree);
         }
       )*
     ;
@@ -90,16 +91,15 @@ decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
         
         }
     : i=ident {
+            $tree = new DeclVar(t, $i.tree,new  NoInitialization() ) ;
+            setLocation($tree, $i.start);
         }
       (EQUALS e=expr {
-        Initialization a = new Initialization ($e.tree);
-    $tree =   new DeclVar(t, $i.tree,a ) ;
+        Initialization a = new Initialization($e.tree);
+        $tree = new DeclVar(t, $i.tree, (AbstractInitialization)a);
+        setLocation($tree, $i.start);
         }
-      )? {
-        
-         $tree =   new DeclVar(t, $i.tree,new  NoInitialization() ) ;
-         setLocation($tree, $i.start);
-        }
+      )?
     ;
 
 list_inst returns[ListInst tree]
@@ -279,6 +279,7 @@ sum_expr returns[AbstractExpr tree]
     | e1=sum_expr PLUS e2=mult_expr {
             assert($e1.tree != null);
             assert($e2.tree != null);
+            $tree = new Plus($e1.tree, $e2.tree);
         }
     | e1=sum_expr MINUS e2=mult_expr {
             assert($e1.tree != null);
@@ -413,12 +414,12 @@ ident returns[AbstractIdentifier tree]
         SymbolTable sym = new SymbolTable();
      }
     : IDENT {
-                 try{
-
-        
-       $tree= new Identifier(sym.create($IDENT.text));
-        } catch(DecaRecognitionException e) { $tree=null; }
+        try{
+            $tree= new Identifier(sym.create($IDENT.text));
+        } catch(DecaRecognitionException e) {
+            $tree=null;
         }
+    }
     ;
 
 /****     Class related rules     ****/

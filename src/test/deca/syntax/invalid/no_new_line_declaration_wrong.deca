@@ -1,0 +1,4 @@
+// Deux déclarations de la variable x sur la même ligne
+{
+  int x = 1; int x = 2;
+}

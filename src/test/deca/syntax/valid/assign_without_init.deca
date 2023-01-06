@@ -1,0 +1,4 @@
+// Fichier deca qui déclare une variable sans l'initialiser
+{
+  int x;
+}

@@ -1,0 +1,5 @@
+// Fichier deca avec une déclaration de variable initialisée par une
+// multiplication
+{
+  int x = 2 * 3;
+}
