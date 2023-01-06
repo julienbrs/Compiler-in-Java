@@ -1,0 +1,13 @@
+`> [2, 0] Program
+   `> [2, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [3, 6] DeclVar
+      |  ||  +> [3, 2] Identifier (int)
+      |  ||  +> Identifier (x)
+      |  ||  `> NoInitialization
+      |  []> [3, 9] DeclVar
+      |      +> [3, 2] Identifier (int)
+      |      +> Identifier (y)
+      |      `> Initialization
+      |         `> [3, 13] Int (1)
+      `> ListInst [List with 0 elements]
