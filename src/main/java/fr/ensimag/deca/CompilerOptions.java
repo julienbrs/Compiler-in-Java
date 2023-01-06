@@ -39,6 +39,9 @@ public class CompilerOptions {
     private int debug = 0;
     private boolean parallel = false;
     private boolean printBanner = false;
+    private boolean parse = false;
+    private boolean verification = false;
+    private boolean noCheck = false;
     private List<File> sourceFiles = new ArrayList<File>();
 
     
@@ -66,11 +69,44 @@ public class CompilerOptions {
         } else {
             logger.info("Java assertions disabled");
         }
+        for (String string : args) {
+            if(string.equals("-b")){
+                printBanner = true;
+            }
+            else if(string.equals("-P")){
+                parallel = true;
+            }
+            else if(string.equals("-v")){
+                verification = true;
+            }
+            else if(string.equals("-p")){
+                parse = true;
+            }
+            else if(string.equals("-n")){
+                noCheck = true;
+            }
+            else {
+                sourceFiles.add(new File(string));
+            }
 
-        throw new UnsupportedOperationException("not yet implemented");
+        }
+        
     }
 
     protected void displayUsage() {
         throw new UnsupportedOperationException("not yet implemented");
+    }
+
+
+    public boolean getParse() {
+        return parse;
+    }
+
+    public boolean getVerification() {
+        return verification;
+    }
+
+    public boolean getNoCheck() {
+        return noCheck;
     }
 }
