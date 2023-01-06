@@ -67,7 +67,7 @@ public class Program extends AbstractProgram {
     
     @Override
     protected void iterChildren(TreeFunction f) {
-        classes.iter(f);
+       // classes.iter(f);
         main.iter(f);
     }
     @Override
