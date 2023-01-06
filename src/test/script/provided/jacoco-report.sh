@@ -1,6 +1,6 @@
 #! /bin/sh
 
-POM="$(dirname "$0")"/../../../pom.xml
+POM="$(dirname "$0")"/../../../../pom.xml
 
 # If we're not in the root of the Maven project, then find it using
 # this script's name:

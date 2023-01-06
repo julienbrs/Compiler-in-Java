@@ -6,7 +6,7 @@
 # Test minimaliste de la syntaxe des tokens.
 # On lance test_synt sur un fichier valide, et les tests invalides.
 
-cd "$(dirname "$0")"/../../.. || exit 1
+cd "$(dirname "$0")"/../../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
