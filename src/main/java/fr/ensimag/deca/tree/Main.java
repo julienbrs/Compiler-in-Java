@@ -2,6 +2,8 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -33,8 +35,9 @@ public class Main extends AbstractMain {
         //  Λ
         // /!\ local env n'est pas defini
         ///___\
-        declVariables.verifyListDeclVariable(compiler, null, null);
-        // insts.verifyListInst(compiler, null, null, void.class);
+        EnvironmentExp localEnv = new EnvironmentExp(null);
+        declVariables.verifyListDeclVariable(compiler, localEnv, null);
+        insts.verifyListInst(compiler, localEnv, null, null);
         LOG.debug("verify Main: end");
         // throw new UnsupportedOperationException("not yet implemented");
     }
