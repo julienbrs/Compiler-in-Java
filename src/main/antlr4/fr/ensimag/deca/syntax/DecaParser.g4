@@ -74,7 +74,8 @@ list_decl returns[ListDeclVar tree]
     ;
 
 decl_var_set[ListDeclVar l]
-    : type list_decl_var[$l,$type.tree] SEMI
+    : type list_decl_var[$l,$type.tree] SEMI{
+    }
     ;
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
@@ -108,7 +109,9 @@ list_inst returns[ListInst tree]
 }
     : (inst {
         if($inst.tree != null){
+             setLocation($inst.tree, $inst.start);
         $tree.add($inst.tree);
+       
         }
     }
       )*
@@ -180,6 +183,7 @@ list_expr returns[ListExpr tree]
 expr returns[AbstractExpr tree]
     : assign_expr {
         $tree=$assign_expr.tree;
+        setLocation($tree, $assign_expr.start);
          assert($assign_expr.tree != null);
         }
     ;
@@ -377,7 +381,7 @@ primary_expr returns[AbstractExpr tree]
 
 type returns[AbstractIdentifier tree]
     : ident {
-
+             setLocation($ident.tree, $ident.start);
             assert($ident.tree != null);
             $tree=$ident.tree;
         }

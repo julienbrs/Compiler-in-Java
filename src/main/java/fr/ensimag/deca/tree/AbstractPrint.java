@@ -1,8 +1,6 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.context.FloatType;
-import fr.ensimag.deca.context.IntType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -39,7 +37,13 @@ public abstract class AbstractPrint extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        for (AbstractExpr abstractExpr : arguments.getList()) {
+            Type t = abstractExpr.verifyExpr(compiler, localEnv, currentClass);
+            if (!(t.sameType(compiler.environmentType.INT) || t.sameType(compiler.environmentType.FLOAT) || t.sameType(compiler.environmentType.STRING))) {
+                throw new ContextualError("Can't print other than int, float or string : rule 3.31", getLocation());
+            }
+        }
     }
 
     @Override
