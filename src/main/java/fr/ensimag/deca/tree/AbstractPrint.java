@@ -40,7 +40,7 @@ public abstract class AbstractPrint extends AbstractInst {
         // throw new UnsupportedOperationException("not yet implemented");
         for (AbstractExpr abstractExpr : arguments.getList()) {
             Type t = abstractExpr.verifyExpr(compiler, localEnv, currentClass);
-            if (!t.sameType(compiler.environmentType.INT) || !t.sameType(compiler.environmentType.FLOAT) || !t.sameType(compiler.environmentType.STRING)) {
+            if (!(t.sameType(compiler.environmentType.INT) || t.sameType(compiler.environmentType.FLOAT) || t.sameType(compiler.environmentType.STRING))) {
                 throw new ContextualError("Can't print other than int, float or string : rule 3.31", getLocation());
             }
         }

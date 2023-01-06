@@ -39,13 +39,13 @@ public class Program extends AbstractProgram {
         // throw new UnsupportedOperationException("not yet implemented");
 
         // 1ere passe
-        classes.verifyListClass(compiler);
+        // classes.verifyListClass(compiler);
         
         // 2eme passe
-        classes.verifyListClassMembers(compiler);
+        // classes.verifyListClassMembers(compiler);
 
         // 3eme passe
-        classes.verifyListClassBody(compiler);
+        // classes.verifyListClassBody(compiler);
         main.verifyMain(compiler);
 
         LOG.debug("verify program: end");
