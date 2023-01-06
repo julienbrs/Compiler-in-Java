@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # Script de test des caractères utf-8 la lexicographie.
+# Lance test_lex sur chaque caractère, et compare le résultat 
+# obtenu avec le résultat attendu.
+# Script peut être lancé avec l'option --exit-status pour afficher
+# le message résultat de ce script.
 
 # On se place dans le répertoire du projet (quel que soit le
 # répertoire d'où est lancé le script) :
