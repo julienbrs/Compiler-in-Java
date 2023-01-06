@@ -1,6 +1,5 @@
 // Description:
-//    test de programme incorrect lexicalement (IDENT commence avec caractere special qui n'est pas un token)
-//    test equivalent si caractere special a la fin ou au sein de l'ident 
+//    test de programme incorrect lexicalement (Caractère sans TOKEN correspondant)
 //
 // Resultats:
 //    ligne 10 : Erreur, il faut "E" ou "e"
@@ -8,4 +7,4 @@
 // Historique:
 //    cree le 05/01/2023
 
-&abc
+&
