@@ -43,6 +43,17 @@ public class SymbolTable {
             this.name = name;
         }
 
+
+        @Override
+        public boolean equals(Object obj) {
+            return (obj instanceof Symbol) && (name.equals(((Symbol) obj).getName()));
+        }
+
+        @Override
+        public int hashCode() {
+            return name.hashCode();
+        }
+
         public String getName() {
             return name;
         }

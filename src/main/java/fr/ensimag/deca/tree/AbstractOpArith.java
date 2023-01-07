@@ -21,6 +21,14 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        Type lt = getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+        Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+        if (lt.isInt() && rt.isInt()) {
+            setType(compiler.environmentType.INT);
+        } else {
+            setType(compiler.environmentType.FLOAT);
+        }
+        return this.getType();
     }
 }

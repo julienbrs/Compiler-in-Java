@@ -82,7 +82,15 @@ public abstract class AbstractExpr extends AbstractInst {
             EnvironmentExp localEnv, ClassDefinition currentClass, 
             Type expectedType)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        Type t = verifyExpr(compiler, localEnv, currentClass);
+        if (t.sameType(expectedType)) {
+            return this;
+        } else if (t.isInt() && expectedType.isFloat()) {
+            return this;
+        }
+        // TODO : verifier les sous type dans le avec objet
+        throw new ContextualError("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
     }
     
     
@@ -90,7 +98,9 @@ public abstract class AbstractExpr extends AbstractInst {
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass, Type returnType)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        verifyExpr(compiler, localEnv, currentClass);
+        
     }
 
     /**
@@ -105,7 +115,11 @@ public abstract class AbstractExpr extends AbstractInst {
      */
     void verifyCondition(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        Type t = verifyExpr(compiler, localEnv, currentClass);
+        if (!t.isBoolean()) {
+            throw new ContextualError("The condition must be 'boolean' but is of type \""+t+"\" : rule 3.29", getLocation())
+        }
     }
 
     /**

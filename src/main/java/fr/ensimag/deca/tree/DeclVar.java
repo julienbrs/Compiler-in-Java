@@ -41,12 +41,12 @@ public class DeclVar extends AbstractDeclVar {
                     throw new ContextualError("Type can't be void : rule 3.17", getLocation());
                 }
                 initialization.verifyInitialization(compiler, t, localEnv, currentClass);
-                
                 try {
                     localEnv.declare(varName.getName(), new VariableDefinition(t, getLocation()));   
                 } catch (DoubleDefException e) {
                     // TODO: handle exception
                 }
+                varName.verifyExpr(compiler, localEnv, currentClass);
     }
 
     

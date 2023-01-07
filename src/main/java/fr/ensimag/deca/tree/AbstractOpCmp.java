@@ -20,7 +20,12 @@ public abstract class AbstractOpCmp extends AbstractBinaryExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        Type lt = getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+        Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+        // TODO : verifier les type de lt et rt
+        setType(compiler.environmentType.BOOLEAN);
+        return this.getType();
     }
 
 
