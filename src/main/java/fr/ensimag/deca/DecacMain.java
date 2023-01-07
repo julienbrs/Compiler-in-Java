@@ -35,13 +35,13 @@ public class DecacMain {
         // ░ : det   char
         //   : space char
 
-        String textColor = setFgColor(128, 128, 128);
+        String textColor = setFgColor(128, 255, 128);
         String shadowColor = setFgColor(128, 255, 128);
         String borderColor = setFgColor(128, 255, 128);
-        String backgroundColor = setBgColor(60, 60, 180);
+        String backgroundColor = ""; //setBgColor(60, 255, 255);
 
         String box = textColor + "█" + resetFgColor();
-        String dotBox = shadowColor + "█" + resetFgColor();
+        String dotBox = shadowColor + "░" + resetFgColor();
         String border = borderColor + "║" + resetFgColor();
 
         String colorBanner = backgroundColor + banner + resetBgColor();
