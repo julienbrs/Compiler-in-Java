@@ -118,7 +118,7 @@ public abstract class AbstractExpr extends AbstractInst {
         // throw new UnsupportedOperationException("not yet implemented");
         Type t = verifyExpr(compiler, localEnv, currentClass);
         if (!t.isBoolean()) {
-            throw new ContextualError("The condition must be 'boolean' but is of type \""+t+"\" : rule 3.29", getLocation())
+            throw new ContextualError("The condition must be 'boolean' but is of type \""+t+"\" : rule 3.29", getLocation());
         }
     }
 
