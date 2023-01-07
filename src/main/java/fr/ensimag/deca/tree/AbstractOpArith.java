@@ -28,6 +28,14 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
             setType(compiler.environmentType.INT);
         } else {
             setType(compiler.environmentType.FLOAT);
+            if (lt.isInt()) {
+                setLeftOperand(new ConvFloat(getLeftOperand()));
+                getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+            }
+            if (rt.isInt()) {
+                setRightOperand(new ConvFloat(getRightOperand()));
+                getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+            }
         }
         return this.getType();
     }
