@@ -8,7 +8,8 @@
 
 # On se place dans le répertoire du projet (quel que soit le
 # répertoire d'où est lancé le script) :
-cd "$(dirname "$0")"/../../.. || exit 1
+cd "$(dirname "$0")"/../../../.. || exit 1
+
 
 PATH=./src/test/script/launchers:"$PATH"
 
@@ -41,7 +42,7 @@ for i in $(seq $start $end); do
     fi
 
     line=$((i - start + 1))
-    expected_output=$(sed "${line}q;d" src/test/script/modele/modele-lexer-utf-8.txt)
+    expected_output=$(sed "${line}q;d" src/test/script/modele/lexer/valid/modele_lexer-test-all-utf8.txt)
 
     if [[ "$output" != "$expected_output" ]]; then
         echo "Error: Output for character $char does not match expected output"

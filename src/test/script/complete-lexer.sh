@@ -26,26 +26,40 @@ fi
 test_lex_unitaire () {
     # $1 = premier argument, $2 = deuxieme
     exit_status_waited=$2
+    filename=$(basename "$1")
+    filename="${filename%.*}"
 
     if [[ $exit_status_waited == "1" ]]; then
         str_res_waited="Echec"
         str_res_not_waited="Succes"
+        path_valid="invalid"
     else
         str_res_waited="Succes"
         str_res_not_waited="Echec"
+        path_valid="valid"
     fi
 
-    test_lex "$1" > /dev/null 2>&1
+    fichier_modele="src/test/script/modele/lexer/"$path_valid"/modele_$filename.txt"
+    test_lex "$1" > src/main/bin/temp_test.txt 2>&1
     result=$?
 
+    # cat src/main/bin/temp_test.txt
+    # echo ""
+    # cat $fichier_modele
+
+
     if [ "$result" -eq "$exit_status_waited" ]; then
-        echo "$1: $str_res_waited attendu ✅"
+        # On regarde maintenant si l'output est le bon:
+        if cmp -s src/main/bin/temp_test.txt $fichier_modele; then
+            echo "$1: $str_res_waited attendu ✅"
+        else
+            echo "$1: $str_res_not_waited mais output non attendu ❌"
+        fi
     else
         echo "$1: $str_res_not_waited non attendu ❌"
     fi
 
 }    
-
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
 for cas_de_test in $(find src/test/deca/syntax/invalid/lexer/ -name '*.deca')
@@ -60,14 +74,23 @@ for cas_de_test in $(find src/test/deca/syntax/valid/lexer/ -name '*.deca')
     do
         test_lex_unitaire "$cas_de_test" 0
     done
+# On choisit arbitrairement de considérer le test de tous les utf8 comme un "valid test"
+./src/test/script/utils-test/lexer-test-all-utf8.sh
+result_utf8=$?
+if [ "$result_utf8" -eq 0 ]; then
+    echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Succès attendu ✅"
+else
+    echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
+fi
+
 
 
 # End of the script
 # Check if the --exit-status option was passed
-if [ "$1" == "--exit-status" ]; then
-    # Print the exit status
-    echo "The script exited with a status of $exit_status"
-    exit $exit_status
-else
-    exit $exit_status
-fi
+# if [ "$1" == "--exit-status" ]; then
+#     # Print the exit status
+#     echo "The script exited with a status of $exit_status"
+#     exit $exit_status
+# else
+#     exit $exit_status
+# fi

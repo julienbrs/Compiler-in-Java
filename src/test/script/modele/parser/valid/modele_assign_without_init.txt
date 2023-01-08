@@ -3,6 +3,6 @@
       +> ListDeclVar [List with 1 elements]
       |  []> [3, 6] DeclVar
       |      +> [3, 2] Identifier (int)
-      |      +> Identifier (x)
+      |      +> [3, 6] Identifier (x)
       |      `> NoInitialization
       `> ListInst [List with 0 elements]
