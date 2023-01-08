@@ -15,12 +15,12 @@ cd "$(dirname "$0")"/../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
-exit_status_final=0
+# exit_status_final=0
 
-declare log_activated=false
-if [ "$2" == "--log" ]; then
-    log_activated=true
-fi
+# declare log_activated=false
+# if [ "$2" == "--log" ]; then
+#     log_activated=true
+# fi
 
 
 test_lex_unitaire () {
