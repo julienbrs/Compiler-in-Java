@@ -13,6 +13,12 @@ cd "$(dirname "$0")"/../../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
+# Supprime le fichier temporaire dès que le programme finit
+cleanup() {
+  rm src/main/bin/test-temporaire.deca
+}
+trap cleanup EXIT
+
 # On test uniquement les caractères utiles (pas les caractères de controle
 # ou qui ne s'affichent pas correctement).
 start=32
@@ -23,9 +29,9 @@ exit_status=0
 for i in $(seq $start $end); do
     char=$(printf \\$(printf %o $i))
 
-    echo -n "$char" > test-temp.deca
+    echo -n "$char" > src/main/bin/test-temporaire.deca
 
-    result=$(test_lex test-temp.deca 2>&1)
+    result=$(test_lex src/main/bin/test-temporaire.deca 2>&1)
     
     output=""
     if [[ $result =~ "Error" ]]; then
@@ -53,7 +59,6 @@ for i in $(seq $start $end); do
 
 done
 
-rm test-temp.deca
 
 # Check if the --exit-status option was passed
 if [ "$1" == "--exit-status" ]; then

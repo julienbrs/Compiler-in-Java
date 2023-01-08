@@ -22,6 +22,11 @@ PATH=./src/test/script/launchers:"$PATH"
 #     log_activated=true
 # fi
 
+# Supprime le fichier temporaire dès que le programme finit
+cleanup() {
+  rm src/main/bin/temporaire_test.txt
+}
+trap cleanup EXIT
 
 test_lex_unitaire () {
     # $1 = premier argument, $2 = deuxieme
@@ -40,17 +45,12 @@ test_lex_unitaire () {
     fi
 
     fichier_modele="src/test/script/modele/lexer/"$path_valid"/modele_$filename.txt"
-    test_lex "$1" > src/main/bin/temp_test.txt 2>&1
+    test_lex "$1" > src/main/bin/temporaire_test.txt 2>&1
     result=$?
-
-    # cat src/main/bin/temp_test.txt
-    # echo ""
-    # cat $fichier_modele
-
 
     if [ "$result" -eq "$exit_status_waited" ]; then
         # On regarde maintenant si l'output est le bon:
-        if cmp -s src/main/bin/temp_test.txt $fichier_modele; then
+        if cmp -s src/main/bin/temporaire_test.txt $fichier_modele; then
             echo "$1: $str_res_waited attendu ✅"
         else
             echo "$1: $str_res_not_waited mais output non attendu ❌"
