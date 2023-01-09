@@ -1,0 +1,22 @@
+// Description:
+//    Programme simpliste pour vérifier la décoration des différents opérateurs.
+//
+// Historique:
+//    cree le 09/01/2023
+
+{
+        println("Hello, world!");
+        int x;
+        x = 2;
+        while (x != 4) {
+            println("x = ", x);
+            x += 1;
+        }
+        ;
+        if ((3 + 4)*0.5 < 50 && x < 50) {
+            println("youhou");
+        }
+        else {
+            println(":(");
+        }
+}
