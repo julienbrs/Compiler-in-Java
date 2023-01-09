@@ -5,12 +5,10 @@
 //    cree le 09/01/2023
 
 {
-        println("Hello, world!");
-        int x;
-        x = 2;
+        int x = 2;
         while (x != 4) {
             println("x = ", x);
-            x += 1;
+            x = x + 1;
         }
         ;
         if ((3 + 4)*0.5 < 50 && x < 50) {
