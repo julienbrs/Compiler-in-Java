@@ -25,7 +25,7 @@ PATH=./src/test/script/launchers:"$PATH"
 
 
 echo "${purple}Création des modèles de tests lexer sensés être invalides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/invalid/lexer/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/lexer/invalid -name '*.deca')
     do
         filename=$(basename "$cas_de_test")
         filename="${filename%.*}"
@@ -34,7 +34,7 @@ for cas_de_test in $(find src/test/deca/syntax/invalid/lexer/ -name '*.deca')
 
 
 echo "${purple}Création des modèles de tests lexer sensés être valides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/valid/lexer/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/lexer/valid -name '*.deca')
     do
         filename=$(basename "$cas_de_test")
         filename="${filename%.*}"

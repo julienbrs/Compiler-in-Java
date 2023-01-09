@@ -1,2 +1,2 @@
 INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=10
-src/test/deca/syntax/invalid/lexer/test_ident_special_caractere.deca:10:0: token recognition error at: '&'
+src/test/deca/syntax/lexer/invalid/test_ident_special_caractere.deca:10:0: token recognition error at: '&'

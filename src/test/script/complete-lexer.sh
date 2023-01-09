@@ -62,7 +62,7 @@ test_lex_unitaire () {
 }    
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/invalid/lexer/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/lexer/invalid/ -name '*.deca')
     do
         test_lex_unitaire "$cas_de_test" 1
     done
@@ -70,7 +70,7 @@ for cas_de_test in $(find src/test/deca/syntax/invalid/lexer/ -name '*.deca')
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/valid/lexer/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca')
     do
         test_lex_unitaire "$cas_de_test" 0
     done

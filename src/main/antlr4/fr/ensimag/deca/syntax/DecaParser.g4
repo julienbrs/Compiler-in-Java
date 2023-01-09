@@ -124,6 +124,7 @@ inst returns[AbstractInst tree]
         }
     | SEMI {
        $tree=new NoOperation();
+       setLocation($tree, $SEMI);
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
                      try{
@@ -185,17 +186,22 @@ if_then_else returns[IfThenElse tree]
 }
     : if1=IF OPARENT condition=expr CPARENT OBRACE li_if=list_inst CBRACE {
          assert($condition.tree != null);
-          assert($li_if.tree != null);
+         assert($li_if.tree != null);
         $tree = new IfThenElse($condition.tree, $li_if.tree, listelse);
         setLocation($tree, $if1);
         }
       (ELSE elsif=IF OPARENT elsif_cond=expr CPARENT OBRACE elsif_li=list_inst CBRACE {
-        listelse.add(new IfThenElse($elsif_cond.tree,$elsif_li.tree,new ListInst()));
-
+        IfThenElse ifThenElse = new IfThenElse($elsif_cond.tree,$elsif_li.tree,new ListInst());
+        setLocation(ifThenElse, $ELSE);
+        listelse.add(ifThenElse);
         }
       )*
       (ELSE OBRACE li_else=list_inst CBRACE {
-        listelse.add(new IfThenElse(new BooleanLiteral(true),$li_else.tree,new ListInst()));
+        BooleanLiteral b = new BooleanLiteral(true);
+        setLocation(b, $ELSE);
+        IfThenElse ifThenElse = new IfThenElse(b,$li_else.tree,new ListInst());
+        setLocation(ifThenElse, $ELSE);
+        listelse.add(ifThenElse);
         setLocation($tree, $ELSE);
         }
       )?
@@ -299,21 +305,25 @@ inequality_expr returns[AbstractExpr tree]
             assert($e1.tree != null);
             assert($e2.tree != null);
             $tree = new LowerOrEqual($e1.tree,$e2.tree);
+            setLocation($tree, $LEQ);
         }
     | e1=inequality_expr GEQ e2=sum_expr {
             assert($e1.tree != null);
             assert($e2.tree != null);
             $tree = new GreaterOrEqual($e1.tree,$e2.tree);
+            setLocation($tree, $GEQ);
         }
     | e1=inequality_expr GT e2=sum_expr {
             assert($e1.tree != null);
             assert($e2.tree != null);
             $tree = new Greater($e1.tree,$e2.tree);
+            setLocation($tree, $GT);
         }
     | e1=inequality_expr LT e2=sum_expr {
             assert($e1.tree != null);
             assert($e2.tree != null);
             $tree = new Lower($e1.tree,$e2.tree);
+            setLocation($tree, $LT);
         }
     | e1=inequality_expr INSTANCEOF type {
             assert($e1.tree != null);

@@ -25,7 +25,7 @@ fi
 
 
 echo "${purple}Création des modèles de tests parser sensés être invalides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/invalid/parser/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/parser/invalid -name '*.deca')
     do
         filename=$(basename "$cas_de_test")
         filename="${filename%.*}"
@@ -34,7 +34,7 @@ for cas_de_test in $(find src/test/deca/syntax/invalid/parser/ -name '*.deca')
 
 
 echo "${purple}Création des modèles de tests parser sensés être valides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/valid/parser/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/parser/valid/ -name '*.deca')
     do
         filename=$(basename "$cas_de_test")
         filename="${filename%.*}"

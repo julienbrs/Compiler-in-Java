@@ -64,7 +64,7 @@ test_parser_unitaire () {
 
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/invalid/parser/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/parser/invalid/ -name '*.deca')
     do
         test_parser_unitaire "$cas_de_test" 1
     done
@@ -72,7 +72,7 @@ for cas_de_test in $(find src/test/deca/syntax/invalid/parser/ -name '*.deca')
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/valid/parser/ -name '*.deca')
+for cas_de_test in $(find src/test/deca/syntax/parser/valid/ -name '*.deca')
     do
         test_parser_unitaire "$cas_de_test" 0
     done
