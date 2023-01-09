@@ -49,6 +49,17 @@ public class DeclVar extends AbstractDeclVar {
                 varName.verifyExpr(compiler, localEnv, currentClass);
     }
 
+    /*
+     * TODO
+     */
+    @Override
+    public void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+        /* Initialization */
+        initialization.genCodeInitialization(compiler);
+
+        /* On met le contenu de R2 dans la mémoire à l'adresse de la variable */
+        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offsetFromSP, GPRegister.SP)));
+    }
     
     @Override
     public void decompile(IndentPrintStream s) {
