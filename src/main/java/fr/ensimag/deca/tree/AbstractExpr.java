@@ -135,6 +135,11 @@ public abstract class AbstractExpr extends AbstractInst {
     protected void codeGenInst(DecacCompiler compiler) {
         throw new UnsupportedOperationException("not yet implemented");
     }
+
+    /*
+     * TODO
+     */
+    protected abstract void codeGenExpr(DecacCompiler compiler, int offset);
     
 
     @Override

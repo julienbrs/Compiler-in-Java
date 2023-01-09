@@ -26,4 +26,8 @@ public abstract class AbstractInitialization extends Tree {
             Type t, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
+    /*
+     * TODO
+     */
+    protected abstract void codeGenInitialization(DecacCompiler compiler);
 }
