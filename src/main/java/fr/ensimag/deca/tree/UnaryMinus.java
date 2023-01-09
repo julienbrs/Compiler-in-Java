@@ -1,6 +1,8 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.OPP;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -22,6 +24,11 @@ public class UnaryMinus extends AbstractUnaryExpr {
         throw new UnsupportedOperationException("not yet implemented");
     }
 
+    @Override
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        codeGenOperande(compiler, offset);
+        compiler.addInstruction(new OPP(GPRegister.getR(offset), GPRegister.getR(offset)));
+    }
 
     @Override
     protected String getOperatorName() {

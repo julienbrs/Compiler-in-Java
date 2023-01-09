@@ -35,6 +35,11 @@ public class NoInitialization extends AbstractInitialization {
     }
 
     @Override
+    protected void codeGenInitialization(DecacCompiler compiler) {
+        // TODO : mettre a zero
+    }
+
+    @Override
     public void decompile(IndentPrintStream s) {
         // nothing
     }

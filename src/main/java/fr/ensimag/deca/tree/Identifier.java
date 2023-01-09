@@ -14,6 +14,9 @@ import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
@@ -186,6 +189,11 @@ public class Identifier extends AbstractIdentifier {
         return this.getType();
     }
     
+    @Override
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        // TODO : trouver l'adresse de x
+        // compiler.addInstruction(new LOAD(, GPRegister.getR(offset)));
+    }
     
     private Definition definition;
 

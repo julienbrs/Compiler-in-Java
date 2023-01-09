@@ -23,6 +23,11 @@ public class Not extends AbstractUnaryExpr {
         throw new UnsupportedOperationException("not yet implemented");
     }
 
+    @Override
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        // TODO les not se font a la volée du calcul des booleen
+    }
+
 
     @Override
     protected String getOperatorName() {

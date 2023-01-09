@@ -1,6 +1,8 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -25,6 +27,11 @@ public class ConvFloat extends AbstractUnaryExpr {
         return this.getType();
     }
 
+    @Override
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        getOperand().codeGenExpr(compiler, offset);
+        compiler.addInstruction(new FLOAT(GPRegister.getR(offset), GPRegister.getR(offset)));
+    }
 
     @Override
     protected String getOperatorName() {

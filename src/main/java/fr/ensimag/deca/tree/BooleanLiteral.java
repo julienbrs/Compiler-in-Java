@@ -6,6 +6,10 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+
 import java.io.PrintStream;
 
 /**
@@ -33,6 +37,10 @@ public class BooleanLiteral extends AbstractExpr {
         return this.getType();
     }
 
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        // TODO : trouver comment load un booleen
+        // compiler.addInstruction(new LOAD(new  , GPRegister.getR(offset)));
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {

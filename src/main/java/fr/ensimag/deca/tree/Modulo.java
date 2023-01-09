@@ -6,6 +6,10 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.REM;
+
 /**
  *
  * @author gl11
@@ -29,4 +33,9 @@ public class Modulo extends AbstractOpArith {
         return "%";
     }
 
+    @Override
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        Register r = codeGenOperande(compiler, offset);
+        compiler.addInstruction(new REM(r, GPRegister.getR(offset)));
+    }
 }

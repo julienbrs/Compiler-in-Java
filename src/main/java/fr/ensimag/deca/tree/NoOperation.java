@@ -25,7 +25,8 @@ public class NoOperation extends AbstractInst {
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        // ne genere pas de code
     }
 
     @Override

@@ -33,5 +33,5 @@ public abstract class AbstractDeclVar extends Tree {
     /*
      * TODO
      */
-    protected abstract void codeGenDeclVar(DecacCompiler compiler);
+    protected abstract void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP);
 }

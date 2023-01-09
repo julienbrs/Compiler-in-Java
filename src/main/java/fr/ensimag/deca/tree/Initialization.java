@@ -39,12 +39,9 @@ public class Initialization extends AbstractInitialization {
         getExpression().verifyRValue(compiler, localEnv, currentClass, t);
     }
 
-    /*
-     * TODO
-     */
     @Override
     protected void codeGenInitialization(DecacCompiler compiler) {
-        expression.genCodeExpr(compiler, 2);
+        expression.codeGenExpr(compiler, 2);
     }
 
     @Override

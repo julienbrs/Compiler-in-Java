@@ -9,6 +9,10 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
@@ -44,18 +48,16 @@ public class DeclVar extends AbstractDeclVar {
                 try {
                     localEnv.declare(varName.getName(), new VariableDefinition(t, getLocation()));   
                 } catch (DoubleDefException e) {
-                    // TODO: handle exception
+                    // TODO : a vérifier
+                    throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
                 }
                 varName.verifyExpr(compiler, localEnv, currentClass);
     }
 
-    /*
-     * TODO
-     */
     @Override
-    public void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
         /* Initialization */
-        initialization.genCodeInitialization(compiler);
+        initialization.codeGenInitialization(compiler);
 
         /* On met le contenu de R2 dans la mémoire à l'adresse de la variable */
         compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offsetFromSP, GPRegister.SP)));

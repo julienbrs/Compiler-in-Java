@@ -24,6 +24,10 @@ public class CompilerOptions {
         return debug;
     }
 
+    public int getRmax() {
+        return rMax;
+    }
+
     public boolean getParallel() {
         return parallel;
     }
@@ -37,6 +41,7 @@ public class CompilerOptions {
     }
 
     private int debug = 0;
+    private int rMax = 15;
     private boolean parallel = false;
     private boolean printBanner = false;
     private boolean parse = false;

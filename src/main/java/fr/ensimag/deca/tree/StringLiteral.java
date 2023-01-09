@@ -47,6 +47,11 @@ public class StringLiteral extends AbstractStringLiteral {
     }
 
     @Override
+    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+        // TODO : Erreur : un string ne peut faire part d'une expression en dehors d'un print
+    }
+
+    @Override
     public void decompile(IndentPrintStream s) {
         //throw new UnsupportedOperationException("not yet implemented");
         s.print("\""+value+"\"");
