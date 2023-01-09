@@ -29,11 +29,15 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
         } else {
             setType(compiler.environmentType.FLOAT);
             if (lt.isInt()) {
+                Location loc = getLeftOperand().getLocation();
                 setLeftOperand(new ConvFloat(getLeftOperand()));
+                getLeftOperand().setLocation(loc);
                 getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
             }
             if (rt.isInt()) {
+                Location loc = getLeftOperand().getLocation();
                 setRightOperand(new ConvFloat(getRightOperand()));
+                getLeftOperand().setLocation(loc);
                 getRightOperand().verifyExpr(compiler, localEnv, currentClass);
             }
         }
