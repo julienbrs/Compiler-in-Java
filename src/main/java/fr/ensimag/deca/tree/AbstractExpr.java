@@ -93,12 +93,11 @@ public abstract class AbstractExpr extends AbstractInst {
         if (t.sameType(expectedType)) {
             return this;
         } else if (t.isInt() && expectedType.isFloat()) {
-            Location loc = getRightOperand().getLocation();
-            setRightOperand(new ConvFloat(getRightOperand()));
-            getRightOperand().setLocation(loc);
-            getRightOperand().verifyExpr(compiler, localEnv, currentClass);
-
-            return this;
+            Location loc = getLocation();
+            AbstractExpr newThis= new ConvFloat(this);
+            newThis.setLocation(loc);
+            newThis.verifyExpr(compiler, localEnv, currentClass);
+            return newThis;
         }
         // TODO : verifier les sous type dans le avec objet
         throw new ContextualError("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
