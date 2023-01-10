@@ -45,7 +45,8 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        throw new UnsupportedOperationException("Not yet supported");
+        name.prettyPrint(s,prefix,false);
+       // throw new UnsupportedOperationException("Not yet supported");
     }
 
     @Override
