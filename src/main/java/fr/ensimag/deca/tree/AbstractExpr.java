@@ -7,7 +7,13 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.WFLOAT;
+import fr.ensimag.ima.pseudocode.instructions.WFLOATX;
+import fr.ensimag.ima.pseudocode.instructions.WINT;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
@@ -132,8 +138,20 @@ public abstract class AbstractExpr extends AbstractInst {
      *
      * @param compiler
      */
-    protected void codeGenPrint(DecacCompiler compiler) {
-        throw new UnsupportedOperationException("not yet implemented");
+    protected void codeGenPrint(DecacCompiler compiler, boolean printHex) {
+        // throw new UnsupportedOperationException("not yet implemented");
+        codeGenExpr(compiler, 2);
+        compiler.addInstruction(new LOAD(GPRegister.getR(2), GPRegister.R1));
+        Type t = getType();
+        if (t.isInt()) {
+            compiler.addInstruction(new WINT());
+        } else if (t.isFloat()) {
+            if (printHex) {
+                compiler.addInstruction(new WFLOATX());
+            } else {
+                compiler.addInstruction(new WFLOAT());
+            }
+        }
     }
 
     @Override
@@ -142,9 +160,6 @@ public abstract class AbstractExpr extends AbstractInst {
         codeGenExpr(compiler, 2);
     }
 
-    /*
-     * TODO
-     */
     protected abstract void codeGenExpr(DecacCompiler compiler, int offset);
     
 

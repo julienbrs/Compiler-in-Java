@@ -88,6 +88,14 @@ public class DecacCompiler {
         program.addLabel(label);
     }
 
+    private int labelNumber = 1;
+    public int getLabelNumber() {
+        return labelNumber;
+    }
+    public void incrLabelNumber() {
+        labelNumber++;
+    }
+
     /**
      * @see
      * fr.ensimag.ima.pseudocode.IMAProgram#addInstruction(fr.ensimag.ima.pseudocode.Instruction)

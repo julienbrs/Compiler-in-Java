@@ -47,6 +47,7 @@ public class ListDeclVar extends TreeList<AbstractDeclVar> {
         int j = 1;
         for (AbstractDeclVar i : getList()) {
             i.codeGenDeclVar(compiler, j);
+            j++;
         }
         compiler.addInstruction(new ADDSP(new ImmediateInteger(getList().size())));
     }

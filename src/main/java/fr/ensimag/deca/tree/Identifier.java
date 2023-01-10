@@ -14,6 +14,7 @@ import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
@@ -171,7 +172,11 @@ public class Identifier extends AbstractIdentifier {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        setDefinition(localEnv.get(name));
+        ExpDefinition def = localEnv.get(name);
+        if (def == null) {
+            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule ?.??", getLocation());
+        }
+        setDefinition(def);
         setType(definition.getType());
         return this.getType();
 
@@ -191,8 +196,8 @@ public class Identifier extends AbstractIdentifier {
     
     @Override
     protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO : trouver l'adresse de x
-        // compiler.addInstruction(new LOAD(, GPRegister.getR(offset)));
+        DAddr addr = getExpDefinition().getOperand();
+        compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
     }
     
     private Definition definition;

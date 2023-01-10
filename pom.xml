@@ -193,7 +193,7 @@
                     <execution>
                         <id>basic-lex</id>
                         <configuration>
-                            <executable>./src/test/script/basic-lex.sh</executable>
+                            <executable>./src/test/script/provided/basic-lex.sh</executable>
                             <!-- If we need to pass arguments :
                                  <arguments>
                                  <argument>...</argument>
@@ -208,7 +208,7 @@
                     <execution>
                         <id>basic-synt</id>
                         <configuration>
-                            <executable>./src/test/script/basic-synt.sh</executable>
+                            <executable>./src/test/script/provided/basic-synt.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>
@@ -232,7 +232,7 @@
                     <execution>
                         <id>basic-context</id>
                         <configuration>
-                            <executable>./src/test/script/basic-context.sh</executable>
+                            <executable>./src/test/script/provided/basic-context.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>
@@ -242,7 +242,7 @@
                     <execution>
                         <id>basic-gencode</id>
                         <configuration>
-                            <executable>./src/test/script/basic-gencode.sh</executable>
+                            <executable>./src/test/script/provided/basic-gencode.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>
@@ -252,7 +252,7 @@
                     <execution>
                         <id>basic-decac</id>
                         <configuration>
-                            <executable>./src/test/script/basic-decac.sh</executable>
+                            <executable>./src/test/script/provided/basic-decac.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>

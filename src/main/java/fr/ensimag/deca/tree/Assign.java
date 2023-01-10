@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.deca.DecacCompiler;
@@ -8,6 +9,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.ExpDefinition;
 
 /**
  * Assignment, i.e. lvalue = expr.
@@ -47,8 +49,8 @@ public class Assign extends AbstractBinaryExpr {
     @Override
     protected void codeGenExpr(DecacCompiler compiler, int offset) {
         codeGenRightOperande(compiler, offset);
-        // TODO : Trouver le registre liée a l'identifier
-        // compiler.addInstruction(new STORE(GPRegister.getR(offset), ));
+        DAddr addr = ((AbstractIdentifier) getLeftOperand()).getExpDefinition().getOperand();
+        compiler.addInstruction(new STORE(GPRegister.getR(offset), addr));
     }
 
 }

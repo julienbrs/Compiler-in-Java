@@ -8,6 +8,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
@@ -59,8 +60,10 @@ public class DeclVar extends AbstractDeclVar {
         /* Initialization */
         initialization.codeGenInitialization(compiler);
 
+        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, GPRegister.GB));
+
         /* On met le contenu de R2 dans la mémoire à l'adresse de la variable */
-        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offsetFromSP, GPRegister.SP)));
+        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offsetFromSP, GPRegister.GB)));
     }
     
     @Override
