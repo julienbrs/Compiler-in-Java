@@ -553,10 +553,10 @@ decl_field_set[ListDeclField l]
 
 visibility returns[Visibility tree]
     : /* epsilon */ {
-        $tree = PUBLIC;
+        $tree = Visibility.PUBLIC;
         }
     | PROTECTED {
-        $tree = PROTECTED;
+        $tree = Visibility.PROTECTED;
 
         }
     ;
@@ -570,7 +570,7 @@ list_decl_field[ListDeclField l, AbstractIdentifier t, Visibility v]
       )*
     ;
 
-decl_field[AbstractIdentifier t, Visibility v] returns[AbstractDeclVar tree]
+decl_field[AbstractIdentifier t, Visibility v] returns[DeclField tree]
         : i=ident {
             $tree = new DeclField(t, $i.tree,new  NoInitialization() ,v) ;
             setLocation($tree, $i.start);
@@ -596,9 +596,14 @@ decl_method
         }
     ;
 
-list_params
+list_params returns[ListParam tree]
+@init{  
+    $tree = new ListParam():
+ }
     : (p1=param {
+        $tree.add(p1);
         } (COMMA p2=param {
+            $tree.add(p2);
         }
       )*)?
     ;
@@ -614,7 +619,8 @@ multi_line_string returns[String text, Location location]
         }
     ;
 
-param
+param returns[Param tree]
     : type ident {
+        $tree = new Param(type,ident);
         }
     ;
