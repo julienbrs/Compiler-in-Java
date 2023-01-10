@@ -87,6 +87,11 @@ public abstract class AbstractExpr extends AbstractInst {
         if (t.sameType(expectedType)) {
             return this;
         } else if (t.isInt() && expectedType.isFloat()) {
+            Location loc = getRightOperand().getLocation();
+            setRightOperand(new ConvFloat(getRightOperand()));
+            getRightOperand().setLocation(loc);
+            getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+
             return this;
         }
         // TODO : verifier les sous type dans le avec objet
