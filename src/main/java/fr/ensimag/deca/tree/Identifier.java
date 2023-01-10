@@ -16,6 +16,10 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 import java.io.PrintStream;
@@ -198,6 +202,21 @@ public class Identifier extends AbstractIdentifier {
     protected void codeGenExpr(DecacCompiler compiler, int offset) {
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
+    }
+
+    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+        if (getType().isBoolean()) {
+            DAddr addr = getExpDefinition().getOperand();
+            compiler.addInstruction(new LOAD(addr, GPRegister.R0));
+            compiler.addInstruction(new CMP(0, GPRegister.R0));
+            if (aim) {
+                compiler.addInstruction(new BNE(dest));
+            } else {
+                compiler.addInstruction(new BEQ(dest));
+            }
+            return;
+        }
+        throw new UnsupportedOperationException("Should not end up here");
     }
     
     private Definition definition;

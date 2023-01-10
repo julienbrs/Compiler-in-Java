@@ -8,6 +8,8 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 import java.io.PrintStream;
@@ -38,8 +40,18 @@ public class BooleanLiteral extends AbstractExpr {
     }
 
     protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO : trouver comment load un booleen
-        // compiler.addInstruction(new LOAD(new  , GPRegister.getR(offset)));
+        if (value) {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(offset)));
+        } else {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(1), GPRegister.getR(offset)));
+        }
+    }
+
+    @Override
+    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+        if ((value && aim) || (!value && !aim)) {
+            compiler.addInstruction(new BRA(dest));
+        }
     }
 
     @Override
