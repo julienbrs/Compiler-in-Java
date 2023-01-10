@@ -57,8 +57,8 @@ TRUE : 'true';
 FALSE : 'false';
 THIS : 'this';
 NULL : 'null';
-IDENT : (LETTER | '$' | '_') (LETTER | DIGIT | '$' | '_')*;
 CLASS : 'class';
+IDENT : (LETTER | '$' | '_') (LETTER | DIGIT | '$' | '_')*;
 EXTENDS : 'extends';
 PROTECTED : 'protected';
 ASM : 'asm';
@@ -96,3 +96,7 @@ fragment FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUMBER ('F'
 
 // Comment
 COMMENT : ('/*' .*? '*/' | '//' .*? '\n') { skip(); };
+
+//include 
+FILENAME : (LETTER|DIGIT|'.'|'-'|'_')+;
+INCLUDE  : '#include' SPACE*'"'FILENAME'"'{doInclude(FILENAME);};

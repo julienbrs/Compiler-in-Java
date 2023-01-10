@@ -13,6 +13,13 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class DeclClass extends AbstractDeclClass {
+    AbstractIdentifier name;
+    AbstractIdentifier extension;
+     
+    public DeclClass(AbstractIdentifier name, AbstractIdentifier extension) {
+        this.name = name;
+        this.extension = extension;
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {
