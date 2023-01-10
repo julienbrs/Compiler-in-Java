@@ -7,20 +7,20 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
-public class MethodAsmBody extends AbstractDeclMethod {
+public class MethodAsmBody extends AbstractMethodBody {
     private StringLiteral asm; 
 
     public MethodAsmBody(StringLiteral asm) {
         this.asm = asm;
     }
 
-    @Override
+    
     protected void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
         // TODO Auto-generated method stub
         
     }
 
-    @Override
+    
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
         // TODO Auto-generated method stub
         
