@@ -22,12 +22,23 @@ public class And extends AbstractOpBool {
 
     @Override
     protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        codeGenLeftOperande(compiler, offset);
-        Label endAnd = new Label("And_end");
-        // TODO : si faux saut a la fin
-        compiler.addInstruction(new BNE(endAnd)); // verif instruction Branchement conditionnel
-        codeGenRightOperande(compiler, offset);
-        compiler.addLabel(endAnd); // Etiquette a revoir
+        // codeGenBool(compiler, , );
+        // SEQ
+    }
+    
+    @Override
+    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+        if (aim) {
+            int labelNumber = compiler.getLabelNumber();
+            compiler.incrLabelNumber();
+            Label andEnd = new Label("And_end."+labelNumber);
+            getLeftOperand().codeGenBool(compiler, false, andEnd);
+            getRightOperand().codeGenBool(compiler, true, dest);
+            compiler.addLabel(andEnd);
+        } else {
+            getLeftOperand().codeGenBool(compiler, false, dest);
+            getRightOperand().codeGenBool(compiler, false, dest);
+        }
     }
 
 }

@@ -161,6 +161,9 @@ public abstract class AbstractExpr extends AbstractInst {
 
     protected abstract void codeGenExpr(DecacCompiler compiler, int offset);
     
+    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+        throw new UnsupportedOperationException("Should not end up here");
+    }
 
     @Override
     protected void decompileInst(IndentPrintStream s) {
