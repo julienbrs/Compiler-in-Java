@@ -31,7 +31,7 @@ test_synt_invalide () {
     fi
 }    
 
-for cas_de_test in src/test/deca/syntax/invalid/provided/*.deca
+for cas_de_test in src/test/deca/syntax/lexer/provided/*.deca
 do
     test_synt_invalide "$cas_de_test"
 done
