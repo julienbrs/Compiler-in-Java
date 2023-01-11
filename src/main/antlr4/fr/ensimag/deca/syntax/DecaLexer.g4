@@ -58,11 +58,11 @@ FALSE : 'false';
 THIS : 'this';
 NULL : 'null';
 CLASS : 'class';
-IDENT : (LETTER | '$' | '_') (LETTER | DIGIT | '$' | '_')*;
 EXTENDS : 'extends';
 PROTECTED : 'protected';
 ASM : 'asm';
 MULTI_LINE_STRING : '"' (STRING_CAR | '\\"' | '\\\\' | '\n')* '"';
+IDENT : (LETTER | '$' | '_') (LETTER | DIGIT | '$' | '_')*;
 
 // Espace
 SPACE : ' ' { skip(); };

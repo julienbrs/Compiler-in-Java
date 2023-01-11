@@ -39,6 +39,9 @@ public class EnvironmentType {
         STRING = new StringType(stringSymb);
         // not added to envTypes, it's not visible for the user.
         
+        Symbol objectSymbol = compiler.createSymbol("Object");
+        Type OBJECT = new ClassType(objectSymbol);
+        envTypes.put(objectSymbol, new TypeDefinition(OBJECT, Location.BUILTIN));
     }
 
     private final Map<Symbol, TypeDefinition> envTypes;
@@ -61,4 +64,5 @@ public class EnvironmentType {
     public final FloatType   FLOAT;
     public final StringType  STRING;
     public final BooleanType BOOLEAN;
+    
 }
