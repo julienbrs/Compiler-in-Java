@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
@@ -17,6 +18,6 @@ public abstract class AbstractDeclMethod extends Tree{
      * Pass 3 of [SyntaxeContextuelle]. Verify that instructions and expressions
      * contained in the class are OK.
      */
-    protected abstract void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv)
+    protected abstract void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 }
