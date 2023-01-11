@@ -2,6 +2,9 @@ package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
 
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class Param extends AbstractParam {
@@ -31,4 +34,10 @@ public class Param extends AbstractParam {
         
     }
     
+    public void verifyParam(DecacCompiler compiler) throws ContextualError {
+        Type t = type.verifyType(compiler);
+        if (t.sameType(compiler.environmentType.VOID)) {
+            throw new ContextualError("Type can't be void : rule 2.9", getLocation());
+        }
+    }
 }

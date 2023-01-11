@@ -3,7 +3,11 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
+
 import java.io.PrintStream;
 
 /**
@@ -28,7 +32,9 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        Type t = new ClassType(name.getName(), getLocation(), compiler.environmentType.defOfType(extension.getName()));
+        boolean b = compiler.environmentType.put(name.getName(), new TypeDefinition(t, getLocation()));
     }
 
     @Override
@@ -45,8 +51,7 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        name.prettyPrint(s,prefix,false);
-       // throw new UnsupportedOperationException("Not yet supported");
+        throw new UnsupportedOperationException("Not yet supported");
     }
 
     @Override

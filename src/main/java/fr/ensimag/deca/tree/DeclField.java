@@ -16,7 +16,7 @@ public class DeclField extends AbstractDeclClass{
     private AbstractIdentifier type;
     private AbstractIdentifier varName;
     AbstractInitialization initialization;
-    
+
     public DeclField(AbstractIdentifier type, AbstractIdentifier varName, AbstractInitialization initialization, Visibility visibility) {
         this.type = type;
         this.varName = varName;
@@ -58,7 +58,7 @@ public class DeclField extends AbstractDeclClass{
         ClassDefinition currentClass) throws ContextualError {
             Type t = type.verifyType(compiler);
             if (t.sameType(compiler.environmentType.VOID)) {
-                throw new ContextualError("Type can't be void : rule 3.7", getLocation());
+                // TODO
             }
             initialization.verifyInitialization(compiler, t, localEnv, currentClass);
             try {
