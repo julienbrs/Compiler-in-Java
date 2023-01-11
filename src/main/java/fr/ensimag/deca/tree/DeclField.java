@@ -69,6 +69,7 @@ public class DeclField extends AbstractDeclClass{
                 localEnv.declare(varName.getName(), new VariableDefinition(t, getLocation()));   
             } catch (DoubleDefException e) {
                 // TODO : a vérifier
+                // ERROR MSG
                 throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
             }
             varName.verifyExpr(compiler, localEnv, currentClass);

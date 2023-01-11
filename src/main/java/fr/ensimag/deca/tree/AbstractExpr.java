@@ -100,6 +100,7 @@ public abstract class AbstractExpr extends AbstractInst {
             return newThis;
         }
         // TODO : verifier les sous type dans le avec objet
+        // ERROR MSG
         throw new ContextualError("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
     }
     
@@ -128,6 +129,7 @@ public abstract class AbstractExpr extends AbstractInst {
         // throw new UnsupportedOperationException("not yet implemented");
         Type t = verifyExpr(compiler, localEnv, currentClass);
         if (!t.isBoolean()) {
+            // ERROR MSG
             throw new ContextualError("The condition must be 'boolean' but is of type \""+t+"\" : rule 3.29", getLocation());
         }
     }

@@ -37,6 +37,7 @@ public class Param extends AbstractParam {
     public void verifyParam(DecacCompiler compiler) throws ContextualError {
         Type t = type.verifyType(compiler);
         if (t.sameType(compiler.environmentType.VOID)) {
+            // ERROR MSG
             throw new ContextualError("Type can't be void : rule 2.9", getLocation());
         }
     }

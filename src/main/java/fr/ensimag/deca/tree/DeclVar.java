@@ -43,6 +43,7 @@ public class DeclVar extends AbstractDeclVar {
             throws ContextualError {
                 Type t = type.verifyType(compiler);
                 if (t.sameType(compiler.environmentType.VOID)) {
+                    // ERROR MSG
                     throw new ContextualError("Type can't be void : rule 3.17", getLocation());
                 }
                 initialization.verifyInitialization(compiler, t, localEnv, currentClass);
@@ -50,6 +51,7 @@ public class DeclVar extends AbstractDeclVar {
                     localEnv.declare(varName.getName(), new VariableDefinition(t, getLocation()));   
                 } catch (DoubleDefException e) {
                     // TODO : a vérifier
+                    // ERROR MSG
                     throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
                 }
                 varName.verifyExpr(compiler, localEnv, currentClass);
