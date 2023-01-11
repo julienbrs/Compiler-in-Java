@@ -24,7 +24,8 @@ public class UnaryMinus extends AbstractUnaryExpr {
         // throw new UnsupportedOperationException("not yet implemented");
         Type t = getOperand().verifyExpr(compiler, localEnv, currentClass);
         if (!t.isInt() && !t.isFloat()) {
-            throw new ContextualError("Can't apply UnaryMinus on \""+t+"\" type : rule ?.??", getLocation());
+            // ERROR MSG
+            throw new ContextualError("Can't apply UnaryMinus on \""+t+"\" type : rule 3.62", getLocation());
         }
         setType(t);
         return this.getType();
