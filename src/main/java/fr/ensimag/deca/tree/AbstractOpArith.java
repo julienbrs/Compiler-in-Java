@@ -26,7 +26,7 @@ public abstract class AbstractOpArith extends AbstractBinaryExpr {
         Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
         // TODO
         // ERROR MSG : test des type autre que int et float
-        // "Can't do \""+getOperandeName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.53"
+        // "Can't do \""+getOperandeName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.33"
         if (lt.isInt() && rt.isInt()) {
             setType(compiler.environmentType.INT);
         } else {

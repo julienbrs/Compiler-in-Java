@@ -75,7 +75,7 @@ public class Test_verifyExpr_AbstractOpBool {
                 fail("Expected a ContextualError to be thrown.");
             }
             catch (ContextualError e) {
-                assertEquals("Can't do \""+"&&"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+                assertEquals("Can't do \""+"=="+"\" between \""+"boolean"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
             }
             
 	}
