@@ -45,6 +45,10 @@ public class DeclField extends AbstractDeclClass{
     }
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
+        type.prettyPrint(s, prefix, false);
+        varName.prettyPrint(s, prefix, false);
+        initialization.prettyPrint(s, prefix, false);
+
         // TODO Auto-generated method stub
         
     }

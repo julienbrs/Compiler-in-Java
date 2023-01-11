@@ -13,7 +13,15 @@ public class DeclMethod extends AbstractDeclMethod {
     private AbstractIdentifier type;
     private AbstractIdentifier ident;
     private ListParam listeparametre;
-    
+    private AbstractMethodBody methodBody;
+
+    public DeclMethod(AbstractIdentifier type, AbstractIdentifier ident, ListParam listeparametre,
+            AbstractMethodBody methodBody) {
+        this.type = type;
+        this.ident = ident;
+        this.listeparametre = listeparametre;
+        this.methodBody = methodBody;
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {
@@ -23,6 +31,9 @@ public class DeclMethod extends AbstractDeclMethod {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
+        type.prettyPrint(s, prefix, false);
+        ident.prettyPrint(s, prefix, false);
+        
         // TODO Auto-generated method stub
         
     }

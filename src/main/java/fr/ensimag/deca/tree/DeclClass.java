@@ -19,10 +19,12 @@ import java.io.PrintStream;
 public class DeclClass extends AbstractDeclClass {
     AbstractIdentifier name;
     AbstractIdentifier extension;
+    private ClassBody bodyclass;
      
-    public DeclClass(AbstractIdentifier name, AbstractIdentifier extension) {
+    public DeclClass(AbstractIdentifier name, AbstractIdentifier extension, ClassBody body) {
         this.name = name;
         this.extension = extension;
+        this.bodyclass = body;
     }
 
     @Override
@@ -51,7 +53,10 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        throw new UnsupportedOperationException("Not yet supported");
+        
+        name.prettyPrint(s,prefix,false);
+        bodyclass.prettyPrint(s,prefix,true);
+       // throw new UnsupportedOperationException("Not yet supported");
     }
 
     @Override

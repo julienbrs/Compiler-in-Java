@@ -523,7 +523,7 @@ list_classes returns[ListDeclClass tree]
 
 class_decl returns [DeclClass tree]
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
-           $tree=  new DeclClass($name.tree,$superclass.tree);
+           $tree=  new DeclClass($name.tree,$superclass.tree,$class_body.tree);
         }
     ;
 
@@ -536,18 +536,25 @@ class_extension returns[AbstractIdentifier tree]
         }
     ;
 
-class_body returns[ListDeclField tree]
+class_body returns[ClassBody tree]
 @init{
- $tree = new ListDeclField();
+ $tree = new ClassBody();
 }
     : (m=decl_method {
+        $tree.addDeclMethod($m.tree);
         }
-      | decl_field_set[$tree]
+      | decl_field_set{ 
+        assert($decl_field_set.tree!=null);
+        $tree.addDeclField($decl_field_set.tree);
+       }
       )*
     ;
 
-decl_field_set[ListDeclField l]
-    : v=visibility t=type list_decl_field[$l,$t.tree,$v.tree]
+decl_field_set returns [ListDeclField tree]
+@init { 
+    $tree = new ListDeclField();
+ }
+    : v=visibility t=type list_decl_field[$tree,$t.tree,$v.tree] 
       SEMI
     ;
 
@@ -585,12 +592,15 @@ decl_field[AbstractIdentifier t, Visibility v] returns[DeclField tree]
         }
     ;
 
-decl_method
+decl_method returns [ DeclMethod tree]
 @init {
 }
     : type ident OPARENT params=list_params CPARENT (block {
+        
+        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodBody($block.decls,$block.insts));
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
+        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodAsmBody(new StringLiteral($code.text)));
         }
       ) {
         }
@@ -598,12 +608,12 @@ decl_method
 
 list_params returns[ListParam tree]
 @init{  
-    $tree = new ListParam():
+    $tree = new ListParam();
  }
     : (p1=param {
-        $tree.add(p1);
+        $tree.add($p1.tree);
         } (COMMA p2=param {
-            $tree.add(p2);
+            $tree.add($p2.tree);
         }
       )*)?
     ;
@@ -621,6 +631,6 @@ multi_line_string returns[String text, Location location]
 
 param returns[Param tree]
     : type ident {
-        $tree = new Param(type,ident);
+        $tree = new Param($type.tree,$ident.tree);
         }
     ;
