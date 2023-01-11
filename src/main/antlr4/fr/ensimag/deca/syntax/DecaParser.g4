@@ -523,7 +523,8 @@ list_classes returns[ListDeclClass tree]
 
 class_decl returns [DeclClass tree]
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
-           $tree=  new DeclClass($name.tree,$superclass.tree,$class_body.tree);
+           $tree = new DeclClass($name.tree,$superclass.tree,$class_body.tree);
+           setLocation($tree, $CLASS);
         }
     ;
 
