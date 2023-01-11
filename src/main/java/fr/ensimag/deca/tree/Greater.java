@@ -5,6 +5,7 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.BGT;
+import fr.ensimag.ima.pseudocode.instructions.BLE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SGT;
 
@@ -36,7 +37,11 @@ public class Greater extends AbstractOpIneq {
     protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         Register r = codeGenOperande(compiler, 2);
         compiler.addInstruction(new CMP(r, GPRegister.getR(2)));
-        compiler.addInstruction(new BGT(dest));
+        if (aim) {
+            compiler.addInstruction(new BGT(dest));
+        } else {
+            compiler.addInstruction(new BLE(dest));
+        }
     }
 
 }

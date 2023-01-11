@@ -5,6 +5,7 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.BGE;
+import fr.ensimag.ima.pseudocode.instructions.BLT;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SGE;
 /**
@@ -36,6 +37,10 @@ public class GreaterOrEqual extends AbstractOpIneq {
     protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         Register r = codeGenOperande(compiler, 2);
         compiler.addInstruction(new CMP(r, GPRegister.getR(2)));
-        compiler.addInstruction(new BGE(dest));
+        if (aim) {
+            compiler.addInstruction(new BGE(dest));
+        } else {
+            compiler.addInstruction(new BLT(dest));
+        }
     }
 }
