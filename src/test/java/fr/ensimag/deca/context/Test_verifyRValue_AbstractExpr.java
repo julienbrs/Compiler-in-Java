@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class AbstractExpr {
+public class Test_verifyRValue_AbstractExpr.java {
 	@Test
 	public void test() {
 		// TESTTODO

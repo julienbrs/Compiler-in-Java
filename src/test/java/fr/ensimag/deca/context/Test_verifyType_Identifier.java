@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class Identifier {
+public class Test_verifyType_Identifier.java {
 	@Test
 	public void test() {
 		// TESTTODO

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class ListDeclMethod {
+public class Test_verifyListMethodBody_ListDeclMethod.java {
 	@Test
 	public void test() {
 		// TESTTODO

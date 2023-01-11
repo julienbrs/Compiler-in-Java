@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class ListInst {
+public class Test_verifyListInst_ListInst.java {
 	@Test
 	public void test() {
 		// TESTTODO

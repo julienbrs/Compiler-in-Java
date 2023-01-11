@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class BooleanLiteral {
+public class Test_verifyExpr_BooleanLiteral.java {
 	@Test
 	public void test() {
 		// TESTTODO

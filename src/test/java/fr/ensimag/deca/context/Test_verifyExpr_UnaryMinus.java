@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class UnaryMinus {
+public class Test_verifyExpr_UnaryMinus.java {
 	@Test
 	public void test() {
 		// TESTTODO

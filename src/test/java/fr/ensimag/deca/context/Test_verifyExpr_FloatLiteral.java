@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class FloatLiteral {
+public class Test_verifyExpr_FloatLiteral.java {
 	@Test
 	public void test() {
 		// TESTTODO

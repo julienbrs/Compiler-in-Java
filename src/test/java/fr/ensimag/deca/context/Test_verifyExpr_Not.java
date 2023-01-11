@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class Not {
+public class Test_verifyExpr_Not.java {
 	@Test
 	public void test() {
 		// TESTTODO

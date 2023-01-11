@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class Program {
+public class Test_verifyProgram_Program.java {
 	@Test
 	public void test() {
 		// TESTTODO

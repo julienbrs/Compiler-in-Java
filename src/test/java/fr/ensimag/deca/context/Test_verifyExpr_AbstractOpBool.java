@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class AbstractOpBool {
+public class Test_verifyExpr_AbstractOpBool.java {
 	@Test
 	public void test() {
 		// TESTTODO

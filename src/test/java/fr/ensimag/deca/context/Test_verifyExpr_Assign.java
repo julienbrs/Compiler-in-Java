@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class Assign {
+public class Test_verifyExpr_Assign.java {
 	@Test
 	public void test() {
 		// TESTTODO

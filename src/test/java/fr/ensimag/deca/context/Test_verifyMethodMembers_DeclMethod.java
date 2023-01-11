@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class DeclMethod {
+public class Test_verifyMethodMembers_DeclMethod.java {
 	@Test
 	public void test() {
 		// TESTTODO

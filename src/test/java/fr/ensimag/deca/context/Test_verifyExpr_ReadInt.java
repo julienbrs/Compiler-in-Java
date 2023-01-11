@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class ReadInt {
+public class Test_verifyExpr_ReadInt.java {
 	@Test
 	public void test() {
 		// TESTTODO

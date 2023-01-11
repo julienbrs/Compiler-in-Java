@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class ReadFloat {
+public class Test_verifyExpr_ReadFloat.java {
 	@Test
 	public void test() {
 		// TESTTODO

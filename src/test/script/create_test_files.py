@@ -7,8 +7,8 @@ A script that create test files
 import os
 
 ROOT_PROJECT_NAME = "gl11"
-SEARCH_DIR = "src/main/java/fr/ensimag/deca/tree"
-TARGET_DIR = "src/test/java/fr/ensimag/deca/context"
+SEARCH_DIR = "src/main/java/fr/ensimag/deca/tree/"
+TARGET_DIR = "src/test/java/fr/ensimag/deca/context/"
 
 def get_functions(file_path):
     """
@@ -38,7 +38,7 @@ def get_file_content(test_file_name):
         " * ",
         " */",
         "",
-        f"public class {test_file_name.split('.')[0]} " + '{',
+        f"public class {test_file_name} " + '{',
         "\t@Test",
         "\tpublic void test() {",
         "\t\t// TESTTODO",
@@ -59,14 +59,14 @@ if __name__ == "__main__":
             file_path = os.path.join(root, file)
             functions = get_functions(file_path)
             for function in functions:
-                test_file_name = TARGET_DIR + "/Test_" + function + "_" + file
+                test_file_name = "Test_" + function + "_" + file
                 # make sure the file is empty or doesn't exists
                 try:
-                    if os.path.getsize(test_file_name) != 0:
-                        response = input(f"File {test_file_name} is not empty. Do you want to overwrite it? (y/n)")
+                    if os.path.getsize(TARGET_DIR + test_file_name) != 0:
+                        response = input(f"File {TARGET_DIR + test_file_name} is not empty. Do you want to overwrite it? (y/n)")
                         if response == "y":
-                            with open(test_file_name, 'w') as test_file:
+                            with open(TARGET_DIR + test_file_name, 'w') as test_file:
                                 test_file.write(get_file_content(file))
                 except FileNotFoundError:
-                    with open(test_file_name, 'w') as test_file:
-                                test_file.write(get_file_content(file))
+                    with open(TARGET_DIR + test_file_name, 'w') as test_file:
+                                test_file.write(get_file_content(test_file_name))

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
  * 
  */
 
-public class StringLiteral {
+public class Test_verifyExpr_StringLiteral.java {
 	@Test
 	public void test() {
 		// TESTTODO
