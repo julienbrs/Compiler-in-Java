@@ -47,6 +47,15 @@ public class EnvironmentType {
         return envTypes.get(s);
     }
 
+    public boolean put(Symbol s, TypeDefinition t) {
+        if (envTypes.containsKey(s)) {
+            return false;
+        } else {
+            envTypes.put(s, t);
+            return true;
+        }
+    }
+
     public final VoidType    VOID;
     public final IntType     INT;
     public final FloatType   FLOAT;
