@@ -198,7 +198,7 @@ public class DecacCompiler {
         assert(prog.checkAllLocations());
         if(compilerOptions.getParse()){
            System.out.println( prog.decompile());
-            return true;
+            return false;
         }
 
         prog.verifyProgram(this);
