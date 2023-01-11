@@ -1,9 +1,17 @@
+package fr.ensimag.deca.context;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import org.mockito.MockitoAnnotations;
+
+import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.tree.AbstractExpr;
+//import fr.ensimag.deca.tree.ConvFloat;
+import fr.ensimag.deca.tree.Plus;
+import fr.ensimag.deca.context.Type;
 
 /**
  * 
@@ -22,10 +30,12 @@ public class Test_verifyExpr_AbstractOpArith {
 	@Mock
 	AbstractExpr rOpFloat;
 
+	DecacCompiler compiler;
+
 	@BeforeEach
-	public void setup() {
+	public void setup() throws ContextualError {
 		MockitoAnnotations.initMocks(this);
-		DecacCompiler compiler = DecacCompiler(null, null);
+		compiler = new DecacCompiler(null, null);
 		when(lOpInt.verifyExpr(compiler, null, null)).thenReturn(INT);
 		when(rOpInt.verifyExpr(compiler, null, null)).thenReturn(INT);
 		when(lOpFloat.verifyExpr(compiler, null, null)).thenReturn(FLOAT);
@@ -33,7 +43,7 @@ public class Test_verifyExpr_AbstractOpArith {
 	}
 
 	@Test
-	public void testIntInt() {
+	public void testIntInt() throws ContextualError {
 		Plus p = new Plus(lOpInt, rOpInt);
 		assertTrue(p.verifyExpr(compiler, null, null).isInt());
 		verify(lOpInt).verifyExpr(compiler, null, null);
