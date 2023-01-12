@@ -1,6 +1,6 @@
-IDENT: [@0,587:589='abc',<42>,16:0]
+IDENT: [@0,587:589='abc',<47>,16:0]
 BACKSLASH: [@1,591:591='\',<52>,16:4]
-IDENT: [@2,592:592='n',<42>,16:5]
-IDENT: [@3,594:596='def',<42>,17:0]
+IDENT: [@2,592:592='n',<47>,16:5]
+IDENT: [@3,594:596='def',<47>,17:0]
 INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=17
 src/test/deca/syntax/lexer/invalid/test_multi_line_string_incomplete2.deca:17:3: token recognition error at: '"'
