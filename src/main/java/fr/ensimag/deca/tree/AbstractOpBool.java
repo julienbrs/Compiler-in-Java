@@ -25,7 +25,7 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
         Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
         if (!lt.isBoolean() || !rt.isBoolean()) {
             // ERROR MSG
-            throw new ContextualError("Can't do "+getOperatorName()+" between \""+lt+"\" and \""+rt+"\": rule 3.33", getLocation());
+            throw new ContextualError("Can't do \""+getOperatorName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.33", getLocation());
         }
         setType(compiler.environmentType.BOOLEAN);
         return this.getType();
