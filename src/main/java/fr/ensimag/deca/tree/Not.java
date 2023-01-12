@@ -27,7 +27,7 @@ public class Not extends AbstractUnaryExpr {
         Type t = getOperand().verifyExpr(compiler, localEnv, currentClass);
         if (t != compiler.environmentType.BOOLEAN) {
             // ERROR MSG
-            throw new ContextualError("Can't negate an object of type \""+t+"\" : rule ?.??", getLocation());
+            throw new ContextualError("Can't negate an object of type \""+t+"\" : rule 3.63", getLocation());
         }
         setType(t);
         return this.getType();

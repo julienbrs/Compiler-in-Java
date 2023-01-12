@@ -335,8 +335,10 @@ inequality_expr returns[AbstractExpr tree]
 
 sum_expr returns[AbstractExpr tree]
     : e=mult_expr {
+        try{
         assert($e.tree != null);
         $tree=$e.tree;
+          } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=sum_expr PLUS e2=mult_expr {
             assert($e1.tree != null);
@@ -354,15 +356,18 @@ sum_expr returns[AbstractExpr tree]
 
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
+        try{
         assert($e.tree != null);
         $tree=$e.tree;
+          } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=mult_expr TIMES e2=unary_expr {
-
+            try{
             assert($e1.tree != null);                                         
             assert($e2.tree != null);
             $tree=new Multiply($e1.tree,$e2.tree);
             setLocation($tree, $TIMES);
+            } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=mult_expr SLASH e2=unary_expr {
             assert($e1.tree != null);                                         
@@ -380,26 +385,34 @@ mult_expr returns[AbstractExpr tree]
 
 unary_expr returns[AbstractExpr tree]
     : op=MINUS e=unary_expr {
+         try{
             assert($e.tree != null);
-            $tree=$e.tree;
+            $tree= new UnaryMinus($e.tree);
             setLocation($tree, $op);
+        } catch(DecaRecognitionException e) { $tree=null; }
         }
     | op=EXCLAM e=unary_expr {
+        try{
             assert($e.tree != null);
             $tree = new Not($e.tree);
             setLocation($tree, $op);
+             } catch(DecaRecognitionException e) { $tree=null; }
         }
     | select_expr {
+         try{
             assert($select_expr.tree != null);
             $tree=$select_expr.tree;
+         } catch(DecaRecognitionException e) { $tree=null; }
         }
     ;
 
 select_expr returns[AbstractExpr tree]
     : e=primary_expr {
             
-            assert($e.tree != null);
+         try {  
             $tree= $e.tree;
+             assert($e.tree != null);
+            } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
@@ -427,6 +440,7 @@ primary_expr returns[AbstractExpr tree]
         }
     | OPARENT expr CPARENT {
             $tree = $expr.tree;
+            setLocation($tree, $OPARENT);
             assert($expr.tree != null);
         }
     | READINT OPARENT CPARENT {
@@ -445,15 +459,18 @@ primary_expr returns[AbstractExpr tree]
             assert($expr.tree != null);
         }
     | literal {
-           assert($literal.tree != null);
+           
            $tree=$literal.tree;
+           assert($literal.tree != null);
         }
     ;
 
 type returns[AbstractIdentifier tree]
     : ident {
+         try{
             assert($ident.tree != null);
             $tree=$ident.tree;
+             } catch(DecaRecognitionException e) { $tree=null; }
         }
     ;
 
