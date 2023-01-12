@@ -69,8 +69,8 @@ SPACE : ' ' { skip(); };
 
 // Spe char
 LF : '\n'{ skip(); };
-CR : '\r';
-TAB : '\t';
+CR : '\r'{ skip(); };
+TAB : '\t'{ skip(); };
 BACKSLASH : '\\';
 QUOTE : '\'';
 fragment DQUOTE : '"';
