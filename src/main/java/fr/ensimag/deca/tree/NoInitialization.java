@@ -6,6 +6,13 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateFloat;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+
 import java.io.PrintStream;
 
 /**
@@ -22,7 +29,7 @@ public class NoInitialization extends AbstractInitialization {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        
+        setType(t);
     }
 
 
@@ -36,7 +43,13 @@ public class NoInitialization extends AbstractInitialization {
 
     @Override
     protected void codeGenInitialization(DecacCompiler compiler) {
-        // TODO : mettre a zero
+        if (getType().isInt() || getType().isBoolean()) {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(2)));
+        } else if (getType().isFloat()) {
+            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(2)));  
+        } else {
+            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
+        }
     }
 
     @Override

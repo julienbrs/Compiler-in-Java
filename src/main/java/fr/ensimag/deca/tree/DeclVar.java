@@ -60,12 +60,9 @@ public class DeclVar extends AbstractDeclVar {
     @Override
     protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
         /* Initialization */
-        initialization.codeGenInitialization(compiler);
-
         varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, GPRegister.GB));
-
-        /* On met le contenu de R2 dans la mémoire à l'adresse de la variable */
-        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offsetFromSP, GPRegister.GB)));
+        initialization.codeGenInitialization(compiler);
+        compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
     }
     
     @Override
