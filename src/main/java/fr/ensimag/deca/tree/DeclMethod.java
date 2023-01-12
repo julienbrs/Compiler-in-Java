@@ -46,9 +46,9 @@ public class DeclMethod extends AbstractDeclMethod {
     
     public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
             Type t = type.verifyType(compiler);
-            if () {
+            // if () {
                 // TODO
-            }
+            // }
             listeparametre.verifyListParam(compiler);
             // TODO : method_body
             
