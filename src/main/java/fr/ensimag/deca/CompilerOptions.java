@@ -3,7 +3,9 @@ package fr.ensimag.deca;
 import java.io.File;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Level;
@@ -41,40 +43,20 @@ public class CompilerOptions {
     }
 
     private int debug = 0;
-    private int rMax = 15;
+    private int rMax = 16;
     private boolean parallel = false;
     private boolean printBanner = false;
     private boolean parse = false;
     private boolean verification = false;
     private boolean noCheck = false;
     private List<File> sourceFiles = new ArrayList<File>();
+    private String string;
 
     
     public void parseArgs(String[] args) throws CLIException {
-        // A FAIRE : parcourir args pour positionner les options correctement.
-        Logger logger = Logger.getRootLogger();
-        // map command-line debug option to log4j's level.
-        switch (getDebug()) {
-        case QUIET: break; // keep default
-        case INFO:
-            logger.setLevel(Level.INFO); break;
-        case DEBUG:
-            logger.setLevel(Level.DEBUG); break;
-        case TRACE:
-            logger.setLevel(Level.TRACE); break;
-        default:
-            logger.setLevel(Level.ALL); break;
-        }
-        logger.info("Application-wide trace level set to " + logger.getLevel());
-
-        boolean assertsEnabled = false;
-        assert assertsEnabled = true; // Intentional side effect!!!
-        if (assertsEnabled) {
-            logger.info("Java assertions enabled");
-        } else {
-            logger.info("Java assertions disabled");
-        }
-        for (String string : args) {
+        Iterator<String> it =  Arrays.asList(args).iterator();
+        while(it.hasNext()){
+            string = it.next();
             if(string.equals("-b")){
                 printBanner = true;
                 parallel = false;
@@ -98,12 +80,45 @@ public class CompilerOptions {
                 printBanner = false;
                 noCheck = true;
             }
+            else if(string.equals("-d")){
+              debug++;  
+            }
+            else if(string.contains("-x")){
+                string =it.next();
+                rMax = Integer.parseInt(string);
+                if(rMax>16||rMax<4){
+                    throw new IllegalArgumentException("Rmax pas valable");
+                }
+            }
             else {
                 sourceFiles.add(new File(string));
                 printBanner = false;
             }
 
         }
+        Logger logger = Logger.getRootLogger();
+        // map command-line debug option to log4j's level.
+        switch (getDebug()) {
+        case QUIET: break; // keep default
+        case INFO:
+            logger.setLevel(Level.INFO); break;
+        case DEBUG:
+            logger.setLevel(Level.DEBUG); break;
+        case TRACE:
+            logger.setLevel(Level.TRACE); break;
+        default:
+            logger.setLevel(Level.ALL); break;
+        }
+        logger.info("Application-wide trace level set to " + logger.getLevel());
+
+        boolean assertsEnabled = false;
+        assert assertsEnabled = true; // Intentional side effect!!!
+        if (assertsEnabled) {
+            logger.info("Java assertions enabled");
+        } else {
+            logger.info("Java assertions disabled");
+        }
+
         
     }
 
