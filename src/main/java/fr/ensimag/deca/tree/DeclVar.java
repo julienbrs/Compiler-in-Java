@@ -52,7 +52,7 @@ public class DeclVar extends AbstractDeclVar {
                 } catch (DoubleDefException e) {
                     // TODO : a vérifier
                     // ERROR MSG
-                    throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
+                    throw new ContextualError("The variable \""+varName.getName()+"\" is already declared : rule 3.17", getLocation());
                 }
                 varName.verifyExpr(compiler, localEnv, currentClass);
     }

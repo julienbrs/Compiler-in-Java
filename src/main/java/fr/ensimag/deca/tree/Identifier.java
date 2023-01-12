@@ -179,7 +179,7 @@ public class Identifier extends AbstractIdentifier {
         ExpDefinition def = localEnv.get(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule ?.??", getLocation());
+            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule 0.1", getLocation());
         }
         setDefinition(def);
         setType(definition.getType());
@@ -211,18 +211,16 @@ public class Identifier extends AbstractIdentifier {
     }
 
     protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        if (getType().isBoolean()) {
-            DAddr addr = getExpDefinition().getOperand();
-            compiler.addInstruction(new LOAD(addr, GPRegister.R0));
-            compiler.addInstruction(new CMP(0, GPRegister.R0));
-            if (aim) {
-                compiler.addInstruction(new BNE(dest));
-            } else {
-                compiler.addInstruction(new BEQ(dest));
-            }
-            return;
+        assert(getType().isBoolean());
+        DAddr addr = getExpDefinition().getOperand();
+        compiler.addInstruction(new LOAD(addr, GPRegister.R0));
+        compiler.addInstruction(new CMP(0, GPRegister.R0));
+        if (aim) {
+            compiler.addInstruction(new BNE(dest));
+        } else {
+            compiler.addInstruction(new BEQ(dest));
         }
-        throw new UnsupportedOperationException("Should not end up here");
+        return;
     }
     
     private Definition definition;
