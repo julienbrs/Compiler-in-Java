@@ -23,9 +23,26 @@ public abstract class AbstractOpExactCmp extends AbstractOpCmp {
         // throw new UnsupportedOperationException("not yet implemented");
         Type lt = getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
-
-        // TODO
-
+        if (lt.isBoolean() && rt.isBoolean()) {
+            setType(compiler.environmentType.BOOLEAN);
+            return this.getType();
+        }
+        if ((!lt.isInt() && !lt.isFloat()) || (!rt.isInt() && !rt.isFloat())) {
+            // ERROR MSG
+            throw new ContextualError("Can't do \""+getOperatorName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.33", getLocation());
+        } 
+        if (lt.isInt() && rt.isFloat()) {
+            Location loc = getLeftOperand().getLocation();
+            setLeftOperand(new ConvFloat(getLeftOperand()));
+            getLeftOperand().setLocation(loc);
+            getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+        }
+        if (lt.isFloat() && rt.isInt()) {
+            Location loc = getLeftOperand().getLocation();
+            setRightOperand(new ConvFloat(getRightOperand()));
+            getLeftOperand().setLocation(loc);
+            getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+        }
         setType(compiler.environmentType.BOOLEAN);
         return this.getType();
     }

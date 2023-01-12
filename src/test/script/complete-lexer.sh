@@ -53,10 +53,12 @@ test_lex_unitaire () {
         if cmp -s src/main/bin/temporaire_test.txt $fichier_modele; then
             echo "$1: $str_res_waited attendu ✅"
         else
-            echo "$1: $str_res_not_waited mais output non attendu ❌"
+            echo "$1: $str_res_waited mais output non attendu ❌"
+            exit 1
         fi
     else
         echo "$1: $str_res_not_waited non attendu ❌"
+        exit 1
     fi
 
 }    
@@ -81,6 +83,7 @@ if [ "$result_utf8" -eq 0 ]; then
     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Succès attendu ✅"
 else
     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
+    exit 1
 fi
 
 
