@@ -36,6 +36,14 @@ public class While extends AbstractInst {
         this.condition = condition;
         this.body = body;
     }
+    
+    @Override
+    protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
+    ClassDefinition currentClass, Type returnType)
+    throws ContextualError {
+        condition.verifyCondition(compiler, localEnv, currentClass);
+        body.verifyListInst(compiler, localEnv, currentClass, returnType);
+    }
 
     @Override
     protected void codeGenInst(DecacCompiler compiler) {
@@ -48,17 +56,9 @@ public class While extends AbstractInst {
         compiler.addLabel(whileDeb);
         body.codeGenListInst(compiler);
         compiler.addLabel(whileCond);
-        condition.codeGenBool(compiler, true, whileCond);
+        condition.codeGenBool(compiler, true, whileDeb);
     }
-
-    @Override
-    protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv,
-            ClassDefinition currentClass, Type returnType)
-            throws ContextualError {
-                condition.verifyCondition(compiler, localEnv, currentClass);
-                body.verifyListInst(compiler, localEnv, currentClass, returnType);
-    }
-
+    
     @Override
     public void decompile(IndentPrintStream s) {
         s.print("while (");
