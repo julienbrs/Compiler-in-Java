@@ -178,6 +178,7 @@ public class Identifier extends AbstractIdentifier {
         // throw new UnsupportedOperationException("not yet implemented");
         ExpDefinition def = localEnv.get(name);
         if (def == null) {
+            // ERROR MSG
             throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule ?.??", getLocation());
         }
         setDefinition(def);
