@@ -70,7 +70,7 @@ public class DeclField extends AbstractDeclClass{
             } catch (DoubleDefException e) {
                 // TODO : a vérifier
                 // ERROR MSG
-                throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
+                throw new ContextualError("The variable \""+varName+"\" is already declared : rule 2.5", getLocation());
             }
             varName.verifyExpr(compiler, localEnv, currentClass);
         }
