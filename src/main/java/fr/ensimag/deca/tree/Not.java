@@ -26,6 +26,7 @@ public class Not extends AbstractUnaryExpr {
         // throw new UnsupportedOperationException("not yet implemented");
         Type t = getOperand().verifyExpr(compiler, localEnv, currentClass);
         if (t != compiler.environmentType.BOOLEAN) {
+            // ERROR MSG
             throw new ContextualError("Can't negate an object of type \""+t+"\" : rule ?.??", getLocation());
         }
         setType(t);

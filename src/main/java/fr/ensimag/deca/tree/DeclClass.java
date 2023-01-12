@@ -1,5 +1,6 @@
 package fr.ensimag.deca.tree;
 
+import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
@@ -35,8 +36,25 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        Type t = new ClassType(name.getName(), getLocation(), compiler.environmentType.defOfType(extension.getName()));
-        boolean b = compiler.environmentType.put(name.getName(), new TypeDefinition(t, getLocation()));
+        ClassType t;
+        boolean b = true;
+        if (extension == null) {
+            t = new ClassType(name.getName(), getLocation(), null);
+            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), null));
+        } else {
+            TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
+            if (!tDef.isClass()) {
+                // ERROR MSG : match msg d'erreur avec doc
+                throw new ContextualError("No super class named : \""+extension.getName()+"\" : rule 1.3", getLocation());
+            }
+            ClassDefinition supClass = (ClassDefinition) tDef;
+            t = new ClassType(name.getName(), getLocation(), supClass);
+            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
+        }
+        if (!b) {
+            // ERROR MSG : match msg d'erreur avec doc
+            throw new ContextualError("The class \""+name+"\" is already declared : rule 1.3", getLocation());
+        }
     }
 
     @Override
@@ -55,6 +73,9 @@ public class DeclClass extends AbstractDeclClass {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         
         name.prettyPrint(s,prefix,false);
+        if (extension != null) {
+            extension.prettyPrint(s, prefix + " extends ", false);
+        }
         bodyclass.prettyPrint(s,prefix,true);
        // throw new UnsupportedOperationException("Not yet supported");
     }

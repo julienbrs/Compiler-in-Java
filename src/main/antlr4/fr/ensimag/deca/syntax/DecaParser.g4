@@ -368,11 +368,13 @@ mult_expr returns[AbstractExpr tree]
             assert($e1.tree != null);                                         
             assert($e2.tree != null);
             $tree = new Divide($e1.tree , $e2.tree);
+            setLocation($tree, $SLASH);
         }
     | e1=mult_expr PERCENT e2=unary_expr {
             assert($e1.tree != null);                                                                          
             assert($e2.tree != null);
             $tree = new Modulo($e1.tree, $e2.tree);
+            setLocation($tree, $PERCENT);
         }
     ;
 
@@ -523,7 +525,8 @@ list_classes returns[ListDeclClass tree]
 
 class_decl returns [DeclClass tree]
     : CLASS name=ident superclass=class_extension OBRACE class_body CBRACE {
-           $tree=  new DeclClass($name.tree,$superclass.tree,$class_body.tree);
+           $tree = new DeclClass($name.tree,$superclass.tree,$class_body.tree);
+           setLocation($tree, $CLASS);
         }
     ;
 
