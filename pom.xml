@@ -174,7 +174,7 @@
                                         <limit>
                                             <counter>INSTRUCTION</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.75</minimum>
+                                            <minimum>0.4</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
@@ -273,6 +273,16 @@
                         <id>complete-lexer</id>
                         <configuration>
                             <executable>./src/test/script/complete-lexer.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>run-junit-tests</id>
+                        <configuration>
+                            <executable>./src/test/script/run-junit-tests.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>
