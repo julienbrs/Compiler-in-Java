@@ -51,7 +51,7 @@ for i in $(seq $start $end); do
     expected_output=$(sed "${line}q;d" src/test/script/modele/lexer/valid/modele_lexer-test-all-utf8.txt)
 
     if [[ "$output" != "$expected_output" ]]; then
-        echo "Error: Output for character $char does not match expected output"
+        echo "Error: Output for character $char does not match expected output, should be: $expected_output, got: $output"
         exit_status=1
         break
     fi
