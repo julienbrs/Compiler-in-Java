@@ -42,7 +42,7 @@ public class Program extends AbstractProgram {
         classes.verifyListClass(compiler);
         
         // 2eme passe
-        // classes.verifyListClassMembers(compiler);
+        classes.verifyListClassMembers(compiler);
 
         // 3eme passe
         // classes.verifyListClassBody(compiler);

@@ -45,6 +45,8 @@ public class EnvironmentExp {
         // throw new UnsupportedOperationException("not yet implemented");
         if (map.containsKey(key)) {
             return map.get(key);
+        } else if (parentEnvironment != null) {
+            return parentEnvironment.get(key);
         }
         return null;
     }

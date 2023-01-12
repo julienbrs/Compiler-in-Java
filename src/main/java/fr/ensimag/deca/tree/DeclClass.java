@@ -4,6 +4,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -60,7 +61,16 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
+        assert(tDef != null);
+        ClassDefinition cDef = (ClassDefinition) tDef;
+        EnvironmentExp envExpSuper = cDef.getMembers();
+        EnvironmentExp envExpF = new EnvironmentExp(envExpSuper);
+        bodyclass.getListDeclField().verifyClassMembers(compiler, envExpF, name.getClassDefinition());
+        // EnvironmentExp envExpM = bodyclass.getListDeclMethod().verifyClassMembers(compiler, extension);
+
+
     }
     
     @Override

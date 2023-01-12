@@ -40,8 +40,8 @@ public class EnvironmentType {
         // not added to envTypes, it's not visible for the user.
         
         Symbol objectSymbol = compiler.createSymbol("Object");
-        Type OBJECT = new ClassType(objectSymbol);
-        envTypes.put(objectSymbol, new TypeDefinition(OBJECT, Location.BUILTIN));
+        ClassType OBJECT = new ClassType(objectSymbol);
+        envTypes.put(objectSymbol, new ClassDefinition(OBJECT, Location.BUILTIN, null));
     }
 
     private final Map<Symbol, TypeDefinition> envTypes;
