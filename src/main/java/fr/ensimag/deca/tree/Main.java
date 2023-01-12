@@ -5,6 +5,17 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.ImmediateString;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Line;
+import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.ima.pseudocode.instructions.ERROR;
+import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.WNL;
+import fr.ensimag.ima.pseudocode.instructions.WSTR;
+
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
@@ -45,8 +56,20 @@ public class Main extends AbstractMain {
     protected void codeGenMain(DecacCompiler compiler) {
         compiler.addComment("Beginning of main instructions:");
         // TODO: instruction TSTO !
+        Line l = new Line("Taille maximal de la pile");
+        compiler.add(l);
+        
+        compiler.addInstruction(new BOV(new Label("pile_pleine")));
         declVariables.codeGenListDeclVar(compiler);
         insts.codeGenListInst(compiler);
+
+        // compiler.addInstruction(new ADDSP(new ImmediateInteger(a trouver)));
+        // l.setInstruction(new TSTO(a trouver));
+
+        compiler.addLabel(new Label("pile_pleine"));
+        compiler.addInstruction(new WSTR(new ImmediateString("Débordement de pile")));
+        compiler.addInstruction(new WNL());
+        compiler.addInstruction(new ERROR());
     }
     
     @Override

@@ -3,6 +3,8 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.SNE;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -35,8 +37,17 @@ public class Not extends AbstractUnaryExpr {
 
     @Override
     protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        getOperand().codeGenExpr(compiler, offset);
-        compiler.addInstruction(new SNE(GPRegister.getR(offset)));
+        int labelNumber = compiler.getLabelNumber();
+        Label vrai = new Label("is_true."+labelNumber);
+        Label end = new Label("end."+labelNumber);
+        compiler.incrLabelNumber();
+        compiler.incrLabelNumber();
+        codeGenBool(compiler, true, vrai);
+        compiler.addInstruction(new LOAD(0, GPRegister.getR(offset)));
+        compiler.addInstruction(new BRA(end));
+        compiler.addLabel(vrai);
+        compiler.addInstruction(new LOAD(1, GPRegister.getR(offset)));
+        compiler.addLabel(end);
     }
 
     @Override

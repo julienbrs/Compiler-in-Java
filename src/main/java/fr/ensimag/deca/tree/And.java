@@ -19,12 +19,6 @@ public class And extends AbstractOpBool {
     protected String getOperatorName() {
         return "&&";
     }
-
-    @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        // codeGenBool(compiler, , );
-        // SEQ
-    }
     
     @Override
     protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {

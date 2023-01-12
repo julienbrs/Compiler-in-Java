@@ -16,12 +16,6 @@ public class Or extends AbstractOpBool {
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        // codeGenBool(compiler, , );
-        // SEQ;
-    }
-
-    @Override
     protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         if (aim) {
             int labelNumber = compiler.getLabelNumber();
