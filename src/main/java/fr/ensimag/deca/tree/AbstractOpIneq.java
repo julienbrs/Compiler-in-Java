@@ -24,7 +24,10 @@ public abstract class AbstractOpIneq extends AbstractOpCmp {
         Type lt = getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
 
-        // TODO
+        if ((!lt.isInt() && ! !lt.isFloat()) || (!rt.isInt() && !rt.isFloat())) {
+            // ERROR MSG
+            throw new ContextualError("Can't do \""+getOperatorName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.33", getLocation());
+        } 
 
         setType(compiler.environmentType.BOOLEAN);
         return this.getType();
