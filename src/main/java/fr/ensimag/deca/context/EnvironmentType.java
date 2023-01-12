@@ -38,10 +38,14 @@ public class EnvironmentType {
         Symbol stringSymb = compiler.createSymbol("string");
         STRING = new StringType(stringSymb);
         // not added to envTypes, it's not visible for the user.
-        
+
+        Symbol nullSymb = compiler.createSymbol("null");
+        NullType NULL = new NullType(nullSymb);
+        envTypes.put(booleanSymb, new TypeDefinition(NULL, Location.BUILTIN));
+
         Symbol objectSymbol = compiler.createSymbol("Object");
-        Type OBJECT = new ClassType(objectSymbol);
-        envTypes.put(objectSymbol, new TypeDefinition(OBJECT, Location.BUILTIN));
+        ClassType OBJECT = new ClassType(objectSymbol);
+        envTypes.put(objectSymbol, new ClassDefinition(OBJECT, Location.BUILTIN, null));
     }
 
     private final Map<Symbol, TypeDefinition> envTypes;

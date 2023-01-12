@@ -7,11 +7,13 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.ExpDefinition;
+import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
-public class DeclField extends AbstractDeclClass{
+public class DeclField extends AbstractDeclField{
     private Visibility visibility;
     private AbstractIdentifier type;
     private AbstractIdentifier varName;
@@ -23,26 +25,41 @@ public class DeclField extends AbstractDeclClass{
         this.initialization = initialization;
         this.visibility = visibility;
     }
+
+    // Passe 2
     @Override
-    protected void verifyClass(DecacCompiler compiler) throws ContextualError {
-        // TODO Auto-generated method stub
-        
+    protected void verifyFieldMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
+        Type t = type.verifyType(compiler);
+        if (t.sameType(compiler.environmentType.VOID)) {
+            // ERROR MSG
+            throw new ContextualError(" : rule 2.5", getLocation());
+        }
+        ExpDefinition sDef = superEnv.get(varName.getName());
+        if (sDef != null && !sDef.isField()) {
+            throw new ContextualError("??? : rule 2.5", getLocation());
+        }
+        try {
+            localEnv.declare(varName.getName(), new FieldDefinition(t, getLocation(), visibility, currentClass, currentClass.getNumberOfFields())); 
+        } catch (DoubleDefException e) {
+            // TODO : a vérifier
+            // ERROR MSG
+            throw new ContextualError("The field \""+varName+"\" is already declared : rule 2.4", getLocation());
+        }
+        currentClass.incNumberOfFields();
     }
-    @Override
-    protected void verifyClassMembers(DecacCompiler compiler) throws ContextualError {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
+
+    //Passe 3
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         // TODO Auto-generated method stub
         
     }
+
     @Override
     public void decompile(IndentPrintStream s) {
         // TODO Auto-generated method stub
         
     }
+
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         type.prettyPrint(s, prefix, false);
@@ -52,6 +69,7 @@ public class DeclField extends AbstractDeclClass{
         // TODO Auto-generated method stub
         
     }
+
     @Override
     protected void iterChildren(TreeFunction f) {
         // TODO Auto-generated method stub
@@ -70,7 +88,7 @@ public class DeclField extends AbstractDeclClass{
             } catch (DoubleDefException e) {
                 // TODO : a vérifier
                 // ERROR MSG
-                throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
+                throw new ContextualError("The variable \""+varName+"\" is already declared : rule 2.5", getLocation());
             }
             varName.verifyExpr(compiler, localEnv, currentClass);
         }

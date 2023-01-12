@@ -2,11 +2,14 @@ package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
 import fr.ensimag.deca.context.Type;
-
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.ExpDefinition;
+import fr.ensimag.deca.context.MethodDefinition;
+import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class DeclMethod extends AbstractDeclMethod {
@@ -44,21 +47,31 @@ public class DeclMethod extends AbstractDeclMethod {
         
     }
     
-    public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
+    public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv) throws ContextualError {
             Type t = type.verifyType(compiler);
-            // if () {
-                // TODO
-            // }
-            listeparametre.verifyListParam(compiler);
-            // TODO : method_body
-            
-            /*try {
-                localEnv.declare(varName.getName(), new VariableDefinition(t, getLocation()));   
-            } catch (DoubleDefException e) {
-                // TODO : a vérifier
-                throw new ContextualError("The variable \""+varName+"\" is already declared : rule ?.??", getLocation());
+            ExpDefinition sDef = superEnv.get(ident.getName());
+            if (sDef != null && !sDef.isMethod()) {
+                // ERROR MSG
+                throw new ContextualError("??? : rule 2.7", getLocation());
             }
-            varName.verifyExpr(compiler, localEnv, currentClass);*/
+            Signature sig = new Signature();
+            listeparametre.verifyListParam(compiler, sig);
+            MethodDefinition mDef = (MethodDefinition) sDef;
+            if (!mDef.getSignature().equals(sig)) {
+                // ERROR MSG
+                throw new ContextualError(" : rule 2.7", getLocation());
+            }
+            if (!t.isSubtypeof(mDef)) {
+                throw new ContextualError(" : rule 2.7", getLocation());
+            }
+            try {
+                localEnv.declare(ident.getName(), new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethod()));
+            } catch (DoubleDefException e) {
+                // ERROR MSG
+                throw new ContextualError(" rule ?.??", getLocation());
+            }
+            currentClass.incNumberOfMethod();
+
     }
 
     public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
