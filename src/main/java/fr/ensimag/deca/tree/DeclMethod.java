@@ -5,6 +5,7 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.ExpDefinition;
@@ -47,7 +48,7 @@ public class DeclMethod extends AbstractDeclMethod {
         
     }
     
-    public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv) throws ContextualError {
+    public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
             Type t = type.verifyType(compiler);
             ExpDefinition sDef = superEnv.get(ident.getName());
             if (sDef != null && !sDef.isMethod()) {
@@ -61,16 +62,26 @@ public class DeclMethod extends AbstractDeclMethod {
                 // ERROR MSG
                 throw new ContextualError(" : rule 2.7", getLocation());
             }
-            if (!t.isSubtypeof(mDef)) {
+
+            if (!t.sameType(mDef.getType())) {
+                // ERROR MSG
+                throw new ContextualError(" : rule 2.7", getLocation());
+            }
+            // ERROR MSG
+            ClassType cType = t.asClassType(" : rule 2.7", getLocation());
+            // ERROR MSG
+            ClassType superType = mDef.getType().asClassType(" : rule 2.7", getLocation());
+            if (!cType.isSubClassOf(superType)) {
+                // ERROR MSG
                 throw new ContextualError(" : rule 2.7", getLocation());
             }
             try {
-                localEnv.declare(ident.getName(), new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethod()));
+                localEnv.declare(ident.getName(), new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethods()));
             } catch (DoubleDefException e) {
                 // ERROR MSG
                 throw new ContextualError(" rule ?.??", getLocation());
             }
-            currentClass.incNumberOfMethod();
+            currentClass.incNumberOfMethods();
 
     }
 

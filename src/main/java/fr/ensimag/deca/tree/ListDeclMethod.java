@@ -17,9 +17,9 @@ public class ListDeclMethod extends TreeList<DeclMethod> {
     /**
      * Pass 2 of [SyntaxeContextuelle]
      */
-    public void verifyListMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv) throws ContextualError {
+    public void verifyListMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition curentClass) throws ContextualError {
             for (DeclMethod DeclMethod : this.getList()) {
-                DeclMethod.verifyMethodMembers(compiler, superEnv, localEnv);
+                DeclMethod.verifyMethodMembers(compiler, superEnv, localEnv, curentClass);
             }
     }
 

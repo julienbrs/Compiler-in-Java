@@ -69,7 +69,7 @@ public class DeclClass extends AbstractDeclClass {
         EnvironmentExp envExpF = new EnvironmentExp(envExpSuper);
         bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExpF, name.getClassDefinition());
         EnvironmentExp envExpM = new EnvironmentExp(envExpF);
-        bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExpM);
+        bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExpM, name.getClassDefinition());
 
 
     }

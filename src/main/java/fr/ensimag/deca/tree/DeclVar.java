@@ -50,7 +50,6 @@ public class DeclVar extends AbstractDeclVar {
                 try {
                     localEnv.declare(varName.getName(), new VariableDefinition(t, getLocation()));   
                 } catch (DoubleDefException e) {
-                    // TODO : a vérifier
                     // ERROR MSG
                     throw new ContextualError("The variable \""+varName.getName()+"\" is already declared : rule 3.17", getLocation());
                 }
