@@ -16,10 +16,10 @@ public class ListDeclField extends TreeList<DeclField> {
     }
     
     // Passe 2
-    public void verifyClassMembers(DecacCompiler compiler, EnvironmentExp localEnv,
+    public void verifyListFieldMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv,
         ClassDefinition currentClass) throws ContextualError {
             for (DeclField DeclField : this.getList()) {
-                DeclField.verifyClassMembers(compiler, localEnv, currentClass);
+                DeclField.verifyFieldMembers(compiler, superEnv, localEnv, currentClass);
             }
     }
 }

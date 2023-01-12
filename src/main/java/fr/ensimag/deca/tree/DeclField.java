@@ -7,6 +7,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
@@ -27,19 +28,24 @@ public class DeclField extends AbstractDeclField{
 
     // Passe 2
     @Override
-    protected void verifyClassMembers(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
+    protected void verifyFieldMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
         if (t.sameType(compiler.environmentType.VOID)) {
             // ERROR MSG
             throw new ContextualError(" : rule 2.5", getLocation());
         }
+        ExpDefinition sDef = superEnv.get(varName.getName());
+        if (sDef != null && !sDef.isField()) {
+            throw new ContextualError("??? : rule 2.5", getLocation());
+        }
         try {
-            localEnv.declare(varName.getName(), new FieldDefinition(t, getLocation(), visibility, currentClass, 0));   
+            localEnv.declare(varName.getName(), new FieldDefinition(t, getLocation(), visibility, currentClass, currentClass.getNumberOfFields())); 
         } catch (DoubleDefException e) {
             // TODO : a vérifier
             // ERROR MSG
             throw new ContextualError("The field \""+varName+"\" is already declared : rule 2.4", getLocation());
         }
+        currentClass.incNumberOfFields();
     }
 
     //Passe 3
