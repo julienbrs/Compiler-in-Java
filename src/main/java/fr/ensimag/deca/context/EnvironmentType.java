@@ -41,7 +41,7 @@ public class EnvironmentType {
 
         Symbol nullSymb = compiler.createSymbol("null");
         NullType NULL = new NullType(nullSymb);
-        envTypes.put(booleanSymb, new TypeDefinition(NULL, Location.BUILTIN));
+        envTypes.put(nullSymb, new TypeDefinition(NULL, Location.BUILTIN));
 
         Symbol objectSymbol = compiler.createSymbol("Object");
         OBJECT = new ClassType(objectSymbol);
