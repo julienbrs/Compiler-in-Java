@@ -49,9 +49,11 @@ public class DeclField extends AbstractDeclField{
     }
 
     //Passe 3
-    protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
-        // TODO Auto-generated method stub
-        
+    @Override
+    protected void verifyFieldBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
+        Type t = type.verifyType(compiler);
+        varName.verifyType(compiler);
+        initialization.verifyInitialization(compiler, t, localEnv, currentClass);   
     }
 
     @Override

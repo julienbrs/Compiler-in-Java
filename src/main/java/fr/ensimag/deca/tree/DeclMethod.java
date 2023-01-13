@@ -56,7 +56,7 @@ public class DeclMethod extends AbstractDeclMethod {
                 throw new ContextualError("??? : rule 2.7", getLocation());
             }
             Signature sig = new Signature();
-            listeparametre.verifyListParam(compiler, sig);
+            listeparametre.verifyListParamMembers(compiler, sig);
             MethodDefinition mDef = (MethodDefinition) sDef;
             if (!mDef.getSignature().equals(sig)) {
                 // ERROR MSG
@@ -86,6 +86,10 @@ public class DeclMethod extends AbstractDeclMethod {
     }
 
     public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
-        // TODO
+        Type t = type.verifyType(compiler);
+        ident.verifyType(compiler);
+        EnvironmentExp paramEnv = new EnvironmentExp(null);
+        listeparametre.verifyListParamBody(compiler, null);
+        methodBody.verifyMethodBody(compiler, localEnv, paramEnv, currentClass, t);
     }
 }
