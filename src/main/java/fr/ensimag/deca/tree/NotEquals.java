@@ -4,6 +4,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SNE;
@@ -35,6 +36,10 @@ public class NotEquals extends AbstractOpExactCmp {
     protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         Register r = codeGenOperande(compiler, 2);
         compiler.addInstruction(new CMP(r, GPRegister.getR(2)));
-        compiler.addInstruction(new BNE(dest));
+        if (aim) {
+            compiler.addInstruction(new BNE(dest));
+        } else {
+            compiler.addInstruction(new BEQ(dest));
+        }
     }
 }
