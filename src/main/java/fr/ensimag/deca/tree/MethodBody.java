@@ -33,8 +33,9 @@ public class MethodBody extends AbstractMethodBody{
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
         
+        declvar.prettyPrint(s,prefix,false);
+        listInst.prettyPrint(s,prefix,false);
     }
 
     @Override
