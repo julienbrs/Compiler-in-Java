@@ -53,9 +53,6 @@ main returns[AbstractMain tree]
         
             assert($block.decls != null);
             assert($block.insts != null);
-            if($block.insts==null){ 
-       throw new TextOutsideBlock(this, $ctx);
-           }
             $tree = new Main($block.decls, $block.insts);
             setLocation($tree, $block.start);
            
