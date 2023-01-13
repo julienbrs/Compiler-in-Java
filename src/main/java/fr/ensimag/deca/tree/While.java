@@ -46,7 +46,7 @@ public class While extends AbstractInst {
     }
 
     @Override
-    protected void codeGenInst(DecacCompiler compiler) {
+    protected int codeGenInst(DecacCompiler compiler) {
         // throw new UnsupportedOperationException("not yet implemented");
         int labelNumber = compiler.getLabelNumber();
         compiler.incrLabelNumber();
@@ -54,9 +54,10 @@ public class While extends AbstractInst {
         Label whileCond = new Label("while_cond."+labelNumber);
         compiler.addInstruction(new BRA(whileCond));
         compiler.addLabel(whileDeb);
-        body.codeGenListInst(compiler);
+        int nbBodyPush = body.codeGenListInst(compiler);
         compiler.addLabel(whileCond);
-        condition.codeGenBool(compiler, true, whileDeb);
+        int nbCondPush = condition.codeGenBool(compiler, true, whileDeb);
+        return Math.max(nbBodyPush, nbCondPush);
     }
     
     @Override

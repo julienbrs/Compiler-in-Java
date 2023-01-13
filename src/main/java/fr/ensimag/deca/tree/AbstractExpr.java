@@ -139,9 +139,9 @@ public abstract class AbstractExpr extends AbstractInst {
      *
      * @param compiler
      */
-    protected void codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
         // throw new UnsupportedOperationException("not yet implemented");
-        codeGenExpr(compiler, 2);
+        int nbPush = codeGenExpr(compiler, 2);
         compiler.addInstruction(new LOAD(GPRegister.getR(2), GPRegister.R1));
         Type t = getType();
         if (t.isInt()) {
@@ -153,17 +153,18 @@ public abstract class AbstractExpr extends AbstractInst {
                 compiler.addInstruction(new WFLOAT());
             }
         }
+        return nbPush;
     }
 
     @Override
-    protected void codeGenInst(DecacCompiler compiler) {
+    protected int codeGenInst(DecacCompiler compiler) {
         // throw new UnsupportedOperationException("not yet implemented");
-        codeGenExpr(compiler, 2);
+        return codeGenExpr(compiler, 2);
     }
 
-    protected abstract void codeGenExpr(DecacCompiler compiler, int offset);
+    protected abstract int codeGenExpr(DecacCompiler compiler, int offset);
     
-    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         throw new UnsupportedOperationException("Should not end up here");
     }
 

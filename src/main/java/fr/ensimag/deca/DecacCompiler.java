@@ -10,8 +10,13 @@ import fr.ensimag.deca.tree.AbstractProgram;
 import fr.ensimag.deca.tree.LocationException;
 import fr.ensimag.ima.pseudocode.AbstractLine;
 import fr.ensimag.ima.pseudocode.IMAProgram;
+import fr.ensimag.ima.pseudocode.ImmediateString;
 import fr.ensimag.ima.pseudocode.Instruction;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.ERROR;
+import fr.ensimag.ima.pseudocode.instructions.WNL;
+import fr.ensimag.ima.pseudocode.instructions.WSTR;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -211,6 +216,34 @@ public class DecacCompiler {
         addComment("start main program");
         prog.codeGenProgram(this);
         addComment("end main program");
+
+        addComment("gestion des erreurs d'executions");
+        if (!getCompilerOptions().getNoCheck()) {
+            // Debordement de pile
+            addLabel(new Label("pile_pleine"));
+            addInstruction(new WSTR(new ImmediateString("Débordement de pile")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+
+            // Division par 0
+            addLabel(new Label("division_par_0"));
+            addInstruction(new WSTR(new ImmediateString("Division par 0")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+
+            // Debordement arithmetique
+            addLabel(new Label("debordement_arithmetique"));
+            addInstruction(new WSTR(new ImmediateString("Débordement arithmetique")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+
+            // Dereferencement de null
+            addLabel(new Label("dereferencement_null"));
+            addInstruction(new WSTR(new ImmediateString("Déréférencement de \"null\"")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+        }
+
         LOG.debug("Generated assembly code:" + nl + program.display());
         LOG.info("Output file assembly file is: " + destName);
 

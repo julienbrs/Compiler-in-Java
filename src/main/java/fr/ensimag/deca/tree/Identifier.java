@@ -200,12 +200,13 @@ public class Identifier extends AbstractIdentifier {
     }
     
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
+        return 0;
     }
 
-    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         assert(getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
@@ -215,7 +216,7 @@ public class Identifier extends AbstractIdentifier {
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        return;
+        return 0;
     }
     
     private Definition definition;
