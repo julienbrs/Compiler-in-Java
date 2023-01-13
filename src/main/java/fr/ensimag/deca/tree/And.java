@@ -21,17 +21,19 @@ public class And extends AbstractOpBool {
     }
     
     @Override
-    protected void codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         if (aim) {
             int labelNumber = compiler.getLabelNumber();
             compiler.incrLabelNumber();
             Label andEnd = new Label("And_end."+labelNumber);
-            getLeftOperand().codeGenBool(compiler, false, andEnd);
-            getRightOperand().codeGenBool(compiler, true, dest);
+            int nbLeftPush = getLeftOperand().codeGenBool(compiler, false, andEnd);
+            int nbRightPush = getRightOperand().codeGenBool(compiler, true, dest);
             compiler.addLabel(andEnd);
+            return Math.max(nbLeftPush, nbRightPush);
         } else {
-            getLeftOperand().codeGenBool(compiler, false, dest);
-            getRightOperand().codeGenBool(compiler, false, dest);
+            int nbLeftPush = getLeftOperand().codeGenBool(compiler, false, dest);
+            int nbRightPush = getRightOperand().codeGenBool(compiler, false, dest);
+            return Math.max(nbLeftPush, nbRightPush);
         }
     }
 

@@ -42,13 +42,15 @@ public class StringLiteral extends AbstractStringLiteral {
     }
 
     @Override
-    protected void codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
         compiler.addInstruction(new WSTR(new ImmediateString(value)));
+        return 0;
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
         // TODO : Erreur : un string ne peut faire part d'une expression en dehors d'un print
+        return 0;
     }
 
     @Override

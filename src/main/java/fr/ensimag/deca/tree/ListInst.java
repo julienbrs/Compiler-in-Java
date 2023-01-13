@@ -33,10 +33,15 @@ public class ListInst extends TreeList<AbstractInst> {
         }
     }
 
-    public void codeGenListInst(DecacCompiler compiler) {
+    public int codeGenListInst(DecacCompiler compiler) {
+        int maxPush = 0;
         for (AbstractInst i : getList()) {
-            i.codeGenInst(compiler);
+            int nbPush = i.codeGenInst(compiler);
+            if (nbPush > maxPush) {
+                maxPush = nbPush;
+            }
         }
+        return maxPush;
     }
 
     @Override

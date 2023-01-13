@@ -53,23 +53,17 @@ public class Main extends AbstractMain {
     }
 
     @Override
-    protected void codeGenMain(DecacCompiler compiler) {
-        compiler.addComment("Beginning of main instructions:");
-        // TODO: instruction TSTO !
-        Line l = new Line("Taille maximal de la pile");
-        compiler.add(l);
+    protected int[] codeGenMain(DecacCompiler compiler, int offsetGP) {
         
-        compiler.addInstruction(new BOV(new Label("pile_pleine")));
-        declVariables.codeGenListDeclVar(compiler);
-        insts.codeGenListInst(compiler);
-
-        // compiler.addInstruction(new ADDSP(new ImmediateInteger(a trouver)));
-        // l.setInstruction(new TSTO(a trouver));
-
-        compiler.addLabel(new Label("pile_pleine"));
-        compiler.addInstruction(new WSTR(new ImmediateString("Débordement de pile")));
-        compiler.addInstruction(new WNL());
-        compiler.addInstruction(new ERROR());
+        
+        compiler.addComment("Variables declarations:");
+        offsetGP += declVariables.codeGenListDeclVar(compiler, offsetGP);
+        
+        compiler.addComment("Beginning of main instructions:");
+        int maxPush = insts.codeGenListInst(compiler);
+        
+        int[] res = {offsetGP, offsetGP + maxPush};
+        return res;
     }
     
     @Override

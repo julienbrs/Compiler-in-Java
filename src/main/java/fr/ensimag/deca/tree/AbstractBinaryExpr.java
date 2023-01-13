@@ -49,25 +49,29 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         this.rightOperand = rightOperand;
     }
 
-    protected void codeGenLeftOperande(DecacCompiler compiler, int offset) {
-        leftOperand.codeGenExpr(compiler, offset);
+    protected int codeGenLeftOperande(DecacCompiler compiler, int offset) {
+        return leftOperand.codeGenExpr(compiler, offset);
     }
 
-    protected void codeGenRightOperande(DecacCompiler compiler, int offset) {
-        rightOperand.codeGenExpr(compiler, offset);
+    protected int codeGenRightOperande(DecacCompiler compiler, int offset) {
+        return rightOperand.codeGenExpr(compiler, offset);
     }
 
-    protected Register codeGenOperande(DecacCompiler compiler, int offset) {
-        codeGenLeftOperande(compiler, offset);
+    protected int[] codeGenOperande(DecacCompiler compiler, int offset) {
+        int[] res = {0, 0};
+        int nbLeftPush = codeGenLeftOperande(compiler, offset);
         if (offset == compiler.getCompilerOptions().getRmax()) {
             compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
-            codeGenRightOperande(compiler, offset);
+            int nbRightPush = codeGenRightOperande(compiler, offset);
             compiler.addInstruction(new LOAD(GPRegister.getR(offset), GPRegister.R0));
             compiler.addInstruction(new POP(GPRegister.getR(offset)));
-            return GPRegister.R0;
+            res[1] = Math.max(nbLeftPush, nbRightPush + 1);
+            return res;
         } else {
-            codeGenRightOperande(compiler, offset + 1);
-            return GPRegister.getR(offset + 1);
+            int nbRightPush = codeGenRightOperande(compiler, offset + 1);
+            res[0] = offset + 1;
+            res[1] = Math.max(nbLeftPush, nbRightPush);
+            return res;
         }
     }
 

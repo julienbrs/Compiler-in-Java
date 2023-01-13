@@ -19,9 +19,10 @@ public class Println extends AbstractPrint {
     }
 
     @Override
-    protected void codeGenInst(DecacCompiler compiler) {
-        super.codeGenInst(compiler);
+    protected int codeGenInst(DecacCompiler compiler) {
+        int nbPush = super.codeGenInst(compiler);
         compiler.addInstruction(new WNL());
+        return nbPush;
     }
 
     @Override
