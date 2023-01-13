@@ -7,7 +7,9 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.REM;
 
 /**
@@ -41,8 +43,12 @@ public class Modulo extends AbstractOpArith {
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        Register r = codeGenOperande(compiler, offset);
-        compiler.addInstruction(new REM(r, GPRegister.getR(offset)));
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] res = codeGenOperande(compiler, offset);
+        compiler.addInstruction(new REM(GPRegister.getR(res[0]), GPRegister.getR(offset)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new BOV(new Label("division_par_0")));
+        }
+        return res[1];
     }
 }

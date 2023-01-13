@@ -1,6 +1,10 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -32,9 +36,19 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        // codeGenBool(compiler, , );
-        // SEQ
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+        int labelNumber = compiler.getLabelNumber();
+        Label vrai = new Label("is_true."+labelNumber);
+        Label end = new Label("end."+labelNumber);
+        compiler.incrLabelNumber();
+        compiler.incrLabelNumber();
+        int nbPush = codeGenBool(compiler, true, vrai);
+        compiler.addInstruction(new LOAD(0, GPRegister.getR(offset)));
+        compiler.addInstruction(new BRA(end));
+        compiler.addLabel(vrai);
+        compiler.addInstruction(new LOAD(1, GPRegister.getR(offset)));
+        compiler.addLabel(end);
+        return nbPush;
     }
 
 }

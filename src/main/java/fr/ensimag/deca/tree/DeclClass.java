@@ -4,6 +4,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -39,8 +40,9 @@ public class DeclClass extends AbstractDeclClass {
         ClassType t;
         boolean b = true;
         if (extension == null) {
-            t = new ClassType(name.getName(), getLocation(), null);
-            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), null));
+            ClassDefinition supClass = (ClassDefinition) compiler.environmentType.defOfType(compiler.createSymbol("Object"));
+            t = new ClassType(name.getName(), getLocation(), supClass);
+            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
         } else {
             TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
             if (!tDef.isClass()) {
@@ -60,7 +62,23 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        System.out.println(name.getName());
+        TypeDefinition tDef;
+        if (extension == null) {
+            tDef = compiler.environmentType.defOfType(compiler.createSymbol("Object"));
+        } else {
+            tDef = compiler.environmentType.defOfType(extension.getName());
+        }
+        assert(tDef != null);
+        ClassDefinition cDef = (ClassDefinition) tDef;
+        EnvironmentExp envExpSuper = cDef.getMembers();
+        EnvironmentExp envExpF = new EnvironmentExp(envExpSuper);
+        bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExpF, name.getClassDefinition());
+        EnvironmentExp envExpM = new EnvironmentExp(envExpF);
+        bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExpM, name.getClassDefinition());
+
+
     }
     
     @Override
@@ -74,7 +92,7 @@ public class DeclClass extends AbstractDeclClass {
         
         name.prettyPrint(s,prefix,false);
         if (extension != null) {
-            extension.prettyPrint(s, prefix + " extends ", false);
+            extension.prettyPrint(s, prefix, false);
         }
         bodyclass.prettyPrint(s,prefix,true);
        // throw new UnsupportedOperationException("Not yet supported");

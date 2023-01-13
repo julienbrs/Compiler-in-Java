@@ -3,8 +3,10 @@ package fr.ensimag.deca.tree;
 import java.io.PrintStream;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class MethodAsmBody extends AbstractMethodBody {
@@ -13,18 +15,11 @@ public class MethodAsmBody extends AbstractMethodBody {
     public MethodAsmBody(StringLiteral asm) {
         this.asm = asm;
     }
-
     
-    protected void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
-        // TODO Auto-generated method stub
-        
+    protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
+        // nothing to do
     }
 
-    
-    protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
-        // TODO Auto-generated method stub
-        
-    }
 
     @Override
     public void decompile(IndentPrintStream s) {

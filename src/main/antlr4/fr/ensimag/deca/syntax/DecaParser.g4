@@ -50,19 +50,24 @@ main returns[AbstractMain tree]
             $tree = new EmptyMain();
         }
     | block {
+        
             assert($block.decls != null);
             assert($block.insts != null);
             $tree = new Main($block.decls, $block.insts);
             setLocation($tree, $block.start);
+           
         }
     ;
 
 block returns[ListDeclVar decls, ListInst insts]
     : OBRACE list_decl list_inst CBRACE {
+        try {
             assert($list_decl.tree != null);
             assert($list_inst.tree != null);
             $decls = $list_decl.tree;
             $insts = $list_inst.tree;
+        }
+        catch(DecaRecognitionException e) { $decls=null; } 
         }
     ;
 
@@ -548,11 +553,17 @@ class_decl returns [DeclClass tree]
     ;
 
 class_extension returns[AbstractIdentifier tree]
+    @init{ 
+        SymbolTable sym = new SymbolTable();
+     }
     : EXTENDS ident {
         $tree = $ident.tree;
         setLocation($tree, $EXTENDS);
         }
     | /* epsilon */ {
+        
+        $tree= new Identifier(sym.create("Object"));
+        $tree.setLocation(Location.BUILTIN);
         }
     ;
 
@@ -618,9 +629,12 @@ decl_method returns [ DeclMethod tree]
     : type ident OPARENT params=list_params CPARENT (block {
         
         $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodBody($block.decls,$block.insts));
+        setLocation($tree, $OPARENT);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
+        
         $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodAsmBody(new StringLiteral($code.text)));
+         setLocation($tree, $ASM);
         }
       ) {
         }

@@ -8,6 +8,14 @@ public class ClassBody extends Tree{
     private ListDeclMethod declMethod;
     private ListDeclField declField;
 
+    public ListDeclMethod getListDeclMethod() {
+        return declMethod;
+    }
+
+    public ListDeclField getListDeclField() {
+        return declField;
+    }
+
     public ClassBody(ListDeclMethod declMethod, ListDeclField declField) {
         this.declMethod = declMethod;
         this.declField = declField;

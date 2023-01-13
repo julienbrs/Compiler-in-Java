@@ -4,6 +4,10 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.ImmediateString;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.instructions.*;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -42,10 +46,10 @@ public class Program extends AbstractProgram {
         classes.verifyListClass(compiler);
         
         // 2eme passe
-        // classes.verifyListClassMembers(compiler);
+        classes.verifyListClassMembers(compiler);
 
         // 3eme passe
-        // classes.verifyListClassBody(compiler);
+        classes.verifyListClassBody(compiler);
         main.verifyMain(compiler);
 
         LOG.debug("verify program: end");
@@ -54,9 +58,21 @@ public class Program extends AbstractProgram {
     @Override
     public void codeGenProgram(DecacCompiler compiler) {
         // A FAIRE: compléter ce squelette très rudimentaire de code
+        Line lTSTO = new Line("");
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.add(lTSTO);
+            compiler.addInstruction(new BOV(new Label("pile_pleine")));
+        }
+        
+        Line lADDSP = new Line("");
+        compiler.add(lADDSP);
+
         compiler.addComment("Main program");
-        main.codeGenMain(compiler);
-        compiler.addInstruction(new HALT());
+        int[] res = main.codeGenMain(compiler, 2);
+
+        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(res[0])));
+        lTSTO.setInstruction(new TSTO(res[1]));
+        compiler.addInstruction(new HALT());    
     }
 
     @Override

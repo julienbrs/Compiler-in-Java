@@ -26,6 +26,10 @@ public class EnvironmentExp {
     // environnement (association nom -> définition, avec possibilité
     // d'empilement).
 
+    public void setParent(EnvironmentExp parent) {
+        this.parentEnvironment = parent;
+    }
+
     EnvironmentExp parentEnvironment;
     HashMap<Symbol, ExpDefinition> map = new HashMap<Symbol, ExpDefinition>();
     
@@ -45,6 +49,8 @@ public class EnvironmentExp {
         // throw new UnsupportedOperationException("not yet implemented");
         if (map.containsKey(key)) {
             return map.get(key);
+        } else if (parentEnvironment != null) {
+            return parentEnvironment.get(key);
         }
         return null;
     }
