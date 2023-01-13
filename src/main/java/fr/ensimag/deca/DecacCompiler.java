@@ -243,6 +243,11 @@ public class DecacCompiler {
             addInstruction(new WNL());
             addInstruction(new ERROR());
         }
+        // Erreur de lecture
+        addLabel(new Label("erreur_de_lecture"));
+        addInstruction(new WSTR(new ImmediateString("Erreur de lecture")));
+        addInstruction(new WNL());
+        addInstruction(new ERROR());
 
         LOG.debug("Generated assembly code:" + nl + program.display());
         LOG.info("Output file assembly file is: " + destName);

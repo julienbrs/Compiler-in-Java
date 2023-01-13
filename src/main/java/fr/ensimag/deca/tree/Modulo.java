@@ -46,7 +46,9 @@ public class Modulo extends AbstractOpArith {
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         int[] res = codeGenOperande(compiler, offset);
         compiler.addInstruction(new REM(GPRegister.getR(res[0]), GPRegister.getR(offset)));
-        compiler.addInstruction(new BOV(new Label("division_par_0")));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new BOV(new Label("division_par_0")));
+        }
         return res[1];
     }
 }
