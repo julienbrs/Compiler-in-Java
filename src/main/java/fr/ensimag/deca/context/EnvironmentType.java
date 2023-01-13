@@ -44,7 +44,7 @@ public class EnvironmentType {
         envTypes.put(booleanSymb, new TypeDefinition(NULL, Location.BUILTIN));
 
         Symbol objectSymbol = compiler.createSymbol("Object");
-        ClassType OBJECT = new ClassType(objectSymbol);
+        OBJECT = new ClassType(objectSymbol);
         envTypes.put(objectSymbol, new ClassDefinition(OBJECT, Location.BUILTIN, null));
     }
 
@@ -68,5 +68,6 @@ public class EnvironmentType {
     public final FloatType   FLOAT;
     public final StringType  STRING;
     public final BooleanType BOOLEAN;
+    public final ClassType   OBJECT;
     
 }

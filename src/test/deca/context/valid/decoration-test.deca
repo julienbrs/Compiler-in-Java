@@ -6,11 +6,20 @@
 
 
 class A {
+    int x = 1;
+    float y;
 
+    void setY(float val) {
+        y = val;
+    }
 }
 
 class B extends A {
-    
+    boolean b;
+
+    void setB(boolean val) {
+        b = val;
+    }
 }
 
 {

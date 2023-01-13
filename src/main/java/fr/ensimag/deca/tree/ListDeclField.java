@@ -18,8 +18,17 @@ public class ListDeclField extends TreeList<DeclField> {
     // Passe 2
     public void verifyListFieldMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv,
         ClassDefinition currentClass) throws ContextualError {
-            for (DeclField DeclField : this.getList()) {
-                DeclField.verifyFieldMembers(compiler, superEnv, localEnv, currentClass);
+            for (DeclField declField : this.getList()) {
+                declField.verifyFieldMembers(compiler, superEnv, localEnv, currentClass);
+            }
+    }
+
+    // Passe 3
+    public void verifyListFieldBody(DecacCompiler compiler, EnvironmentExp localEnv,
+        ClassDefinition currentClass) throws ContextualError {
+            for (DeclField declField : this.getList()) {
+                declField.verifyFieldBody(compiler, localEnv, currentClass);
             }
     }
 }
+

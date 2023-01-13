@@ -209,7 +209,8 @@ public class DecacCompiler {
         prog.verifyProgram(this);
         assert(prog.checkAllDecorations());
         if(compilerOptions.getVerification()){
-           System.out.println( prog.prettyPrint());
+           
+           return false;
         }
 
         addComment("start main program");

@@ -40,8 +40,9 @@ public class DeclClass extends AbstractDeclClass {
         ClassType t;
         boolean b = true;
         if (extension == null) {
-            t = new ClassType(name.getName(), getLocation(), null);
-            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), null));
+            ClassDefinition supClass = (ClassDefinition) compiler.environmentType.defOfType(compiler.createSymbol("Object"));
+            t = new ClassType(name.getName(), getLocation(), supClass);
+            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
         } else {
             TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
             if (!tDef.isClass()) {
@@ -62,7 +63,13 @@ public class DeclClass extends AbstractDeclClass {
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
+        System.out.println(name.getName());
+        TypeDefinition tDef;
+        if (extension == null) {
+            tDef = compiler.environmentType.defOfType(compiler.createSymbol("Object"));
+        } else {
+            tDef = compiler.environmentType.defOfType(extension.getName());
+        }
         assert(tDef != null);
         ClassDefinition cDef = (ClassDefinition) tDef;
         EnvironmentExp envExpSuper = cDef.getMembers();

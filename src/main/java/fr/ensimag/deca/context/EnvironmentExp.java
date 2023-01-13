@@ -26,6 +26,10 @@ public class EnvironmentExp {
     // environnement (association nom -> définition, avec possibilité
     // d'empilement).
 
+    public void setParent(EnvironmentExp parent) {
+        this.parentEnvironment = parent;
+    }
+
     EnvironmentExp parentEnvironment;
     HashMap<Symbol, ExpDefinition> map = new HashMap<Symbol, ExpDefinition>();
     
