@@ -36,18 +36,19 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
         int labelNumber = compiler.getLabelNumber();
         Label vrai = new Label("is_true."+labelNumber);
         Label end = new Label("end."+labelNumber);
         compiler.incrLabelNumber();
         compiler.incrLabelNumber();
-        codeGenBool(compiler, true, vrai);
+        int nbPush = codeGenBool(compiler, true, vrai);
         compiler.addInstruction(new LOAD(0, GPRegister.getR(offset)));
         compiler.addInstruction(new BRA(end));
         compiler.addLabel(vrai);
         compiler.addInstruction(new LOAD(1, GPRegister.getR(offset)));
         compiler.addLabel(end);
+        return nbPush;
     }
 
 }

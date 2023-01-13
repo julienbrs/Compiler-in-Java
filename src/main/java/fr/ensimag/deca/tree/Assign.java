@@ -45,10 +45,11 @@ public class Assign extends AbstractBinaryExpr {
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
-        codeGenRightOperande(compiler, offset);
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+        int nbPush = codeGenRightOperande(compiler, offset);
         DAddr addr = ((AbstractIdentifier) getLeftOperand()).getExpDefinition().getOperand();
         compiler.addInstruction(new STORE(GPRegister.getR(offset), addr));
+        return nbPush;
     }
 
 }

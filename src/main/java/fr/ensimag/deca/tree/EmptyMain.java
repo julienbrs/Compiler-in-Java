@@ -18,9 +18,10 @@ public class EmptyMain extends AbstractMain {
     }
 
     @Override
-    protected void codeGenMain(DecacCompiler compiler) {
+    protected int[] codeGenMain(DecacCompiler compiler, int offsetGP) {
         // throw new UnsupportedOperationException("not yet implemented");
-        
+        int[] res = {offsetGP, offsetGP};
+        return res;
     }
 
     /**

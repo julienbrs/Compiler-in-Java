@@ -28,9 +28,10 @@ public class ReadFloat extends AbstractReadExpr {
     }
 
     @Override
-    protected void codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new RFLOAT());
         compiler.addInstruction(new LOAD(GPRegister.R1, GPRegister.getR(offset)));
+        return 0;
     }
 
     @Override
