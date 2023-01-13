@@ -83,7 +83,7 @@ public class CompilerOptions {
             else if(string.equals("-d")){
               debug++;  
             }
-            else if(string.contains("-x")){
+            else if(string.contains("-r")){
                 string =it.next();
                 rMax = Integer.parseInt(string);
                 if(rMax>16||rMax<4){

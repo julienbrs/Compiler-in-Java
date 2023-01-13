@@ -61,6 +61,10 @@ public class DeclField extends AbstractDeclField{
         // TODO Auto-generated method stub
         
     }
+    @Override
+    protected String prettyPrintNode() {
+        return "[visibility = "+this.visibility.toString()+"]  "+this.getClass().getSimpleName();
+    }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
@@ -68,7 +72,7 @@ public class DeclField extends AbstractDeclField{
         varName.prettyPrint(s, prefix, false);
         initialization.prettyPrint(s, prefix, false);
 
-        // TODO Auto-generated method stub
+        
         
     }
 

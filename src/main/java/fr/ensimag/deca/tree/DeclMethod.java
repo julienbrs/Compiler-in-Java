@@ -37,7 +37,7 @@ public class DeclMethod extends AbstractDeclMethod {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         type.prettyPrint(s, prefix, false);
         ident.prettyPrint(s, prefix, false);
-        
+        methodBody.prettyPrintChildren(s, prefix);
         // TODO Auto-generated method stub
         
     }
