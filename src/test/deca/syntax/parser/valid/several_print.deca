@@ -1,0 +1,17 @@
+{
+    int i = 5;
+    float f = 3.14;
+    string str = "little string";
+    boolean bool_f = false;
+    boolean bool_t = true;
+
+    print();
+    print(i);
+    print(f);
+    print(str);
+    print(bool_f);
+    print(bool_t);
+
+    print( 5 + f);
+    print( 5 * (bool_f - (f)));
+}
