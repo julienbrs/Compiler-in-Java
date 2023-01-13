@@ -1,4 +1,0 @@
-// Deux déclarations mais x est initialisée en premier et y ne l'est pas
-{
-  int x = 1, y;
-}
