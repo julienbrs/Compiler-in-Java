@@ -39,20 +39,14 @@ public class DeclClass extends AbstractDeclClass {
         // throw new UnsupportedOperationException("not yet implemented");
         ClassType t;
         boolean b = true;
-        if (extension == null) {
-            ClassDefinition supClass = (ClassDefinition) compiler.environmentType.defOfType(compiler.createSymbol("Object"));
-            t = new ClassType(name.getName(), getLocation(), supClass);
-            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
-        } else {
-            TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
-            if (!tDef.isClass()) {
-                // ERROR MSG : match msg d'erreur avec doc
-                throw new ContextualError("No super class named : \""+extension.getName()+"\" : rule 1.3", getLocation());
-            }
-            ClassDefinition supClass = (ClassDefinition) tDef;
-            t = new ClassType(name.getName(), getLocation(), supClass);
-            b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
+        TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
+        if (!tDef.isClass()) {
+            // ERROR MSG : match msg d'erreur avec doc
+            throw new ContextualError("No super class named : \""+extension.getName()+"\" : rule 1.3", getLocation());
         }
+        ClassDefinition supClass = (ClassDefinition) tDef;
+        t = new ClassType(name.getName(), getLocation(), supClass);
+        b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
         if (!b) {
             // ERROR MSG : match msg d'erreur avec doc
             throw new ContextualError("The class \""+name+"\" is already declared : rule 1.3", getLocation());
@@ -64,12 +58,7 @@ public class DeclClass extends AbstractDeclClass {
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
         System.out.println(name.getName());
-        TypeDefinition tDef;
-        if (extension == null) {
-            tDef = compiler.environmentType.defOfType(compiler.createSymbol("Object"));
-        } else {
-            tDef = compiler.environmentType.defOfType(extension.getName());
-        }
+        TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
         assert(tDef != null);
         ClassDefinition cDef = (ClassDefinition) tDef;
         EnvironmentExp envExpSuper = cDef.getMembers();
