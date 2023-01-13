@@ -46,7 +46,8 @@ public class DeclClass extends AbstractDeclClass {
         }
         ClassDefinition supClass = (ClassDefinition) tDef;
         t = new ClassType(name.getName(), getLocation(), supClass);
-        b = compiler.environmentType.put(name.getName(), new ClassDefinition(t, getLocation(), supClass));
+        name.setDefinition(new ClassDefinition(t, getLocation(), supClass));
+        b = compiler.environmentType.put(name.getName(), name.getClassDefinition());
         if (!b) {
             // ERROR MSG : match msg d'erreur avec doc
             throw new ContextualError("The class \""+name+"\" is already declared : rule 1.3", getLocation());
@@ -57,22 +58,24 @@ public class DeclClass extends AbstractDeclClass {
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        System.out.println(name.getName());
-        TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
-        assert(tDef != null);
-        ClassDefinition cDef = (ClassDefinition) tDef;
-        EnvironmentExp envExpSuper = cDef.getMembers();
-        EnvironmentExp envExpF = new EnvironmentExp(envExpSuper);
-        bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExpF, name.getClassDefinition());
-        EnvironmentExp envExpM = new EnvironmentExp(envExpF);
-        bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExpM, name.getClassDefinition());
+        TypeDefinition supTypeDef = compiler.environmentType.defOfType(extension.getName());
+        ClassDefinition supClassDef = (ClassDefinition) supTypeDef;
+        EnvironmentExp envExpSuper = supClassDef.getMembers();
+        EnvironmentExp envExp = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
+        bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
+        bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
 
 
     }
     
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        Type t = name.verifyType(compiler);
+        extension.verifyType(compiler);
+        EnvironmentExp localEnv = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
+        bodyclass.getListDeclField().verifyListFieldBody(compiler, localEnv, name.getClassDefinition());
+        bodyclass.getListDeclMethod().verifyListMethodBody(compiler, localEnv, name.getClassDefinition());
     }
 
 

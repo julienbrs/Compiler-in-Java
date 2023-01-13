@@ -666,5 +666,6 @@ multi_line_string returns[String text, Location location]
 param returns[Param tree]
     : type ident {
         $tree = new Param($type.tree,$ident.tree);
+        setLocation($tree, $type.start);
         }
     ;

@@ -21,7 +21,7 @@ public class MethodBody extends AbstractMethodBody{
     @Override
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
         declvar.verifyListDeclVariable(compiler, localEnv, currentClass);
-        paramEnv.setParent(localEnv);
+        localEnv.setParent(paramEnv);
         listInst.verifyListInst(compiler, localEnv, currentClass, returnType);
     }
 
