@@ -7,6 +7,8 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.RINT;
 
@@ -30,6 +32,7 @@ public class ReadInt extends AbstractReadExpr {
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new RINT());
+        compiler.addInstruction(new BOV(new Label("erreur_de_lecture")));
         compiler.addInstruction(new LOAD(GPRegister.R1, GPRegister.getR(offset)));
         return 0;
     }
