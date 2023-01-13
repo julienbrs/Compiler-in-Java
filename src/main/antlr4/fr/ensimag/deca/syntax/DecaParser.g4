@@ -53,9 +53,6 @@ main returns[AbstractMain tree]
         
             assert($block.decls != null);
             assert($block.insts != null);
-            if($block.insts==null){ 
-       throw new TextOutsideBlock(this, $ctx);
-           }
             $tree = new Main($block.decls, $block.insts);
             setLocation($tree, $block.start);
            
@@ -632,9 +629,12 @@ decl_method returns [ DeclMethod tree]
     : type ident OPARENT params=list_params CPARENT (block {
         
         $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodBody($block.decls,$block.insts));
+        setLocation($tree, $OPARENT);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
+        
         $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodAsmBody(new StringLiteral($code.text)));
+         setLocation($tree, $ASM);
         }
       ) {
         }
