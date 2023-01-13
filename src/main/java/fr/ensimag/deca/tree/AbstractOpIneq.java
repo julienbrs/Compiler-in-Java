@@ -24,10 +24,28 @@ public abstract class AbstractOpIneq extends AbstractOpCmp {
         Type lt = getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
 
-        if ((!lt.isInt() && ! !lt.isFloat()) || (!rt.isInt() && !rt.isFloat())) {
+        /* Si au moins l'un des deux n'est ni un entier ni un flottant
+         * alors l'opération Ineq n'est pas faisable */
+        if ((!lt.isInt() && !lt.isFloat()) || (!rt.isInt() && !rt.isFloat())) {
             // ERROR MSG
             throw new ContextualError("Can't do \""+getOperatorName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.33", getLocation());
-        } 
+        }
+        /* Si l'un des deux est un entier alors que l'autre est un flottant
+         * alors il faut faire un cast */
+        if (lt.isInt() && rt.isFloat()) {
+            /* On cast lt en Float */
+            Location loc = getLeftOperand().getLocation();
+            setLeftOperand(new ConvFloat(getLeftOperand()));
+            getLeftOperand().setLocation(loc);
+            getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
+        }
+        if (lt.isFloat() && rt.isInt()) {
+            /* On cast lt en Float */
+            Location loc = getLeftOperand().getLocation();
+            setRightOperand(new ConvFloat(getRightOperand()));
+            getLeftOperand().setLocation(loc);
+            getRightOperand().verifyExpr(compiler, localEnv, currentClass);
+        }
 
         setType(compiler.environmentType.BOOLEAN);
         return this.getType();
