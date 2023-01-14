@@ -1,0 +1,8 @@
+// Programme de test d'une simple soustraction:
+
+{
+    int x = 5;
+    int y = 7;
+    int resultat = x - y;
+    println("Le résultat de la soustraction est : ", resultat);
+}

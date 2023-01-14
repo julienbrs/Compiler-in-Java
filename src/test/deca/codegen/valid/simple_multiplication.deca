@@ -1,0 +1,8 @@
+// Programme de test d'une simple multiplication:
+
+{
+    int x = 4;
+    int y = 7;
+    int resultat = x * y;
+    println("Le résultat de la multiplication est : ", resultat);
+}

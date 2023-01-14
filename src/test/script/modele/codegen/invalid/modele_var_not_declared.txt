@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/./src/test/deca/codegen/invalid/var_not_declared.deca:6:12: La variable "y" n'a pas été déclaré : rule 0.1
