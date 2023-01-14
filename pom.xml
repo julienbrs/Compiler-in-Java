@@ -259,7 +259,7 @@
                             <goal>exec</goal>
                         </goals>
                     </execution>
-                    <!-- <execution>
+                    <execution>
                         <id>common-tests</id>
                         <configuration>
                             <executable>./src/test/script/common-tests.sh</executable>
@@ -268,7 +268,7 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                    </execution> -->
+                    </execution>
                     <execution>
                         <id>complete-lexer</id>
                         <configuration>
@@ -283,6 +283,26 @@
                         <id>complete-parser</id>
                         <configuration>
                             <executable>./src/test/script/complete-parser.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>complete-codegen</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-codegen.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>complete-compilation-options</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-compilation-options.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>
