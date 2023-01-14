@@ -1,0 +1,21 @@
+{
+	float g = 0x0.0p0;
+	float d = 0x1.0p0;
+	float fg = (-0x1.0p0);
+	float fd = 0x1.6fc2ecp-1;
+	float m;
+	float fm;
+	while ((d >= (g + 0x1.0p-23))) {
+		(m = ((g + d) / 0x1.0p1));
+		(fm = ((m * ((m * ((m * ((m * ((m * ((m * ((m * (0x1.0p0 / 0x1.3bp12)) + (0x1.0p0 / 0x1.68p9))) + (0x1.0p0 / 0x1.ep6))) + (0x1.0p0 / 0x1.8p4))) + (0x1.0p0 / 0x1.8p2))) + (0x1.0p0 / 0x1.0p1))) + 0x1.0p0)) - 1));
+		if ((fm > 0x0.0p0)) {
+			(d = m);
+			(fd = fm);
+		} else {
+			(g = m);
+			(fg = fm);
+		}
+	}
+	print(g, " = ");
+	printlnx(g);
+}

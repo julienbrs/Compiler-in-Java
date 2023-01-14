@@ -1,0 +1,11 @@
+// Programme de test de l'opérateur NOT (!):
+
+
+{
+    int x = 5;
+    if (!(x > 3)) {
+        println("x n'est pas plus grand que 3");
+    } else {
+        println("x est plus grand que 3");
+}
+}

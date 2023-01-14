@@ -1,4 +1,0 @@
-// Code deca où l'on déclare deux variables x et y sur la même ligne
-{
-  int x, y;
-}

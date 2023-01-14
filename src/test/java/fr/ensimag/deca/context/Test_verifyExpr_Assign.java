@@ -9,6 +9,8 @@ import org.mockito.MockitoAnnotations;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.tree.AbstractExpr;
+import fr.ensimag.deca.tree.AbstractLValue;
+import fr.ensimag.deca.tree.Assign;
 import fr.ensimag.deca.tree.Plus;
 import fr.ensimag.deca.context.Type;
 
@@ -17,42 +19,32 @@ import fr.ensimag.deca.context.Type;
  */
 
 public class Test_verifyExpr_Assign {
-	final Type INT = new IntType(null);
-	final Type FLOAT = new FloatType(null);
+	private DecacCompiler compiler = new DecacCompiler(null, null);
+
+	final Type INT = compiler.environmentType.INT;
+	final Type FLOAT = compiler.environmentType.FLOAT;
+	final Type BOOL = compiler.environmentType.BOOLEAN;
 
 	@Mock
-	AbstractExpr lOpInt;
+	AbstractLValue lvalueInt;
 	@Mock
-	AbstractExpr rOpInt;
+	AbstractExpr exprInt;
 	@Mock
-	AbstractExpr lOpFloat;
-	@Mock
-	AbstractExpr rOpFloat;
-
-	DecacCompiler compiler;
+	AbstractLValue lvalueFloat;
 
 	@BeforeEach
 	public void setup() throws ContextualError {
 		MockitoAnnotations.initMocks(this);
-		compiler = new DecacCompiler(null, null);
-		when(lOpInt.verifyExpr(compiler, null, null)).thenReturn(INT);
-		when(rOpInt.verifyExpr(compiler, null, null)).thenReturn(INT);
-		when(lOpFloat.verifyExpr(compiler, null, null)).thenReturn(FLOAT);
-		when(rOpFloat.verifyExpr(compiler, null, null)).thenReturn(FLOAT);
+		when(lvalueInt.verifyLValue(compiler, null, null)).thenReturn(INT);
+		when(exprInt.verifyRValue(compiler, null, null, INT)).thenReturn(exprInt);
 	}
 
 	@Test
-	public void testIntInt() throws ContextualError {
-		Plus p = new Plus(lOpInt, rOpInt);
-		assertTrue(p.verifyExpr(compiler, null, null).isInt());
-		verify(lOpInt).verifyExpr(compiler, null, null);
-		verify(rOpInt).verifyExpr(compiler, null, null);
-		verify(lOpInt, times(1)).verifyExpr(compiler, null, null);
-		verify(rOpInt, times(1)).verifyExpr(compiler, null, null);
+	public void verifyExpr_ShouldReturnInt_WhenLeftOpIsIntAndRightOpIsInt() throws ContextualError {
+		Assign a = new Assign(lvalueInt, exprInt);
+		Type t = a.verifyExpr(compiler, null, null);
+		assertTrue(t.isInt());
 	}
 
-	@Test
-	public void test() {
-		// TESTTODO
-	}
+	// TESTTODO : do more tests ?
 }

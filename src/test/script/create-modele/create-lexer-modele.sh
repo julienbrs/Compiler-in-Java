@@ -23,25 +23,29 @@ PATH=./src/test/script/launchers:"$PATH"
 #     log_activated=true
 # fi
 
-
 echo "${purple}Création des modèles de tests lexer sensés être invalides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/invalid -name '*.deca')
-    do
-        filename=$(basename "$cas_de_test")
-        filename="${filename%.*}"
-        test_lex "$cas_de_test" > src/test/script/modele/lexer/invalid/modele_$filename.txt 2>&1
-    done
-
-
-echo "${purple}Création des modèles de tests lexer sensés être valides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/valid -name '*.deca')
-    do
-        filename=$(basename "$cas_de_test")
-        filename="${filename%.*}"
-        test_lex "$cas_de_test" > src/test/script/modele/lexer/valid/modele_$filename.txt 2>&1
+for cas_de_test in $(find src/test/deca/syntax/lexer/invalid -name '*.deca'); do
+    filename=$(basename "$cas_de_test")
+    filename="${filename%.*}"
+    output_file=$(printf "src/test/script/modele/lexer/invalid/modele_%s.txt" "$filename")
+    if [ ! -f "$output_file" ]; then
+        test_lex "$cas_de_test" >"$output_file" 2>&1
+    else
+        echo "modele_$filename déjà existant"
+    fi
 done
 
-
+echo "${purple}Création des modèles de tests lexer sensés être valides....${reset}"
+for cas_de_test in $(find src/test/deca/syntax/lexer/valid -name '*.deca'); do
+    filename=$(basename "$cas_de_test")
+    filename="${filename%.*}"
+    output_file=$(printf "src/test/script/modele/lexer/valid/modele_%s.txt" "$filename")
+    if [ ! -f "$output_file" ]; then
+        test_lex "$cas_de_test" >"$output_file" 2>&1
+    else
+        echo "modele_$filename déjà existant"
+    fi
+done
 
 # End of the script
 # Check if the --exit-status option was passed

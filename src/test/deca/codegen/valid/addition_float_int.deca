@@ -1,0 +1,7 @@
+// Programme test qui fait l'addition entre float et int
+
+{
+    int i = 3;
+    float f = 2.5;
+    println("3 + 2.5 = ", i+f);
+}

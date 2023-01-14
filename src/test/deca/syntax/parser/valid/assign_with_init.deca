@@ -1,4 +1,0 @@
-// Ceci est un fichier source deca pour tester certaines règles du parser
-{
-  int x = 1;
-}

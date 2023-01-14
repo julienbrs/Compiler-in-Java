@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/no_bracket_after_else.deca:6:8: no viable alternative at input 'elseprintln'

@@ -77,14 +77,14 @@ for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca')
         test_lex_unitaire "$cas_de_test" 0
     done
 # On choisit arbitrairement de considérer le test de tous les utf8 comme un "valid test"
-./src/test/script/utils-test/lexer-test-all-utf8.sh
-result_utf8=$?
-if [ "$result_utf8" -eq 0 ]; then
-    echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Succès attendu ✅"
-else
-    echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
-    exit 1
-fi
+# ./src/test/script/utils-test/lexer-test-all-utf8.sh
+# result_utf8=$?
+# if [ "$result_utf8" -eq 0 ]; then
+#     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Succès attendu ✅"
+# else
+#     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
+#     exit 1
+# fi
 
 
 

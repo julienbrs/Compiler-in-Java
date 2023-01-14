@@ -1,0 +1,8 @@
+// Programme test interactif vérifiant la fonction readFloat()
+
+{
+    float x;
+    println("Saisissez un flottant :");
+    x = readFloat();
+    println("Vous avez saisi : ", x);
+}

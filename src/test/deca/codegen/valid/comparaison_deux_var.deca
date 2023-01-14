@@ -1,0 +1,11 @@
+// Programme de test pour comparaison de deux variables :
+
+{
+    int x = 5;
+    int y = 6;
+    if (x == y) {
+        println("x est égal à y");
+    } else {
+        println("x est différent de y");
+    }
+}

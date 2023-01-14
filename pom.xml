@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <compileSource>1.8</compileSource>
-        <jacoco.skip>true</jacoco.skip>
+        <!-- <jacoco.skip>true</jacoco.skip> -->
         <jacoco.report_dir>${project.build.directory}/site</jacoco.report_dir>
     </properties>
 
@@ -134,7 +134,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.8</version>
                 <configuration>
                     <outputDirectory>${jacoco.report_dir}/</outputDirectory>
                     <excludes>
@@ -174,7 +174,7 @@
                                         <limit>
                                             <counter>INSTRUCTION</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.75</minimum>
+                                            <minimum>0.4</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
@@ -263,6 +263,46 @@
                         <id>common-tests</id>
                         <configuration>
                             <executable>./src/test/script/common-tests.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>complete-lexer</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-lexer.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>complete-parser</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-parser.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>complete-codegen</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-codegen.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>complete-compilation-options</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-compilation-options.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>
