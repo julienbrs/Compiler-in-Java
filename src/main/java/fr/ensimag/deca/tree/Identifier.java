@@ -33,7 +33,7 @@ import org.apache.log4j.Logger;
  * @date 01/01/2023
  */
 public class Identifier extends AbstractIdentifier {
-    
+
     @Override
     protected void checkDecoration() {
         if (getDefinition() == null) {
@@ -54,7 +54,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a class definition.
+     *                            if the definition is not a class definition.
      */
     @Override
     public ClassDefinition getClassDefinition() {
@@ -76,7 +76,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a method definition.
+     *                            if the definition is not a method definition.
      */
     @Override
     public MethodDefinition getMethodDefinition() {
@@ -98,7 +98,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a field definition.
+     *                            if the definition is not a field definition.
      */
     @Override
     public FieldDefinition getFieldDefinition() {
@@ -120,7 +120,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a field definition.
+     *                            if the definition is not a field definition.
      */
     @Override
     public VariableDefinition getVariableDefinition() {
@@ -135,13 +135,14 @@ public class Identifier extends AbstractIdentifier {
     }
 
     /**
-     * Like {@link #getDefinition()}, but works only if the definition is a ExpDefinition.
+     * Like {@link #getDefinition()}, but works only if the definition is a
+     * ExpDefinition.
      * 
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a field definition.
+     *                            if the definition is not a field definition.
      */
     @Override
     public ExpDefinition getExpDefinition() {
@@ -179,7 +180,7 @@ public class Identifier extends AbstractIdentifier {
         ExpDefinition def = localEnv.get(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule 0.1", getLocation());
+            throw new ContextualError("La variable \"" + name + "\" n'a pas été déclaré : rule 0.1", getLocation());
         }
         setDefinition(def);
         setType(definition.getType());
@@ -194,17 +195,17 @@ public class Identifier extends AbstractIdentifier {
 
     /**
      * Implements non-terminal "type" of [SyntaxeContextuelle] in the 3 passes
+     * 
      * @param compiler contains "env_types" attribute
      */
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        System.out.println("" + name + " - " + definition + " - " + compiler.environmentType.defOfType(name));
         setDefinition(compiler.environmentType.defOfType(name));
         setType(definition.getType());
         return this.getType();
     }
-    
+
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         DAddr addr = getExpDefinition().getOperand();
@@ -213,7 +214,7 @@ public class Identifier extends AbstractIdentifier {
     }
 
     protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        assert(getType().isBoolean());
+        assert (getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
         compiler.addInstruction(new CMP(0, GPRegister.R0));
@@ -224,9 +225,8 @@ public class Identifier extends AbstractIdentifier {
         }
         return 0;
     }
-    
-    private Definition definition;
 
+    private Definition definition;
 
     @Override
     protected void iterChildren(TreeFunction f) {
