@@ -64,6 +64,13 @@ for cas_de_test in $(find src/test/deca/codegen/valid/ -name '*.deca' -not -path
     fi
 done
 
+# Creation des modeles des tests interactifs:
+decac src/test/deca/codegen/valid/interactif/simple_readint.deca
+echo 5 | ima src/test/deca/codegen/valid/interactif/simple_readint.ass >src/test/script/modele/codegen/valid/modele_simple_readint.txt
+
+decac src/test/deca/codegen/valid/interactif/simple_readfloat.deca
+echo 3.14 | ima src/test/deca/codegen/valid/interactif/simple_readfloat.ass >src/test/script/modele/codegen/valid/modele_simple_readfloat.txt
+rm src/test/deca/codegen/valid/interactif/*.ass
 # End of the script
 # Check if the --exit-status option was passed
 # if [ "$1" == "--exit-status" ]; then

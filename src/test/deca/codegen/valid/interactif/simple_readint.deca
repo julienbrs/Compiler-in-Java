@@ -3,6 +3,6 @@
 {
     int x;
     println("Saisissez un entier :");
-    x = readint();
-    println("Vous avez saisi : " + x);
+    x = readInt();
+    println("Vous avez saisi : ", x);
 }
