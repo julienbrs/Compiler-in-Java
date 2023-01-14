@@ -1,0 +1,8 @@
+// Programme de test d'une simple addition:
+
+{
+    int x = 3;
+    int y = 6;
+    int resultat = x + y;
+    println("Le résultat de l'addition est : ", resultat);
+}

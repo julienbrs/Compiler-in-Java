@@ -1,0 +1,9 @@
+// Programme de test qui fait tous les prints avec un int
+
+{
+    int x = 5;
+    print("x = ");
+    println(x);
+    printx("x = ", x);
+    printlnx("x = ", x);
+}

@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/no_bracket_after_if.deca:4:8: missing '{' at 'println'

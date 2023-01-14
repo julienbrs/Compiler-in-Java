@@ -184,7 +184,12 @@ public class Identifier extends AbstractIdentifier {
         setDefinition(def);
         setType(definition.getType());
         return this.getType();
+    }
 
+    @Override
+    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv,
+            ClassDefinition currentClass) throws ContextualError {
+        return verifyExpr(compiler, localEnv, currentClass);
     }
 
     /**

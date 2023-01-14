@@ -1,0 +1,1 @@
+x n'est pas inférieur à 3 et y n'est pas plus grand que 5

@@ -434,7 +434,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
 		}
 	}
 
@@ -456,7 +456,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"float"+"\": rule 3.33", e.getMessage());
 		}
 	}
 
@@ -467,7 +467,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"int"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
 		}
 	}
 
@@ -487,7 +487,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"int"+"\" and \""+"float"+"\": rule 3.33", e.getMessage());
 		}
 	}
 
@@ -498,7 +498,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"float"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
 		}
 	}
 
@@ -509,7 +509,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"float"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
 		}
 	}
 
@@ -520,7 +520,7 @@ public class Test_verifyExpr_AbstractOpArith {
 			op.verifyExpr(compiler, null, null);
 			fail("Expected a ContextualError to be thrown.");
 		} catch (ContextualError e) {
-			assertEquals("Can't do \""+"%"+"\" between \""+"boolean"+"\" and \""+"int"+"\": rule 3.33", e.getMessage());
+			assertEquals("Can't do \""+"%"+"\" between \""+"float"+"\" and \""+"float"+"\": rule 3.33", e.getMessage());
 		}
 	}
 }

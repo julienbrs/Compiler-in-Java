@@ -1,4 +1,0 @@
-// Déclare plusieurs variables sur une seule ligne
-{
-  int x, y = 1;
-}

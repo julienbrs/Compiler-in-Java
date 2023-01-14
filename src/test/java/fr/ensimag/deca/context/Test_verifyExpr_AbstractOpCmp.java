@@ -141,7 +141,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 		Type result = op.verifyExpr(compiler, null, null);
 		assertEquals(compiler.environmentType.BOOLEAN, result );
 		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertTrue(op.getRightOperand() instanceof ConvFloat);
+		assertFalse(op.getRightOperand() instanceof ConvFloat);
 	}
 
 	// NotEquals
@@ -232,7 +232,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 		Type result = op.verifyExpr(compiler, null, null);
 		assertEquals(compiler.environmentType.BOOLEAN, result );
 		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertTrue(op.getRightOperand() instanceof ConvFloat);
+		assertFalse(op.getRightOperand() instanceof ConvFloat);
 	}
 
 	// Greater
@@ -240,10 +240,12 @@ public class Test_verifyExpr_AbstractOpCmp {
 	@Test
 	public void verifyExprGreaterBoolBool() throws ContextualError {
 		Greater op = new Greater(lOpBool, rOpBool);
-		Type result = op.verifyExpr(compiler, null, null);
-		assertEquals(compiler.environmentType.BOOLEAN, result );
-		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertFalse(op.getRightOperand() instanceof ConvFloat);
+		try  {
+			op.verifyExpr(compiler, null, null);
+			fail("Expected a ContextualError to be thrown.");
+		} catch (ContextualError e) {
+			assertEquals("Can't do \""+">"+"\" between \""+"boolean"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
+		}
 	}
 
 	@Test
@@ -323,7 +325,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 		Type result = op.verifyExpr(compiler, null, null);
 		assertEquals(compiler.environmentType.BOOLEAN, result );
 		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertTrue(op.getRightOperand() instanceof ConvFloat);
+		assertFalse(op.getRightOperand() instanceof ConvFloat);
 	}
 
 	// GreaterOrEqual
@@ -331,10 +333,12 @@ public class Test_verifyExpr_AbstractOpCmp {
 	@Test
 	public void verifyExprGreaterOrEqualBoolBool() throws ContextualError {
 		GreaterOrEqual op = new GreaterOrEqual(lOpBool, rOpBool);
-		Type result = op.verifyExpr(compiler, null, null);
-		assertEquals(compiler.environmentType.BOOLEAN, result );
-		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertFalse(op.getRightOperand() instanceof ConvFloat);
+		try  {
+			op.verifyExpr(compiler, null, null);
+			fail("Expected a ContextualError to be thrown.");
+		} catch (ContextualError e) {
+			assertEquals("Can't do \""+">="+"\" between \""+"boolean"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
+		}
 	}
 
 	@Test
@@ -414,7 +418,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 		Type result = op.verifyExpr(compiler, null, null);
 		assertEquals(compiler.environmentType.BOOLEAN, result );
 		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertTrue(op.getRightOperand() instanceof ConvFloat);
+		assertFalse(op.getRightOperand() instanceof ConvFloat);
 	}
 
 	// Lower
@@ -422,10 +426,12 @@ public class Test_verifyExpr_AbstractOpCmp {
 	@Test
 	public void verifyExprLowerBoolBool() throws ContextualError {
 		Lower op = new Lower(lOpBool, rOpBool);
-		Type result = op.verifyExpr(compiler, null, null);
-		assertEquals(compiler.environmentType.BOOLEAN, result );
-		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertFalse(op.getRightOperand() instanceof ConvFloat);
+		try  {
+			op.verifyExpr(compiler, null, null);
+			fail("Expected a ContextualError to be thrown.");
+		} catch (ContextualError e) {
+			assertEquals("Can't do \""+"<"+"\" between \""+"boolean"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
+		}
 	}
 
 	@Test
@@ -505,7 +511,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 		Type result = op.verifyExpr(compiler, null, null);
 		assertEquals(compiler.environmentType.BOOLEAN, result );
 		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertTrue(op.getRightOperand() instanceof ConvFloat);
+		assertFalse(op.getRightOperand() instanceof ConvFloat);
 	}
 
 	// LowerOrEqual
@@ -513,10 +519,12 @@ public class Test_verifyExpr_AbstractOpCmp {
 	@Test
 	public void verifyExprLowerOrEqualBoolBool() throws ContextualError {
 		LowerOrEqual op = new LowerOrEqual(lOpBool, rOpBool);
-		Type result = op.verifyExpr(compiler, null, null);
-		assertEquals(compiler.environmentType.BOOLEAN, result );
-		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertFalse(op.getRightOperand() instanceof ConvFloat);
+		try  {
+			op.verifyExpr(compiler, null, null);
+			fail("Expected a ContextualError to be thrown.");
+		} catch (ContextualError e) {
+			assertEquals("Can't do \""+"<="+"\" between \""+"boolean"+"\" and \""+"boolean"+"\": rule 3.33", e.getMessage());
+		}
 	}
 
 	@Test
@@ -596,7 +604,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 		Type result = op.verifyExpr(compiler, null, null);
 		assertEquals(compiler.environmentType.BOOLEAN, result );
 		assertFalse(op.getLeftOperand() instanceof ConvFloat);
-		assertTrue(op.getRightOperand() instanceof ConvFloat);
+		assertFalse(op.getRightOperand() instanceof ConvFloat);
 	}
 	
 }

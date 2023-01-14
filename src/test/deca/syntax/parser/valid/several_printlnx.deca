@@ -1,0 +1,17 @@
+{
+    int i = 5;
+    float f = 3.14;
+    string str = "little string";
+    boolean bool_f = false;
+    boolean bool_t = true;
+
+    printlnx();
+    printlnx(i);
+    printlnx(f);
+    printlnx(str);
+    printlnx(bool_f);
+    printlnx(bool_t);
+
+    printlnx( 5 + f);
+    printlnx( 5 * (bool_f - (f)));
+}

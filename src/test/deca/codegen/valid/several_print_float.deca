@@ -1,0 +1,9 @@
+// Programme de test qui fait tous les prints avec un flottant
+
+{
+    float x = 3.14;
+    print("x = ");
+    println(x);
+    printx("x = ", x);
+    printlnx("x = ", x);
+}

@@ -13,4 +13,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
  * @date 01/01/2023
  */
 public abstract class AbstractLValue extends AbstractExpr {
+
+    public abstract Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv,
+                                         ClassDefinition currentClass) throws ContextualError;
 }
