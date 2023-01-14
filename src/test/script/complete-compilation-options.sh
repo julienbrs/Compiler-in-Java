@@ -26,7 +26,10 @@ echo "${purple}Lancement des tests d'options de compilation:${reset}"
 for option in "${options[@]}"; do
     rm -f ./src/test/deca/codegen/valid/provided/ln2.ass 2>/dev/null
     resultat_compil=$(decac ./src/test/deca/codegen/perf/provided/ln2.deca $option) || exit 1
-    resultat_ima=$(ima ./src/test/deca/codegen/perf/provided/ln2.ass) || exit 1
+
+    # On exit pas si ça plante, car on s'est sûrement arrêté avant donc ass n'existe pas
+    resultat_ima=$(ima ./src/test/deca/codegen/perf/provided/ln2.ass)
+
     rm -f ./src/test/deca/codegen/valid/provided/ln2.ass
 
     fichier_modele="src/test/script/modele/compilations-options/option_${option#-}.txt"
