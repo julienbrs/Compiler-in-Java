@@ -1,0 +1,10 @@
+// Programme de test avec simple condiiton if-else
+
+{
+    int x = 5;
+    if (x > 3) {
+        println("x est plus grand que 3");
+    } else {
+        println("x est plus petit ou égal à 3");
+    }
+}
