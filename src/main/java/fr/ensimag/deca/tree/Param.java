@@ -28,7 +28,8 @@ public class Param extends AbstractParam {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        type.prettyPrint(s, prefix, false);
+        name.prettyPrint(s, prefix, true);
         
     }
 
@@ -50,7 +51,8 @@ public class Param extends AbstractParam {
     public void verifyParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
         Type t = type.verifyType(compiler);
         try {
-            localEnv.declare(name.getName(), new ParamDefinition(t, getLocation()));
+            name.setDefinition(new ParamDefinition(t, getLocation()));
+            localEnv.declare(name.getName(), name.getExpDefinition());
         } catch (DoubleDefException e) {
             // ERROR MSG
             throw new ContextualError("??? : rule 3.12", getLocation());

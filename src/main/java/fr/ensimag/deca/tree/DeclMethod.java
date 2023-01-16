@@ -37,15 +37,17 @@ public class DeclMethod extends AbstractDeclMethod {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         type.prettyPrint(s, prefix, false);
         ident.prettyPrint(s, prefix, false);
+        listeparametre.prettyPrint(s, prefix, false);
         methodBody.prettyPrintChildren(s, prefix);
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        type.iter(f);
+        ident.iter(f);
+        listeparametre.iter(f);
+        methodBody.iter(f);        
     }
     
     public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
@@ -58,25 +60,28 @@ public class DeclMethod extends AbstractDeclMethod {
             Signature sig = new Signature();
             listeparametre.verifyListParamMembers(compiler, sig);
             MethodDefinition mDef = (MethodDefinition) sDef;
-            if (!mDef.getSignature().equals(sig)) {
-                // ERROR MSG
-                throw new ContextualError(" : rule 2.7", getLocation());
-            }
+            if (mDef != null) {
+                if (!mDef.getSignature().equals(sig)) {
+                    // ERROR MSG
+                    throw new ContextualError(" : rule 2.7", getLocation());
+                }
+                if (!t.sameType(mDef.getType())) {
+                    // ERROR MSG
+                    throw new ContextualError(" : rule 2.7", getLocation());
+                }
 
-            if (!t.sameType(mDef.getType())) {
                 // ERROR MSG
-                throw new ContextualError(" : rule 2.7", getLocation());
-            }
-            // ERROR MSG
-            ClassType cType = t.asClassType(" : rule 2.7", getLocation());
-            // ERROR MSG
-            ClassType superType = mDef.getType().asClassType(" : rule 2.7", getLocation());
-            if (!cType.isSubClassOf(superType)) {
+                ClassType cType = t.asClassType(" : rule 2.7", getLocation());
                 // ERROR MSG
-                throw new ContextualError(" : rule 2.7", getLocation());
+                ClassType superType = mDef.getType().asClassType(" : rule 2.7", getLocation());
+                if (!cType.isSubClassOf(superType)) {
+                    // ERROR MSG
+                    throw new ContextualError(" : rule 2.7", getLocation());
+                }
             }
             try {
-                localEnv.declare(ident.getName(), new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethods()));
+                ident.setDefinition(new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethods()));
+                localEnv.declare(ident.getName(), ident.getExpDefinition());
             } catch (DoubleDefException e) {
                 // ERROR MSG
                 throw new ContextualError(" rule ?.??", getLocation());
@@ -87,9 +92,8 @@ public class DeclMethod extends AbstractDeclMethod {
 
     public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        ident.verifyType(compiler);
         EnvironmentExp paramEnv = new EnvironmentExp(null);
-        listeparametre.verifyListParamBody(compiler, null);
+        listeparametre.verifyListParamBody(compiler, paramEnv);
         methodBody.verifyMethodBody(compiler, localEnv, paramEnv, currentClass, t);
     }
 }

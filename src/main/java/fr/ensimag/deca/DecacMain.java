@@ -81,7 +81,12 @@ public class DecacMain {
            // throw new UnsupportedOperationException("decac -b not yet implemented");
         }
         if (options.getSourceFiles().isEmpty()) {
-            throw new UnsupportedOperationException("decac without argument not yet implemented");
+            // throw new UnsupportedOperationException("decac without argument not yet implemented");
+            DecacCompiler compiler = new DecacCompiler(options, new File("src/test/deca/syntax/parser/valid/empty.deca"));
+            if (compiler.compile()) {
+                error = true;
+            }
+            System.exit(error ? 1 : 0);
         }
         if (options.getParallel()) {
             ExecutorService parallel =  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
