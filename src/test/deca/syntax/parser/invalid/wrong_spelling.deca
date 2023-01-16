@@ -1,7 +1,0 @@
-{
-    int x = 5;
-    whil (x < 10) {
-        println("x est inférieur à 10");
-    x++;
-    }
-}
