@@ -15,22 +15,18 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  * @author gl11
  * @date 16/01/2023
  */
-public class InstanceOf extends AbstractExpr {
+public class Cast extends AbstractExpr {
 
-    private AbstractExpr expr;
     private AbstractIdentifier type;
+    private AbstractExpr expr;
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type tExpr = expr.verifyExpr(compiler, localEnv, currentClass);
-        Type tType = type.verifyType(compiler);
-        if (!tExpr.isClassOrNull() || !tType.isClass()) {
-            // ERROR MSG
-            throw new ContextualError(" : rule 3.41", getLocation());
-        }
-        setType(compiler.environmentType.BOOLEAN);
-        return getType();
+        Type t = type.verifyType(compiler);
+        Type e = expr.verifyExpr(compiler, localEnv, currentClass);
+        
+        return t;
     }
 
     @Override

@@ -15,21 +15,17 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  * @author gl11
  * @date 16/01/2023
  */
-public class InstanceOf extends AbstractExpr {
-
-    private AbstractExpr expr;
-    private AbstractIdentifier type;
+public class This extends AbstractExpr {
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type tExpr = expr.verifyExpr(compiler, localEnv, currentClass);
-        Type tType = type.verifyType(compiler);
-        if (!tExpr.isClassOrNull() || !tType.isClass()) {
+        Type t = currentClass.getType();
+        if (currentClass.equals(null)) {
             // ERROR MSG
-            throw new ContextualError(" : rule 3.41", getLocation());
+            throw new ContextualError("Can't call \"return\" in the main program : rule 3.43", getLocation());
         }
-        setType(compiler.environmentType.BOOLEAN);
+        setType(t);
         return getType();
     }
 
