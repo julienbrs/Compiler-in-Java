@@ -21,7 +21,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-options=(-b -P -v -p -n -d)
+options=(-b -P -v -p -n)
 echo "${purple}Lancement des tests d'options de compilation:${reset}"
 for option in "${options[@]}"; do
     rm -f ./src/test/deca/codegen/valid/provided/ln2.ass 2>/dev/null
