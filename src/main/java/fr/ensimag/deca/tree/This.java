@@ -19,6 +19,10 @@ public class This extends AbstractExpr {
 
     private boolean isImplicit;
 
+    public This(boolean isImplicit) {
+        this.isImplicit = isImplicit;
+    }
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {

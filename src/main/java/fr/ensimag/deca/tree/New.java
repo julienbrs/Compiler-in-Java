@@ -17,6 +17,10 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  */
 public class New extends AbstractExpr {
 
+    public New(AbstractIdentifier type) {
+        this.type = type;
+    }
+
     private AbstractIdentifier type;
 
     @Override

@@ -21,6 +21,11 @@ public class Cast extends AbstractExpr {
     private AbstractIdentifier type;
     private AbstractExpr expr;
 
+    public Cast(AbstractIdentifier type, AbstractExpr expr) {
+        this.type = type;
+        this.expr = expr;
+    }
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
@@ -77,8 +82,8 @@ public class Cast extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
-        
+        type.prettyPrint(s, prefix, false);
+        expr.prettyPrint(s, prefix, true);
     }
 
     @Override
