@@ -17,6 +17,8 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  */
 public class This extends AbstractExpr {
 
+    private boolean isImplicit;
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {

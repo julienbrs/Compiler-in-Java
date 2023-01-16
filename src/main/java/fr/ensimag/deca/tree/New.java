@@ -17,14 +17,18 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  */
 public class New extends AbstractExpr {
 
+    private AbstractIdentifier type;
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type t = currentClass.getType();
-        if (currentClass.equals(null)) {
-            throw new ContextualError("Class can't be 0 : rule 3.43", getLocation());
+        Type t = type.verifyType(compiler);
+        if (!t.isClass()) {
+            // ERROR MSG
+            throw new ContextualError(" : rule 3.42", getLocation());
         }
-        return t;
+        setType(t);
+        return getType();
     }
 
     @Override

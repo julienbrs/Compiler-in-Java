@@ -30,8 +30,15 @@ public class Cast extends AbstractExpr {
             throws ContextualError {
         Type t = type.verifyType(compiler);
         Type e = expr.verifyExpr(compiler, localEnv, currentClass);
-        
-        return t;
+        if (t.isVoid()) {
+            // ERROR MSG
+            throw new ContextualError("t1 non void : rule 3.??", getLocation());
+        }
+        else if (!t.sameType(compiler.environmentType.FLOAT) || !t.sameType(compiler.environmentType.INT)) {
+
+        }
+        setType(t);
+        return getType();
     }
 
     @Override
