@@ -54,6 +54,10 @@ public class CompilerOptions {
 
     
     public void parseArgs(String[] args) throws CLIException {
+        if (args.length == 0) {
+            displayUsage();
+            System.exit(0);
+        }
         Iterator<String> it =  Arrays.asList(args).iterator();
         while(it.hasNext()){
             string = it.next();
@@ -123,7 +127,25 @@ public class CompilerOptions {
     }
 
     protected void displayUsage() {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        System.out.println("   -b    (banner)            : affiche une bannière indiquant le nom de l'équipe");
+        System.out.println("   -p    (parse)             : arrête decac après l'étape de construction de");
+        System.out.println("                               l'arbre, et affiche la décompilation de ce dernier");
+        System.out.println("                               (i.e. s'il n'y a qu'un fichier source à");
+        System.out.println("                               compiler, la sortie doit être un programme");
+        System.out.println("                               deca syntaxiquement correct)");
+        System.out.println("   -v    (verification)      : arrête decac après l'étape de vérifications");
+        System.out.println("                               (ne produit aucune sortie en l'absence d'erreur)");
+        System.out.println("   -n    (no check)          : supprime les tests à l'exécution spécifiés dans");
+        System.out.println("                               les points 11.1 et 11.3 de la sémantique de Deca.");
+        System.out.println("   -r X  (registers)         : limite les registres banalisés disponibles à");
+        System.out.println("                               R0 ... R{X-1}, avec 4 <= X <= 16");
+        System.out.println("   -d    (debug)             : active les traces de debug. Répéter");
+        System.out.println("                               l'option plusieurs fois pour avoir plus de traces");
+        System.out.println("   -P    (parallel)          : s'il y a plusieurs fichiers sources,");
+        System.out.println("                               lance la compilation des fichiers en");
+        System.out.println("                               parallèle (pour accélérer la compilation)");
+        System.out.println("   \u001b[1mN.B. Les options '-p' et '-v' sont incompatibles\u001b[1m");
     }
 
 
