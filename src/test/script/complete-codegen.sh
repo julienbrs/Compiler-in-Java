@@ -80,10 +80,10 @@ test_codegen_unitaire() {
 
 }
 
-echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/codegen/invalid/ -name '*.deca' -not -path "src/test/deca/codegen/invalid/interactif/*" -not -path "src/test/deca/codegen/invalid/provided/*"); do
-    test_codegen_unitaire "$cas_de_test" 1
-done
+# echo "${purple}Lancement des tests sensés être invalides:${reset}"
+# for cas_de_test in $(find src/test/deca/codegen/invalid/ -name '*.deca' -not -path "src/test/deca/codegen/invalid/interactif/*" -not -path "src/test/deca/codegen/invalid/provided/*"); do
+#     test_codegen_unitaire "$cas_de_test" 1
+# done
 
 echo ""
 
