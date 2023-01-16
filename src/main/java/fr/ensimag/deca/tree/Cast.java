@@ -20,6 +20,11 @@ public class Cast extends AbstractExpr {
     private AbstractIdentifier type;
     private AbstractExpr expr;
 
+    public Cast(AbstractIdentifier type, AbstractExpr expr) {
+        this.type = type;
+        this.expr = expr;
+    }
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
