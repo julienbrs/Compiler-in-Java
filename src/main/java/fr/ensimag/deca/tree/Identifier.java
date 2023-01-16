@@ -199,7 +199,6 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        System.out.println("" + name + " - " + definition + " - " + compiler.environmentType.defOfType(name));
         setDefinition(compiler.environmentType.defOfType(name));
         setType(definition.getType());
         return this.getType();
