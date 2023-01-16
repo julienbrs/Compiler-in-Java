@@ -55,8 +55,8 @@ public class Cast extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
-        
+        type.prettyPrint(s, prefix, false);
+        expr.prettyPrint(s, prefix, true);
     }
 
     @Override
