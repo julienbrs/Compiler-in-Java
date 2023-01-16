@@ -20,8 +20,8 @@ public class MethodBody extends AbstractMethodBody{
 
     @Override
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
-        declvar.verifyListDeclVariable(compiler, localEnv, currentClass);
         localEnv.setParent(paramEnv);
+        declvar.verifyListDeclVariable(compiler, localEnv, currentClass);
         listInst.verifyListInst(compiler, localEnv, currentClass, returnType);
     }
 
@@ -40,8 +40,8 @@ public class MethodBody extends AbstractMethodBody{
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        declvar.iter(f);
+        listInst.iter(f);
     }
     
 

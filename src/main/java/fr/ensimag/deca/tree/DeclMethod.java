@@ -39,14 +39,15 @@ public class DeclMethod extends AbstractDeclMethod {
         ident.prettyPrint(s, prefix, false);
         listeparametre.prettyPrint(s, prefix, false);
         methodBody.prettyPrintChildren(s, prefix);
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        type.iter(f);
+        ident.iter(f);
+        listeparametre.iter(f);
+        methodBody.iter(f);        
     }
     
     public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
@@ -78,7 +79,6 @@ public class DeclMethod extends AbstractDeclMethod {
                     throw new ContextualError(" : rule 2.7", getLocation());
                 }
             }
-            
             try {
                 ident.setDefinition(new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethods()));
                 localEnv.declare(ident.getName(), ident.getExpDefinition());
@@ -92,7 +92,6 @@ public class DeclMethod extends AbstractDeclMethod {
 
     public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        // ident.verifyType(compiler);
         EnvironmentExp paramEnv = new EnvironmentExp(null);
         listeparametre.verifyListParamBody(compiler, paramEnv);
         methodBody.verifyMethodBody(compiler, localEnv, paramEnv, currentClass, t);
