@@ -72,8 +72,14 @@ public class MethodCall extends AbstractExpr {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        if (!expr.isImplicit()) {
+            expr.decompile(s);
+            s.print(".");
+        }
+        methodIdent.decompile(s);
+        s.print("(");
+        rValStar.decompile(s);
+        s.print(")");
     }
 
     @Override
