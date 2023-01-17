@@ -9,29 +9,12 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
-/**
- * Instruction
- *
- * @author gl11
- * @date 16/01/2023
- */
-public class New extends AbstractExpr {
-
-    public New(AbstractIdentifier type) {
-        this.type = type;
-    }
-
-    private AbstractIdentifier type;
+public class NullLiteral extends AbstractExpr{
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type t = type.verifyType(compiler);
-        if (!t.isClass()) {
-            // ERROR MSG
-            throw new ContextualError(" : rule 3.42", getLocation());
-        }
-        setType(t);
+        setType(compiler.environmentType.NULL);
         return getType();
     }
 
@@ -58,6 +41,5 @@ public class New extends AbstractExpr {
         // TODO Auto-generated method stub
         
     }
-
     
 }

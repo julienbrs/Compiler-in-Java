@@ -20,6 +20,11 @@ public class InstanceOf extends AbstractExpr {
     private AbstractExpr expr;
     private AbstractIdentifier type;
 
+    public InstanceOf(AbstractExpr expr, AbstractIdentifier type) {
+        this.expr = expr;
+        this.type = type;
+    }
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {

@@ -40,7 +40,7 @@ public class EnvironmentType {
         // not added to envTypes, it's not visible for the user.
 
         Symbol nullSymb = compiler.createSymbol("null");
-        NullType NULL = new NullType(nullSymb);
+        NULL = new NullType(nullSymb);
         envTypes.put(nullSymb, new TypeDefinition(NULL, Location.BUILTIN));
 
         Symbol objectSymbol = compiler.createSymbol("Object");
@@ -68,6 +68,7 @@ public class EnvironmentType {
     public final FloatType   FLOAT;
     public final StringType  STRING;
     public final BooleanType BOOLEAN;
+    public final NullType    NULL;
     public final ClassType   OBJECT;
     
 }

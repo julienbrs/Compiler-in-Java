@@ -19,6 +19,10 @@ public class Return extends AbstractInst {
 
     private AbstractExpr returnExpr;
 
+    public Return(AbstractExpr returnExpr) {
+        this.returnExpr = returnExpr;
+    }
+
     @Override
     protected void verifyInst(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass,
             Type returnType) throws ContextualError {
@@ -50,7 +54,7 @@ public class Return extends AbstractInst {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        returnExpr.prettyPrint(s,prefix,true);
         
     }
 

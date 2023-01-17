@@ -180,7 +180,7 @@ inst returns[AbstractInst tree]
     | RETURN expr SEMI {
 
             assert($expr.tree != null);
-            $tree = $expr.tree;
+            $tree = new Return($expr.tree);
             setLocation($tree, $RETURN);
         }
     ;
@@ -333,7 +333,8 @@ inequality_expr returns[AbstractExpr tree]
     | e1=inequality_expr INSTANCEOF type {
             assert($e1.tree != null);
             assert($type.tree != null);
-            //TODO
+            $tree  = new InstanceOf($e1.tree,$type.tree);
+            setLocation($tree, $INSTANCEOF);
         }
     ;
 
@@ -425,10 +426,15 @@ select_expr returns[AbstractExpr tree]
 
         }
         (o=OPARENT args=list_expr CPARENT {
+
             // we matched "e1.i(args)"
             assert($args.tree != null);
+            $tree = new MethodCall($e1.tree, $i.tree, $args.tree);
+            setLocation($tree, $DOT);
         }
         | /* epsilon */ {
+            $tree = new Selection($e1.tree, $i.tree);
+            setLocation($tree, $DOT);
             // we matched "e.i"
         }
         )
@@ -458,10 +464,15 @@ primary_expr returns[AbstractExpr tree]
         }
     | NEW ident OPARENT CPARENT {
             assert($ident.tree != null);
+            $tree=new New($ident.tree);
+            setLocation($tree, $NEW);
         }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
             assert($expr.tree != null);
+            $tree = new Cast($type.tree, $expr.tree);
+            setLocation($tree, $cast);
+            
         }
     | literal {
            
@@ -513,6 +524,9 @@ literal returns[AbstractExpr tree]
         } catch(DecaRecognitionException e) { $tree=null; }
         }
     | THIS {
+        $tree = new This(true);
+        setLocation($tree, $THIS);
+
         }
     | NULL {
         }

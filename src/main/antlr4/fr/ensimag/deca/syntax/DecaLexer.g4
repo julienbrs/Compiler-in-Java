@@ -101,3 +101,6 @@ COMMENT : ('/*' .*? '*/' | '//' .*? '\n') { skip(); };
 // fragment FILENAME : (LETTER|DIGIT|'.'|'-'|'_')+;
 // INCLUDE  : '#include' SPACE*'"'FILENAME'"'{doInclude(FILENAME);};
 //todo
+// Extension 
+OBRACKET : '[';
+CBRACKET : ']';
