@@ -72,7 +72,9 @@ public class MethodCall extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        expr.prettyPrint(s, prefix, false);
+        methodIdent.prettyPrint(s, prefix, false);
+        rValStar.prettyPrint(s, prefix, true);
         
     }
 

@@ -35,7 +35,7 @@ public class MethodBody extends AbstractMethodBody{
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         
         declvar.prettyPrint(s,prefix,false);
-        listInst.prettyPrint(s,prefix,false);
+        listInst.prettyPrint(s,prefix,true);
     }
 
     @Override

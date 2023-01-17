@@ -26,7 +26,8 @@ public class Selection extends AbstractSelection {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        expr.prettyPrint(s, prefix, false);
+        ident.prettyPrint(s, prefix, true);
         
     }
 
@@ -47,6 +48,13 @@ public class Selection extends AbstractSelection {
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         // TODO Auto-generated method stub
         return 0;
+    }
+
+    @Override
+    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+            throws ContextualError {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

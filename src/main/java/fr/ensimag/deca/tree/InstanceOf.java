@@ -52,7 +52,8 @@ public class InstanceOf extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        expr.prettyPrint(s, prefix, false);
+        type.prettyPrint(s, prefix, true);
         
     }
 

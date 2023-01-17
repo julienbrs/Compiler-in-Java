@@ -49,8 +49,7 @@ public class New extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
-        
+        type.prettyPrint(s, prefix, true);        
     }
 
     @Override
