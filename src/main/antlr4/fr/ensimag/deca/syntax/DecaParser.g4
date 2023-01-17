@@ -430,6 +430,8 @@ select_expr returns[AbstractExpr tree]
             assert($args.tree != null);
         }
         | /* epsilon */ {
+            $tree = new Selection($e1.tree, $i.tree);
+            
             // we matched "e.i"
         }
         )
