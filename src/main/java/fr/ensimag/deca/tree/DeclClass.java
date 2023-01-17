@@ -96,7 +96,7 @@ public class DeclClass extends AbstractDeclClass {
         if (extension != null) {
             extension.prettyPrint(s, prefix, false);
         }
-        bodyclass.prettyPrint(s,prefix,true);
+        bodyclass.prettyPrintChildren(s,prefix);
        // throw new UnsupportedOperationException("Not yet supported");
     }
 

@@ -497,13 +497,13 @@ literal returns[AbstractExpr tree]
         try{
        $tree= new IntLiteral(Integer.parseInt($INT.text));
        setLocation($tree, $INT);
-        } catch(DecaRecognitionException e) { $tree=null; }
+        } catch(NumberFormatException e) {throw new InvalidIntFormat(this, $ctx); }
         }
     | fd=FLOAT {
                 try{
        $tree= new FloatLiteral(Float.parseFloat($fd.text));
        setLocation($tree, $fd);
-        } catch(DecaRecognitionException e) { $tree=null; }
+        } catch(IllegalArgumentException e) { throw new InvalidFloatFormat(this, $ctx); }
         }
     | STRING {
          try{
