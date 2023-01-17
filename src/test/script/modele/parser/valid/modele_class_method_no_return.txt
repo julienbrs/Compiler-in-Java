@@ -1,0 +1,28 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (DummyClass)
+   |      +> [builtin] Identifier (Object)
+   |      `> ClassBody
+   |         +> ListDeclField [List with 0 elements]
+   |         +> ListDeclMethod [List with 1 elements]
+   |         |  []> [4, 4] DeclMethod
+   |         |      +> [4, 4] Identifier (void)
+   |         |      +> [4, 9] Identifier (displayName)
+   |         |      +> ListParam [List with 0 elements]
+   |         |      `> [4, 22] MethodBody
+   |         |         +> ListDeclVar [List with 0 elements]
+   |         |         +> ListInst [List with 4 elements]
+   |         |         |  []> [5, 8] Print
+   |         |         |  ||  `> ListExpr [List with 1 elements]
+   |         |         |  ||     []> [5, 14] StringLiteral (It's my name)
+   |         |         |  []> [6, 8] Println
+   |         |         |  ||  `> ListExpr [List with 1 elements]
+   |         |         |  ||     []> [6, 16] StringLiteral ( OH IM REPEATING)
+   |         |         |  []> [7, 8] Print
+   |         |         |  ||  `> ListExpr [List with 1 elements]
+   |         |         |  ||     []> [7, 15] StringLiteral (REPEATOR)
+   |         |         |  []> [8, 8] Println
+   |         |         |      `> ListExpr [List with 1 elements]
+   |         |         |         []> [8, 17] StringLiteral (REPEATOOOOOOOR)
+   `> EmptyMain

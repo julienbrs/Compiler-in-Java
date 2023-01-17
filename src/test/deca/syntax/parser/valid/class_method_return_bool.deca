@@ -1,0 +1,8 @@
+// Test une classe retournant un bool
+
+class DummyClass {
+    bool getBool(){
+        bool bool_t = true;
+        return bool_t;
+    }
+}

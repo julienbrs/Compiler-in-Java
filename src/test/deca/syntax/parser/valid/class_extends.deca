@@ -1,0 +1,9 @@
+// Test si l'extends est bien parsé
+
+class People {
+    int Courage = 50;
+}
+
+class Knight extends People {
+    int Courage = 100;
+} 

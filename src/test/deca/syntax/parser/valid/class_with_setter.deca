@@ -1,0 +1,10 @@
+// Test pour une classe avec constructeur:
+
+class Person {
+    string name;
+    int age;
+    void init(string name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
