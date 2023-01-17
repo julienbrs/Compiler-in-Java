@@ -8,6 +8,9 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 public class NullLiteral extends AbstractExpr{
 
@@ -20,7 +23,7 @@ public class NullLiteral extends AbstractExpr{
 
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
+        compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(offset)));
         return 0;
     }
 

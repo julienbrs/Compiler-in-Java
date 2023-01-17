@@ -9,6 +9,9 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.FLOAT;
+import fr.ensimag.ima.pseudocode.instructions.INT;
 
 /**
  * Instruction
@@ -70,8 +73,13 @@ public class Cast extends AbstractExpr {
 
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return 0;
+        int nbPush = expr.codeGenExpr(compiler, offset);
+        if (type.getType().isFloat() && expr.getType().isInt()) {
+            compiler.addInstruction(new FLOAT(GPRegister.getR(offset), GPRegister.getR(offset)));
+        } else if (type.getType().isInt() && expr.getType().isFloat()) {
+            compiler.addInstruction(new INT(GPRegister.getR(offset), GPRegister.getR(offset)));
+        }
+        return nbPush;
     }
 
     @Override
