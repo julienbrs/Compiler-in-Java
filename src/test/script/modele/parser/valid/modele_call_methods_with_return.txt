@@ -1,0 +1,81 @@
+`> [4, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [4, 0] DeclClass
+   |      +> [4, 6] Identifier (DummyClass)
+   |      +> [builtin] Identifier (Object)
+   |      `> ClassBody
+   |         +> ListDeclField [List with 0 elements]
+   |         +> ListDeclMethod [List with 3 elements]
+   |         |  []> [6, 4] DeclMethod
+   |         |  ||  +> [6, 4] Identifier (string)
+   |         |  ||  +> [6, 11] Identifier (getAnswer)
+   |         |  ||  +> ListParam [List with 0 elements]
+   |         |  ||  `> [6, 22] MethodBody
+   |         |  ||     +> ListDeclVar [List with 1 elements]
+   |         |  ||     |  []> [7, 15] DeclVar
+   |         |  ||     |      +> [7, 8] Identifier (string)
+   |         |  ||     |      +> [7, 15] Identifier (sensOfLife)
+   |         |  ||     |      `> [7, 26] Initialization
+   |         |  ||     |         `> [7, 28] StringLiteral (It's 42)
+   |         |  ||     +> ListInst [List with 1 elements]
+   |         |  ||     |  []> [8, 8] Return
+   |         |  ||     |      `> [8, 15] Identifier (sensOfLife)
+   |         |  []> [10, 4] DeclMethod
+   |         |  ||  +> [10, 4] Identifier (int)
+   |         |  ||  +> [10, 8] Identifier (getInt)
+   |         |  ||  +> ListParam [List with 0 elements]
+   |         |  ||  `> [10, 16] MethodBody
+   |         |  ||     +> ListDeclVar [List with 1 elements]
+   |         |  ||     |  []> [11, 12] DeclVar
+   |         |  ||     |      +> [11, 8] Identifier (int)
+   |         |  ||     |      +> [11, 12] Identifier (life)
+   |         |  ||     |      `> [11, 17] Initialization
+   |         |  ||     |         `> [11, 21] Plus
+   |         |  ||     |            +> [11, 19] Int (42)
+   |         |  ||     |            `> [11, 22] Int (0)
+   |         |  ||     +> ListInst [List with 1 elements]
+   |         |  ||     |  []> [12, 8] Return
+   |         |  ||     |      `> [12, 15] Identifier (life)
+   |         |  []> [15, 4] DeclMethod
+   |         |      +> [15, 4] Identifier (bool)
+   |         |      +> [15, 9] Identifier (getBool)
+   |         |      +> ListParam [List with 0 elements]
+   |         |      `> [15, 18] MethodBody
+   |         |         +> ListDeclVar [List with 1 elements]
+   |         |         |  []> [16, 13] DeclVar
+   |         |         |      +> [16, 8] Identifier (bool)
+   |         |         |      +> [16, 13] Identifier (bool_t)
+   |         |         |      `> [16, 20] Initialization
+   |         |         |         `> [16, 22] BooleanLiteral (true)
+   |         |         +> ListInst [List with 1 elements]
+   |         |         |  []> [17, 8] Return
+   |         |         |      `> [17, 15] Identifier (bool_t)
+   `> [21, 0] Main
+      +> ListDeclVar [List with 3 elements]
+      |  []> [22, 15] DeclVar
+      |  ||  +> [22, 4] Identifier (DummyClass)
+      |  ||  +> [22, 15] Identifier (dumb)
+      |  ||  `> [22, 20] Initialization
+      |  ||     `> [22, 22] New
+      |  ||        `> [22, 26] Identifier (DummyClass)
+      |  []> [23, 8] DeclVar
+      |  ||  +> [23, 4] Identifier (int)
+      |  ||  +> [23, 8] Identifier (theInt)
+      |  ||  `> [23, 15] Initialization
+      |  ||     `> [23, 21] MethodCall
+      |  ||        +> [23, 17] Identifier (dumb)
+      |  ||        +> [23, 22] Identifier (getInt)
+      |  ||        `> ListExpr [List with 0 elements]
+      |  []> [24, 9] DeclVar
+      |      +> [24, 4] Identifier (bool)
+      |      +> [24, 9] Identifier (theBool)
+      |      `> [24, 17] Initialization
+      |         `> [24, 23] MethodCall
+      |            +> [24, 19] Identifier (dumb)
+      |            +> [24, 24] Identifier (getBool)
+      |            `> ListExpr [List with 0 elements]
+      `> ListInst [List with 1 elements]
+         []> [25, 13] MethodCall
+             +> This
+             +> [25, 4] Identifier (getAnswer)
+             `> ListExpr [List with 0 elements]

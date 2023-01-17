@@ -35,9 +35,15 @@ public class MethodCall extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
+        ExpDefinition def;
+        if (expr == null) {
+            def = currentClass.getMembers().get(methodIdent.getName());
+        } else {
+            // ERROR MSG
+            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
+            def = e.getDefinition().getMembers().get(methodIdent.getName());
+        }
         // ERROR MSG
-        ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
-        ExpDefinition def = e.getDefinition().getMembers().get(methodIdent.getName());
         if (def == null) {
             // ERROR MSG
             throw new ContextualError("", getLocation());
@@ -72,14 +78,17 @@ public class MethodCall extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        expr.prettyPrint(s, prefix, false);
+        methodIdent.prettyPrint(s, prefix, false);
+        rValStar.prettyPrint(s, prefix, true);
         
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        expr.iter(f);
+        methodIdent.iter(f);;
+        rValStar.iter(f);
     }
 
     

@@ -3,7 +3,9 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.ContextualError;
+import fr.ensimag.deca.context.Definition;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
@@ -98,8 +100,17 @@ public abstract class AbstractExpr extends AbstractInst {
             newThis.setLocation(loc);
             newThis.verifyExpr(compiler, localEnv, currentClass);
             return newThis;
+        } else if (t.isNull() && expectedType.isClass()) {
+            return this;
+        } else {
+            // ERROR MSG
+            ClassType cType = t.asClassType("", getLocation());
+            // ERROR MSG
+            ClassType expType = expectedType.asClassType("", getLocation());
+            if (cType.isSubClassOf(expType)) {
+                return this;
+            }
         }
-        // TODO : verifier les sous type dans le avec objet
         // ERROR MSG
         throw new ContextualError("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
     }

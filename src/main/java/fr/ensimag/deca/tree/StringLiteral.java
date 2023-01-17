@@ -49,8 +49,7 @@ public class StringLiteral extends AbstractStringLiteral {
 
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO : Erreur : un string ne peut faire part d'une expression en dehors d'un print
-        return 0;
+        throw new UnsupportedOperationException("Should not end up here");
     }
 
     @Override

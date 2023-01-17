@@ -22,6 +22,8 @@ public class DeclClass extends AbstractDeclClass {
     AbstractIdentifier name;
     AbstractIdentifier extension;
     private ClassBody bodyclass;
+    ListDeclField field;
+    ListDeclMethod method;
      
     public DeclClass(AbstractIdentifier name, AbstractIdentifier extension, ClassBody body) {
         this.name = name;
@@ -31,9 +33,17 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print("class { ... A FAIRE ... }");
+        s.print("class ");
+        name.decompile(s);
+        s.print(" extends ");
+        extension.decompile(s);
+        s.print(" {");
+        field.decompile(s);
+        method.decompile(s);
+        s.print("}");
     }
 
+    // passe 1
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
@@ -54,6 +64,7 @@ public class DeclClass extends AbstractDeclClass {
         }
     }
 
+    // passe 2
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
@@ -67,6 +78,7 @@ public class DeclClass extends AbstractDeclClass {
 
     }
     
+    // passe 3
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");

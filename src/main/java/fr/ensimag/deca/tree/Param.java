@@ -22,8 +22,9 @@ public class Param extends AbstractParam {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        type.decompile(s);
+        s.print(" ");
+        name.decompile(s);
     }
 
     @Override
@@ -35,8 +36,8 @@ public class Param extends AbstractParam {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        type.iter(f);
+        name.iter(f);        
     }
     
     public void verifyParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {

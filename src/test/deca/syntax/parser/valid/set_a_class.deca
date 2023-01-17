@@ -1,0 +1,17 @@
+// Setting the class attributes in the main
+
+
+class Person {
+    string name;
+    int age;
+    void init(string name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+{
+    Person person = new Person();
+    person.init();
+    
+}

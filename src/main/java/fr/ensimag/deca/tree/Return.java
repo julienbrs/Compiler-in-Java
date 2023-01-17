@@ -41,15 +41,10 @@ public class Return extends AbstractInst {
     }
 
     @Override
-    public void decompileInst(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        s.print("return");
+        returnExpr.decompile(s);
+        s.print(";");
     }
 
     @Override
@@ -60,7 +55,6 @@ public class Return extends AbstractInst {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        returnExpr.iter(f);
     }
 }
