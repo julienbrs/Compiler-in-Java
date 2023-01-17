@@ -1,0 +1,7 @@
+// Test avec classe ayant un attribut protected
+// Test contextuellement faux, type string inexistant
+
+class Protector {
+    string publiclyDoing = "IM PROTECTINGGGG"; 
+    protected string secretlyDoing = "sleeping zzzz...";
+}

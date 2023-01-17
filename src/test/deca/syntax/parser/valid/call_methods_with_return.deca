@@ -1,0 +1,27 @@
+// Calling methods that return something, and using the value to do stuff
+// We know that it would crash at context test because of the string init and return
+
+class DummyClass {
+
+    string getAnswer(){
+        string sensOfLife = "It's 42";
+        return sensOfLife;
+    }
+    int getInt(){
+        int life = 42+0;
+        return life;
+    }
+
+    bool getBool(){
+        bool bool_t = true;
+        return bool_t;
+    }
+}
+
+{
+    DummyClass dumb = new DummyClass();
+    int theInt = dumb.getInt();
+    bool theBool = dumb.getBool();
+    getAnswer();
+
+}
