@@ -426,10 +426,15 @@ select_expr returns[AbstractExpr tree]
 
         }
         (o=OPARENT args=list_expr CPARENT {
+
             // we matched "e1.i(args)"
             assert($args.tree != null);
+            $tree = new MethodCall($e1.tree, $i.tree, $args.tree);
+            setLocation($tree, $DOT);
         }
         | /* epsilon */ {
+            $tree = new Selection($e1.tree, $i.tree);
+            setLocation($tree, $DOT);
             // we matched "e.i"
         }
         )

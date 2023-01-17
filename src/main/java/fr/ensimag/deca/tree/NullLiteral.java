@@ -9,32 +9,12 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
-/**
- * Instruction
- *
- * @author gl11
- * @date 16/01/2023
- */
-public class InstanceOf extends AbstractExpr {
-
-    private AbstractExpr expr;
-    private AbstractIdentifier type;
-
-    public InstanceOf(AbstractExpr expr, AbstractIdentifier type) {
-        this.expr = expr;
-        this.type = type;
-    }
+public class NullLiteral extends AbstractExpr{
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type tExpr = expr.verifyExpr(compiler, localEnv, currentClass);
-        Type tType = type.verifyType(compiler);
-        if (!tExpr.isClassOrNull() || !tType.isClass()) {
-            // ERROR MSG
-            throw new ContextualError(" : rule 3.41", getLocation());
-        }
-        setType(compiler.environmentType.BOOLEAN);
+        setType(compiler.environmentType.NULL);
         return getType();
     }
 
@@ -46,24 +26,18 @@ public class InstanceOf extends AbstractExpr {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print("(");
-        expr.decompile(s);
-        s.print(" instanceof ");
-        type.decompile(s);
-        s.print(")");
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        expr.prettyPrint(s, prefix, false);
-        type.prettyPrint(s, prefix, true);
+        // no children
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        expr.iter(f);
-        type.iter(f);
+        // no children
     }
-
     
 }
