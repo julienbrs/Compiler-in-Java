@@ -26,8 +26,11 @@ public class ListExpr extends TreeList<AbstractExpr> {
         // }
 
         Iterator<AbstractExpr> ite = getList().iterator();
-        AbstractExpr current = ite.next();
-        current.decompile(s);
+        AbstractExpr current;
+        if (ite.hasNext()) {
+            current = ite.next();
+            current.decompile(s);
+        }
         while (ite.hasNext()) {
             current = ite.next();
             s.print(", ");
