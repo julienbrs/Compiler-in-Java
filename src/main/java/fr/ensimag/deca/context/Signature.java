@@ -1,6 +1,7 @@
 package fr.ensimag.deca.context;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -22,6 +23,10 @@ public class Signature {
     
     public int size() {
         return args.size();
+    }
+
+    public Iterator<Type> iterator() {
+        return args.iterator();
     }
 
     @Override
