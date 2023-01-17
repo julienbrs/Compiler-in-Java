@@ -10,8 +10,10 @@ public class ListDeclMethod extends TreeList<DeclMethod> {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        for (AbstractDeclMethod c : getList()) {
+            c.decompile(s);
+            s.println();
+        }
     }
     
     /**

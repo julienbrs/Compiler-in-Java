@@ -29,6 +29,7 @@ public class Main extends AbstractMain {
     
     private ListDeclVar declVariables;
     private ListInst insts;
+    
     public Main(ListDeclVar declVariables,
             ListInst insts) {
         Validate.notNull(declVariables);

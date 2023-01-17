@@ -1,5 +1,7 @@
 package fr.ensimag.deca.tree;
 
+import java.util.Iterator;
+
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
@@ -10,8 +12,14 @@ public class ListParam extends TreeList<Param> {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        Iterator<Param> ite = getList().iterator();
+        Param current = ite.next();
+        current.decompile(s);
+        while (ite.hasNext()) {
+            current = ite.next();
+            s.print(", ");
+            current.decompile(s);
+        }
     }
     
     public void verifyListParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {

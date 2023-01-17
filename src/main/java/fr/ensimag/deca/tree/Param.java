@@ -22,8 +22,9 @@ public class Param extends AbstractParam {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        type.decompile(s);
+        s.print(" ");
+        name.decompile(s);
     }
 
     @Override

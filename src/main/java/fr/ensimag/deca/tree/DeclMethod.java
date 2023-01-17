@@ -29,8 +29,13 @@ public class DeclMethod extends AbstractDeclMethod {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        type.decompile(s);
+        s.print(" ");
+        ident.decompile(s);
+        s.print("(");
+        listeparametre.decompile(s);
+        s.print(")");
+        methodBody.decompile(s);
     }
 
     @Override

@@ -22,6 +22,8 @@ public class DeclClass extends AbstractDeclClass {
     AbstractIdentifier name;
     AbstractIdentifier extension;
     private ClassBody bodyclass;
+    ListDeclField field;
+    ListDeclMethod method;
      
     public DeclClass(AbstractIdentifier name, AbstractIdentifier extension, ClassBody body) {
         this.name = name;
@@ -31,7 +33,14 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print("class { ... A FAIRE ... }");
+        s.print("class ");
+        name.decompile(s);
+        s.print(" extends ");
+        extension.decompile(s);
+        s.print(" {");
+        field.decompile(s);
+        method.decompile(s);
+        s.print("}");
     }
 
     // passe 1
