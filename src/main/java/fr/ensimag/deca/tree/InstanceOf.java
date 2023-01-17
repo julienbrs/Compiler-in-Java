@@ -57,6 +57,7 @@ public class InstanceOf extends AbstractExpr {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         expr.prettyPrint(s, prefix, false);
         type.prettyPrint(s, prefix, true);
+        
     }
 
     @Override

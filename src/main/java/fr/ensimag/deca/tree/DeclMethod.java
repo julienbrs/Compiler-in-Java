@@ -43,8 +43,7 @@ public class DeclMethod extends AbstractDeclMethod {
         type.prettyPrint(s, prefix, false);
         ident.prettyPrint(s, prefix, false);
         listeparametre.prettyPrint(s, prefix, false);
-        methodBody.prettyPrintChildren(s, prefix);
-        
+        methodBody.prettyPrint(s,prefix,true);
     }
 
     @Override

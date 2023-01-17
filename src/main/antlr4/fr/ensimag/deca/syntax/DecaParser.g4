@@ -448,6 +448,8 @@ primary_expr returns[AbstractExpr tree]
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
+            $tree = new MethodCall(new This(true), $m.tree, $args.tree);
+            setLocation($tree, $OPARENT);
         }
     | OPARENT expr CPARENT {
             $tree = $expr.tree;
@@ -524,11 +526,13 @@ literal returns[AbstractExpr tree]
         } catch(DecaRecognitionException e) { $tree=null; }
         }
     | THIS {
-        $tree = new This(true);
+        $tree = new This(false);
         setLocation($tree, $THIS);
 
         }
     | NULL {
+        $tree = new NullLiteral();
+        setLocation($tree, $NULL);
         }
     ;
 
@@ -641,9 +645,10 @@ decl_method returns [ DeclMethod tree]
 @init {
 }
     : type ident OPARENT params=list_params CPARENT (block {
-        
-        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodBody($block.decls,$block.insts));
-        setLocation($tree, $OPARENT);
+       MethodBody body =  new MethodBody($block.decls,$block.insts);
+       setLocation(body, $block.start);
+        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,body);
+        setLocation($tree, $type.start);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
         

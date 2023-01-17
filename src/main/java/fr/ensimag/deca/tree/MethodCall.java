@@ -81,6 +81,7 @@ public class MethodCall extends AbstractExpr {
         expr.prettyPrint(s, prefix, false);
         methodIdent.prettyPrint(s, prefix, false);
         rValStar.prettyPrint(s, prefix, true);
+        
     }
 
     @Override

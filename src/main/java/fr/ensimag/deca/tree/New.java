@@ -50,7 +50,7 @@ public class New extends AbstractExpr {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        type.prettyPrint(s, prefix, true);
+        type.prettyPrint(s, prefix, true);        
     }
 
     @Override
