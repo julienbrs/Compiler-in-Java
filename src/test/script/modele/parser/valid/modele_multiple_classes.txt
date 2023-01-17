@@ -3,35 +3,33 @@
    |  []> [4, 0] DeclClass
    |  ||  +> [4, 6] Identifier (Knight)
    |  ||  +> [builtin] Identifier (Object)
-   |  ||  `> ClassBody
-   |  ||     +> ListDeclField [List with 0 elements]
-   |  ||     +> ListDeclMethod [List with 1 elements]
-   |  ||     |  []> [5, 4] DeclMethod
-   |  ||     |      +> [5, 4] Identifier (void)
-   |  ||     |      +> [5, 9] Identifier (whoIs)
-   |  ||     |      +> ListParam [List with 0 elements]
-   |  ||     |      `> [5, 17] MethodBody
-   |  ||     |         +> ListDeclVar [List with 0 elements]
-   |  ||     |         +> ListInst [List with 1 elements]
-   |  ||     |         |  []> [6, 8] Println
-   |  ||     |         |      `> ListExpr [List with 1 elements]
-   |  ||     |         |         []> [6, 16] StringLiteral (Brave protector of the King)
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  +> ListDeclMethod [List with 1 elements]
+   |  ||  |  []> [5, 4] DeclMethod
+   |  ||  |      +> [5, 4] Identifier (void)
+   |  ||  |      +> [5, 9] Identifier (whoIs)
+   |  ||  |      +> ListParam [List with 0 elements]
+   |  ||  |      `> [5, 17] MethodBody
+   |  ||  |         +> ListDeclVar [List with 0 elements]
+   |  ||  |         +> ListInst [List with 1 elements]
+   |  ||  |         |  []> [6, 8] Println
+   |  ||  |         |      `> ListExpr [List with 1 elements]
+   |  ||  |         |         []> [6, 16] StringLiteral (Brave protector of the King)
    |  []> [10, 0] DeclClass
    |      +> [10, 6] Identifier (King)
    |      +> [builtin] Identifier (Object)
-   |      `> ClassBody
-   |         +> ListDeclField [List with 0 elements]
-   |         +> ListDeclMethod [List with 1 elements]
-   |         |  []> [11, 4] DeclMethod
-   |         |      +> [11, 4] Identifier (void)
-   |         |      +> [11, 9] Identifier (whoIs)
-   |         |      +> ListParam [List with 0 elements]
-   |         |      `> [11, 17] MethodBody
-   |         |         +> ListDeclVar [List with 0 elements]
-   |         |         +> ListInst [List with 1 elements]
-   |         |         |  []> [12, 8] Println
-   |         |         |      `> ListExpr [List with 1 elements]
-   |         |         |         []> [12, 16] StringLiteral (Just a sleeper guy)
+   |      +> ListDeclField [List with 0 elements]
+   |      +> ListDeclMethod [List with 1 elements]
+   |      |  []> [11, 4] DeclMethod
+   |      |      +> [11, 4] Identifier (void)
+   |      |      +> [11, 9] Identifier (whoIs)
+   |      |      +> ListParam [List with 0 elements]
+   |      |      `> [11, 17] MethodBody
+   |      |         +> ListDeclVar [List with 0 elements]
+   |      |         +> ListInst [List with 1 elements]
+   |      |         |  []> [12, 8] Println
+   |      |         |      `> ListExpr [List with 1 elements]
+   |      |         |         []> [12, 16] StringLiteral (Just a sleeper guy)
    `> [16, 0] Main
       +> ListDeclVar [List with 2 elements]
       |  []> [17, 11] DeclVar
