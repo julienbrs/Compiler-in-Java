@@ -26,6 +26,12 @@ public class MethodCall extends AbstractExpr {
     private AbstractIdentifier methodIdent;
     private ListExpr rValStar;
 
+    public MethodCall(AbstractExpr expr, AbstractIdentifier methodIdent, ListExpr rValStar) {
+        this.expr = expr;
+        this.methodIdent = methodIdent;
+        this.rValStar = rValStar;
+    }
+
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {

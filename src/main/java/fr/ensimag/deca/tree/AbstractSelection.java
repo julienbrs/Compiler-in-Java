@@ -1,5 +1,5 @@
 package fr.ensimag.deca.tree;
 
-public abstract class AbstractSelection extends Tree {
+public abstract class AbstractSelection extends AbstractExpr {
     
 }
