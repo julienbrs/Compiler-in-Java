@@ -36,8 +36,7 @@ public class MethodAsmBody extends AbstractMethodBody {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        asm.iter(f);        
     }
     
 }

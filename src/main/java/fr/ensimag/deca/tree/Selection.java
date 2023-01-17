@@ -9,7 +9,6 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class Selection extends AbstractSelection {
@@ -37,8 +36,8 @@ public class Selection extends AbstractSelection {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        expr.iter(f);
+        ident.iter(f);
     }
 
     @Override
