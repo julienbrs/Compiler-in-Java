@@ -37,8 +37,8 @@ public class ClassBody extends Tree{
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        declField.decompile(s);
+        declMethod.decompile(s);
     }
 
     @Override
