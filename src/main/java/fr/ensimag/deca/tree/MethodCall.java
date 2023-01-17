@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
+import java.util.Iterator;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -28,8 +29,26 @@ public class MethodCall extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type e = expr.verifyExpr(compiler, localEnv, currentClass);
-        
+        // ERROR MSG
+        ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
+        ExpDefinition def = e.getDefinition().getMembers().get(methodIdent.getName());
+        if (def == null) {
+            // ERROR MSG
+            throw new ContextualError("", getLocation());
+        }
+        MethodDefinition mDef = def.asMethodDefinition("", getLocation());
+        Type t = mDef.getType();
+        Signature sig = mDef.getSignature();
+        if (sig.size() != rValStar.size()) {
+            // ERROR MSG
+            throw new ContextualError("", getLocation());
+        }
+        Iterator<Type> ite = sig.iterator();
+        for (AbstractExpr absExpr : rValStar.getList()) {
+            Type expType = ite.next();
+            absExpr.verifyRValue(compiler, localEnv, currentClass, expType);
+        }
+        setType(t);
         return getType();
     }
 
