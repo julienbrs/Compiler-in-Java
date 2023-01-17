@@ -22,8 +22,6 @@ public class DeclClass extends AbstractDeclClass {
     AbstractIdentifier name;
     AbstractIdentifier extension;
     private ClassBody bodyclass;
-    ListDeclField field;
-    ListDeclMethod method;
      
     public DeclClass(AbstractIdentifier name, AbstractIdentifier extension, ClassBody body) {
         this.name = name;
@@ -38,8 +36,7 @@ public class DeclClass extends AbstractDeclClass {
         s.print(" extends ");
         extension.decompile(s);
         s.print(" {");
-        field.decompile(s);
-        method.decompile(s);
+        bodyclass.decompile(s);
         s.print("}");
     }
 
@@ -102,7 +99,10 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        throw new UnsupportedOperationException("Not yet supported");
+        // throw new UnsupportedOperationException("Not yet supported");
+        name.iter(f);
+        extension.iter(f);
+        bodyclass.iter(f);
     }
 
 }
