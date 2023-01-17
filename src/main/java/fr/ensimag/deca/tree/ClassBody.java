@@ -44,7 +44,7 @@ public class ClassBody extends Tree{
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         declField.prettyPrint(s, prefix, false);
-        declMethod.prettyPrint(s, prefix, false);        
+        declMethod.prettyPrint(s, prefix, true);        
     }
 
     @Override
