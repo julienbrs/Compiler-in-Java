@@ -57,6 +57,5 @@ public class Param extends AbstractParam {
             // ERROR MSG
             throw new ContextualError("??? : rule 3.12", getLocation());
         }
-        // name.verifyType(compiler);
     }
 }

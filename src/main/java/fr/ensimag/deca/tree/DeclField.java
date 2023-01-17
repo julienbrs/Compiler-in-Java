@@ -42,7 +42,6 @@ public class DeclField extends AbstractDeclField{
             varName.setDefinition(new FieldDefinition(t, getLocation(), visibility, currentClass, currentClass.getNumberOfFields()));
             localEnv.declare(varName.getName(), varName.getExpDefinition()); 
         } catch (DoubleDefException e) {
-            // TODO : a vérifier
             // ERROR MSG
             throw new ContextualError("The field \""+varName.getName()+"\" is already declared : rule 2.4", getLocation());
         }
@@ -79,7 +78,8 @@ public class DeclField extends AbstractDeclField{
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        type.iter(f);
+        varName.iter(f);
+        initialization.iter(f);
     }
 }

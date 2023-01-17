@@ -60,8 +60,7 @@ public class DeclClass extends AbstractDeclClass {
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        TypeDefinition supTypeDef = compiler.environmentType.defOfType(extension.getName());
-        ClassDefinition supClassDef = (ClassDefinition) supTypeDef;
+        ClassDefinition supClassDef = (ClassDefinition) compiler.environmentType.defOfType(extension.getName());
         EnvironmentExp envExpSuper = supClassDef.getMembers();
         EnvironmentExp envExp = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
         bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
@@ -74,7 +73,6 @@ public class DeclClass extends AbstractDeclClass {
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        Type t = name.verifyType(compiler);
         extension.verifyType(compiler);
         EnvironmentExp localEnv = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
         bodyclass.getListDeclField().verifyListFieldBody(compiler, localEnv, name.getClassDefinition());
