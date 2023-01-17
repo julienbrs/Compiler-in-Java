@@ -34,6 +34,7 @@ public class DeclClass extends AbstractDeclClass {
         s.print("class { ... A FAIRE ... }");
     }
 
+    // passe 1
     @Override
     protected void verifyClass(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
@@ -54,6 +55,7 @@ public class DeclClass extends AbstractDeclClass {
         }
     }
 
+    // passe 2
     @Override
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
@@ -68,6 +70,7 @@ public class DeclClass extends AbstractDeclClass {
 
     }
     
+    // passe 3
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
