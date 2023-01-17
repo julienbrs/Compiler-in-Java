@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -199,7 +200,12 @@ public class Identifier extends AbstractIdentifier {
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        setDefinition(compiler.environmentType.defOfType(name));
+        TypeDefinition def = compiler.environmentType.defOfType(name);
+        if (def == null) {
+            // ERROR MSG
+            throw new ContextualError("", getLocation());
+        }
+        setDefinition(def);
         setType(definition.getType());
         return this.getType();
     }
@@ -215,7 +221,7 @@ public class Identifier extends AbstractIdentifier {
         assert(getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
-        compiler.addInstruction(new CMP(0, GPRegister.R0));
+        compiler.addInstruction(new CMP(1, GPRegister.R0));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
