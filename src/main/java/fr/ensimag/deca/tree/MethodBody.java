@@ -10,37 +10,39 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 public class MethodBody extends AbstractMethodBody{
-    private ListDeclVar declvar;
+    private ListDeclVar declVar;
     private ListInst listInst;
 
-    public MethodBody(ListDeclVar declvar, ListInst listInst) {
-        this.declvar = declvar;
+    public MethodBody(ListDeclVar declVar, ListInst listInst) {
+        this.declVar = declVar;
         this.listInst = listInst;
     }
 
     @Override
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
         localEnv.setParent(paramEnv);
-        declvar.verifyListDeclVariable(compiler, localEnv, currentClass);
+        declVar.verifyListDeclVariable(compiler, localEnv, currentClass);
         listInst.verifyListInst(compiler, localEnv, currentClass, returnType);
     }
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        s.print("{");
+        declVar.decompile(s);
+        listInst.decompile(s);
+        s.print("}");
     }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         
-        declvar.prettyPrint(s,prefix,false);
-        listInst.prettyPrint(s,prefix,true);
+        declVar.prettyPrint(s,prefix,false);
+        listInst.prettyPrint(s,prefix,false);
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        declvar.iter(f);
+        declVar.iter(f);
         listInst.iter(f);
     }
     

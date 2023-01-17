@@ -76,8 +76,11 @@ public class Cast extends AbstractExpr {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        s.print("(");
+        type.decompile(s);
+        s.print(") (");
+        expr.decompile(s);
+        s.print(")");
     }
 
     @Override
@@ -88,8 +91,8 @@ public class Cast extends AbstractExpr {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        type.iter(f);
+        expr.iter(f);
     }
 
     

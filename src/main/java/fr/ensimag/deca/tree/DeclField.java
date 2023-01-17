@@ -58,9 +58,16 @@ public class DeclField extends AbstractDeclField{
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        if (visibility.equals(Visibility.PROTECTED)) {
+            s.print(visibility + " ");
+        }
+        type.decompile(s);
+        s.print(" ");
+        varName.decompile(s);
+        initialization.decompile(s);
+        s.print(";");
     }
+
     @Override
     protected String prettyPrintNode() {
         return "[visibility = "+this.visibility.toString()+"]  "+this.getClass().getSimpleName();
