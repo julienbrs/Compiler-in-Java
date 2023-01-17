@@ -34,7 +34,7 @@ public class DeclMethod extends AbstractDeclMethod {
         ident.decompile(s);
         s.print("(");
         listeparametre.decompile(s);
-        s.print(")");
+        s.print(") ");
         methodBody.decompile(s);
     }
 

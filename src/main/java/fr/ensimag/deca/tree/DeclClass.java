@@ -35,9 +35,11 @@ public class DeclClass extends AbstractDeclClass {
         name.decompile(s);
         s.print(" extends ");
         extension.decompile(s);
-        s.print(" {");
+        s.println(" {");
+        s.indent();
         bodyclass.decompile(s);
-        s.print("}");
+        s.unindent();
+        s.println("}");
     }
 
     // passe 1
@@ -93,7 +95,7 @@ public class DeclClass extends AbstractDeclClass {
         if (extension != null) {
             extension.prettyPrint(s, prefix, false);
         }
-        bodyclass.prettyPrint(s,prefix,true);
+        bodyclass.prettyPrintChildren(s,prefix);
        // throw new UnsupportedOperationException("Not yet supported");
     }
 
@@ -102,7 +104,7 @@ public class DeclClass extends AbstractDeclClass {
         // throw new UnsupportedOperationException("Not yet supported");
         name.iter(f);
         extension.iter(f);
-        bodyclass.iter(f);
+        bodyclass.iterChildren(f);
     }
 
 }
