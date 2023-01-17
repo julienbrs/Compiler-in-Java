@@ -60,7 +60,7 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     protected int[] codeGenOperande(DecacCompiler compiler, int offset) {
         int[] res = {0, 0};
         int nbLeftPush = codeGenLeftOperande(compiler, offset);
-        if (offset == compiler.getCompilerOptions().getRmax()) {
+        if (offset == compiler.getCompilerOptions().getRmax() - 1) {
             compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
             int nbRightPush = codeGenRightOperande(compiler, offset);
             compiler.addInstruction(new LOAD(GPRegister.getR(offset), GPRegister.R0));

@@ -13,8 +13,11 @@ public class ListParam extends TreeList<Param> {
     @Override
     public void decompile(IndentPrintStream s) {
         Iterator<Param> ite = getList().iterator();
-        Param current = ite.next();
-        current.decompile(s);
+        Param current;
+        if (ite.hasNext()) {
+            current = ite.next();
+            current.decompile(s);
+        }
         while (ite.hasNext()) {
             current = ite.next();
             s.print(", ");

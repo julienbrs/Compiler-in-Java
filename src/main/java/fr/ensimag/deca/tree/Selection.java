@@ -20,8 +20,9 @@ public class Selection extends AbstractSelection {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        expr.decompile(s);
+        s.print(".");
+        ident.decompile(s);
     }
 
     @Override

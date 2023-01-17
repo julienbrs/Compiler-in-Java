@@ -1,0 +1,8 @@
+// Test une classe retournant un int
+
+class DummyClass {
+    int getInt(){
+        int life = 42+0;
+        return life;
+    }
+}
