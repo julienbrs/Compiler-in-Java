@@ -44,15 +44,13 @@ public class ClassBody extends Tree{
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         declField.prettyPrint(s, prefix, false);
-        declMethod.prettyPrint(s, prefix, false);
-        // TODO Auto-generated method stub
-        
+        declMethod.prettyPrint(s, prefix, false);        
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        declField.iter(f);
+        declMethod.iter(f);
     }
 
     

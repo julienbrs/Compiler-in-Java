@@ -35,8 +35,8 @@ public class Param extends AbstractParam {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        type.iter(f);
+        name.iter(f);        
     }
     
     public void verifyParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {
