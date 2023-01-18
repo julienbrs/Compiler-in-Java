@@ -53,8 +53,7 @@ public class TabIdentifier extends AbstractIdentifier{
 
     @Override
     public Symbol getName() {
-        // TODO Auto-generated method stub
-        return null;
+       return name;
     }
 
     @Override
@@ -115,10 +114,19 @@ public class TabIdentifier extends AbstractIdentifier{
 
     @Override
     String prettyPrintNode() {
-        return "TAB Identifier (" + getName() + ")";
+        return "TAB Identifier (" +this.getName() + ")";
     }
     @Override
     protected void iterChildren(TreeFunction f) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+
+
+    @Override
+    public void setName(Symbol a) {
         // TODO Auto-generated method stub
         
     }

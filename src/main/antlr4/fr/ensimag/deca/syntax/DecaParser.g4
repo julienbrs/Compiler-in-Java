@@ -85,6 +85,10 @@ decl_var_set[ListDeclVar l]
     type OBRACKET CBRACKET list_decl_varTab[$l,$type.tree,new IntLiteral(1)] SEMI {
 
     }
+    |
+    type OBRACKET expr CBRACKET list_decl_varTab[$l,$type.tree,$expr.tree] SEMI {
+
+    }
     ;
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
@@ -128,21 +132,27 @@ decl_varTab[AbstractIdentifier t ] returns[AbstractDeclVar tree]
 decl_varTaba[AbstractIdentifier t , AbstractExpr a] returns[AbstractDeclVar tree] 
 @init { 
     Array Arr = new Array();  
+    SymbolTable sym = new SymbolTable();
+    int i = 1;
  } 
  :  u = ident  {
+
     Array r = new Array(a,t, $u.tree);
     $tree = r;
     setLocation($tree, $u.start);
     Arr= r;
 
  } (OBRACKET CBRACKET{
-   Array ad = new Array(a,t, $u.tree);
+    
+    Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
+   Array ad = new Array(new IntLiteral(1),t, ar);
     ad.setArrayFather(Arr);
     Arr.setArraySon(ad);
     Arr = ad;
+    i++;
     } | OBRACKET expr CBRACKET
-    {
-          Array ad = new Array($expr.tree,t, $u.tree);
+    {   Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
+          Array ad = new Array($expr.tree,t, ar);
     ad.setArrayFather(Arr);
     Arr.setArraySon(ad);
     Arr = ad;

@@ -163,7 +163,9 @@ public class Identifier extends AbstractIdentifier {
     public Symbol getName() {
         return name;
     }
-
+    public void setName(Symbol a ) {
+        this.name = a;
+    }
     private Symbol name;
 
     public Identifier(Symbol name) {
