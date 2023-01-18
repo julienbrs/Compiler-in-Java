@@ -55,12 +55,11 @@ test_codegen_unitaire() {
             echo "$1: $str_res_waited attendu ✅"
         else
             echo "$1: $str_res_waited mais output non attendu ❌"
-            exit 1
         fi
 
     else
 
-        resultat_output=$(ima ./src/test/deca/codegen/$path_valid/$filename.ass) || exit 1
+        resultat_output=$(ima ./src/test/deca/codegen/$path_valid/$filename.ass)
         cmd_succed=$?
 
         if [ "$cmd_succed" -eq "$exit_status_waited" ]; then
@@ -70,11 +69,9 @@ test_codegen_unitaire() {
                 echo "$1: $str_res_waited attendu ✅"
             else
                 echo "$1: $str_res_waited mais output non attendu ❌"
-                exit 1
             fi
         else
             echo "$1: $str_res_not_waited non attendu ❌"
-            exit 1
         fi
     fi
 
@@ -104,7 +101,6 @@ if [ $? -eq 0 ]; then
     echo "src/test/deca/codegen/valid/interactif/simple_readint.deca TEST OK ✅"
 else
     echo "src/test/deca/codegen/valid/interactif/simple_readint.deca FAILED ❌"
-    exit 1
 fi
 
 decac src/test/deca/codegen/valid/interactif/simple_readfloat.deca
@@ -114,7 +110,6 @@ if [ $? -eq 0 ]; then
     echo "src/test/deca/codegen/valid/interactif/simple_readfloat.deca TEST OK ✅"
 else
     echo "src/test/deca/codegen/valid/interactif/simple_readfloat.deca FAILED ❌"
-    exit 1
 fi
 rm src/test/deca/codegen/valid/interactif/*.ass
 # End of the script

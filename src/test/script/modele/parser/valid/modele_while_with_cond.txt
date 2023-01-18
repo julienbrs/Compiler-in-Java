@@ -26,12 +26,12 @@
                 []> [6, 13] Plus
                 ||  +> [6, 12] Identifier (i)
                 ||  `> [6, 15] Int (1)
-                []> [7, 8] IfThenElse
-                    +> [7, 14] Equals
-                    |  +> [7, 12] Identifier (i)
-                    |  `> [7, 17] Int (5)
+                []> [7, 12] IfThenElse
+                    +> [7, 18] Equals
+                    |  +> [7, 16] Identifier (i)
+                    |  `> [7, 21] Int (5)
                     +> ListInst [List with 1 elements]
-                    |  []> [8, 14] Assign
-                    |      +> [8, 12] Identifier (x)
-                    |      `> [8, 16] Int (7)
+                    |  []> [8, 18] Assign
+                    |      +> [8, 16] Identifier (x)
+                    |      `> [8, 20] Int (7)
                     `> ListInst [List with 0 elements]

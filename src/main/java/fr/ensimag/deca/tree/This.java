@@ -24,6 +24,11 @@ public class This extends AbstractExpr {
     }
 
     @Override
+    public boolean isImplicit() {
+        return isImplicit;
+    }
+
+    @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         Type t = currentClass.getType();
@@ -58,5 +63,4 @@ public class This extends AbstractExpr {
         // no children
     }
 
-    
 }
