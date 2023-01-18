@@ -28,6 +28,9 @@ for cas_de_test in $(find src/test/deca/syntax/parser/invalid -name '*.deca'); d
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
     test_synt "$cas_de_test" >src/test/script/modele/parser/invalid/modele_$filename.txt 2>&1
+
+    decac "$cas_de_test" -p >src/test/script/modele/parser/invalid/modele_decomp_$filename.txt 2>&1
+
 done
 
 echo "${purple}Création des modèles de tests parser sensés être valides....${reset}"
@@ -35,6 +38,8 @@ for cas_de_test in $(find src/test/deca/syntax/parser/valid/ -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
     test_synt "$cas_de_test" >$(printf "src/test/script/modele/parser/valid/modele_%s.txt" "$filename") 2>&1
+
+    decac "$cas_de_test" -p >src/test/script/modele/parser/valid/modele_decomp_$filename.txt 2>&1
 done
 
 # End of the script

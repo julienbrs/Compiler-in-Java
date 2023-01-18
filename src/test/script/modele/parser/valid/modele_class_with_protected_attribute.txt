@@ -3,17 +3,16 @@
    |  []> [4, 0] DeclClass
    |      +> [4, 6] Identifier (Protector)
    |      +> [builtin] Identifier (Object)
-   |      `> ClassBody
-   |         +> ListDeclField [List with 2 elements]
-   |         |  []> [5, 11] [visibility = PUBLIC]  DeclField
-   |         |  ||  +> [5, 4] Identifier (string)
-   |         |  ||  +> [5, 11] Identifier (publiclyDoing)
-   |         |  ||  +> [5, 25] Initialization
-   |         |  ||  |  `> [5, 27] StringLiteral (IM PROTECTINGGGG)
-   |         |  []> [6, 21] [visibility = PROTECTED]  DeclField
-   |         |      +> [6, 14] Identifier (string)
-   |         |      +> [6, 21] Identifier (secretlyDoing)
-   |         |      +> [6, 35] Initialization
-   |         |      |  `> [6, 37] StringLiteral (sleeping zzzz...)
-   |         +> ListDeclMethod [List with 0 elements]
+   |      +> ListDeclField [List with 2 elements]
+   |      |  []> [5, 11] [visibility = PUBLIC]  DeclField
+   |      |  ||  +> [5, 4] Identifier (string)
+   |      |  ||  +> [5, 11] Identifier (publiclyDoing)
+   |      |  ||  +> [5, 25] Initialization
+   |      |  ||  |  `> [5, 27] StringLiteral (IM PROTECTINGGGG)
+   |      |  []> [6, 21] [visibility = PROTECTED]  DeclField
+   |      |      +> [6, 14] Identifier (string)
+   |      |      +> [6, 21] Identifier (secretlyDoing)
+   |      |      +> [6, 35] Initialization
+   |      |      |  `> [6, 37] StringLiteral (sleeping zzzz...)
+   |      +> ListDeclMethod [List with 0 elements]
    `> EmptyMain

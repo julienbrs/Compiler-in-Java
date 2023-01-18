@@ -1,0 +1,15 @@
+// Test la règle 3.28: 
+
+class A  {
+    
+}
+
+class B {
+    A a = new A();
+    int x = a;
+}
+
+
+
+// Resultat:
+//TODOTEST

@@ -1,0 +1,17 @@
+// Test la règle 2.6: la méthode déclarée porte un nom de méthode
+// déjà attribué d'une classe super
+
+class A  {
+    void displayHello(){
+        println("Hello");
+    }
+}
+
+class B extends A {
+    void displayHello(){
+        println("Hi");
+    }
+}
+
+// Resultat:
+//# TODOTEST
