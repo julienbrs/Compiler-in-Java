@@ -65,7 +65,8 @@ public class Program extends AbstractProgram {
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
-        int nbMethod = classes.codeGenVTable(compiler);
+        // int nbMethod = classes.codeGenVTable(compiler);
+        int nbMethod = 3;
 
         compiler.addComment("Main program");
         int[] res = main.codeGenMain(compiler, nbMethod);
