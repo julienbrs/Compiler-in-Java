@@ -12,6 +12,7 @@ import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.VariableDefinition;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable;
@@ -28,18 +29,16 @@ public class Array extends AbstractDeclVar {
     private Array ArrayFather;
     private Array ArraySon;
 
-    private Definition definition;
-
     public Array(AbstractExpr nbElements, AbstractIdentifier type, AbstractIdentifier name) {
         this.nbElements = nbElements;
         this.type = type;
         this.name = name;
     }
     public void setArrayFather(Array type){
-        this.ArrayFather=type;
+        this.ArrayFather = type;
     }
     public void setArraySon(Array type){
-        this.ArraySon=type;
+        this.ArraySon = type;
     }
 
     /**
@@ -73,8 +72,21 @@ public class Array extends AbstractDeclVar {
     @Override
     protected void verifyDeclVar(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        // TODO Auto-generated method stub
-        
+        Type t = type.verifyType(compiler);
+        if (t.sameType(compiler.environmentType.VOID)) {
+            // ERROR MSG
+            throw new ContextualError("Type can't be void : rule 3.17", getLocation());
+        }
+        try {
+            name.setDefinition(new VariableDefinition(t, getLocation()));
+            // nbElements.
+            localEnv.declare(name.getName(), name.getExpDefinition());
+        } catch (DoubleDefException e) {
+            // ERROR MSG
+            throw new ContextualError("The variable \""+name.getName()+"\" is already declared : rule 3.17", getLocation());
+        }
+        name.verifyExpr(compiler, localEnv, currentClass);
+        nbElements.verifyExpr(compiler, localEnv, currentClass);
     }
 
     @Override
