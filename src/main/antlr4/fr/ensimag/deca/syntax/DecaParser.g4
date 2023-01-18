@@ -81,17 +81,77 @@ list_decl returns[ListDeclVar tree]
 decl_var_set[ListDeclVar l]
     : type list_decl_var[$l,$type.tree] SEMI{
     }
+    |
+    type OBRACKET CBRACKET list_decl_varTab[$l,$type.tree,new IntLiteral(1)] SEMI {
+
+    }
     ;
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
-    : dv1 = decl_var[$t] {
+    : dv1 = decl_var[$t]  {
             $l.add($dv1.tree);
-        } (COMMA dv2 = decl_var[$t] {
+        }
+        | dv3 = decl_varTab[$t]{
+            $l.add($dv3.tree);
+        }
+        
+         (COMMA dv2 = decl_var[$t] {
             $l.add($dv2.tree);
         }
+        | COMMA dv4 = decl_varTab[$t]{
+            $l.add($dv4.tree);
+        }
+
       )*
     ;
+list_decl_varTab[ListDeclVar l, AbstractIdentifier t,AbstractExpr a ] 
+: dv3 = decl_varTaba[$t,a]{
+            $l.add($dv3.tree);
+        }
+        
+         (COMMA dv2 = decl_varTaba[$t,a] {
+            $l.add($dv2.tree);
+        }
+         )*
+;  
+decl_varTab[AbstractIdentifier t ] returns[AbstractDeclVar tree] 
+ :  u = ident OBRACKET CBRACKET{
+    $tree = new Array(new IntLiteral(1),t, $u.tree);
+    setLocation($tree, $u.start);
+ }
+ |  u= ident OBRACKET expr CBRACKET{
+    $tree = new Array($expr.tree,t, $u.tree);
+    setLocation($tree, $u.start);
+ }
 
+;
+decl_varTaba[AbstractIdentifier t , AbstractExpr a] returns[AbstractDeclVar tree] 
+@init { 
+    Array Arr = new Array();  
+ } 
+ :  u = ident  {
+    Array r = new Array(a,t, $u.tree);
+    $tree = r;
+    setLocation($tree, $u.start);
+    Arr= r;
+
+ } (OBRACKET CBRACKET{
+   Array ad = new Array(a,t, $u.tree);
+    ad.setArrayFather(Arr);
+    Arr.setArraySon(ad);
+    Arr = ad;
+    } | OBRACKET expr CBRACKET
+    {
+          Array ad = new Array($expr.tree,t, $u.tree);
+    ad.setArrayFather(Arr);
+    Arr.setArraySon(ad);
+    Arr = ad;
+
+    })*
+ 
+
+
+;
 decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
 @init   {
         
@@ -445,6 +505,10 @@ primary_expr returns[AbstractExpr tree]
             assert($ident.tree != null);
             $tree=$ident.tree;
         }
+    | tabident{ 
+        assert($tabident.tree != null);
+        $tree=$tabident.tree;
+    }
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
@@ -537,7 +601,7 @@ literal returns[AbstractExpr tree]
     ;
 
 ident returns[AbstractIdentifier tree]
-    @init{ 
+ @init{ 
         SymbolTable sym = new SymbolTable();
      }
     : IDENT {
@@ -549,7 +613,22 @@ ident returns[AbstractIdentifier tree]
         }
     }
     ;
+tabident  returns[AbstractIdentifier tree]
+    @init{ 
+        SymbolTable sym = new SymbolTable();
+        ListExpr listp = new ListExpr();
+     }
+:
+    IDENT OBRACKET r =expr CBRACKET {  
+        listp.add($r.tree);
+        $tree = new TabIdentifier(sym.create($IDENT.text),listp);
 
+
+        }(OBRACKET expr CBRACKET{
+        listp.add($expr.tree);
+        }
+    )*
+;
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]

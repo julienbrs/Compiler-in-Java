@@ -12,18 +12,34 @@ import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.VariableDefinition;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 
-public class Array extends AbstractIdentifier {
+public class Array extends AbstractDeclVar {
 
-    private int nbElements;
+    public Array() {
+    }
+
+    private AbstractExpr nbElements;
     private AbstractIdentifier type;
     private AbstractIdentifier name;
+    private Array ArrayFather;
+    private Array ArraySon;
 
-    private Definition definition;
+    public Array(AbstractExpr nbElements, AbstractIdentifier type, AbstractIdentifier name) {
+        this.nbElements = nbElements;
+        this.type = type;
+        this.name = name;
+    }
+    public void setArrayFather(Array type){
+        this.ArrayFather = type;
+    }
+    public void setArraySon(Array type){
+        this.ArraySon = type;
+    }
 
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a
@@ -35,172 +51,52 @@ public class Array extends AbstractIdentifier {
      * @throws DecacInternalError
      *             if the definition is not a class definition.
      */
-    @Override
-    public ClassDefinition getClassDefinition() {
-        try {
-            return (ClassDefinition) definition;
-        } catch (ClassCastException e) {
-            throw new DecacInternalError(
-                    "Identifier "
-                            + getName()
-                            + " is not a class identifier, you can't call getClassDefinition on it");
-        }
-    }
-
-    @Override
-    public Definition getDefinition() {
-        return definition;
-    }
-
-    /**
-     * Like {@link #getDefinition()}, but works only if the definition is a
-     * FieldDefinition.
-     * 
-     * This method essentially performs a cast, but throws an explicit exception
-     * when the cast fails.
-     * 
-     * @throws DecacInternalError
-     *             if the definition is not a field definition.
-     */
-    @Override
-    public FieldDefinition getFieldDefinition() {
-        try {
-            return (FieldDefinition) definition;
-        } catch (ClassCastException e) {
-            throw new DecacInternalError(
-                    "Identifier "
-                            + getName()
-                            + " is not a field identifier, you can't call getFieldDefinition on it");
-        }
-    }
-
-    /**
-     * Like {@link #getDefinition()}, but works only if the definition is a
-     * MethodDefinition.
-     * 
-     * This method essentially performs a cast, but throws an explicit exception
-     * when the cast fails.
-     * 
-     * @throws DecacInternalError
-     *             if the definition is not a method definition.
-     */
-    @Override
-    public MethodDefinition getMethodDefinition() {
-        try {
-            return (MethodDefinition) definition;
-        } catch (ClassCastException e) {
-            throw new DecacInternalError(
-                    "Identifier "
-                            + getName()
-                            + " is not a method identifier, you can't call getMethodDefinition on it");
-        }
-    }
-
-    @Override
-    public Symbol getName() {
-        SymbolTable symb = new SymbolTable();
-        return symb.create(name.toString());
-    }
-
-    /**
-     * Like {@link #getDefinition()}, but works only if the definition is a ExpDefinition.
-     * 
-     * This method essentially performs a cast, but throws an explicit exception
-     * when the cast fails.
-     * 
-     * @throws DecacInternalError
-     *             if the definition is not a field definition.
-     */
-    @Override
-    public ExpDefinition getExpDefinition() {
-        try {
-            return (ExpDefinition) definition;
-        } catch (ClassCastException e) {
-            throw new DecacInternalError(
-                    "Identifier "
-                            + getName()
-                            + " is not a Exp identifier, you can't call getExpDefinition on it");
-        }
-    }
-
-    /**
-     * Like {@link #getDefinition()}, but works only if the definition is a
-     * VariableDefinition.
-     * 
-     * This method essentially performs a cast, but throws an explicit exception
-     * when the cast fails.
-     * 
-     * @throws DecacInternalError
-     *             if the definition is not a field definition.
-     */
-    @Override
-    public VariableDefinition getVariableDefinition() {
-        try {
-            return (VariableDefinition) definition;
-        } catch (ClassCastException e) {
-            throw new DecacInternalError(
-                    "Identifier "
-                            + getName()
-                            + " is not a variable identifier, you can't call getVariableDefinition on it");
-        }
-    }
-
-    @Override
-    public void setDefinition(Definition definition) {
-        this.definition = definition;
-    }
-
-    /**
-     * Implements non-terminal "type" of [SyntaxeContextuelle] in the 3 passes
-     * @param compiler contains "env_types" attribute
-     */
-    @Override
-    public Type verifyType(DecacCompiler compiler) throws ContextualError {
-        // throw new UnsupportedOperationException("not yet implemented");
-        setDefinition(compiler.environmentType.defOfType(name.getName()));
-        setType(definition.getType());
-        return this.getType();
-    }
-
-    @Override
-    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
-            throws ContextualError {
-        return verifyExpr(compiler, localEnv, currentClass);
-    }
-
-    @Override
-    public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
-            throws ContextualError {
-        ExpDefinition def = localEnv.get(name.getName());
-        if (def == null) {
-            // ERROR MSG
-            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule 0.1", getLocation());
-        }
-        setDefinition(def);
-        setType(definition.getType());
-        return this.getType();
-    }
-
-    @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
-    }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
-        
+       
+        type.prettyPrint(s, prefix, false);
+        nbElements.prettyPrint(s,prefix,false);
+        name.prettyPrint(s, prefix, true);
+        if(ArraySon != null){
+        ArraySon.prettyPrint(s, prefix, true);
+        }
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    protected void verifyDeclVar(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+            throws ContextualError {
+        Type t = type.verifyType(compiler);
+        if (t.sameType(compiler.environmentType.VOID)) {
+            // ERROR MSG
+            throw new ContextualError("Type can't be void : rule 3.17", getLocation());
+        }
+        try {
+            name.setDefinition(new VariableDefinition(t, getLocation()));
+            // nbElements.
+            localEnv.declare(name.getName(), name.getExpDefinition());
+        } catch (DoubleDefException e) {
+            // ERROR MSG
+            throw new ContextualError("The variable \""+name.getName()+"\" is already declared : rule 3.17", getLocation());
+        }
+        name.verifyExpr(compiler, localEnv, currentClass);
+        nbElements.verifyExpr(compiler, localEnv, currentClass);
+    }
+
+    @Override
+    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void decompile(IndentPrintStream s) {
         // TODO Auto-generated method stub
         
     }
