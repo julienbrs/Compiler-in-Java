@@ -1,0 +1,8 @@
+// Test la règle 2.5: l'attribut a pour type void.
+
+class A  {
+    void variable = 5;
+}
+
+// Resultat:
+//# TODOTEST  : rule 2.5

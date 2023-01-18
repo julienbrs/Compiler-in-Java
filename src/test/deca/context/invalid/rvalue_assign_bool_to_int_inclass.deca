@@ -1,0 +1,11 @@
+// Test la règle 3.28: 
+
+class A  {
+    boolean b = true;
+    int x = b;
+}
+
+
+
+// Resultat:
+//TODOTEST

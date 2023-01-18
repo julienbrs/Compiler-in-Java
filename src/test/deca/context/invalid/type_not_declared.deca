@@ -6,4 +6,5 @@
 }
 
 // Resultat:
-//# RULE 0.2 DOIT S'AFFICHER
+//# doit afficher erreur regle 0.2
+//# TODOTEST
