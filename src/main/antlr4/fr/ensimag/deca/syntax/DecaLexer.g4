@@ -95,7 +95,7 @@ fragment NUMHEX : DIGITHEX+;
 fragment FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUMBER ('F' | 'f' | );
 
 // Comment
-COMMENT : ('/*' .*? '*/' | '//' .*? '\n') { skip(); };
+COMMENT : ('/*' .*? '*/' | '//' .*? ('\n'| EOF)) { skip(); };
 
 //include 
 // fragment FILENAME : (LETTER|DIGIT|'.'|'-'|'_')+;
