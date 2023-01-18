@@ -14,5 +14,5 @@
    |      |      +> [6, 21] Identifier (secretlyDoing)
    |      |      +> [6, 35] Initialization
    |      |      |  `> [6, 37] StringLiteral (sleeping zzzz...)
-   |      +> ListDeclMethod [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
    `> EmptyMain

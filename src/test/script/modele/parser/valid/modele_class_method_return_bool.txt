@@ -4,19 +4,19 @@
    |      +> [3, 6] Identifier (DummyClass)
    |      +> [builtin] Identifier (Object)
    |      +> ListDeclField [List with 0 elements]
-   |      +> ListDeclMethod [List with 1 elements]
-   |      |  []> [4, 4] DeclMethod
-   |      |      +> [4, 4] Identifier (bool)
-   |      |      +> [4, 9] Identifier (getBool)
-   |      |      +> ListParam [List with 0 elements]
-   |      |      `> [4, 18] MethodBody
-   |      |         +> ListDeclVar [List with 1 elements]
-   |      |         |  []> [5, 13] DeclVar
-   |      |         |      +> [5, 8] Identifier (bool)
-   |      |         |      +> [5, 13] Identifier (bool_t)
-   |      |         |      `> [5, 20] Initialization
-   |      |         |         `> [5, 22] BooleanLiteral (true)
-   |      |         +> ListInst [List with 1 elements]
-   |      |         |  []> [6, 8] Return
-   |      |         |      `> [6, 15] Identifier (bool_t)
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [4, 4] DeclMethod
+   |             +> [4, 4] Identifier (bool)
+   |             +> [4, 9] Identifier (getBool)
+   |             +> ListParam [List with 0 elements]
+   |             `> [4, 18] MethodBody
+   |                +> ListDeclVar [List with 1 elements]
+   |                |  []> [5, 13] DeclVar
+   |                |      +> [5, 8] Identifier (bool)
+   |                |      +> [5, 13] Identifier (bool_t)
+   |                |      `> [5, 20] Initialization
+   |                |         `> [5, 22] BooleanLiteral (true)
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [6, 8] Return
+   |                |      `> [6, 15] Identifier (bool_t)
    `> EmptyMain

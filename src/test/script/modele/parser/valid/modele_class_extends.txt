@@ -9,7 +9,7 @@
    |  ||  |      +> [4, 8] Identifier (Courage)
    |  ||  |      +> [4, 16] Initialization
    |  ||  |      |  `> [4, 18] Int (50)
-   |  ||  +> ListDeclMethod [List with 0 elements]
+   |  ||  `> ListDeclMethod [List with 0 elements]
    |  []> [7, 0] DeclClass
    |      +> [7, 6] Identifier (Knight)
    |      +> [7, 13] Identifier (People)
@@ -19,5 +19,5 @@
    |      |      +> [8, 8] Identifier (Courage)
    |      |      +> [8, 16] Initialization
    |      |      |  `> [8, 18] Int (100)
-   |      +> ListDeclMethod [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
    `> EmptyMain

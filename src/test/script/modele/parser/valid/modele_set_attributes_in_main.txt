@@ -8,7 +8,7 @@
    |      |      +> [4, 4] Identifier (int)
    |      |      +> [4, 8] Identifier (age)
    |      |      +> NoInitialization
-   |      +> ListDeclMethod [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
    `> [7, 0] Main
       +> ListDeclVar [List with 1 elements]
       |  []> [8, 11] DeclVar

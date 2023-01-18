@@ -4,5 +4,5 @@
    |      +> [3, 6] Identifier (Calculator)
    |      +> [builtin] Identifier (Object)
    |      +> ListDeclField [List with 0 elements]
-   |      +> ListDeclMethod [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
    `> EmptyMain
