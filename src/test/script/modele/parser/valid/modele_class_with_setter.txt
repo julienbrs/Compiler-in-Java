@@ -3,38 +3,37 @@
    |  []> [3, 0] DeclClass
    |      +> [3, 6] Identifier (Person)
    |      +> [builtin] Identifier (Object)
-   |      `> ClassBody
-   |         +> ListDeclField [List with 2 elements]
-   |         |  []> [4, 11] [visibility = PUBLIC]  DeclField
-   |         |  ||  +> [4, 4] Identifier (string)
-   |         |  ||  +> [4, 11] Identifier (name)
-   |         |  ||  +> NoInitialization
-   |         |  []> [5, 8] [visibility = PUBLIC]  DeclField
-   |         |      +> [5, 4] Identifier (int)
-   |         |      +> [5, 8] Identifier (age)
-   |         |      +> NoInitialization
-   |         +> ListDeclMethod [List with 1 elements]
-   |         |  []> [6, 4] DeclMethod
-   |         |      +> [6, 4] Identifier (void)
-   |         |      +> [6, 9] Identifier (init)
-   |         |      +> ListParam [List with 2 elements]
-   |         |      |  []> [6, 14] Param
-   |         |      |  ||  +> [6, 14] Identifier (string)
-   |         |      |  ||  `> [6, 21] Identifier (name)
-   |         |      |  []> [6, 27] Param
-   |         |      |      +> [6, 27] Identifier (int)
-   |         |      |      `> [6, 31] Identifier (age)
-   |         |      `> [6, 36] MethodBody
-   |         |         +> ListDeclVar [List with 0 elements]
-   |         |         +> ListInst [List with 2 elements]
-   |         |         |  []> [7, 18] Assign
-   |         |         |  ||  +> [7, 12] Selection
-   |         |         |  ||  |  +> [7, 8] This
-   |         |         |  ||  |  `> [7, 13] Identifier (name)
-   |         |         |  ||  `> [7, 20] Identifier (name)
-   |         |         |  []> [8, 17] Assign
-   |         |         |      +> [8, 12] Selection
-   |         |         |      |  +> [8, 8] This
-   |         |         |      |  `> [8, 13] Identifier (age)
-   |         |         |      `> [8, 19] Identifier (age)
+   |      +> ListDeclField [List with 2 elements]
+   |      |  []> [4, 11] [visibility = PUBLIC]  DeclField
+   |      |  ||  +> [4, 4] Identifier (string)
+   |      |  ||  +> [4, 11] Identifier (name)
+   |      |  ||  +> NoInitialization
+   |      |  []> [5, 8] [visibility = PUBLIC]  DeclField
+   |      |      +> [5, 4] Identifier (int)
+   |      |      +> [5, 8] Identifier (age)
+   |      |      +> NoInitialization
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [6, 4] DeclMethod
+   |             +> [6, 4] Identifier (void)
+   |             +> [6, 9] Identifier (init)
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [6, 14] Param
+   |             |  ||  +> [6, 14] Identifier (string)
+   |             |  ||  `> [6, 21] Identifier (name)
+   |             |  []> [6, 27] Param
+   |             |      +> [6, 27] Identifier (int)
+   |             |      `> [6, 31] Identifier (age)
+   |             `> [6, 36] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 2 elements]
+   |                |  []> [7, 18] Assign
+   |                |  ||  +> [7, 12] Selection
+   |                |  ||  |  +> [7, 8] This
+   |                |  ||  |  `> [7, 13] Identifier (name)
+   |                |  ||  `> [7, 20] Identifier (name)
+   |                |  []> [8, 17] Assign
+   |                |      +> [8, 12] Selection
+   |                |      |  +> [8, 8] This
+   |                |      |  `> [8, 13] Identifier (age)
+   |                |      `> [8, 19] Identifier (age)
    `> EmptyMain

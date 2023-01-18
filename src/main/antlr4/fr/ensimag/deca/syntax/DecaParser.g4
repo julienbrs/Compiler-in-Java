@@ -92,13 +92,13 @@ decl_var_set[ListDeclVar l]
     ;
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
-    : dv1 = decl_var[$t]  {
+    : (dv1 = decl_var[$t]  {
             $l.add($dv1.tree);
         }
         | dv3 = decl_varTab[$t]{
             $l.add($dv3.tree);
         }
-        
+        )
          (COMMA dv2 = decl_var[$t] {
             $l.add($dv2.tree);
         }
@@ -119,14 +119,44 @@ list_decl_varTab[ListDeclVar l, AbstractIdentifier t,AbstractExpr a ]
          )*
 ;  
 decl_varTab[AbstractIdentifier t ] returns[AbstractDeclVar tree] 
- :  u = ident OBRACKET CBRACKET{
-    $tree = new Array(new IntLiteral(1),t, $u.tree);
+  @init { 
+    Array Arr = new Array();  
+    SymbolTable sym = new SymbolTable();
+    int i = 1;
+    int level = 0;
+ } 
+ :  u = ident OBRACKET {
+
+    Array ra= new Array(new IntLiteral(1),t, $u.tree,level);
+    $tree = ra;
     setLocation($tree, $u.start);
- }
- |  u= ident OBRACKET expr CBRACKET{
-    $tree = new Array($expr.tree,t, $u.tree);
+    Arr= ra;
+    level ++;
+ 
+ } (expr?){
+ Array r = new Array($expr.tree,t, $u.tree, level);
+    $tree = r;
     setLocation($tree, $u.start);
- }
+    Arr= r;
+    level++;
+ }CBRACKET
+  (OBRACKET CBRACKET{
+    
+    Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
+   Array ad = new Array(new IntLiteral(1),t, ar,level);
+    ad.setArrayFather(Arr);
+    Arr.setArraySon(ad);
+    Arr = ad;
+    i++;
+     level++;
+    } | OBRACKET expr CBRACKET
+    {   Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
+          Array ad = new Array($expr.tree,t, ar,level);
+    ad.setArrayFather(Arr);
+    Arr.setArraySon(ad);
+    Arr = ad;
+ level++;
+    })*
 
 ;
 decl_varTaba[AbstractIdentifier t , AbstractExpr a] returns[AbstractDeclVar tree] 
@@ -134,29 +164,32 @@ decl_varTaba[AbstractIdentifier t , AbstractExpr a] returns[AbstractDeclVar tree
     Array Arr = new Array();  
     SymbolTable sym = new SymbolTable();
     int i = 1;
+    int level=1;
  } 
  :  u = ident  {
 
-    Array r = new Array(a,t, $u.tree);
+    Array r = new Array(a,t, $u.tree,level);
     $tree = r;
     setLocation($tree, $u.start);
     Arr= r;
-
+    level++;
  } (OBRACKET CBRACKET{
     
     Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
-   Array ad = new Array(new IntLiteral(1),t, ar);
+   Array ad = new Array(new IntLiteral(1),t, ar,level);
     ad.setArrayFather(Arr);
     Arr.setArraySon(ad);
     Arr = ad;
     i++;
+     level++;
     } | OBRACKET expr CBRACKET
     {   Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
-          Array ad = new Array($expr.tree,t, ar);
+          Array ad = new Array($expr.tree,t, ar,level);
     ad.setArrayFather(Arr);
     Arr.setArraySon(ad);
     Arr = ad;
-
+    i++;
+    level++;
     })*
  
 
@@ -632,7 +665,7 @@ tabident  returns[AbstractIdentifier tree]
     IDENT OBRACKET r =expr CBRACKET {  
         listp.add($r.tree);
         $tree = new TabIdentifier(sym.create($IDENT.text),listp);
-
+    setLocation($tree,$IDENT);
 
         }(OBRACKET expr CBRACKET{
         listp.add($expr.tree);

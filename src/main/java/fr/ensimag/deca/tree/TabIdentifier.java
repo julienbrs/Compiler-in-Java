@@ -1,6 +1,7 @@
 package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
+import java.util.Iterator;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -180,6 +181,9 @@ public class TabIdentifier extends AbstractIdentifier{
         }
         setDefinition(def);
         setType(definition.getType());
+        if(listeposs.size()>definition.getLevel()){
+            throw new ContextualError("le tableau n'a pas autant de dimension", getLocation());    
+        }
         return this.getType();
     }
 
@@ -191,7 +195,21 @@ public class TabIdentifier extends AbstractIdentifier{
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
+        s.print(name.toString());
+        Iterator<AbstractExpr> ite = listeposs.iterator();
+        AbstractExpr current;
+        if (ite.hasNext()) {
+            current = ite.next();
+            s.print("[");
+            current.decompile(s);
+            s.print("]");
+        }
+        while (ite.hasNext()) {
+            current = ite.next();
+            s.print("[");
+            current.decompile(s);
+            s.print("]");
+        }
         
     }
 
@@ -203,6 +221,16 @@ public class TabIdentifier extends AbstractIdentifier{
     @Override
     String prettyPrintNode() {
         return "TAB Identifier (" +this.getName() + ")";
+    }
+    @Override
+    protected void prettyPrintType(PrintStream s, String prefix) {
+        Definition d = getDefinition();
+        if (d != null) {
+            s.print(prefix);
+            s.print("definition: ");
+            s.print(d);
+            s.println();
+        }
     }
     @Override
     protected void iterChildren(TreeFunction f) {

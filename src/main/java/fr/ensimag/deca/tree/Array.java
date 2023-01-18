@@ -3,6 +3,7 @@ package fr.ensimag.deca.tree;
 import java.io.PrintStream;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.ArrayDefinition;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
@@ -28,11 +29,13 @@ public class Array extends AbstractDeclVar {
     private AbstractIdentifier name;
     private Array ArrayFather;
     private Array ArraySon;
+    private int Level;
 
-    public Array(AbstractExpr nbElements, AbstractIdentifier type, AbstractIdentifier name) {
+    public Array(AbstractExpr nbElements, AbstractIdentifier type, AbstractIdentifier name,int level) {
         this.nbElements = nbElements;
         this.type = type;
         this.name = name;
+        this.Level=level;
     }
     public void setArrayFather(Array type){
         this.ArrayFather = type;
@@ -61,6 +64,11 @@ public class Array extends AbstractDeclVar {
         if(ArraySon != null){
         ArraySon.prettyPrint(s, prefix, true);
         }
+
+    }
+    @Override
+    String prettyPrintNode() {
+        return "Array ( level :" +Level + ")";
     }
 
     @Override
@@ -72,13 +80,19 @@ public class Array extends AbstractDeclVar {
     @Override
     protected void verifyDeclVar(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
+            Array a = new Array();
         Type t = type.verifyType(compiler);
         if (t.sameType(compiler.environmentType.VOID)) {
             // ERROR MSG
             throw new ContextualError("Type can't be void : rule 3.17", getLocation());
         }
         try {
-            name.setDefinition(new VariableDefinition(t, getLocation()));
+            a=this;
+            while(a.ArraySon !=null){
+                a=a.ArraySon;
+            }
+            System.out.println(a.Level);
+            name.setDefinition(new ArrayDefinition(t, getLocation(),a.Level));
             // nbElements.
             localEnv.declare(name.getName(), name.getExpDefinition());
         } catch (DoubleDefException e) {
@@ -97,7 +111,27 @@ public class Array extends AbstractDeclVar {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
+        if(ArrayFather==null){
+            
+            type.decompile(s);
+            s.print(" ");
+            name.decompile(s);
+            s.print("[");
+            nbElements.decompile(s);
+            s.print("]");
+    
+        }
+        else {
+            s.print("[");
+            nbElements.decompile(s);
+            s.print("]");
+        }
+        if(ArraySon!=null){
+            ArraySon.decompile(s);
+        }
+        else {
+            s.println(";"); 
+        }
         
     }
     
