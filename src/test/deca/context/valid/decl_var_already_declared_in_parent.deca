@@ -1,0 +1,28 @@
+// Test la règle 3.17: déclaration d'une variable déjà existante
+// dans la classe parent
+
+class A {
+    int x = 12;
+
+}
+
+class B extends A {
+    int x = 5;
+}
+
+
+// Resultat:
+
+// Test la règle 3.24: Pas le droit de return float alors qu'on attend pas de return
+
+class A  {
+    void voidMethod(int x){
+        return 3.14;
+    }
+}
+
+
+
+// Resultat:
+
+//TODOTEST

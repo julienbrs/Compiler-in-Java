@@ -65,12 +65,18 @@ public class Program extends AbstractProgram {
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
-        compiler.addComment("Main program");
-        int[] res = main.codeGenMain(compiler, 2);
+        // int nbMethod = classes.codeGenVTable(compiler);
+        int nbMethod = 3;
 
+        compiler.addComment("Main program");
+        int[] res = main.codeGenMain(compiler, nbMethod);
+        
         lADDSP.setInstruction(new ADDSP(new ImmediateInteger(res[0])));
         lTSTO.setInstruction(new TSTO(res[1]));
-        compiler.addInstruction(new HALT());    
+        compiler.addInstruction(new HALT()); 
+        
+        compiler.addComment("Methodes de classe");
+        classes.codeGenBody(compiler);
     }
 
     @Override

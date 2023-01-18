@@ -1,0 +1,20 @@
+// Test la règle 2.7: la classe enfant override une méthode parente,
+// mais ne prend pas les mêmes arguments.
+
+class A  {
+    void displayHello(int x){
+        println(x);
+    }
+}
+
+class B extends A  {
+    void displayHello(float b){
+        println(b);
+    }
+}
+
+
+
+
+// Resultat:
+//# TODOTEST bien mettre 2.7 avec phrase

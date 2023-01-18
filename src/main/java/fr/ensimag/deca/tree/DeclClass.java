@@ -5,8 +5,17 @@ import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.LabelOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.LEA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 import java.io.PrintStream;
 
@@ -69,6 +78,8 @@ public class DeclClass extends AbstractDeclClass {
         ClassDefinition supClassDef = (ClassDefinition) compiler.environmentType.defOfType(extension.getName());
         EnvironmentExp envExpSuper = supClassDef.getMembers();
         EnvironmentExp envExp = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
+        name.getClassDefinition().setNumberOfFields(supClassDef.getNumberOfFields());
+        name.getClassDefinition().setNumberOfMethods(supClassDef.getNumberOfMethods()); 
         bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
         bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
 
@@ -85,6 +96,41 @@ public class DeclClass extends AbstractDeclClass {
         bodyclass.getListDeclMethod().verifyListMethodBody(compiler, localEnv, name.getClassDefinition());
     }
 
+    public int codeGenVTable(DecacCompiler compiler, int offset) {
+        DAddr addr = new RegisterOffset(offset, GPRegister.GB);
+        name.getClassDefinition().setOperand(addr);
+        DAddr extAddr;
+        if (!extension.getType().equals(compiler.environmentType.OBJECT)) {
+            extAddr = extension.getClassDefinition().getOperand();
+        } else {
+            extAddr = new RegisterOffset(1, GPRegister.GB);
+        }
+        compiler.addComment("Table methodes "+name.getName());
+        compiler.addInstruction(new LEA(extAddr, GPRegister.getR(2)));
+        compiler.addInstruction(new STORE(GPRegister.getR(2), addr));
+        for (int i = 1; i <= extension.getClassDefinition().getNumberOfMethods(); i++) {
+            if (name.getClassDefinition().getMethodDefinition(i) == null) {
+                MethodDefinition mDef = extension.getClassDefinition().getMethodDefinition(i);
+                name.getClassDefinition().put(i, mDef);
+                DAddr destMethodAddr = new RegisterOffset(offset + i ,((RegisterOffset) addr).getRegister());
+                compiler.addInstruction(new LOAD(new LabelOperand(mDef.getLabel()), GPRegister.getR(2)));
+                compiler.addInstruction(new STORE(GPRegister.getR(2), destMethodAddr));
+            }
+        }
+        bodyclass.codeGenVTable(compiler, name, offset);
+        return name.getClassDefinition().getNumberOfMethods();
+    }
+
+    public void codeGenBody(DecacCompiler compiler) {
+        compiler.addComment("Corps des methodes de la classe " + name.getName());
+        // TODO : faire le init de la classe
+        compiler.addLabel(new Label("init."+name.getName()));
+        // bodyclass.getListDeclField().codeGenInit()
+        for (AbstractDeclMethod declMethod : bodyclass.getListDeclMethod().getList()) {
+            declMethod.codeGenBody(compiler, name.getClassDefinition());
+        }
+
+    }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {

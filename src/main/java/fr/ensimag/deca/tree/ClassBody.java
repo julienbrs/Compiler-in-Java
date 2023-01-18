@@ -2,7 +2,14 @@ package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
 
+import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.LabelOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 public class ClassBody extends Tree{
     private ListDeclMethod declMethod;
@@ -33,6 +40,17 @@ public class ClassBody extends Tree{
             this.declField.add(i);
         }
         
+    }
+
+    public void codeGenVTable(DecacCompiler compiler, AbstractIdentifier currentClass, int offset) {
+        for (AbstractDeclMethod aDeclMethod : declMethod.getList()) {
+            Label label = new Label("code." + currentClass.getName() + "." + aDeclMethod.getName());
+            aDeclMethod.getIdent().getMethodDefinition().setLabel(label);
+            int index = aDeclMethod.getIdent().getMethodDefinition().getIndex();
+            compiler.addInstruction(new LOAD(new LabelOperand(label), GPRegister.getR(2)));
+            compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offset + index, GPRegister.GB)));
+            offset++;
+        }
     }
 
     @Override

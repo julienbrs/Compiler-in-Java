@@ -1,0 +1,17 @@
+// Test la règle 2.7: la classe enfant override une méthode parente,
+// mais ne renvoie pas le même type
+
+class A  {
+    void displayHello(){
+        println("Hello");
+    }
+}
+
+class B extends A {
+    int displayHello(){
+        return 5;
+    }
+}
+
+// Resultat:
+//# TODOTEST
