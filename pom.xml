@@ -190,15 +190,10 @@
                 <executions>
                     <!-- One <execution> per executable to launch. Execution
                     failure (exit status != 0) will stop the tests. -->
-                    <execution>
+                    <!-- <execution>
                         <id>basic-lex</id>
                         <configuration>
                             <executable>./src/test/script/provided/basic-lex.sh</executable>
-                            <!-- If we need to pass arguments :
-                                 <arguments>
-                                 <argument>...</argument>
-                                 </arguments>
-                            -->
                         </configuration>
                         <phase>test</phase>
                         <goals>
@@ -214,7 +209,7 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                    </execution>
+                    </execution> -->
                     <execution>
                         <!-- run a unit test by defining our own class with a main
                         function -->
@@ -229,7 +224,7 @@
                             <goal>java</goal>
                         </goals>
                     </execution>
-                    <execution>
+                    <!-- <execution>
                         <id>basic-context</id>
                         <configuration>
                             <executable>./src/test/script/provided/basic-context.sh</executable>
@@ -248,7 +243,7 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                    </execution>
+                    </execution> -->
                     <execution>
                         <id>basic-decac</id>
                         <configuration>
@@ -269,7 +264,7 @@
                             <goal>exec</goal>
                         </goals>
                     </execution>
-                    <execution>
+                    <!-- <execution>
                         <id>complete-lexer</id>
                         <configuration>
                             <executable>./src/test/script/complete-lexer.sh</executable>
@@ -298,11 +293,22 @@
                         <goals>
                             <goal>exec</goal>
                         </goals>
-                    </execution>
+                    </execution> -->
                     <execution>
                         <id>complete-compilation-options</id>
                         <configuration>
                             <executable>./src/test/script/complete-compilation-options.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>our-tests</id>
+                        <configuration>
+                            <executable>/usr/bin/python3</executable>
+                            <argument>src/test/script/tests_launcher.py</argument>
                         </configuration>
                         <phase>test</phase>
                         <goals>
