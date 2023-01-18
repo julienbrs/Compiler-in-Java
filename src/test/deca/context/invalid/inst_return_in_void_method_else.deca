@@ -1,0 +1,22 @@
+// Test la règle 3.24: Pas le droit de return quelque chose alors qu'on attend pas de return
+// dans un else
+
+class A  {
+
+    void voidMethod(){
+        int x = 12;
+        if (false){
+            x = 5;
+        }
+        else{
+            return x;
+        }
+        
+    }
+}
+
+
+
+// Resultat:
+
+//TODOTEST

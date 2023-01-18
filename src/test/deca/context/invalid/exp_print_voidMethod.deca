@@ -1,0 +1,17 @@
+// Test la règle 3.31: On ne peut pas print un objet dont le type n'est ni un
+// flottant, ni un entier, ni un string
+
+
+class A {
+    void voidMethod(){
+        int x = 5;
+    }
+
+    void testMethod(){
+        print(voidMethod());
+    }
+}
+
+
+// Resultat:
+//# TODOTEST  HELP FELIX-SAN, SHOULD HAVE THE SAME ERROR NO ?

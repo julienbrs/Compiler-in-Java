@@ -1,0 +1,5 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:32) - verify Main: start
+src/test/deca/context/invalid/decl_var_already_declared_in_main.deca:6:8: The variable "x" is already declared : rule 3.17

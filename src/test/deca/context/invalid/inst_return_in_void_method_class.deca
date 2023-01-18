@@ -1,8 +1,7 @@
-// Test la règle 3.24: Pas le droit de return une classe
-// alors qu'on attend pas de return
+// Test la règle 3.24: Pas le droit de return quelque chose alors qu'on attend pas de return
 
 class A  {
-    float getFloat(int x){
+    float getFloat(){
         return 3.14;
     }
 }

@@ -1,0 +1,16 @@
+// Test la règle 3.28: on ne peut pas affecter à un objet de type int 
+// une valeur d'un objet de type classe. 
+
+class A  {
+    
+}
+
+class B {
+    A a = new A();
+    int x = a;
+}
+
+
+
+// Resultat:
+//TODOTEST

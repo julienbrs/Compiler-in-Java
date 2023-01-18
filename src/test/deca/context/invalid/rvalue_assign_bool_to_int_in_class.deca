@@ -1,0 +1,10 @@
+// Test la règle 3.28: on ne peut pas affecter à un objet de type int 
+// une valeur d'un objet de type float. 
+
+class A  {
+    boolean b = true;
+    int x = b;
+}
+
+// Resultat:
+//TODOTEST

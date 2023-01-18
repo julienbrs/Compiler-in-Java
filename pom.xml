@@ -290,6 +290,16 @@
                         </goals>
                     </execution>
                     <execution>
+                        <id>complete-context</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-context.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>complete-codegen</id>
                         <configuration>
                             <executable>./src/test/script/complete-codegen.sh</executable>

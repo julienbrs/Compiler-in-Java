@@ -1,0 +1,14 @@
+// Test la règle 3.31: On ne peut pas print un objet dont le type n'est ni un
+// flottant, ni un entier, ni un string
+
+class A {
+
+}
+
+{
+    A a = new A();
+    print(a);
+}
+
+// Resultat:
+//# TODOTEST 

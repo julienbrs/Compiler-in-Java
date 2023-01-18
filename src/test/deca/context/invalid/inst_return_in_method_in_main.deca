@@ -1,0 +1,12 @@
+// Test la règle 3.24: Pas le droit de return dans un main
+
+{
+    int x = 5;
+    return x;
+}
+
+
+
+// Resultat:
+
+//TODOTEST

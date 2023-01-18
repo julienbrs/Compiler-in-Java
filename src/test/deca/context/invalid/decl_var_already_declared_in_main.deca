@@ -1,0 +1,10 @@
+// Test la règle 3.17: déclaration d'une variable déjà existante dans le main
+
+{
+    int x = 12;
+    
+    int x = 5;
+}
+
+// Resultat:
+// TODOTEST

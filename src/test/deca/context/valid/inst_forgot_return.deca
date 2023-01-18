@@ -1,0 +1,12 @@
+// Test la règle 3.24: Pas le droit de return un boolean
+// alors qu'on attend pas de return
+
+class A  {
+    int getInt(){
+        int x = 5;
+    }
+}
+
+// Resultat:
+
+//TODOTEST

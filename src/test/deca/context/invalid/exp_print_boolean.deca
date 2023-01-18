@@ -1,0 +1,10 @@
+// Test la règle 3.31: On ne peut pas print un objet dont le type n'est ni un
+// flottant, ni un entier, ni un string
+
+{
+
+    print(true);
+}
+
+// Resultat:
+//# TODOTEST 

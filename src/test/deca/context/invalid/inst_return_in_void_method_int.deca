@@ -1,0 +1,13 @@
+// Test la règle 3.24: Pas le droit de return quelque chose alors qu'on attend pas de return
+
+class A  {
+    void voidMethod(){
+        return 5;
+    }
+}
+
+
+
+// Resultat:
+
+//TODOTEST
