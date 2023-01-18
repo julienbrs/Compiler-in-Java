@@ -1,1 +1,1 @@
-x n'est pas plus grand que 3 ou le résultat de la division par deux n'est pas inférieur à 10
+x est plus grand que 3 ou le résultat de la division par deux est supérieur à 10

@@ -217,7 +217,7 @@ public class DecacCompiler {
         prog.codeGenProgram(this);
         addComment("end main program");
 
-        addComment("gestion des erreurs d'executions");
+        addComment("Gestion des erreurs d'executions");
         if (!getCompilerOptions().getNoCheck()) {
             // Debordement de pile
             addLabel(new Label("pile_pleine"));

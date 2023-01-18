@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tree.Location;
+import fr.ensimag.ima.pseudocode.Label;
 
 // A FAIRE: étendre cette classe pour traiter la partie "avec objet" de Déca
 /**
@@ -45,7 +46,14 @@ public class EnvironmentType {
 
         Symbol objectSymbol = compiler.createSymbol("Object");
         OBJECT = new ClassType(objectSymbol);
-        envTypes.put(objectSymbol, new ClassDefinition(OBJECT, Location.BUILTIN, null));
+        ClassDefinition objectDef = new ClassDefinition(OBJECT, Location.BUILTIN, null);
+        objectDef.setNumberOfMethods(1);
+        Signature sig = new Signature();
+        sig.add(OBJECT);
+        MethodDefinition mDef = new MethodDefinition(BOOLEAN, Location.BUILTIN, sig, 1);
+        mDef.setLabel(new Label("code.Object.equals"));
+        objectDef.put(1, mDef);
+        envTypes.put(objectSymbol, objectDef);
     }
 
     private final Map<Symbol, TypeDefinition> envTypes;
