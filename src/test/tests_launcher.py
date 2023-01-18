@@ -1,13 +1,5 @@
 """
 Tout les tests.
-
-Un test a :
-    - un dossier (path)
-    - un nom
-    - une extension
-    - un type (unit, non regression, ...)
-    - le code source du programme testé
-    - la sortie attendue
 """
 
 import os
@@ -25,13 +17,21 @@ ER = "\033[0m"      # End Red text
 START_SEQ = "//# "   # Means the line is part of output
 ROOT_PROJECT_NAME = "gl11"
 
-# @modif : les fichiers de tests qui seront parcourus
+# @modif : les répertoires de tests qui seront parcourus
 TEST_FOLDERS = [
     "src/test/deca/context/",
     "src/test/deca/syntax/lexer/provided/",
     "src/test/deca/syntax/parser/provided/",
     "src/test/deca/syntax/parser/valid/",
 ]
+
+# @modif : les fichiers de tests que l'on souhaite exécuter
+FILES_TO_INCLUDE = [
+    #"src/test/deca/syntax/parser/valid/ineq/ineq_float_leq_string.deca",
+    #"src/test/deca/syntax/parser/valid/empty.deca",
+    #"src/test/deca/codegen/valid/addition_float_int.deca",
+]
+
 # @modif : les fichiers de tests que l'on ne souhaite pas exécuter
 FILES_TO_EXCLUDE = [
     "src/test/deca/context/valid/decoration-test.deca",
@@ -39,7 +39,15 @@ FILES_TO_EXCLUDE = [
 ]
 
 class Test(object):
-    """docstring for ClassName."""
+    """
+    Un test a :
+        - un dossier (path)
+        - un nom
+        - une extension
+        - un type (unit, non regression, ...)
+        - le code source du programme testé
+        - la sortie attendue
+    """
     def __init__(self, nom_with_path, type_test, code, output, launchers):
         self.path = os.path.dirname(nom_with_path) + '/'
         self.nom, self.extension = os.path.splitext(os.path.basename(nom_with_path))
@@ -76,7 +84,7 @@ class Test(object):
         test_filename_with_path = self.path + self.nom + self.extension
 
         # Run the command and capture error output
-        result = subprocess.run([f"test_{self.launchers[0]}", test_filename_with_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        result = subprocess.run([self.launchers[0], test_filename_with_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         # Access the error output
         error_output = result.stderr.decode()
@@ -96,8 +104,9 @@ class Test(object):
                 print("| " + error_output.strip())
         # IL N'Y A PAS D'ERREUR
         else:
-            # test_filename_compiled_with_path = test_filename_with_path.replace(".deca", ".ass")
-            # result = subprocess.run(["ima", test_filename_compiled_with_path],stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            if "decac" in self.launchers:
+                test_filename_compiled_with_path = test_filename_with_path.replace(".deca", ".ass")
+                result = subprocess.run(["ima", test_filename_compiled_with_path],stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
             actual_output = result.stdout.decode()
             actual_output_without_log = '\n'.join((line for line in actual_output.split('\n') if not line.startswith("DEBUG")))
@@ -117,9 +126,6 @@ class Test(object):
             print('-' * 80)
 
 
-
-
-
 def create_test(test_filename_with_path: str) -> Test:
     """docstring"""
     with open(test_filename_with_path, 'r', encoding="utf-8") as test_file:
@@ -132,13 +138,15 @@ def create_test(test_filename_with_path: str) -> Test:
                 code.append(line)
     launchers = []
     if "lexer" in test_filename_with_path:
-        launchers.append("lex")
+        launchers.append("test_lex")
     if "parser" in test_filename_with_path:
-        launchers.append("synt")
+        launchers.append("test_synt")
     if "context" in test_filename_with_path:
-        launchers.append("context")
+        launchers.append("test_context")
+    if "codegen" in test_filename_with_path:
+        launchers.append("decac")
 
-    return Test(test_filename_with_path, "", code, output, launchers)
+    return Test(test_filename_with_path, "systeme", code, output, launchers)
 
 
 def main():
@@ -161,6 +169,10 @@ def main():
                 if not str(filename_with_path).endswith(".ass") and \
                    not filename_with_path in FILES_TO_EXCLUDE:
                     tests.append(create_test(filename_with_path))
+    for filename_with_path in FILES_TO_INCLUDE:
+        if not filename_with_path.endswith(".ass") and \
+           not filename_with_path in FILES_TO_EXCLUDE:
+            tests.append(create_test(filename_with_path))
 
     actual_folder = ROOT_PROJECT_NAME
     for test in tests:

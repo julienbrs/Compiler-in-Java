@@ -3,7 +3,7 @@
 //    tests de programme lexicalement correct.
 //
 // Resultats:
-//    Ligne 11 : Erreur de syntaxe.
+//    Ligne 14 : Erreur de syntaxe.
 //    test_lex ne doit pas donner d'erreur.
 //
 // Historique:
@@ -15,3 +15,10 @@ idf _autre_idf
 (
 )
 // un commentaire.
+
+//# IDENT: [@0,233:235='idf',<47>,12:0]
+//# IDENT: [@1,237:246='_autre_idf',<47>,12:4]
+//# OBRACE: [@2,248:248='{',<1>,13:0]
+//# CBRACE: [@3,250:250='}',<2>,14:0]
+//# OPARENT: [@4,252:252='(',<7>,15:0]
+//# CPARENT: [@5,254:254=')',<8>,16:0]

@@ -1,6 +1,30 @@
+// Test syntaxiquement correct mais contextuellement faux
+// car on ne peut pas additionner un StringLiteral avec quoi que ce soit
+
 {
     int i = 0;
     while (i < 5) {
         println("i est égal à " + i);
     }
 }
+
+//# `> [4, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [4, 0] Main
+//#       +> ListDeclVar [List with 1 elements]
+//#       |  []> [5, 8] DeclVar
+//#       |      +> [5, 4] Identifier (int)
+//#       |      +> [5, 8] Identifier (i)
+//#       |      `> [5, 10] Initialization
+//#       |         `> [5, 12] Int (0)
+//#       `> ListInst [List with 1 elements]
+//#          []> [6, 4] While
+//#              +> [6, 13] Lower
+//#              |  +> [6, 11] Identifier (i)
+//#              |  `> [6, 15] Int (5)
+//#              `> ListInst [List with 1 elements]
+//#                 []> [7, 8] Println
+//#                     `> ListExpr [List with 1 elements]
+//#                        []> [7, 32] Plus
+//#                            +> [7, 16] StringLiteral (i est égal à )
+//#                            `> [7, 34] Identifier (i)

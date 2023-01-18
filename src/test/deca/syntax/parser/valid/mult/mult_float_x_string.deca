@@ -1,3 +1,11 @@
 {
 10.5 * "chaine";
 }
+//# `> [1, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [1, 0] Main
+//#       +> ListDeclVar [List with 0 elements]
+//#       `> ListInst [List with 1 elements]
+//#          []> [2, 5] Multiply
+//#              +> [2, 0] Float (10.5)
+//#              `> [2, 7] StringLiteral (chaine)

@@ -8,3 +8,34 @@
         println("x est inférieur ou égal à 5");
     }
 }
+//# `> [1, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [1, 0] Main
+//#       +> ListDeclVar [List with 1 elements]
+//#       |  []> [2, 8] DeclVar
+//#       |      +> [2, 4] Identifier (int)
+//#       |      +> [2, 8] Identifier (x)
+//#       |      `> [2, 10] Initialization
+//#       |         `> [2, 12] Int (5)
+//#       `> ListInst [List with 1 elements]
+//#          []> [3, 4] IfThenElse
+//#              +> [3, 10] Greater
+//#              |  +> [3, 8] Identifier (x)
+//#              |  `> [3, 12] Int (10)
+//#              +> ListInst [List with 1 elements]
+//#              |  []> [4, 8] Println
+//#              |      `> ListExpr [List with 1 elements]
+//#              |         []> [4, 16] StringLiteral (x est plus grand que 10)
+//#              `> ListInst [List with 1 elements]
+//#                 []> [5, 6] IfThenElse
+//#                     +> [5, 17] Greater
+//#                     |  +> [5, 15] Identifier (x)
+//#                     |  `> [5, 19] Int (5)
+//#                     +> ListInst [List with 1 elements]
+//#                     |  []> [6, 8] Println
+//#                     |      `> ListExpr [List with 1 elements]
+//#                     |         []> [6, 16] StringLiteral (x est plus grand que 5 et inférieur ou égal à 10)
+//#                     `> ListInst [List with 1 elements]
+//#                        []> [8, 8] Println
+//#                            `> ListExpr [List with 1 elements]
+//#                               []> [8, 16] StringLiteral (x est inférieur ou égal à 5)

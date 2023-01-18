@@ -15,3 +15,62 @@
     printlnx( 5 + f);
     printlnx( 5 * (bool_f - (f)));
 }
+//# `> [1, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [1, 0] Main
+//#       +> ListDeclVar [List with 5 elements]
+//#       |  []> [2, 8] DeclVar
+//#       |  ||  +> [2, 4] Identifier (int)
+//#       |  ||  +> [2, 8] Identifier (i)
+//#       |  ||  `> [2, 10] Initialization
+//#       |  ||     `> [2, 12] Int (5)
+//#       |  []> [3, 10] DeclVar
+//#       |  ||  +> [3, 4] Identifier (float)
+//#       |  ||  +> [3, 10] Identifier (f)
+//#       |  ||  `> [3, 12] Initialization
+//#       |  ||     `> [3, 14] Float (3.14)
+//#       |  []> [4, 11] DeclVar
+//#       |  ||  +> [4, 4] Identifier (string)
+//#       |  ||  +> [4, 11] Identifier (str)
+//#       |  ||  `> [4, 15] Initialization
+//#       |  ||     `> [4, 17] StringLiteral (little string)
+//#       |  []> [5, 12] DeclVar
+//#       |  ||  +> [5, 4] Identifier (boolean)
+//#       |  ||  +> [5, 12] Identifier (bool_f)
+//#       |  ||  `> [5, 19] Initialization
+//#       |  ||     `> [5, 21] BooleanLiteral (false)
+//#       |  []> [6, 12] DeclVar
+//#       |      +> [6, 4] Identifier (boolean)
+//#       |      +> [6, 12] Identifier (bool_t)
+//#       |      `> [6, 19] Initialization
+//#       |         `> [6, 21] BooleanLiteral (true)
+//#       `> ListInst [List with 8 elements]
+//#          []> [8, 4] Println
+//#          ||  `> ListExpr [List with 0 elements]
+//#          []> [9, 4] Println
+//#          ||  `> ListExpr [List with 1 elements]
+//#          ||     []> [9, 13] Identifier (i)
+//#          []> [10, 4] Println
+//#          ||  `> ListExpr [List with 1 elements]
+//#          ||     []> [10, 13] Identifier (f)
+//#          []> [11, 4] Println
+//#          ||  `> ListExpr [List with 1 elements]
+//#          ||     []> [11, 13] Identifier (str)
+//#          []> [12, 4] Println
+//#          ||  `> ListExpr [List with 1 elements]
+//#          ||     []> [12, 13] Identifier (bool_f)
+//#          []> [13, 4] Println
+//#          ||  `> ListExpr [List with 1 elements]
+//#          ||     []> [13, 13] Identifier (bool_t)
+//#          []> [15, 4] Println
+//#          ||  `> ListExpr [List with 1 elements]
+//#          ||     []> [15, 16] Plus
+//#          ||         +> [15, 14] Int (5)
+//#          ||         `> [15, 18] Identifier (f)
+//#          []> [16, 4] Println
+//#              `> ListExpr [List with 1 elements]
+//#                 []> [16, 16] Multiply
+//#                     +> [16, 14] Int (5)
+//#                     `> [16, 18] Minus
+//#                        +> [16, 19] Identifier (bool_f)
+//#                        `> [16, 28] Identifier (f)
