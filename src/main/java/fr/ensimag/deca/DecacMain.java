@@ -1,7 +1,6 @@
 package fr.ensimag.deca;
 
 import java.io.File;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

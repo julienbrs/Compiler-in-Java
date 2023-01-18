@@ -2,15 +2,9 @@ package fr.ensimag.deca.context;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.mockito.Mock;
-import static org.mockito.Mockito.*;
-import org.mockito.MockitoAnnotations;
 
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.tree.AbstractExpr;
 import fr.ensimag.deca.tree.BooleanLiteral;
-import fr.ensimag.deca.context.Type;
 
 /**
  * 

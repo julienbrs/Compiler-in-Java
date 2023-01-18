@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mock;
-import fr.ensimag.deca.context.*;
 
 import static org.mockito.Mockito.*;
 import org.mockito.MockitoAnnotations;
@@ -36,6 +35,7 @@ public class TestMinusAdvanced {
 
     DecacCompiler compiler;
 
+    @SuppressWarnings("deprecation")
     @BeforeEach
     public void setup() throws ContextualError {
         MockitoAnnotations.initMocks(this);

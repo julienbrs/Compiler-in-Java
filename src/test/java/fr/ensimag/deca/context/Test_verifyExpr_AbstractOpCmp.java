@@ -16,7 +16,6 @@ import fr.ensimag.deca.tree.Greater;
 import fr.ensimag.deca.tree.GreaterOrEqual;
 import fr.ensimag.deca.tree.Lower;
 import fr.ensimag.deca.tree.LowerOrEqual;
-import fr.ensimag.deca.context.Type;
 
 /**
  * 
@@ -42,6 +41,7 @@ public class Test_verifyExpr_AbstractOpCmp {
 	@Mock
 	AbstractExpr rOpFloat;
 
+	@SuppressWarnings("deprecation")
 	@BeforeEach
         public void setup() throws ContextualError {
             MockitoAnnotations.initMocks(this);

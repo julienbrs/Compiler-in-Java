@@ -33,6 +33,7 @@ public class TestPlusAdvanced {
 
     DecacCompiler compiler;
     
+    @SuppressWarnings("deprecation")
     @BeforeEach
     public void setup() throws ContextualError {
         MockitoAnnotations.initMocks(this);

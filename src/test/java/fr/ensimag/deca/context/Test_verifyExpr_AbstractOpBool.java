@@ -4,23 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import fr.ensimag.deca.tree.*;
-import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.tree.IntLiteral;
-import fr.ensimag.deca.tree.FloatLiteral;
 import fr.ensimag.deca.tree.And;
 
-import fr.ensimag.deca.context.IntType;
-import fr.ensimag.deca.context.BooleanType;
-import fr.ensimag.deca.context.FloatType;
 import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import org.mockito.MockitoAnnotations;
-import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.DecacCompiler;
 import org.junit.jupiter.api.BeforeEach;
-import fr.ensimag.deca.tools.SymbolTable;
-import fr.ensimag.deca.context.ContextualError;
 
 /**
  * Terminaux d'AbstractOpBool: AND et OR
@@ -46,6 +36,7 @@ public class Test_verifyExpr_AbstractOpBool {
 	@Mock
 	AbstractExpr rOpFloat;
 
+    @SuppressWarnings("deprecation")
 	@BeforeEach
         public void setup() throws ContextualError {
             MockitoAnnotations.initMocks(this);

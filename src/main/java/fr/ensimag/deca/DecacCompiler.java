@@ -239,7 +239,7 @@ public class DecacCompiler {
 
             // Dereferencement de null
             addLabel(new Label("dereferencement_null"));
-            addInstruction(new WSTR(new ImmediateString("Déréférencement de \"null\"")));
+            addInstruction(new WSTR(new ImmediateString("Déréférencement de \\\"null\\\"")));
             addInstruction(new WNL());
             addInstruction(new ERROR());
         }

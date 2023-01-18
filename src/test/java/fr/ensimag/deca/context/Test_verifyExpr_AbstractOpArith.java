@@ -15,7 +15,6 @@ import fr.ensimag.deca.tree.Minus;
 import fr.ensimag.deca.tree.Multiply;
 import fr.ensimag.deca.tree.Divide;
 import fr.ensimag.deca.tree.Modulo;
-import fr.ensimag.deca.context.Type;
 
 /**
  * 
@@ -41,6 +40,7 @@ public class Test_verifyExpr_AbstractOpArith {
 	@Mock
 	AbstractExpr rOpFloat;
 
+	@SuppressWarnings("deprecation")
 	@BeforeEach
         public void setup() throws ContextualError {
             MockitoAnnotations.initMocks(this);
