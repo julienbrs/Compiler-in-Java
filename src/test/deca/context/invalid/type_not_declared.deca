@@ -1,0 +1,9 @@
+// Test la règle 0.2: le type utilisé n'existe pas dans 
+// l'environnement des types.
+
+{
+    typeAlien alien = 15;
+}
+
+// Resultat:
+//# RULE 0.2 DOIT S'AFFICHER
