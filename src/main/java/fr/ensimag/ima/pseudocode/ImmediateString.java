@@ -16,7 +16,6 @@ public class ImmediateString extends Operand {
 
     @Override
     public String toString() {
-        System.out.println(value.replace("\\\"", "\"\"").replace("\\\\", "\\"));
         return "\"" + value.replace("\\\"", "\"\"").replace("\\\\", "\\") + "\"";
     }
 }
