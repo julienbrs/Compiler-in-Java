@@ -60,7 +60,7 @@ public class DeclVar extends AbstractDeclVar {
     protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
         /* Initialization */
         varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, reg));
-        initialization.codeGenInitialization(compiler);
+        initialization.codeGenInitialization(compiler, 2);
         compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
     }
     

@@ -12,6 +12,11 @@ import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateFloat;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 public class DeclField extends AbstractDeclField{
@@ -42,6 +47,7 @@ public class DeclField extends AbstractDeclField{
         try {
             currentClass.incNumberOfFields();
             varName.setDefinition(new FieldDefinition(t, getLocation(), visibility, currentClass, currentClass.getNumberOfFields()));
+            varName.setType(varName.getDefinition().getType());
             localEnv.declare(varName.getName(), varName.getExpDefinition()); 
         } catch (DoubleDefException e) {
             // ERROR MSG
@@ -56,10 +62,20 @@ public class DeclField extends AbstractDeclField{
         initialization.verifyInitialization(compiler, t, localEnv, currentClass);   
     }
 
+    public void codeGenDeclFieldNull(DecacCompiler compiler) {
+        if (varName.getType().isInt() || varName.getType().isBoolean()) {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(2)));
+        } else if (varName.getType().isFloat()) {
+            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(2)));
+        } else {
+            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
+        }
+        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
+    }
+
     public void codeGenDeclField(DecacCompiler compiler) {
-        // varName.getExpDefinition().setOperand();
-        initialization.codeGenInitialization(compiler);
-        compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
+        initialization.codeGenInitialization(compiler, 3);
+        compiler.addInstruction(new STORE(GPRegister.getR(3), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
     }
 
     @Override
