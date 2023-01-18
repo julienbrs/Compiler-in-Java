@@ -11,6 +11,8 @@ import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 public class DeclField extends AbstractDeclField{
     private Visibility visibility;
@@ -38,21 +40,26 @@ public class DeclField extends AbstractDeclField{
             throw new ContextualError("??? : rule 2.5", getLocation());
         }
         try {
+            currentClass.incNumberOfFields();
             varName.setDefinition(new FieldDefinition(t, getLocation(), visibility, currentClass, currentClass.getNumberOfFields()));
             localEnv.declare(varName.getName(), varName.getExpDefinition()); 
         } catch (DoubleDefException e) {
             // ERROR MSG
             throw new ContextualError("The field \""+varName.getName()+"\" is already declared : rule 2.4", getLocation());
         }
-        currentClass.incNumberOfFields();
     }
 
     //Passe 3
     @Override
     protected void verifyFieldBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        // varName.verifyType(compiler);
         initialization.verifyInitialization(compiler, t, localEnv, currentClass);   
+    }
+
+    public void codeGenDeclField(DecacCompiler compiler) {
+        // varName.getExpDefinition().setOperand();
+        initialization.codeGenInitialization(compiler);
+        compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
     }
 
     @Override

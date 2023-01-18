@@ -82,8 +82,6 @@ public class DeclClass extends AbstractDeclClass {
         name.getClassDefinition().setNumberOfMethods(supClassDef.getNumberOfMethods()); 
         bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
         bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
-
-
     }
     
     // passe 3
@@ -125,7 +123,10 @@ public class DeclClass extends AbstractDeclClass {
         compiler.addComment("Corps des methodes de la classe " + name.getName());
         // TODO : faire le init de la classe
         compiler.addLabel(new Label("init."+name.getName()));
-        // bodyclass.getListDeclField().codeGenInit()
+        // bodyclass.getListDeclField().codeGenInit(compiler)
+        for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
+            declField.codeGenDeclField(compiler);
+        }
         for (AbstractDeclMethod declMethod : bodyclass.getListDeclMethod().getList()) {
             declMethod.codeGenBody(compiler, name.getClassDefinition());
         }

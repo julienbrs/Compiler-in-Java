@@ -13,12 +13,6 @@ import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
-import fr.ensimag.ima.pseudocode.ImmediateInteger;
-import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.Line;
-import fr.ensimag.ima.pseudocode.instructions.BOV;
-import fr.ensimag.ima.pseudocode.instructions.RTS;
-import fr.ensimag.ima.pseudocode.instructions.TSTO;
 
 public class DeclMethod extends AbstractDeclMethod {
     private AbstractIdentifier type;
@@ -77,7 +71,7 @@ public class DeclMethod extends AbstractDeclMethod {
                 listeparametre.verifyListParamMembers(compiler, sig);
                 try {
                     currentClass.incNumberOfMethods();
-                    ident.setDefinition(new MethodDefinition(t, getLocation(), sig, currentClass.getNumberOfMethods()));
+                    ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, currentClass.getNumberOfMethods()));
                     currentClass.put(currentClass.getNumberOfMethods(), ident.getMethodDefinition());
                     localEnv.declare(ident.getName(), ident.getExpDefinition());
                 } catch (DoubleDefException e) {
@@ -111,7 +105,7 @@ public class DeclMethod extends AbstractDeclMethod {
                 
             }
             try {
-                ident.setDefinition(new MethodDefinition(t, getLocation(), sig, mDef.getIndex()));
+                ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, mDef.getIndex()));
                 currentClass.put(mDef.getIndex(), mDef);
                 localEnv.declare(ident.getName(), ident.getExpDefinition());
             } catch (DoubleDefException e) {
@@ -123,33 +117,14 @@ public class DeclMethod extends AbstractDeclMethod {
 
     public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        EnvironmentExp paramEnv = new EnvironmentExp(null);
+        EnvironmentExp paramEnv = new EnvironmentExp(localEnv);
         listeparametre.verifyListParamBody(compiler, paramEnv);
         methodBody.verifyMethodBody(compiler, localEnv, paramEnv, currentClass, t);
     }
 
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass) {
         compiler.addLabel(ident.getMethodDefinition().getLabel());
-
-        Line lTSTO = new Line("");
-        if (!compiler.getCompilerOptions().getNoCheck()) {
-            compiler.add(lTSTO);
-            compiler.addInstruction(new BOV(new Label("pile_pleine")));
-        }
-        Label returnLabel = new Label("end." + currentClass.getType().getName() + "." + ident.getName());
-        // Label oldReturnLabel = compiler.getReturnLabel();
-        // compiler.setReturnLabel(returnLabel);
-
-        // TODO : empilage registre
-
-        // int nbPush = methodBody.codeGenBody(compiler);
-
-        compiler.addLabel(returnLabel);
-        // TODO : depilage registre
-
-        // compiler.setReturnLabel(oldReturnLabel);
-        compiler.addInstruction(new RTS());
-
-        // lTSTO.setInstruction(new TSTO(new ImmediateInteger(nbPush)));
+        listeparametre.codeGenParam(compiler);
+        methodBody.codeGenBody(compiler, currentClass, ident);
     }
 }

@@ -101,6 +101,15 @@ public class DecacCompiler {
         labelNumber++;
     }
 
+    private Label returnLabel;
+    public void setReturnLabel(Label l) {
+        returnLabel = l;
+    }
+
+    public Label getReturnLabel() {
+        return returnLabel;
+    }
+
     /**
      * @see
      * fr.ensimag.ima.pseudocode.IMAProgram#addInstruction(fr.ensimag.ima.pseudocode.Instruction)

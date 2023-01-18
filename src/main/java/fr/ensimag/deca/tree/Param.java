@@ -10,6 +10,8 @@ import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 
 public class Param extends AbstractParam {
     private AbstractIdentifier type;
@@ -58,5 +60,9 @@ public class Param extends AbstractParam {
             // ERROR MSG
             throw new ContextualError("??? : rule 3.12", getLocation());
         }
+    }
+
+    public void codeGenParam(DecacCompiler compiler, int offset) {
+        name.getExpDefinition().setOperand(new RegisterOffset(-offset, GPRegister.LB));
     }
 }

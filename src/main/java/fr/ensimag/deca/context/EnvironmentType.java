@@ -45,8 +45,8 @@ public class EnvironmentType {
         envTypes.put(nullSymb, new TypeDefinition(NULL, Location.BUILTIN));
 
         Symbol objectSymbol = compiler.createSymbol("Object");
-        OBJECT = new ClassType(objectSymbol);
-        ClassDefinition objectDef = new ClassDefinition(OBJECT, Location.BUILTIN, null);
+        OBJECT = new ClassType(objectSymbol, Location.BUILTIN, null);
+        ClassDefinition objectDef = OBJECT.definition;
         objectDef.setNumberOfMethods(1);
         Signature sig = new Signature();
         sig.add(OBJECT);
