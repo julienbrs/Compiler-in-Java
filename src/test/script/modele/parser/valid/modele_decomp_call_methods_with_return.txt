@@ -1,0 +1,18 @@
+FATAL fr.ensimag.deca.DecacCompiler.compile(DecacCompiler.java:171) - Exception raised while compiling file /home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/valid/call_methods_with_return.deca:
+fr.ensimag.deca.tools.DecacInternalError: Tree fr.ensimag.deca.tree.This has no location set
+	at fr.ensimag.deca.tree.Tree.checkLocation(Tree.java:258)
+	at fr.ensimag.deca.tree.Tree$2.apply(Tree.java:276)
+	at fr.ensimag.deca.tree.Tree.iter(Tree.java:203)
+	at fr.ensimag.deca.tree.MethodCall.iterChildren(MethodCall.java:89)
+	at fr.ensimag.deca.tree.Tree.iter(Tree.java:204)
+	at fr.ensimag.deca.tree.TreeList.iterChildren(TreeList.java:83)
+	at fr.ensimag.deca.tree.Tree.iter(Tree.java:204)
+	at fr.ensimag.deca.tree.Main.iterChildren(Main.java:81)
+	at fr.ensimag.deca.tree.Tree.iter(Tree.java:204)
+	at fr.ensimag.deca.tree.Program.iterChildren(Program.java:87)
+	at fr.ensimag.deca.tree.Tree.iter(Tree.java:204)
+	at fr.ensimag.deca.tree.Tree.checkAllLocations(Tree.java:273)
+	at fr.ensimag.deca.DecacCompiler.doCompile(DecacCompiler.java:203)
+	at fr.ensimag.deca.DecacCompiler.compile(DecacCompiler.java:159)
+	at fr.ensimag.deca.DecacMain.main(DecacMain.java:105)
+Internal compiler error while compiling file /home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/valid/call_methods_with_return.deca, sorry.

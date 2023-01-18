@@ -1,0 +1,8 @@
+// testing if null is parsed
+
+{
+    int x;
+    if (x == null) {
+        print("x is null");
+    }
+}

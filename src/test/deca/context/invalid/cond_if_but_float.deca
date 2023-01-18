@@ -1,0 +1,11 @@
+// Test la règle 3.29
+
+{
+    float cond = 3.14;
+    if (cond){
+
+    };
+}
+
+// Resultat:
+//# TODOTEST  : rule 3.29

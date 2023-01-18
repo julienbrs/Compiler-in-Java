@@ -1,0 +1,6 @@
+class Protector extends Object {
+	string publiclyDoing = "IM PROTECTINGGGG";
+	protected string secretlyDoing = "sleeping zzzz...";
+}
+
+

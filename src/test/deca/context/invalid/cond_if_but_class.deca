@@ -1,0 +1,11 @@
+// Test la règle 3.29
+
+{
+    A a = new A();
+    if (a){
+
+    };
+}
+
+// Resultat:
+// TODOTEST  SHOULD CRASH BUT DOESNT

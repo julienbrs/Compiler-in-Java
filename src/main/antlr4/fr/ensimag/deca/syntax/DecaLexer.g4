@@ -95,10 +95,10 @@ fragment NUMHEX : DIGITHEX+;
 fragment FLOATHEX : ('0x' | '0X') NUMHEX '.' NUMHEX ('P' | 'p') SIGN NUMBER ('F' | 'f' | );
 
 // Comment
-COMMENT : ('/*' .*? '*/' | '//' .*? '\n') { skip(); };
+COMMENT : ('/*' .*? '*/' | '//' .*? ('\n'| EOF)) { skip(); };
 
 //include 
- FILENAME : (LETTER|DIGIT|'.'|'-'|'_')+;
+ fragment FILENAME : (LETTER|DIGIT|'.'|'-'|'_')+;
  INCLUDE  : '#include' SPACE*'"'FILENAME'"'{doInclude(getText());};
 //todo
 // Extension 

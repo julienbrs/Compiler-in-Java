@@ -1,0 +1,21 @@
+// Test la règle 3.24: Pas le droit de return une classe
+// alors qu'on attend pas de return
+
+class A  {
+    float getFloat(int x){
+        return 3.14;
+    }
+}
+
+class B {
+    A a = new A();
+    void voidMethod(){
+        return a;
+    }
+}
+
+
+
+// Resultat:
+
+//TODOTEST

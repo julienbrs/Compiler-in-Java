@@ -3,7 +3,6 @@
    |  []> [3, 0] DeclClass
    |      +> [3, 6] Identifier (Calculator)
    |      +> [builtin] Identifier (Object)
-   |      `> ClassBody
-   |         +> ListDeclField [List with 0 elements]
-   |         +> ListDeclMethod [List with 0 elements]
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
    `> EmptyMain
