@@ -2,11 +2,11 @@ package fr.ensimag.deca.tools.Library;
 
 public class ArrayLib {
 
-    private static int[][] matrice = {{2, -1, 9, 8, 5}, {-1, 2, -1, 5, 6}, {8, -1, 2, 1, 5}, {7, 2, 3, 2, 2}, {1, 5, 6, 4, 3}};
+    private static float[][] matrice = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
 
-    public static void printMatrice(int[][] matrice) {
+    public static void printMatrice(float[][] matrice) {
         for (int j = 0; j < matrice.length; j++) {
-            for (int i = 0; i < matrice.length; i++) {
+            for (int i = 0; i < matrice[j].length; i++) {
                 System.out.print(matrice[j][i] + " ");
             }
             System.out.print("\n");
@@ -14,53 +14,99 @@ public class ArrayLib {
     }
 
     public static void main(String[] args) {
-        printMatrice(gaussJordan(matrice));
+        printMatrice(inverse(matrice));
+        System.out.println(det(matrice));
+        System.out.println(rang(matrice));
     }
 
-    public static int[][] gaussJordan(int[][] matrix) {
-        printMatrice(matrix);
-        System.out.println("---");
+    private static IntFloat gaussJordan(float[][] matrix) {
 
         int indexPivot = -1;
-        
+        float det = 1;
+        int rang = matrix.length;
+
         for (int j = 0; j < matrix.length; j++) {
-            int max = matrix[0][j];
+            // on cherche la valeur maximale de chaque colonne
+            float max = matrix[0][j];
             int indexMax = 0;
             for (int i = 0; i < matrix.length; i++) {
-                if (matrix[i][j] > max) {
+                if (Math.abs(matrix[i][j]) > Math.abs(max)) {
                     max = matrix[i][j];
                     indexMax = i;
                 }
             }
-            System.out.println("max " + max);
-            System.out.println("indexMax " + indexMax);
+            det *= max;
             if (max != 0) {
                 indexPivot ++;
-                System.out.println(indexMax == indexPivot);
-                for (int k = 0; k < matrix.length; k++) {
-                    matrix[indexMax][k] = matrix[indexMax][k] / matrix[indexMax][j]; // Diviser la ligne indexMax par max
+                for (int k = 0; k < matrix[0].length; k++) {
+                    matrix[indexMax][k] = matrix[indexMax][k] / max; // Diviser la ligne indexMax par max
                 }
                 if (indexMax != indexPivot) {
+                    det *= -1;
                     // on échange les lignes indexMax et indexPivot
-                    for (int k = 0; k < matrix.length; k++) {
-                        int coeff = matrix[indexMax][k];
-                        System.out.println(indexPivot);
+                    for (int k = 0; k < matrix[0].length; k++) {
+                        float coeff = matrix[indexMax][k];
                         matrix[indexMax][k] = matrix[indexPivot][k];
                         matrix[indexPivot][k] = coeff;
                     }
                 }
                 for (int i = 0; i < matrix.length; i++) {
                     if (i != indexPivot) {
-                        for (int k = 0; k < matrix.length; k++) {
-                            matrix[i][k] = matrix[i][k] - matrix[indexPivot][k] * matrix[i][j];
+                        float multiplicateur = matrix[i][j];
+                        for (int k = 0; k < matrix[0].length; k++) {
+                            matrix[i][k] = matrix[i][k] - matrix[indexPivot][k] * multiplicateur;
                         }
                     }
                 }
-                printMatrice(matrix);
-                System.out.println("---");
+            } else {
+                rang --;
+            }
+        }
+        return new IntFloat(rang, det);
+    }
+
+    public static float[][] inverse(float[][] matrix) {
+        assert(matrix.length == matrix[0].length);
+        float[][] matrixWithIdentity = new float[matrix.length][2 * matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                matrixWithIdentity[i][j] = matrix[i][j];
+            }
+            for (int j = matrix.length; j < 2 * matrix.length; j++) {
+                if (i == j - 3) {
+                    matrixWithIdentity[i][j] = 1;
+                } else {
+                    matrixWithIdentity[i][j] = 0;
+                }
             }
         }
 
-        return matrix;
+        gaussJordan(matrixWithIdentity);
+        float[][] mat = new float[matrix.length][matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                mat[i][j] = matrixWithIdentity[i][j+3];
+            }
+        }
+        return mat;
+    }
+
+    public static float det(float[][] matrix) {
+        return gaussJordan(matrix).det;
+    }
+
+    public static float rang(float[][] matrix) {
+        return gaussJordan(matrix).rang;
+    }
+
+}
+
+class IntFloat {
+    protected int rang;
+    protected float det;
+
+    public IntFloat(int rang, float det) {
+        this.rang = rang;
+        this.det = det;
     }
 }
