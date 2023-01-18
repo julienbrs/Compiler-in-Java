@@ -7,10 +7,14 @@
 
 class A {
     int x = 1;
-    float y;
+    protected float y;
 
     void setY(float val) {
         y = val;
+    }
+    int getX2() {
+        int y = x * x;
+        return y;
     }
 }
 
@@ -23,7 +27,7 @@ class B extends A {
 }
 
 {
-
+        a.getX(alpha);
         /*
         int x = 2, z, k=1, p;
         boolean y;

@@ -4,8 +4,8 @@
         while (i < x) {
             println("i est égal à " + i);
             i+ 1;
-        if (i == 5) {
-            x = 7;
-        }
+            if (i == 5) {
+                x = 7;
+            }
     }
 }
