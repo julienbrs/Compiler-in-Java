@@ -142,7 +142,7 @@ public class DeclMethod extends AbstractDeclMethod {
 
         // TODO : empilage registre
 
-        int nbPush = methodBody.codeGenBody(compiler);
+        // int nbPush = methodBody.codeGenBody(compiler);
 
         compiler.addLabel(returnLabel);
         // TODO : depilage registre
@@ -150,6 +150,6 @@ public class DeclMethod extends AbstractDeclMethod {
         // compiler.setReturnLabel(oldReturnLabel);
         compiler.addInstruction(new RTS());
 
-        lTSTO.setInstruction(new TSTO(new ImmediateInteger(nbPush)));
+        // lTSTO.setInstruction(new TSTO(new ImmediateInteger(nbPush)));
     }
 }
