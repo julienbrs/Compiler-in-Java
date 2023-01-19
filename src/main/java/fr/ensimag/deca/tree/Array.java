@@ -18,6 +18,7 @@ import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.Register;
 
 public class Array extends AbstractDeclVar {
 
@@ -37,11 +38,21 @@ public class Array extends AbstractDeclVar {
         this.name = name;
         this.Level=level;
     }
+
     public void setArrayFather(Array type){
         this.ArrayFather = type;
     }
+
     public void setArraySon(Array type){
         this.ArraySon = type;
+    }
+
+    public Array getArrayFather(Array type) {
+        return type;
+    }
+
+    public Array getArraySon(Array type) {
+        return type;
     }
 
     /**
@@ -104,14 +115,14 @@ public class Array extends AbstractDeclVar {
     }
 
     @Override
-    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
     public void decompile(IndentPrintStream s) {
-        if(ArrayFather==null){
+        if (ArrayFather==null){
             
             type.decompile(s);
             s.print(" ");
@@ -126,7 +137,7 @@ public class Array extends AbstractDeclVar {
             nbElements.decompile(s);
             s.print("]");
         }
-        if(ArraySon!=null){
+        if (ArraySon != null){
             ArraySon.decompile(s);
         }
         else {
