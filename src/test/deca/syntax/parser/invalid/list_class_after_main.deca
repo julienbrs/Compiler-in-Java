@@ -1,0 +1,9 @@
+// Test parser, la liste des classes est avant le EmptyMain
+
+{
+    int x = 5;
+}
+
+class A {
+
+}

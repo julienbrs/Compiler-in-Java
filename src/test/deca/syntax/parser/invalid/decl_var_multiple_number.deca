@@ -1,0 +1,6 @@
+// Test de parser, le deuxieme ident est remplacé par un 
+// nombre
+
+{
+    int x, 15 = 5,8;
+}

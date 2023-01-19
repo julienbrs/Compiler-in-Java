@@ -1,0 +1,6 @@
+// Test de parser, l'ident n'est pas valide, mot réservé 
+// true à la place
+
+{
+    int readFloat = 5;
+}

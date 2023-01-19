@@ -1,0 +1,6 @@
+// Test de parser, le type n'est pas valide, mais est un symbole bracket
+// à la place
+
+{
+    { x = 5;
+}

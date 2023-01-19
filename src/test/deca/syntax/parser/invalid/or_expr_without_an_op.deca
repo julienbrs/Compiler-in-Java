@@ -1,0 +1,7 @@
+// Test parser, or sans opérande de gauche
+
+{
+    if (x || ){
+        x = 5;
+    }
+}

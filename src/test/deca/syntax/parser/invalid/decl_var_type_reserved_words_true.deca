@@ -1,0 +1,6 @@
+// Test de parser, le type n'est pas valide, mais est un mot
+// réservé à la place, ici true
+
+{
+    true x = 5;
+}

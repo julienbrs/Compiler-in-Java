@@ -1,0 +1,10 @@
+// Parser, on peut utiliser l'opérateur '==' sur des variables de types différents
+// dans la syntaxe au moins
+
+{
+    int x = 5;
+    float y = 7.5;
+    if (x == y) { 
+        println("x est égal à y");
+    }
+}

@@ -1,0 +1,6 @@
+// Test de parser, un symbole spécial remplace le symbole
+// égal, ici un nombre
+
+{
+    int x 14 5;
+}

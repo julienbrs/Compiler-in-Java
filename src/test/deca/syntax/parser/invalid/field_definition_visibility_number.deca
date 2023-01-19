@@ -1,0 +1,6 @@
+// Test parser, déclaration d'une méthode avec une visibilité
+// qui est un nombre
+
+class myClass {
+    145 int x = 12;
+}

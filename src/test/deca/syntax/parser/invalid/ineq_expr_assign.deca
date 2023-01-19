@@ -1,0 +1,9 @@
+// test parser, l'instruction "if" contient un opérateur de comparaison "=" non autorisé
+
+int x = 5;
+int y = 8;
+if (x = y) {
+    println("x est égal à y");
+} else {
+    println("x est différent de y");
+}

@@ -1,0 +1,5 @@
+// Test de parser, le deuxieme ident est null
+
+{
+    int x, = 8;
+}

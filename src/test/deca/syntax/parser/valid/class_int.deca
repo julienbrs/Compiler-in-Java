@@ -1,0 +1,6 @@
+// Il est possible d'appeler une classe comme un type, cela est juste syntaxiquement
+// mais pas contextuellement
+
+class int {
+    
+}

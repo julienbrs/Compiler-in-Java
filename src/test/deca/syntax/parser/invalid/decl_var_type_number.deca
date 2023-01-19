@@ -1,0 +1,6 @@
+// Test de parser, le type n'est pas valide, mais est un nombre
+// à la place
+
+{
+    15 x = 5;
+}

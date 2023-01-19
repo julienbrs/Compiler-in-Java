@@ -1,0 +1,5 @@
+// Test parser, instanceof doit prendre un IDENT, une string n'est pas un ident
+
+{
+    x instanceof "string";
+}

@@ -1,0 +1,7 @@
+// Test parser, on fait plusieurs opérations dans la condition à la suite
+
+{
+    if (x < y != 5) {
+        print(x);
+    }
+}

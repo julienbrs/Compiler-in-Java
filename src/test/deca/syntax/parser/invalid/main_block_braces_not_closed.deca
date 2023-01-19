@@ -1,0 +1,4 @@
+// Test de parser, les accolades du block dans main doivent être fermées
+
+{
+    int x = 5;

@@ -1,0 +1,5 @@
+// Test parser, déclaration d'une classe avec un nombre
+
+class 145 {
+    
+}

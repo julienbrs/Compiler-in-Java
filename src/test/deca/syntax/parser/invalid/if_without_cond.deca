@@ -1,0 +1,7 @@
+// Test parser, if sans condition (pas de parenthèses)
+
+{
+    if {
+        print(5);
+    }
+}

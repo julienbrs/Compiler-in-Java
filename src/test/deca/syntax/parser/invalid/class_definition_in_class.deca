@@ -1,0 +1,9 @@
+// Test parser, définition d'une classe dans une autre classe
+
+class A {
+    int x = 5;
+
+    class B {
+        int y = 12;
+    }
+}

@@ -1,0 +1,6 @@
+// Test de parser, un symbole spécial remplace le symbole
+// égal, ici le symbole supérieur strict >
+
+{
+    int x && 5;
+}

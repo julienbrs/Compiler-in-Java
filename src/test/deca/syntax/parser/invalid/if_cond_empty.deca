@@ -1,0 +1,7 @@
+// Test parser, if avec une condition vide
+
+{
+    if () {
+        print(5);
+    }
+}

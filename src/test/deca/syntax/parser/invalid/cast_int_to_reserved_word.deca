@@ -1,0 +1,6 @@
+// Test parser, cast de int to reserved word
+
+{
+    int x = 5;
+    (null) (x);
+}

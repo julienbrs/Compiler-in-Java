@@ -1,0 +1,5 @@
+// Test parser, instanceof doit prendre un IDENT, ici on a un nombre
+
+{
+    x instanceof 14;
+}

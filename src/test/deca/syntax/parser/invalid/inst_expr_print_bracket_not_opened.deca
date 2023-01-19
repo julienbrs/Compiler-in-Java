@@ -1,0 +1,6 @@
+// Test de parser, les parenthèses du print ne sont pas ouvertes
+
+{
+    int x = 5;
+    print x);
+}

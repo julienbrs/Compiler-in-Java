@@ -1,0 +1,9 @@
+// Test parser, pas le droit de déclarer une variable après
+// la liste de déclaration, ici dans un if
+
+{
+
+    if (x || y ){
+        int z = 5;
+    }
+}

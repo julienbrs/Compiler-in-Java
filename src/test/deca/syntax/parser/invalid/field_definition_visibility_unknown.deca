@@ -1,0 +1,6 @@
+// Test parser, déclaration d'une méthode avec une visibilité
+// inconnue
+
+class myClass {
+    unprotected int x = 12;
+}

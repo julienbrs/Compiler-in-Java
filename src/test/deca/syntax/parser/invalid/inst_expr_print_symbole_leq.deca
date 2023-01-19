@@ -1,0 +1,5 @@
+// Test de parser, les parenthèses du print ne sont pas fermées
+
+{
+    print(<=) ;
+}

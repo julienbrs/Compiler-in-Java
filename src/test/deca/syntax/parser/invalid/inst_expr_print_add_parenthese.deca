@@ -1,0 +1,5 @@
+// Test de parser, une parenthèse fermante avant la fin du print
+
+{
+    print() 5 );
+}

@@ -1,0 +1,9 @@
+// Test parser, oublie du keyword extends pour étendre
+
+class A {
+
+}
+
+class B A {
+
+}

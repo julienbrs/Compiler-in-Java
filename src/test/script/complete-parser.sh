@@ -67,14 +67,17 @@ test_parser_unitaire() {
 
     #Test de la décompilation:
     if [ "$result" -eq "$exit_status_waited" ]; then
-        # # On regarde maintenant si l'output est le bon:
-        # if diff -w -b src/main/bin/temporaire_test.txt $fichier_modele_decompile >/dev/null; then
-        echo ".. et pour décompilation: $str_res_waited attendu ✅"
-        # else
-        #     echo ".. et pour décompilation: $str_res_waited mais output non attendu ❌"
-        # fi
-    else
-        echo ".. et pour décompilation: $str_res_not_waited non attendu ❌"
+        if [ "$result" -eq "$exit_status_waited" ]; then
+
+            # # On regarde maintenant si l'output est le bon:
+            # if diff -w -b src/main/bin/temporaire_test.txt $fichier_modele_decompile >/dev/null; then
+            echo ".. et pour décompilation: $str_res_waited attendu ✅"
+            # else
+            #     echo ".. et pour décompilation: $str_res_waited mais output non attendu ❌"
+            # fi
+        else
+            echo ".. et pour décompilation: $str_res_not_waited non attendu ❌"
+        fi
     fi
 
 }

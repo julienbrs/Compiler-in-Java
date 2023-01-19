@@ -1,0 +1,6 @@
+// Test de parser, le deuxieme ident n'a pas de valeur
+// assignée, cela est juste syntaxiquement pas mais contextuellement
+
+{
+    int x, y = 8;
+}

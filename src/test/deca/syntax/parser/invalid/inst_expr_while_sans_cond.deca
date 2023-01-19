@@ -1,0 +1,6 @@
+// Test de parser, le while n'a pas de condition, même pas de 
+// parenthèses
+
+{
+    while { print(5)};
+}

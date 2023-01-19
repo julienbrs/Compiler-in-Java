@@ -1,0 +1,6 @@
+// Test parser, cast de int to symbole
+
+{
+    int x = 5;
+    (&&) (x);
+}

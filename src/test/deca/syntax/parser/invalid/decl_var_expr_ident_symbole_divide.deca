@@ -1,0 +1,6 @@
+// Test de parser, l'ident n'est pas valide, un symbole spécial 
+// est à la place, ici symbole OR
+
+{
+    int / = 5;
+}
