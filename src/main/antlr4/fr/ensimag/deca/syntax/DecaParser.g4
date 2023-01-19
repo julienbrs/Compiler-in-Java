@@ -508,12 +508,13 @@ type returns[AbstractIdentifier tree]
          
    |  IDENT OBRACKET
         (expr {  
+           
        a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
         $tree = a;
         setLocation($tree, $IDENT);
         })?{  
 
- 
+
          a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree);
  $tree = a;
  setLocation($tree, $IDENT);
@@ -521,12 +522,15 @@ type returns[AbstractIdentifier tree]
         CBRACKET
        (OBRACKET
        (expr {
+         assert($expr.tree != null);
+             a.setName(sym.create(a.getName().toString()+"[]"));
+       a.addProfondeur(new IntLiteral(1));
+       })? {   
+ assert($expr.tree != null);
         a.setName(sym.create(a.getName().toString()+"[]"));
         a.addProfondeur( $expr.tree);
-       })? {   
-      a.setName(sym.create(a.getName().toString()+"[]"));
-       a.addProfondeur(new IntLiteral(1));
        }CBRACKET)*  
+       
     ;
 
 literal returns[AbstractExpr tree]
