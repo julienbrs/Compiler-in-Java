@@ -74,10 +74,15 @@ public class Cast extends AbstractExpr {
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         int nbPush = expr.codeGenExpr(compiler, offset);
+        if ((type.getType().isInt() || type.getType().isFloat() || type.getType().isBoolean()) && type.getType().sameType(expr.getType())) {
+            return nbPush;
+        }
         if (type.getType().isFloat() && expr.getType().isInt()) {
             compiler.addInstruction(new FLOAT(GPRegister.getR(offset), GPRegister.getR(offset)));
         } else if (type.getType().isInt() && expr.getType().isFloat()) {
             compiler.addInstruction(new INT(GPRegister.getR(offset), GPRegister.getR(offset)));
+        } else {
+            // TODO : cast des classes
         }
         return nbPush;
     }

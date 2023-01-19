@@ -72,6 +72,7 @@ public class DeclMethod extends AbstractDeclMethod {
                 try {
                     currentClass.incNumberOfMethods();
                     ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, currentClass.getNumberOfMethods()));
+                    ident.setType(ident.getDefinition().getType());
                     currentClass.put(currentClass.getNumberOfMethods(), ident.getMethodDefinition());
                     localEnv.declare(ident.getName(), ident.getExpDefinition());
                 } catch (DoubleDefException e) {
@@ -106,6 +107,7 @@ public class DeclMethod extends AbstractDeclMethod {
             }
             try {
                 ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, mDef.getIndex()));
+                ident.setType(ident.getDefinition().getType());
                 currentClass.put(mDef.getIndex(), mDef);
                 localEnv.declare(ident.getName(), ident.getExpDefinition());
             } catch (DoubleDefException e) {

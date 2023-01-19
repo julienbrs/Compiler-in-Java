@@ -63,6 +63,7 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
 
     public int codeGenVTable(DecacCompiler compiler) {
         int offset = 3;
+        compiler.addComment("Table methodes Object");
         // Ajout de "null"
         compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
         compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(1, GPRegister.GB)));

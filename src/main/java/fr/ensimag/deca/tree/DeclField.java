@@ -11,6 +11,7 @@ import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.ImmediateFloat;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
@@ -32,11 +33,16 @@ public class DeclField extends AbstractDeclField{
         this.visibility = visibility;
     }
 
+    public Symbol getName() {
+        return varName.getName();
+    }
+
+
     // Passe 2
     @Override
     protected void verifyFieldMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        if (t.sameType(compiler.environmentType.VOID)) {
+        if (t.isVoid()) {
             // ERROR MSG
             throw new ContextualError(" : rule 2.5", getLocation());
         }
@@ -73,9 +79,10 @@ public class DeclField extends AbstractDeclField{
         compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
     }
 
-    public void codeGenDeclField(DecacCompiler compiler) {
-        initialization.codeGenInitialization(compiler, 3);
+    public int[] codeGenDeclField(DecacCompiler compiler) {
+        int[] res = initialization.codeGenInitialization(compiler, 3); // res = {max registre, max push}
         compiler.addInstruction(new STORE(GPRegister.getR(3), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
+        return res;
     }
 
     @Override

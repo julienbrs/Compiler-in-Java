@@ -10,11 +10,16 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.ImmediateString;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.ima.pseudocode.instructions.ERROR;
+import fr.ensimag.ima.pseudocode.instructions.RTS;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
+import fr.ensimag.ima.pseudocode.instructions.WNL;
+import fr.ensimag.ima.pseudocode.instructions.WSTR;
 
 public class MethodBody extends AbstractMethodBody{
     private ListDeclVar declVar;
@@ -43,15 +48,28 @@ public class MethodBody extends AbstractMethodBody{
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
+        // TODO : sauvgarde registre
+
         Label returnLabel = new Label("end." + currentClass.getType().getName() + "." + ident.getName());
         Label oldReturnLabel = compiler.getReturnLabel();
         compiler.setReturnLabel(returnLabel);
 
-        compiler.addComment("Variables declarations:");
-        int nbDecl = declVar.codeGenListDeclVar(compiler, 0, GPRegister.LB);
+        compiler.addComment("Variables declarations");
+        int nbDecl = declVar.codeGenListDeclVar(compiler, 1, GPRegister.LB);
 
-        compiler.addComment("Beginning of main instructions:");
+        compiler.addComment("Beginning of instructions");
         int maxPush = listInst.codeGenListInst(compiler);
+
+        if (!compiler.getCompilerOptions().getNoCheck() && !ident.getType().isNull()) {
+            compiler.addInstruction(new WSTR(new ImmediateString("pas de return dans une methode sans void")));
+            compiler.addInstruction(new WNL());
+            compiler.addInstruction(new ERROR());
+            compiler.addLabel(returnLabel);
+        }
+
+        // TODO : restauration registre
+
+        compiler.addInstruction(new RTS());
 
         compiler.setReturnLabel(oldReturnLabel);
 

@@ -1,6 +1,10 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.ima.pseudocode.DAddr;
+
+import org.antlr.v4.runtime.misc.Triple;
+
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -16,4 +20,6 @@ public abstract class AbstractLValue extends AbstractExpr {
 
     public abstract Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv,
                                          ClassDefinition currentClass) throws ContextualError;
+
+    public abstract Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset);
 }

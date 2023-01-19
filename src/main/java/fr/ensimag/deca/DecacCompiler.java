@@ -234,6 +234,12 @@ public class DecacCompiler {
             addInstruction(new WNL());
             addInstruction(new ERROR());
 
+            // Debordement du tas
+            addLabel(new Label("tas_plein"));
+            addInstruction(new WSTR(new ImmediateString("Débordement du tas")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+
             // Division par 0
             addLabel(new Label("division_par_0"));
             addInstruction(new WSTR(new ImmediateString("Division par 0")));

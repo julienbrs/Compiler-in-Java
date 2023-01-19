@@ -17,12 +17,15 @@ import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 import java.io.PrintStream;
+
+import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
 
 /**
@@ -216,6 +219,11 @@ public class Identifier extends AbstractIdentifier {
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
         return 0;
+    }
+
+    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        Triple<Integer, Integer, DAddr> res = new Triple<>(0, offset, getExpDefinition().getOperand());
+        return res;
     }
 
     protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
