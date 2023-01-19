@@ -81,120 +81,24 @@ list_decl returns[ListDeclVar tree]
 decl_var_set[ListDeclVar l]
     : type list_decl_var[$l,$type.tree] SEMI{
     }
-    |
-    type OBRACKET CBRACKET list_decl_varTab[$l,$type.tree,new IntLiteral(1)] SEMI {
 
-    }
-    |
-    type OBRACKET expr CBRACKET list_decl_varTab[$l,$type.tree,$expr.tree] SEMI {
-
-    }
     ;
 
 list_decl_var[ListDeclVar l, AbstractIdentifier t]
     : (dv1 = decl_var[$t]  {
             $l.add($dv1.tree);
         }
-        | dv3 = decl_varTab[$t]{
-            $l.add($dv3.tree);
-        }
         )
          (COMMA dv2 = decl_var[$t] {
             $l.add($dv2.tree);
         }
-        | COMMA dv4 = decl_varTab[$t]{
-            $l.add($dv4.tree);
-        }
+        
 
       )*
     ;
-list_decl_varTab[ListDeclVar l, AbstractIdentifier t,AbstractExpr a ] 
-: dv3 = decl_varTaba[$t,a]{
-            $l.add($dv3.tree);
-        }
-        
-         (COMMA dv2 = decl_varTaba[$t,a] {
-            $l.add($dv2.tree);
-        }
-         )*
-;  
-decl_varTab[AbstractIdentifier t ] returns[AbstractDeclVar tree] 
-  @init { 
-    Array Arr = new Array();  
-    SymbolTable sym = new SymbolTable();
-    int i = 1;
-    int level = 0;
- } 
- :  u = ident OBRACKET {
-
-    Array ra= new Array(new IntLiteral(1),t, $u.tree,level);
-    $tree = ra;
-    setLocation($tree, $u.start);
-    Arr= ra;
-    level ++;
- 
- } (expr?){
- Array r = new Array($expr.tree,t, $u.tree, level);
-    $tree = r;
-    setLocation($tree, $u.start);
-    Arr= r;
-    level++;
- }CBRACKET
-  (OBRACKET CBRACKET{
-    
-    Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
-   Array ad = new Array(new IntLiteral(1),t, ar,level);
-    ad.setArrayFather(Arr);
-    Arr.setArraySon(ad);
-    Arr = ad;
-    i++;
-     level++;
-    } | OBRACKET expr CBRACKET
-    {   Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
-          Array ad = new Array($expr.tree,t, ar,level);
-    ad.setArrayFather(Arr);
-    Arr.setArraySon(ad);
-    Arr = ad;
- level++;
-    })*
-
-;
-decl_varTaba[AbstractIdentifier t , AbstractExpr a] returns[AbstractDeclVar tree] 
-@init { 
-    Array Arr = new Array();  
-    SymbolTable sym = new SymbolTable();
-    int i = 1;
-    int level=1;
- } 
- :  u = ident  {
-
-    Array r = new Array(a,t, $u.tree,level);
-    $tree = r;
-    setLocation($tree, $u.start);
-    Arr= r;
-    level++;
- } (OBRACKET CBRACKET{
-    
-    Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
-   Array ad = new Array(new IntLiteral(1),t, ar,level);
-    ad.setArrayFather(Arr);
-    Arr.setArraySon(ad);
-    Arr = ad;
-    i++;
-     level++;
-    } | OBRACKET expr CBRACKET
-    {   Identifier ar = new Identifier((sym.create( $u.tree.getName().getName()+i)));
-          Array ad = new Array($expr.tree,t, ar,level);
-    ad.setArrayFather(Arr);
-    Arr.setArraySon(ad);
-    Arr = ad;
-    i++;
-    level++;
-    })*
- 
+  
 
 
-;
 decl_var[AbstractIdentifier t] returns[AbstractDeclVar tree]
 @init   {
         
@@ -548,7 +452,7 @@ primary_expr returns[AbstractExpr tree]
             assert($ident.tree != null);
             $tree=$ident.tree;
         }
-    | tabident{ 
+     | tabident{ 
         assert($tabident.tree != null);
         $tree=$tabident.tree;
     }
@@ -591,12 +495,38 @@ primary_expr returns[AbstractExpr tree]
     ;
 
 type returns[AbstractIdentifier tree]
+ @init{ 
+        SymbolTable sym = new SymbolTable();
+         Array a ;
+     }
     : ident {
          try{
             assert($ident.tree != null);
             $tree=$ident.tree;
              } catch(DecaRecognitionException e) { $tree=null; }
         }
+         
+   |  IDENT OBRACKET
+        (expr {  
+       a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
+        $tree = a;
+        setLocation($tree, $IDENT);
+        })?{  
+
+ 
+         a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree);
+ $tree = a;
+ setLocation($tree, $IDENT);
+        }
+        CBRACKET
+       (OBRACKET
+       (expr {
+        a.setName(sym.create(a.getName().toString()+"[]"));
+        a.addProfondeur( $expr.tree);
+       })? {   
+      a.setName(sym.create(a.getName().toString()+"[]"));
+       a.addProfondeur(new IntLiteral(1));
+       }CBRACKET)*  
     ;
 
 literal returns[AbstractExpr tree]
@@ -646,8 +576,10 @@ literal returns[AbstractExpr tree]
 ident returns[AbstractIdentifier tree]
  @init{ 
         SymbolTable sym = new SymbolTable();
+         Array a ;
      }
-    : IDENT {
+    :
+    IDENT {
         try{
             $tree= new Identifier(sym.create($IDENT.text));
             setLocation($tree, $IDENT);
