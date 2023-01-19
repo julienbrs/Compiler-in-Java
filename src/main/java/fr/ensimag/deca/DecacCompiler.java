@@ -101,6 +101,15 @@ public class DecacCompiler {
         labelNumber++;
     }
 
+    private Label returnLabel;
+    public void setReturnLabel(Label l) {
+        returnLabel = l;
+    }
+
+    public Label getReturnLabel() {
+        return returnLabel;
+    }
+
     /**
      * @see
      * fr.ensimag.ima.pseudocode.IMAProgram#addInstruction(fr.ensimag.ima.pseudocode.Instruction)
@@ -222,6 +231,12 @@ public class DecacCompiler {
             // Debordement de pile
             addLabel(new Label("pile_pleine"));
             addInstruction(new WSTR(new ImmediateString("Débordement de pile")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+
+            // Debordement du tas
+            addLabel(new Label("tas_plein"));
+            addInstruction(new WSTR(new ImmediateString("Débordement du tas")));
             addInstruction(new WNL());
             addInstruction(new ERROR());
 

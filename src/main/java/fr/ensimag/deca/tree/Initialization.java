@@ -42,8 +42,10 @@ public class Initialization extends AbstractInitialization {
     }
 
     @Override
-    protected void codeGenInitialization(DecacCompiler compiler) {
-        expression.codeGenExpr(compiler, 2);
+    protected int[] codeGenInitialization(DecacCompiler compiler, int offset) {
+        int nbPush = expression.codeGenExpr(compiler, offset);
+        int[] res = {15, nbPush};
+        return res;
     }
 
     @Override

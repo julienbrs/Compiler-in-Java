@@ -36,4 +36,12 @@ public class ListParam extends TreeList<Param> {
             param.verifyParamBody(compiler, localEnv);
         }
     }
+
+    public void codeGenParam(DecacCompiler compiler) {
+        int index = 3;
+        for (Param p : getList()) {
+            p.codeGenParam(compiler, index);
+            index++;
+        }
+    }
 }

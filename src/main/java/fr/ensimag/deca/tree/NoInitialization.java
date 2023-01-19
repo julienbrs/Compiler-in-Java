@@ -41,14 +41,16 @@ public class NoInitialization extends AbstractInitialization {
     }
 
     @Override
-    protected void codeGenInitialization(DecacCompiler compiler) {
+    protected int[] codeGenInitialization(DecacCompiler compiler, int offset) {
         if (getType().isInt() || getType().isBoolean()) {
-            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(2)));
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(offset)));
         } else if (getType().isFloat()) {
-            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(2)));  
+            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(offset)));  
         } else {
-            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
+            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(offset)));
         }
+        int[] res = {offset, 0};
+        return res;
     }
 
     @Override

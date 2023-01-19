@@ -11,6 +11,14 @@ import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateFloat;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 public class DeclField extends AbstractDeclField{
     private Visibility visibility;
@@ -25,11 +33,16 @@ public class DeclField extends AbstractDeclField{
         this.visibility = visibility;
     }
 
+    public Symbol getName() {
+        return varName.getName();
+    }
+
+
     // Passe 2
     @Override
     protected void verifyFieldMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        if (t.sameType(compiler.environmentType.VOID)) {
+        if (t.isVoid()) {
             // ERROR MSG
             throw new ContextualError(" : rule 2.5", getLocation());
         }
@@ -38,21 +51,38 @@ public class DeclField extends AbstractDeclField{
             throw new ContextualError("??? : rule 2.5", getLocation());
         }
         try {
+            currentClass.incNumberOfFields();
             varName.setDefinition(new FieldDefinition(t, getLocation(), visibility, currentClass, currentClass.getNumberOfFields()));
+            varName.setType(varName.getDefinition().getType());
             localEnv.declare(varName.getName(), varName.getExpDefinition()); 
         } catch (DoubleDefException e) {
             // ERROR MSG
             throw new ContextualError("The field \""+varName.getName()+"\" is already declared : rule 2.4", getLocation());
         }
-        currentClass.incNumberOfFields();
     }
 
     //Passe 3
     @Override
     protected void verifyFieldBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
         Type t = type.verifyType(compiler);
-        // varName.verifyType(compiler);
         initialization.verifyInitialization(compiler, t, localEnv, currentClass);   
+    }
+
+    public void codeGenDeclFieldNull(DecacCompiler compiler) {
+        if (varName.getType().isInt() || varName.getType().isBoolean()) {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(2)));
+        } else if (varName.getType().isFloat()) {
+            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(2)));
+        } else {
+            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
+        }
+        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
+    }
+
+    public int[] codeGenDeclField(DecacCompiler compiler) {
+        int[] res = initialization.codeGenInitialization(compiler, 3); // res = {max registre, max push}
+        compiler.addInstruction(new STORE(GPRegister.getR(3), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
+        return res;
     }
 
     @Override

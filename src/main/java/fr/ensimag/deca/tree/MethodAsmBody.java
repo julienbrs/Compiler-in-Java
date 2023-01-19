@@ -20,6 +20,9 @@ public class MethodAsmBody extends AbstractMethodBody {
         // nothing to do
     }
 
+    public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass, AbstractIdentifier ident) {
+        // TODO : extraire le code assembleur
+    }
 
     @Override
     public void decompile(IndentPrintStream s) {

@@ -10,12 +10,21 @@ import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.LabelOperand;
+import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.ima.pseudocode.instructions.BSR;
 import fr.ensimag.ima.pseudocode.instructions.LEA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
+import fr.ensimag.ima.pseudocode.instructions.RTS;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
+import fr.ensimag.ima.pseudocode.instructions.SUBSP;
+import fr.ensimag.ima.pseudocode.instructions.TSTO;
 
 import java.io.PrintStream;
 
@@ -55,6 +64,7 @@ public class DeclClass extends AbstractDeclClass {
         // throw new UnsupportedOperationException("not yet implemented");
         ClassType t;
         boolean b = true;
+        extension.verifyType(compiler);
         TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
         if (!tDef.isClass()) {
             // ERROR MSG : match msg d'erreur avec doc
@@ -62,7 +72,7 @@ public class DeclClass extends AbstractDeclClass {
         }
         ClassDefinition supClass = (ClassDefinition) tDef;
         t = new ClassType(name.getName(), getLocation(), supClass);
-        name.setDefinition(new ClassDefinition(t, getLocation(), supClass));
+        name.setDefinition(t.getDefinition());
         b = compiler.environmentType.put(name.getName(), name.getClassDefinition());
         if (!b) {
             // ERROR MSG : match msg d'erreur avec doc
@@ -75,22 +85,21 @@ public class DeclClass extends AbstractDeclClass {
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        ClassDefinition supClassDef = (ClassDefinition) compiler.environmentType.defOfType(extension.getName());
+        // ClassDefinition supClassDef = (ClassDefinition) compiler.environmentType.defOfType(extension.getName());
+        ClassDefinition supClassDef = extension.getClassDefinition();
         EnvironmentExp envExpSuper = supClassDef.getMembers();
-        EnvironmentExp envExp = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
+        // EnvironmentExp envExp = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
+        EnvironmentExp envExp = name.getClassDefinition().getMembers();
         name.getClassDefinition().setNumberOfFields(supClassDef.getNumberOfFields());
         name.getClassDefinition().setNumberOfMethods(supClassDef.getNumberOfMethods()); 
         bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
         bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
-
-
     }
     
     // passe 3
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        extension.verifyType(compiler);
         EnvironmentExp localEnv = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
         bodyclass.getListDeclField().verifyListFieldBody(compiler, localEnv, name.getClassDefinition());
         bodyclass.getListDeclMethod().verifyListMethodBody(compiler, localEnv, name.getClassDefinition());
@@ -123,9 +132,50 @@ public class DeclClass extends AbstractDeclClass {
 
     public void codeGenBody(DecacCompiler compiler) {
         compiler.addComment("Corps des methodes de la classe " + name.getName());
-        // TODO : faire le init de la classe
         compiler.addLabel(new Label("init."+name.getName()));
-        // bodyclass.getListDeclField().codeGenInit()
+        
+        Line lTSTO = new Line("");
+        if (!compiler.getCompilerOptions().getNoCheck()){
+            compiler.add(lTSTO);
+            compiler.addInstruction(new BOV(new Label("pile_pleine")));
+        }
+
+        // Line lADDSP = new Line("");
+        // compiler.add(lADDSP);
+
+        // TODO : Sauvegarde registre
+        compiler.addInstruction(new PUSH(GPRegister.getR(2)));
+        
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
+        for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
+            declField.codeGenDeclFieldNull(compiler);
+        }
+        if (!extension.getName().equals(compiler.environmentType.OBJECT.getName())) {
+            compiler.addInstruction(new PUSH(GPRegister.getR(2)));
+            compiler.addInstruction(new BSR(new Label("init." + extension.getName())), "init super class");
+            compiler.addInstruction(new SUBSP(new ImmediateInteger(1)));
+        }
+
+        // calc les val
+        int[] max = {1, 0};
+        for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
+            int[] res = declField.codeGenDeclField(compiler);
+            if (res[0] > max[0]) {
+                max[0] = res[0];
+            }
+            if (res[1] > max[1]) {
+                max[1] = res[1];
+            }
+        }
+        // TODO : restauration registre
+        compiler.addInstruction(new POP(GPRegister.getR(2)));
+        // TODO : TSTO et ADDSP
+        // lADDSP.setInstruction(new ADDSP(new ImmediateInteger(max[0] + max[1])));
+        lTSTO.setInstruction(new TSTO(new ImmediateInteger(30)));
+
+        compiler.addInstruction(new RTS());
+
+
         for (AbstractDeclMethod declMethod : bodyclass.getListDeclMethod().getList()) {
             declMethod.codeGenBody(compiler, name.getClassDefinition());
         }

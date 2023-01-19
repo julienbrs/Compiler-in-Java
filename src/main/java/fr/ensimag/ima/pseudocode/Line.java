@@ -61,7 +61,7 @@ public class Line extends AbstractLine {
             instruction.display(s);
             tab = true;
         }
-        if (comment != null) {
+        if (comment != null && !comment.equals("")) {
             if (tab) {
                             s.print("\t");
                         }

@@ -4,6 +4,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
 
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -42,10 +43,9 @@ public class Main extends AbstractMain {
 
     @Override
     protected int[] codeGenMain(DecacCompiler compiler, int offsetGP) {
-        
-        
+                
         compiler.addComment("Variables declarations:");
-        offsetGP += declVariables.codeGenListDeclVar(compiler, offsetGP);
+        offsetGP += declVariables.codeGenListDeclVar(compiler, offsetGP, GPRegister.GB);
         
         compiler.addComment("Beginning of main instructions:");
         int maxPush = insts.codeGenListInst(compiler);

@@ -3,9 +3,11 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Line;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.*;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -65,17 +67,37 @@ public class Program extends AbstractProgram {
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
-        // int nbMethod = classes.codeGenVTable(compiler);
-        int nbMethod = 3;
+        compiler.add(new Line(""));
+        compiler.addComment("Generation table des methodes");
+        int nbMethod = classes.codeGenVTable(compiler);
 
+        compiler.add(new Line(""));
         compiler.addComment("Main program");
         int[] res = main.codeGenMain(compiler, nbMethod);
         
         lADDSP.setInstruction(new ADDSP(new ImmediateInteger(res[0])));
         lTSTO.setInstruction(new TSTO(res[1]));
         compiler.addInstruction(new HALT()); 
-        
+
+        compiler.add(new Line(""));
         compiler.addComment("Methodes de classe");
+
+        compiler.addLabel(new Label("code.Object.equals"));
+        compiler.addInstruction(new TSTO(new ImmediateInteger(2)));
+        compiler.addInstruction(new PUSH(GPRegister.getR(2)));
+        compiler.addInstruction(new PUSH(GPRegister.getR(3)));
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
+        compiler.addInstruction(new LOAD(new RegisterOffset(-3, GPRegister.LB), GPRegister.getR(3)));
+        compiler.addInstruction(new CMP(GPRegister.getR(2), GPRegister.getR(3)));
+        compiler.addInstruction(new SEQ(GPRegister.R0));
+        compiler.addInstruction(new POP(GPRegister.getR(3)));
+        compiler.addInstruction(new POP(GPRegister.getR(2)));
+        compiler.addInstruction(new RTS());
+        
+
+        // equals(object)
+        // return addr1 == addr2;
+
         classes.codeGenBody(compiler);
     }
 

@@ -8,6 +8,9 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
  * Instruction
@@ -36,8 +39,12 @@ public class Return extends AbstractInst {
 
     @Override
     protected int codeGenInst(DecacCompiler compiler) {
-        // TODO Auto-generated method stub
-        return 0;
+        int nbPush = returnExpr.codeGenExpr(compiler, 2);
+        compiler.addInstruction(new LOAD(GPRegister.getR(2), GPRegister.getR(0)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new BRA(compiler.getReturnLabel()));
+        }
+        return nbPush;
     }
 
     @Override

@@ -2,6 +2,8 @@ package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
 
+import org.antlr.v4.runtime.misc.Triple;
+
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ClassType;
@@ -10,6 +12,14 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 public class Selection extends AbstractSelection {
     private AbstractExpr expr;
@@ -49,7 +59,7 @@ public class Selection extends AbstractSelection {
         FieldDefinition def = ident.getFieldDefinition();
         if (def.getVisibility().equals(Visibility.PROTECTED)) {
             // ERROR MSG
-            if (!t.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getType().asClassType("", getLocation()))) {
+            if (!t.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getContainingClass().getType())) {
                 // ERROR MSG
                 throw new ContextualError("", getLocation());
             }
@@ -60,8 +70,23 @@ public class Selection extends AbstractSelection {
 
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return 0;
+        int nbPush = expr.codeGenExpr(compiler, offset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
+            compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
+        }
+        compiler.addInstruction(new LOAD(new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.getR(offset)));
+        return nbPush;
+    }
+
+    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        int nbPush = expr.codeGenExpr(compiler, offset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
+            compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
+        }
+        Triple<Integer, Integer, DAddr> res = new Triple<>(nbPush, offset + 1, new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)));
+        return res;
     }
 
     @Override

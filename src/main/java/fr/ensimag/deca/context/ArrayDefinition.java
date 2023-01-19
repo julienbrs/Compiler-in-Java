@@ -7,7 +7,6 @@ public class ArrayDefinition extends VariableDefinition {
     public ArrayDefinition(Type type, Location location,int level) {
         super(type, location);
         this.level = level;
-        //TODO Auto-generated constructor stub
     }
     @Override
     public int getLevel() {

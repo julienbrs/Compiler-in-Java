@@ -13,6 +13,18 @@ import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BSR;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+import fr.ensimag.ima.pseudocode.instructions.SUBSP;
 
 /**
  * Instruction
@@ -36,18 +48,22 @@ public class MethodCall extends AbstractExpr {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         ExpDefinition def;
+        EnvironmentExp envExp2;
         if (expr == null) {
-            def = currentClass.getMembers().get(methodIdent.getName());
+            envExp2 = currentClass.getMembers();
+            def = envExp2.get(methodIdent.getName());
         } else {
             // ERROR MSG
             ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
-            def = e.getDefinition().getMembers().get(methodIdent.getName());
+            envExp2 = e.getDefinition().getMembers();
+            def = envExp2.get(methodIdent.getName());
         }
         // ERROR MSG
         if (def == null) {
             // ERROR MSG
             throw new ContextualError("", getLocation());
         }
+        methodIdent.verifyExpr(compiler, envExp2, currentClass);
         MethodDefinition mDef = def.asMethodDefinition("", getLocation());
         Type t = mDef.getType();
         Signature sig = mDef.getSignature();
@@ -66,8 +82,24 @@ public class MethodCall extends AbstractExpr {
 
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return 0;
+        compiler.addInstruction(new ADDSP(new ImmediateInteger(rValStar.size() + 1)));
+        expr.codeGenExpr(compiler, offset);
+        compiler.addInstruction(new STORE(GPRegister.getR(offset), new RegisterOffset(0, GPRegister.SP)));
+        int index = 1;
+        for (AbstractExpr abstractExpr : rValStar.getList()) {
+            abstractExpr.codeGenExpr(compiler, offset);
+            compiler.addInstruction(new STORE(GPRegister.getR(offset), new RegisterOffset(-index, GPRegister.SP)));
+            index++;
+        }
+        compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.SP), GPRegister.getR(offset)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
+            compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
+        }
+        compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.getR(offset)));
+        compiler.addInstruction(new BSR(new RegisterOffset(methodIdent.getMethodDefinition().getIndex(), GPRegister.getR(offset))));
+        compiler.addInstruction(new SUBSP(new ImmediateInteger(rValStar.size() + 1)));
+        return rValStar.size() + 3;
     }
 
     @Override

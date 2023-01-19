@@ -9,6 +9,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
@@ -56,10 +57,10 @@ public class DeclVar extends AbstractDeclVar {
     }
 
     @Override
-    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
         /* Initialization */
-        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, GPRegister.GB));
-        initialization.codeGenInitialization(compiler);
+        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, reg));
+        initialization.codeGenInitialization(compiler, 2);
         compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
     }
     
