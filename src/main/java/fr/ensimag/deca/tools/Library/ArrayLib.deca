@@ -1,0 +1,137 @@
+// Calcul du déterminant, de l'inverse et du rang par la méthode de Gauss-Jordan
+
+public class ArrayLib {
+
+    private static float[][] matrice = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    public static void printMatrice(float[][] matrice) {
+        int j = 0;
+        while (j < matrice.length) {
+            int i = 0;
+            while (i < matrice[j].length) {
+                System.out.print(matrice[j][i] + " ");
+                i++;
+            }
+            System.out.print("\n");
+            j++;
+        }
+    }
+
+    public static void main(String[] args) {
+        printMatrice(inverse(matrice));
+        System.out.println(det(matrice));
+        System.out.println(rang(matrice));
+    }
+
+    private static IntFloat gaussJordan(float[][] matrix) {
+
+        int indexPivot = -1;
+        float det = 1;
+        int rang = matrix.length;
+
+        int j = 0;
+        while (j < matrix.length) {
+            // on cherche la valeur maximale de chaque colonne
+            float max = matrix[0][j];
+            int indexMax = 0;
+            int i = 0;
+            while (i < matrix.length) {
+                if (Math.abs(matrix[i][j]) > Math.abs(max)) {
+                    max = matrix[i][j];
+                    indexMax = i;
+                }
+                i++;
+            }
+            det *= max;
+            if (max != 0) {
+                indexPivot ++;
+                int k = 0;
+                while (k < matrix[0].length) {
+                    matrix[indexMax][k] = matrix[indexMax][k] / max; // Diviser la ligne indexMax par max
+                    k++;
+                }
+                if (indexMax != indexPivot) {
+                    det *= -1;
+                    // on échange les lignes indexMax et indexPivot
+                    int k = 0;
+                    while (k < matrix[0].length) {
+                        float coeff = matrix[indexMax][k];
+                        matrix[indexMax][k] = matrix[indexPivot][k];
+                        matrix[indexPivot][k] = coeff;
+                        k++;
+                    }
+                }
+                int i = 0;
+                while (i < matrix.length) {
+                    if (i != indexPivot) {
+                        float multiplicateur = matrix[i][j];
+                        int k = 0;
+                        while (k < matrix[0].length) {
+                            matrix[i][k] = matrix[i][k] - matrix[indexPivot][k] * multiplicateur;
+                            k++;
+                        }
+                    }
+                    i++;
+                }
+            } else {
+                rang --;
+            }
+            j++;
+        }
+        return new IntFloat(rang, det);
+    }
+
+    public static float[][] inverse(float[][] matrix) {
+        assert(matrix.length == matrix[0].length);
+        float[][] matrixWithIdentity = new float[matrix.length][2 * matrix.length];
+        int i = 0;
+        while (i < matrix.length) {
+            int j = 0;
+            while (j < matrix.length) {
+                matrixWithIdentity[i][j] = matrix[i][j];
+                j++;
+            }
+            while (j < 2 * matrix.length) {
+                if (i == j - 3) {
+                    matrixWithIdentity[i][j] = 1;
+                } else {
+                    matrixWithIdentity[i][j] = 0;
+                }
+                j++;
+            }
+            i++;
+        }
+
+        gaussJordan(matrixWithIdentity);
+        float[][] mat = new float[matrix.length][matrix.length];
+        int i = 0;
+        while (i < matrix.length) {
+            int j = 0;
+            while (j < matrix.length) {
+                mat[i][j] = matrixWithIdentity[i][j+3];
+                j++;
+            }
+            i++;
+        }
+        return mat;
+    }
+
+    public static float det(float[][] matrix) {
+        return gaussJordan(matrix).det;
+    }
+
+    public static float rang(float[][] matrix) {
+        return gaussJordan(matrix).rang;
+    }
+
+}
+
+class IntFloat {
+    protected int rang;
+    protected float det;
+
+    public IntFloat(int rang, float det) {
+        this.rang = rang;
+        this.det = det;
+    }
+}

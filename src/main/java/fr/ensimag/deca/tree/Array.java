@@ -1,6 +1,9 @@
 package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
+import java.util.Iterator;
+
+import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ArrayDefinition;
@@ -18,32 +21,26 @@ import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.Register;
 
-public class Array extends AbstractDeclVar {
+public class Array extends AbstractIdentifier {
 
-    public Array() {
-    }
 
-    private AbstractExpr nbElements;
-    private AbstractIdentifier type;
-    private AbstractIdentifier name;
-    private Array ArrayFather;
-    private Array ArraySon;
+
+    private Symbol name;
+    private ListExpr profondeur;
     private int Level;
 
-    public Array(AbstractExpr nbElements, AbstractIdentifier type, AbstractIdentifier name,int level) {
-        this.nbElements = nbElements;
-        this.type = type;
+    public Array(Symbol name,AbstractExpr expr) {
+        Validate.notNull(name);
         this.name = name;
-        this.Level=level;
+        this.profondeur = new ListExpr();
+        this.profondeur.add(expr);
     }
-    public void setArrayFather(Array type){
-        this.ArrayFather = type;
+    public void addProfondeur(AbstractExpr expr){
+        this.profondeur.add(expr);
     }
-    public void setArraySon(Array type){
-        this.ArraySon = type;
-    }
-
+   
     /**
      * Like {@link #getDefinition()}, but works only if the definition is a
      * ClassDefinition.
@@ -55,20 +52,10 @@ public class Array extends AbstractDeclVar {
      *             if the definition is not a class definition.
      */
 
-    @Override
-    protected void prettyPrintChildren(PrintStream s, String prefix) {
-       
-        type.prettyPrint(s, prefix, false);
-        nbElements.prettyPrint(s,prefix,false);
-        name.prettyPrint(s, prefix, true);
-        if(ArraySon != null){
-        ArraySon.prettyPrint(s, prefix, true);
-        }
-
-    }
+ 
     @Override
     String prettyPrintNode() {
-        return "Array ( level :" +Level + ")";
+        return "Array ("+ this.getName()+Profondeur()   +" )";
     }
 
     @Override
@@ -77,62 +64,93 @@ public class Array extends AbstractDeclVar {
         
     }
 
+   String Profondeur(){
+    Iterator<AbstractExpr> it  = profondeur.iterator();
+    String a = new String();
+    while(it.hasNext()){
+        a = a +" "+it.next().decompile();
+    }
+    return a ;
+   }
+
+
+ 
     @Override
-    protected void verifyDeclVar(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+    public ClassDefinition getClassDefinition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Definition getDefinition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public FieldDefinition getFieldDefinition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public MethodDefinition getMethodDefinition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Symbol getName() {
+        return name;
+    }
+    public void setName(Symbol a ) {
+        this.name = a;
+    }
+    @Override
+    public ExpDefinition getExpDefinition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public VariableDefinition getVariableDefinition() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public void setDefinition(Definition definition) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public Type verifyType(DecacCompiler compiler) throws ContextualError {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-            Array a = new Array();
-        Type t = type.verifyType(compiler);
-        if (t.sameType(compiler.environmentType.VOID)) {
-            // ERROR MSG
-            throw new ContextualError("Type can't be void : rule 3.17", getLocation());
-        }
-        try {
-            a=this;
-            while(a.ArraySon !=null){
-                a=a.ArraySon;
-            }
-            System.out.println(a.Level);
-            name.setDefinition(new ArrayDefinition(t, getLocation(),a.Level));
-            // nbElements.
-            localEnv.declare(name.getName(), name.getExpDefinition());
-        } catch (DoubleDefException e) {
-            // ERROR MSG
-            throw new ContextualError("The variable \""+name.getName()+"\" is already declared : rule 3.17", getLocation());
-        }
-        name.verifyExpr(compiler, localEnv, currentClass);
-        nbElements.verifyExpr(compiler, localEnv, currentClass);
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+            throws ContextualError {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    @Override
+    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
     @Override
-    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+    public void decompile(IndentPrintStream s) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void decompile(IndentPrintStream s) {
-        if(ArrayFather==null){
-            
-            type.decompile(s);
-            s.print(" ");
-            name.decompile(s);
-            s.print("[");
-            nbElements.decompile(s);
-            s.print("]");
-    
-        }
-        else {
-            s.print("[");
-            nbElements.decompile(s);
-            s.print("]");
-        }
-        if(ArraySon!=null){
-            ArraySon.decompile(s);
-        }
-        else {
-            s.println(";"); 
-        }
+    protected void prettyPrintChildren(PrintStream s, String prefix) {
+        // TODO Auto-generated method stub
         
     }
+ 
     
 }
