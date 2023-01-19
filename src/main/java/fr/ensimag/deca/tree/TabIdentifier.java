@@ -3,6 +3,8 @@ package fr.ensimag.deca.tree;
 import java.io.PrintStream;
 import java.util.Iterator;
 
+import org.antlr.v4.runtime.misc.Triple;
+
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -17,6 +19,7 @@ import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.DAddr;
 
 
 public class TabIdentifier extends AbstractIdentifier{
@@ -245,6 +248,12 @@ public class TabIdentifier extends AbstractIdentifier{
     public void setName(Symbol a) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

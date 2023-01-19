@@ -3,6 +3,7 @@ package fr.ensimag.deca.tree;
 import java.io.PrintStream;
 import java.util.Iterator;
 
+import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
@@ -21,6 +22,7 @@ import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.Register;
 
 public class Array extends AbstractIdentifier {
@@ -150,6 +152,11 @@ public class Array extends AbstractIdentifier {
     protected void prettyPrintChildren(PrintStream s, String prefix) {
         // TODO Auto-generated method stub
         
+    }
+    @Override
+    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        // TODO Auto-generated method stub
+        return null;
     }
  
     
