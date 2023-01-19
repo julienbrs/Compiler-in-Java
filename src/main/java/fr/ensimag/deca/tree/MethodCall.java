@@ -106,7 +106,7 @@ public class MethodCall extends AbstractExpr {
     @Override
     protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         int nbPush = codeGenExpr(compiler, 2);
-        compiler.addInstruction(new CMP(1, GPRegister.getR(2)));
+        compiler.addInstruction(new CMP(0, GPRegister.getR(2)));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {

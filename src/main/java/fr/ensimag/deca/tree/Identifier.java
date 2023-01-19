@@ -241,7 +241,7 @@ public class Identifier extends AbstractIdentifier {
         assert(getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
-        compiler.addInstruction(new CMP(1, GPRegister.R0));
+        compiler.addInstruction(new CMP(0, GPRegister.R0));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
