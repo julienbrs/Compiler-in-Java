@@ -452,7 +452,7 @@ primary_expr returns[AbstractExpr tree]
             assert($ident.tree != null);
             $tree=$ident.tree;
         }
-     | tabident{ 
+ | tabident{ 
         assert($tabident.tree != null);
         $tree=$tabident.tree;
     }
@@ -507,26 +507,26 @@ type returns[AbstractIdentifier tree]
         }
          
    |  IDENT OBRACKET
-        (expr {  
-       a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
+   {
+a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
         $tree = a;
         setLocation($tree, $IDENT);
-        })?{  
-
- 
+   } (expr {  
+       
          a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree);
  $tree = a;
  setLocation($tree, $IDENT);
-        }
+        })?
         CBRACKET
-       (OBRACKET
+       (OBRACKET{   
+       a.setName(sym.create(a.getName().toString()+"[]"));
+       a.addProfondeur(new IntLiteral(1));
+       }
        (expr {
         a.setName(sym.create(a.getName().toString()+"[]"));
         a.addProfondeur( $expr.tree);
-       })? {   
-      a.setName(sym.create(a.getName().toString()+"[]"));
-       a.addProfondeur(new IntLiteral(1));
-       }CBRACKET)*  
+       })?
+       CBRACKET)*  
     ;
 
 literal returns[AbstractExpr tree]
