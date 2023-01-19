@@ -1,0 +1,38 @@
+// Test de la règle (2.7) : si l'on redéfinie une méthode avec
+// les mêmes arguments et un type de retour qui est un sous-type
+// de la méthode redéfinie, alors cela fonctionne.
+
+class A {
+  float method(int n) {
+  }
+}
+
+class B extends A {
+  float method(int n) {
+    // fonctionne car float sous-type de float
+    // et même arguments
+  }
+}
+
+class C {
+  Object methodReturnObjectA() {
+  }
+}
+
+class D {
+  Object methodReturnObjectA() {
+    // on peut redéfinir cette méthode dans cette classe
+    // car elle est indépendante de la classe C
+  }
+}
+
+class E extends C {
+  A methodReturnObjectA() {
+    // la classe E n'est pas indépendante avec la classe C
+    // mais on redéfinit la méthode avec les mêmes
+    // arguments et avec un type de retour correct car c'est
+    // un sous-type du type de retour de la méthode
+    // héritée
+  }
+}
+

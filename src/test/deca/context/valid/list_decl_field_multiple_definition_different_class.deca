@@ -1,0 +1,16 @@
+// Test de la règle (2.4) : on vérifie que si l'on essaie de
+// déclarer plusieurs fois un champ du même nom mais dans des
+// classes différentes, cela fonctionne.
+
+class A {
+  int x;
+}
+
+class B {
+  int x;
+}
+
+class C extends A {
+  int x;
+}
+

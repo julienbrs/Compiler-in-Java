@@ -1,0 +1,13 @@
+// Test de la règle (3.28) : on peut affecter à un objet
+// de type T1 la valeur d'un objet de type T2 si
+// T2 est un sous-type de T1
+
+class A {}
+
+class B extends A {}
+
+{
+    B b = new B();
+    A a = b; // fonctionne car B est un sous-type de A
+}
+

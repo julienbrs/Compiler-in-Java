@@ -1,0 +1,18 @@
+// Test de la règle (2.9) : lorsque l'on déclare une méthode, tous
+// ses paramètres doivent être de type différent de void.
+// On vérifie que l'on soit capable de déclarer une méthode qui a 
+// zéro paramètres, et une méthode qui a bien tous ses paramètres
+// de type différent de void.
+
+class A {
+    void methodWithoutParameters() {
+        // pas de paramètres : OK
+    }
+}
+
+class B {
+    void methodWithoutNullParameters(int i, float f, boolean b, A a) {
+        // tous ses paramètres ont des type non void : OK
+    }
+}
+

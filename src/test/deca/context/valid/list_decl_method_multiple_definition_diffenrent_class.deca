@@ -1,0 +1,18 @@
+// Test de la règle (2.6) : on peut déclarer plusieurs fois la
+// même méthode si elles sont dans des classes différentes.
+
+class A {
+  void method() {
+  }
+}
+
+class B {
+  void method() {
+  }
+}
+
+class C extends A {
+  void method() {
+  }
+}
+

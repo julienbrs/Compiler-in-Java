@@ -1,0 +1,17 @@
+// Test de la règle (3.28) : On peut affecter à un objet
+// de type float une valeur de type int.
+
+class A {
+    float pi = 3; // OK
+    
+    int pi2 = 9;
+    float pi2Float = pi2; // OK
+}
+
+{
+    float g = 10; // OK
+    
+    int e = 3;
+    float floatE = e; // OK
+}
+

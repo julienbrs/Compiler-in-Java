@@ -1,0 +1,21 @@
+// Test de la règle (3.28) : Lors de l'instruction `return`
+// d'une méthode, il faut que le type de l'objet retourné
+// soit assignable au type de retour de la méthode.
+
+class A {
+    float getFloat() {
+        return 3.14; // fonctionne car 3.14 est de type float
+    }
+    
+    float getInt() {
+        return 3; // fonctionne car sous-type de float
+    }
+}
+
+class B extends A {
+    A getObjectOfTypeA() {
+        B b = new B();
+        return b; // fonctionne car B sous-type de A
+    }
+}
+

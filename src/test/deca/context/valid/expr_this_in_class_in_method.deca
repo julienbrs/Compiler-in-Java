@@ -1,0 +1,13 @@
+// Test de la règle (3.43) : Une instruction commençant par
+// `this` doit obligatoirement se trouver dans une méthode
+// de classe.
+
+class A {
+    int x;
+
+    void setX(int x) {
+        this.x = x;
+        // fonctionne car on est dans une méthode de classe
+    }
+}
+
