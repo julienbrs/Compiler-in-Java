@@ -60,7 +60,7 @@ public class MethodBody extends AbstractMethodBody{
         compiler.addComment("Beginning of instructions");
         int maxPush = listInst.codeGenListInst(compiler);
 
-        if (!compiler.getCompilerOptions().getNoCheck() && !ident.getType().isNull()) {
+        if (!compiler.getCompilerOptions().getNoCheck() && !ident.getType().isVoid()) {
             compiler.addInstruction(new WSTR(new ImmediateString("pas de return dans une methode sans void")));
             compiler.addInstruction(new WNL());
             compiler.addInstruction(new ERROR());

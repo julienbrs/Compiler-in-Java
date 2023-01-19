@@ -127,7 +127,7 @@ public class DeclClass extends AbstractDeclClass {
             }
         }
         bodyclass.codeGenVTable(compiler, name, offset);
-        return name.getClassDefinition().getNumberOfMethods();
+        return name.getClassDefinition().getNumberOfMethods() + 1;
     }
 
     public void codeGenBody(DecacCompiler compiler) {
@@ -145,6 +145,7 @@ public class DeclClass extends AbstractDeclClass {
 
         // TODO : Sauvegarde registre
         compiler.addInstruction(new PUSH(GPRegister.getR(2)));
+        compiler.addInstruction(new PUSH(GPRegister.getR(3)));
         
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
@@ -168,6 +169,7 @@ public class DeclClass extends AbstractDeclClass {
             }
         }
         // TODO : restauration registre
+        compiler.addInstruction(new POP(GPRegister.getR(3)));
         compiler.addInstruction(new POP(GPRegister.getR(2)));
         // TODO : TSTO et ADDSP
         // lADDSP.setInstruction(new ADDSP(new ImmediateInteger(max[0] + max[1])));
