@@ -5,11 +5,11 @@ import java.io.PrintStream;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
-import fr.ensimag.deca.context.Definition;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
@@ -21,7 +21,6 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 public class This extends AbstractExpr {
 
     private boolean isImplicit;
-    private ClassDefinition parentClass;
 
     public This(boolean isImplicit) {
         this.isImplicit = isImplicit;
@@ -35,14 +34,13 @@ public class This extends AbstractExpr {
             // ERROR MSG
             throw new ContextualError("Can't call \"this\" in the main program : rule 3.43", getLocation());
         }
-        parentClass = currentClass;
         setType(t);
         return getType();
     }
 
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        compiler.addInstruction(new LOAD(parentClass.getOperand(), GPRegister.getR(offset)));
+        compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
         return 0;
     }
 
