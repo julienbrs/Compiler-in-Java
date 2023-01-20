@@ -705,8 +705,11 @@ decl_method returns [ DeclMethod tree]
         setLocation($tree, $type.start);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
-        
-        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodAsmBody(new StringLiteral($code.text)));
+        StringLiteral sLit = new StringLiteral($code.text);
+        sLit.setLocation($code.location);
+        MethodAsmBody body = new MethodAsmBody(sLit);
+        body.setLocation($code.location);
+        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree, body);
          setLocation($tree, $ASM);
         }
       ) {

@@ -2,6 +2,7 @@ package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
 import java.util.Iterator;
+import java.util.ListIterator;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -73,10 +74,12 @@ public class MethodCall extends AbstractExpr {
             throw new ContextualError("", getLocation());
         }
         Iterator<Type> ite = sig.iterator();
+        ListExpr newRValStar = new ListExpr();
         for (AbstractExpr absExpr : rValStar.getList()) {
             Type expType = ite.next();
-            absExpr.verifyRValue(compiler, localEnv, currentClass, expType);
+            newRValStar.add(absExpr.verifyRValue(compiler, localEnv, currentClass, expType));
         }
+        rValStar = newRValStar;
         setType(t);
         return getType();
     }

@@ -59,6 +59,10 @@ public class Selection extends AbstractSelection {
         ident.verifyExpr(compiler, t.getDefinition().getMembers(), currentClass);
         FieldDefinition def = ident.getFieldDefinition();
         if (def.getVisibility().equals(Visibility.PROTECTED)) {
+            if (currentClass == null) {
+                // ERROR MSG
+                throw new ContextualError("Can't acces a protected field in main : rule 3.66", getLocation());
+            }
             // ERROR MSG
             if (!t.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getContainingClass().getType())) {
                 // ERROR MSG

@@ -8,6 +8,7 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.InlinePortion;
 
 public class MethodAsmBody extends AbstractMethodBody {
     private StringLiteral asm; 
@@ -17,11 +18,11 @@ public class MethodAsmBody extends AbstractMethodBody {
     }
     
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
-        // nothing to do
+        asm.verifyExpr(compiler, localEnv, currentClass);
     }
 
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass, AbstractIdentifier ident) {
-        // TODO : extraire le code assembleur
+        compiler.add(new InlinePortion(asm.getValue().replace("\"", "")));
     }
 
     @Override
