@@ -39,7 +39,7 @@ public class New extends AbstractExpr {
         Type t = type.verifyType(compiler);
         if (!t.isClass()) {
             // ERROR MSG
-            throw new ContextualError(" : rule 3.42", getLocation());
+            throw new ContextualError("Can't do \"new\" on \"" + t + "\" : rule 3.42", getLocation());
         }
         setType(t);
         return getType();

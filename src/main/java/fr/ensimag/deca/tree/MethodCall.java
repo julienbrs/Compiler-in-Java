@@ -55,14 +55,13 @@ public class MethodCall extends AbstractExpr {
             def = envExp2.get(methodIdent.getName());
         } else {
             // ERROR MSG
-            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
+            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("Can't call method on \"" + expr.getType() + "\" : rule 3.71", getLocation());
             envExp2 = e.getDefinition().getMembers();
             def = envExp2.get(methodIdent.getName());
         }
-        // ERROR MSG
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("", getLocation());
+            throw new ContextualError("No method called \"" + methodIdent.getName() + "\" :  rule 0.1", getLocation());
         }
         methodIdent.verifyExpr(compiler, envExp2, currentClass);
         MethodDefinition mDef = def.asMethodDefinition("", getLocation());
@@ -70,7 +69,7 @@ public class MethodCall extends AbstractExpr {
         Signature sig = mDef.getSignature();
         if (sig.size() != rValStar.size()) {
             // ERROR MSG
-            throw new ContextualError("", getLocation());
+            throw new ContextualError("The signature don't match expected : rule 3.73", getLocation());
         }
         Iterator<Type> ite = sig.iterator();
         ListExpr newRValStar = new ListExpr();

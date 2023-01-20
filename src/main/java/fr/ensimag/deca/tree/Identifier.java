@@ -206,7 +206,7 @@ public class Identifier extends AbstractIdentifier {
         TypeDefinition def = compiler.environmentType.defOfType(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("", getLocation());
+            throw new ContextualError("The type \"" + name + "\" doesn't exist : rule 0.2", getLocation());
         }
         setDefinition(def);
         setType(definition.getType());

@@ -103,9 +103,9 @@ public abstract class AbstractExpr extends AbstractInst {
             return this;
         } else {
             // ERROR MSG
-            ClassType cType = t.asClassType("", getLocation());
+            ClassType cType = t.asClassType("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
             // ERROR MSG
-            ClassType expType = expectedType.asClassType("", getLocation());
+            ClassType expType = expectedType.asClassType("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
             if (cType.isSubClassOf(expType)) {
                 return this;
             }

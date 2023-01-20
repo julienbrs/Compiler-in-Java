@@ -44,7 +44,7 @@ public class Cast extends AbstractExpr {
         Type e = expr.verifyExpr(compiler, localEnv, currentClass);
         if (t.isVoid()) {
             // ERROR MSG
-            throw new ContextualError("t1 non void : rule 3.??", getLocation());
+            throw new ContextualError("Can't cast void : rule 3.39", getLocation());
         }
         
         if (t.sameType(e)) {
@@ -64,9 +64,9 @@ public class Cast extends AbstractExpr {
             return getType();
         } else {
             // ERROR MSG
-            ClassType tClass = t.asClassType(" rule 3.??", getLocation());
+            ClassType tClass = t.asClassType("Can't cast \"" + t + "\" to \"" + e + "\" : rule 3.39", getLocation());
             // ERROR MSG
-            ClassType eClass = e.asClassType(" rule 3.??", getLocation());
+            ClassType eClass = e.asClassType("Can't cast \"" + t + "\" to \"" + e + "\" : rule 3.39", getLocation());
             if (tClass.isSubClassOf(eClass)) {
                 setType(t);
                 return getType();
@@ -76,7 +76,7 @@ public class Cast extends AbstractExpr {
             }
         }
         // ERROR MSG
-        throw new ContextualError(" rule 3.??", getLocation());
+        throw new ContextualError("Can't cast \"" + t + "\" to \"" + e + "\" : rule 3.39", getLocation());
     }
 
     @Override

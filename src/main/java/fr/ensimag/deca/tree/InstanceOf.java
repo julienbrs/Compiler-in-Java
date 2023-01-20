@@ -41,7 +41,7 @@ public class InstanceOf extends AbstractExpr {
         Type tType = type.verifyType(compiler);
         if (!tExpr.isClassOrNull() || !tType.isClass()) {
             // ERROR MSG
-            throw new ContextualError(" : rule 3.41", getLocation());
+            throw new ContextualError("Can't do \"instanceof\" between \"" + tExpr + "\"  and \"" + tType + "\": rule 3.40", getLocation());
         }
         setType(compiler.environmentType.BOOLEAN);
         return getType();

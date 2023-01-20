@@ -55,7 +55,7 @@ public class Selection extends AbstractSelection {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         // ERROR MSG
-        ClassType t = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
+        ClassType t = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("Can't select field from \"" + expr.getType() + "\" : rule 3.65", getLocation());
         ident.verifyExpr(compiler, t.getDefinition().getMembers(), currentClass);
         FieldDefinition def = ident.getFieldDefinition();
         if (def.getVisibility().equals(Visibility.PROTECTED)) {
@@ -63,10 +63,9 @@ public class Selection extends AbstractSelection {
                 // ERROR MSG
                 throw new ContextualError("Can't acces a protected field in main : rule 3.66", getLocation());
             }
-            // ERROR MSG
             if (!t.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getContainingClass().getType())) {
                 // ERROR MSG
-                throw new ContextualError("", getLocation());
+                throw new ContextualError("Can't acces a protected field from a foreign class : rule 3.66", getLocation());
             }
         }
         setType(def.getType());
