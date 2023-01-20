@@ -217,7 +217,7 @@ public class Identifier extends AbstractIdentifier {
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
-            compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(2)), GPRegister.getR(offset)));
+            compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.getR(offset)));
             return 0;
         }
         DAddr addr = getExpDefinition().getOperand();
