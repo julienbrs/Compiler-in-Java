@@ -100,6 +100,9 @@ public class MethodCall extends AbstractExpr {
         compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.getR(offset)));
         compiler.addInstruction(new BSR(new RegisterOffset(methodIdent.getMethodDefinition().getIndex(), GPRegister.getR(offset))));
         compiler.addInstruction(new SUBSP(new ImmediateInteger(rValStar.size() + 1)));
+        if (!getType().isVoid()) {
+            compiler.addInstruction(new LOAD(GPRegister.R0, GPRegister.getR(offset)));
+        }
         return rValStar.size() + 3;
     }
 

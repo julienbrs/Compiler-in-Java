@@ -16,6 +16,8 @@ import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.ERROR;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.RTS;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.WNL;
@@ -48,7 +50,9 @@ public class MethodBody extends AbstractMethodBody{
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
-        // TODO : sauvgarde registre
+        for (int i = 2; i < compiler.getCompilerOptions().getRmax(); i++) {
+            compiler.addInstruction(new PUSH(GPRegister.getR(i)));
+        }
 
         Label returnLabel = new Label("end." + currentClass.getType().getName() + "." + ident.getName());
         Label oldReturnLabel = compiler.getReturnLabel();
@@ -67,15 +71,17 @@ public class MethodBody extends AbstractMethodBody{
             compiler.addLabel(returnLabel);
         }
 
-        // TODO : restauration registre
+        for (int i = compiler.getCompilerOptions().getRmax() - 1; i > 1; i--) {
+            compiler.addInstruction(new POP(GPRegister.getR(i)));
+        }
 
         compiler.addInstruction(new RTS());
 
         compiler.setReturnLabel(oldReturnLabel);
+        
+        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(nbDecl + compiler.getCompilerOptions().getRmax() - 2)));
 
-        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(nbDecl)));
-
-        lTSTO.setInstruction(new TSTO(new ImmediateInteger(nbDecl + maxPush)));
+        lTSTO.setInstruction(new TSTO(new ImmediateInteger(nbDecl + maxPush + compiler.getCompilerOptions().getRmax() - 2)));
     }
 
     @Override

@@ -50,7 +50,7 @@ public class Main extends AbstractMain {
         compiler.addComment("Beginning of main instructions:");
         int maxPush = insts.codeGenListInst(compiler);
         
-        int[] res = {offsetGP, offsetGP + maxPush};
+        int[] res = {offsetGP - 1, offsetGP - 1 + maxPush};
         return res;
     }
     

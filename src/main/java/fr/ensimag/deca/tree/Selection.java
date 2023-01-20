@@ -94,7 +94,7 @@ public class Selection extends AbstractSelection {
     protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
         int nbPush = expr.codeGenExpr(compiler, 2);
         compiler.addInstruction(new LOAD(new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(2)), GPRegister.R0));
-        compiler.addInstruction(new CMP(1, GPRegister.R0));
+        compiler.addInstruction(new CMP(0, GPRegister.R0));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
