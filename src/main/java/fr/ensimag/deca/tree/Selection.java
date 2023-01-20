@@ -18,6 +18,7 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
@@ -87,6 +88,19 @@ public class Selection extends AbstractSelection {
         }
         Triple<Integer, Integer, DAddr> res = new Triple<>(nbPush, offset + 1, new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)));
         return res;
+    }
+
+    @Override
+    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+        int nbPush = expr.codeGenExpr(compiler, 2);
+        compiler.addInstruction(new LOAD(new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(2)), GPRegister.R0));
+        compiler.addInstruction(new CMP(1, GPRegister.R0));
+        if (aim) {
+            compiler.addInstruction(new BNE(dest));
+        } else {
+            compiler.addInstruction(new BEQ(dest));
+        }
+        return nbPush;
     }
 
     @Override

@@ -49,7 +49,6 @@ public class ClassBody extends Tree{
             int index = aDeclMethod.getIdent().getMethodDefinition().getIndex();
             compiler.addInstruction(new LOAD(new LabelOperand(label), GPRegister.getR(2)));
             compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(offset + index, GPRegister.GB)));
-            offset++;
         }
     }
 

@@ -1,0 +1,37 @@
+// Test la création de tableau + test dans une classe + fonction
+
+{
+    int[][] tabInt;
+    tabInt = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    float[][] tabFloat = {{2.5, -1.5}, {-1.1, 2.3}, {0.5, -1.0}};
+
+    int[] tab[] = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    bool[] tabBool = {0, 1, 1, 0};
+
+    int[][][] tabThreeDim = {{{1, 2}, {3, 4}}, {{5}}};
+
+    int a[][] = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+}
+
+class A  {
+    int[][] tabInt;
+    tabInt = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    float[][] createTable() {
+        return {{2.5, -1.5}, {-1.1, 2.3}, {0.5, -1.0}};
+    }
+
+    int[] tab[] = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    bool[] tabBool = {0, 1, 1, 0};
+
+    int[][][] tabThreeDim = {{{1, 2}, {3, 4}}, {{5}}};
+
+    int a[][] = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+}
+
+
+// Resultat:
+//# TODOTEST

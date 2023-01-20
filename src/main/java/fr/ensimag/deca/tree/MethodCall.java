@@ -20,6 +20,7 @@ import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.BSR;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
@@ -100,6 +101,18 @@ public class MethodCall extends AbstractExpr {
         compiler.addInstruction(new BSR(new RegisterOffset(methodIdent.getMethodDefinition().getIndex(), GPRegister.getR(offset))));
         compiler.addInstruction(new SUBSP(new ImmediateInteger(rValStar.size() + 1)));
         return rValStar.size() + 3;
+    }
+
+    @Override
+    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+        int nbPush = codeGenExpr(compiler, 2);
+        compiler.addInstruction(new CMP(0, GPRegister.getR(2)));
+        if (aim) {
+            compiler.addInstruction(new BNE(dest));
+        } else {
+            compiler.addInstruction(new BEQ(dest));
+        }
+        return nbPush;
     }
 
     @Override

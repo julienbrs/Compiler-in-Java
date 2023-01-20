@@ -57,7 +57,8 @@ public class Assign extends AbstractBinaryExpr {
         int nbPush = res.a;
         offset = res.b;
         Register reg;
-        if (offset == compiler.getCompilerOptions().getRmax() - 1) {
+        if (offset == compiler.getCompilerOptions().getRmax()) {
+            offset--;
             compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
             int nbRightPush = codeGenRightOperande(compiler, offset);
             nbPush = Math.max(nbPush, nbRightPush);
@@ -68,7 +69,6 @@ public class Assign extends AbstractBinaryExpr {
             nbPush = codeGenRightOperande(compiler, offset);
             reg = GPRegister.getR(offset);
         }
-        System.out.println("" + reg + " - " + res.c);
         compiler.addInstruction(new STORE(reg, res.c));
         return nbPush;
     }
