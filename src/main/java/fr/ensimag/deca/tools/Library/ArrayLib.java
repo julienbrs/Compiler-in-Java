@@ -1,5 +1,9 @@
 package fr.ensimag.deca.tools.Library;
 
+/*
+ * Calcul du déterminant, de l'inverse et du rang, par la méthode de Gauss-Jordan
+ */
+
 public class ArrayLib {
 
     private static float[][] matrice = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};

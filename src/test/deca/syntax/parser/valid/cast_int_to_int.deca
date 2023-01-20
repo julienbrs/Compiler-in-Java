@@ -1,0 +1,6 @@
+// Test parser, cast d'un cast de type entier sur entier
+
+{
+    int x = 5;
+    int y = (int) (x);
+}

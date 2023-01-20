@@ -60,6 +60,9 @@ public class ClassType extends Type {
      */
     public boolean isSubClassOf(ClassType potentialSuperClass) {
         // throw new UnsupportedOperationException("not yet implemented");
+        if (getName().getName().equals("Object")) {
+            return sameType(potentialSuperClass);
+        }
         return isNull()
             || sameType(potentialSuperClass)
             || getDefinition().getSuperClass().getType().asClassType(null, null).isSubClassOf(potentialSuperClass);

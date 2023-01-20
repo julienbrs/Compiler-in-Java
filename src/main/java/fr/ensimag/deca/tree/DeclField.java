@@ -70,13 +70,13 @@ public class DeclField extends AbstractDeclField{
 
     public void codeGenDeclFieldNull(DecacCompiler compiler) {
         if (varName.getType().isInt() || varName.getType().isBoolean()) {
-            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(2)));
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(3)));
         } else if (varName.getType().isFloat()) {
-            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(2)));
+            compiler.addInstruction(new LOAD(new ImmediateFloat(0), GPRegister.getR(3)));
         } else {
-            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
+            compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(3)));
         }
-        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
+        compiler.addInstruction(new STORE(GPRegister.getR(3), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
     }
 
     public int[] codeGenDeclField(DecacCompiler compiler) {

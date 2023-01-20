@@ -83,7 +83,10 @@ public class Program extends AbstractProgram {
         compiler.addComment("Methodes de classe");
 
         compiler.addLabel(new Label("code.Object.equals"));
-        compiler.addInstruction(new TSTO(new ImmediateInteger(2)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new TSTO(new ImmediateInteger(2)));
+            compiler.addInstruction(new BOV(new Label("pile_pleine")));
+        }    
         compiler.addInstruction(new PUSH(GPRegister.getR(2)));
         compiler.addInstruction(new PUSH(GPRegister.getR(3)));
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
@@ -94,10 +97,6 @@ public class Program extends AbstractProgram {
         compiler.addInstruction(new POP(GPRegister.getR(2)));
         compiler.addInstruction(new RTS());
         
-
-        // equals(object)
-        // return addr1 == addr2;
-
         classes.codeGenBody(compiler);
     }
 

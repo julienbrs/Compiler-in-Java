@@ -41,9 +41,9 @@ public class BooleanLiteral extends AbstractExpr {
 
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         if (value) {
-            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(offset)));
-        } else {
             compiler.addInstruction(new LOAD(new ImmediateInteger(1), GPRegister.getR(offset)));
+        } else {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(offset)));
         }
         return 0;
     }

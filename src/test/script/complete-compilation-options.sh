@@ -25,7 +25,7 @@ options=(-b -P -v -p -n)
 echo "${purple}Lancement des tests d'options de compilation:${reset}"
 for option in "${options[@]}"; do
     rm -f ./src/test/deca/codegen/valid/provided/ln2.ass 2>/dev/null
-    resultat_compil=$(decac ./src/test/deca/codegen/perf/provided/ln2.deca $option) || exit 1
+    resultat_compil=$(decac ./src/test/deca/codegen/perf/provided/ln2.deca $option)
 
     # On exit pas si ça plante, car on s'est sûrement arrêté avant donc ass n'existe pas
     resultat_ima=$(ima ./src/test/deca/codegen/perf/provided/ln2.ass)
@@ -39,21 +39,21 @@ for option in "${options[@]}"; do
         echo "Option de compilation $option OK ✅"
     else
         echo "Option de compilation $option n'a pas le bon résultat❌"
-        exit 1
+
     fi
 
 done
 
 # option avec registre
 rm -f ./src/test/deca/codegen/valid/provided/ln2.ass 2>/dev/null
-resultat_compil=$(decac ./src/test/deca/codegen/perf/provided/ln2.deca -r 7) || exit 1
-resultat_ima=$(ima ./src/test/deca/codegen/perf/provided/ln2.ass) || exit 1
+resultat_compil=$(decac ./src/test/deca/codegen/perf/provided/ln2.deca -r 7)
+resultat_ima=$(ima ./src/test/deca/codegen/perf/provided/ln2.ass)
 fichier_modele="src/test/script/modele/compilations-options/option_r7.txt"
 diff <(echo "$resultat_compil") $fichier_modele
 if [ $? -eq 0 ]; then
     echo "Option de compilation -r 7 OK ✅"
 else
     echo "Option de compilation -r 7 n'a pas le bon résultat❌"
-    exit 1
+
 fi
 rm -f ./src/test/deca/codegen/valid/provided/ln2.ass

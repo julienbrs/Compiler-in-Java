@@ -39,7 +39,6 @@ public class Identifier extends AbstractIdentifier {
     @Override
     protected void checkDecoration() {
         if (getDefinition() == null) {
-            System.out.println(prettyPrint());
             throw new DecacInternalError("Identifier " + this.getName() + " has no attached Definition");
         }
     }
@@ -216,13 +215,24 @@ public class Identifier extends AbstractIdentifier {
     
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
+        if (getDefinition().isField()) {
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
+            compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(2)), GPRegister.getR(offset)));
+            return 0;
+        }
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
         return 0;
     }
 
     public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
-        Triple<Integer, Integer, DAddr> res = new Triple<>(0, offset, getExpDefinition().getOperand());
+        Triple<Integer, Integer, DAddr> res;
+        if (getDefinition().isField()) {
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
+            res = new Triple<Integer,Integer,DAddr>(0, offset + 1, new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(2)));
+        } else {
+            res = new Triple<>(0, offset, getExpDefinition().getOperand());
+        }
         return res;
     }
 
@@ -230,7 +240,7 @@ public class Identifier extends AbstractIdentifier {
         assert(getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
-        compiler.addInstruction(new CMP(1, GPRegister.R0));
+        compiler.addInstruction(new CMP(0, GPRegister.R0));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {

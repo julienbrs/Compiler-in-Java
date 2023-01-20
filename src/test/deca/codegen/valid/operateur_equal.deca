@@ -1,0 +1,12 @@
+// Test de codegen, opérateur equal en expr
+
+{
+    int x = 5;
+    int y = 5;
+    int z = 6;
+    boolean a = (x == y);
+    if (a){
+        z = 1;
+    }
+    print("z doit être égal à 1, et z = ", z);
+}

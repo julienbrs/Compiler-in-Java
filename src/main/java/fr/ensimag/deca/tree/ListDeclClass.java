@@ -73,7 +73,7 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
         for (AbstractDeclClass abstractDeclClass : this.getList()) {
             offset += abstractDeclClass.codeGenVTable(compiler, offset);
         }
-        return offset + 1;
+        return offset;
     }
 
     public void codeGenBody(DecacCompiler compiler) {
