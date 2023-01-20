@@ -1,0 +1,45 @@
+// Test la création de tableau + test dans une classe + fonction
+
+{
+    // manque un ]
+    int[][ tabInt;
+    tabInt = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    // 1 dimension au lieu de 2
+    float[][] tabFloat = {2.5, -1.5};
+
+    // 3 dimensions != 2 dim
+    int[][] tab[] = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    // pb de type
+    bool[] tabBool = {0, 2, 1, 0};
+
+    // tableau de 4 dimensions au lieu de 3
+    int[][][] tabThreeDim = {{{1, 2}, {3, 4}}, {{5, {5, 6, 7}}}};
+
+    // pb de type
+    int a[][] = {{2, -1.0, 0}, {-1, 2, -1}, {0, -1, 2}};
+}
+
+class A  {
+    // manque un ] 
+    int[][ tabInt;
+    tabInt = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    // pb de dim
+    float[][] createTable() {
+        return {2.5, -1.5};
+    }
+
+    int[][] tab[] = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
+
+    bool[] tabBool = {0, 2, 1, 0};
+
+    int[][][] tabThreeDim = {{{1, 2}, {3, 4}}, {{5}, {5, 6, 7}}};
+
+    int a[][] = {{2, -1.0, 0}, {-1, 2, -1}, {0, -1, 2}};
+}
+
+
+// Resultat:
+//# TODOTEST
