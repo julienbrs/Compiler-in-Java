@@ -508,12 +508,12 @@ type returns[AbstractIdentifier tree]
          
    |  IDENT OBRACKET
    {
-a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
+a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1),new Identifier(sym.create($IDENT.text)));
         $tree = a;
         setLocation($tree, $IDENT);
    } (expr {  
        
-         a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree);
+         a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree,new Identifier(sym.create($IDENT.text)));
  $tree = a;
  setLocation($tree, $IDENT);
         })?

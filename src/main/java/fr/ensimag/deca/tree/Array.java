@@ -1,5 +1,6 @@
 package fr.ensimag.deca.tree;
 
+import java.beans.Expression;
 import java.io.PrintStream;
 import java.util.Iterator;
 
@@ -8,6 +9,7 @@ import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ArrayDefinition;
+import fr.ensimag.deca.context.ArrayType;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
@@ -16,6 +18,7 @@ import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.context.FieldDefinition;
 import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Type;
+import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.DecacInternalError;
@@ -30,14 +33,16 @@ public class Array extends AbstractIdentifier {
 
 
     private Symbol name;
+    private     AbstractIdentifier nametype;
     private ListExpr profondeur;
     private int Level;
 
-    public Array(Symbol name,AbstractExpr expr) {
+    public Array(Symbol name,AbstractExpr expr,AbstractIdentifier nametype ) {
         Validate.notNull(name);
         this.name = name;
         this.profondeur = new ListExpr();
         this.profondeur.add(expr);
+        this.nametype = nametype;
     }
     public void addProfondeur(AbstractExpr expr){
         this.profondeur.add(expr);
@@ -74,7 +79,7 @@ public class Array extends AbstractIdentifier {
     }
     return a ;
    }
-
+   private Definition definition;
 
  
     @Override
@@ -84,8 +89,8 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     public Definition getDefinition() {
-        // TODO Auto-generated method stub
-        return null;
+
+        return definition;
     }
     @Override
     public FieldDefinition getFieldDefinition() {
@@ -116,25 +121,38 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     public void setDefinition(Definition definition) {
-        // TODO Auto-generated method stub
+        this.definition=definition;
         
     }
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+          // throw new UnsupportedOperationException("not yet implemented");
+          TypeDefinition def = compiler.environmentType.defOfType(nametype.getName());
+          if (def == null) {
+              // ERROR MSG
+              throw new ContextualError("", getLocation());
+          }
+          setDefinition(def);
+          setType(definition.getType());
+          return this.getType();
     }
     @Override
-    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
-            throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv,
+            ClassDefinition currentClass) throws ContextualError {
+        return verifyExpr(compiler, localEnv, currentClass);
     }
     @Override
-    public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
-            throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+    public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv,
+            ClassDefinition currentClass) throws ContextualError {
+        // throw new UnsupportedOperationException("not yet implemented");
+        ExpDefinition def = localEnv.get(nametype.getName());
+        if (def == null) {
+            // ERROR MSG
+            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule 0.1", getLocation());
+        }
+        setDefinition(def);
+        setType(definition.getType());
+        return this.getType();
     }
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
