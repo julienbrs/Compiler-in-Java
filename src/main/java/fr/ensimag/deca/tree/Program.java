@@ -73,10 +73,10 @@ public class Program extends AbstractProgram {
 
         compiler.add(new Line(""));
         compiler.addComment("Main program");
-        int[] res = main.codeGenMain(compiler, nbMethod);
+        int[] res = main.codeGenMain(compiler, nbMethod); // {maxReg, nbDecl, nbDecl + nbPush}
         
-        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(res[0])));
-        lTSTO.setInstruction(new TSTO(res[1]));
+        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(res[1])));
+        lTSTO.setInstruction(new TSTO(res[2]));
         compiler.addInstruction(new HALT()); 
 
         compiler.add(new Line(""));

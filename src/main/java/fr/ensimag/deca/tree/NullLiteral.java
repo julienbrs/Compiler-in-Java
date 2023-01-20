@@ -22,9 +22,10 @@ public class NullLiteral extends AbstractExpr{
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(offset)));
-        return 0;
+        int[] res = {offset, 0};
+        return res;
     }
 
     @Override

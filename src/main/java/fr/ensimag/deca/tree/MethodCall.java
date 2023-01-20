@@ -2,7 +2,6 @@ package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -85,13 +84,26 @@ public class MethodCall extends AbstractExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] res = {0, rValStar.size() + 3};
         compiler.addInstruction(new ADDSP(new ImmediateInteger(rValStar.size() + 1)));
-        expr.codeGenExpr(compiler, offset);
+        int[] resExpr = expr.codeGenExpr(compiler, offset);
+        if (resExpr[0] > res[0]) {
+            res[0] = resExpr[0];
+        }
+        if (resExpr[1] > res[1]) {
+            res[1] = resExpr[1];
+        }
         compiler.addInstruction(new STORE(GPRegister.getR(offset), new RegisterOffset(0, GPRegister.SP)));
         int index = 1;
         for (AbstractExpr abstractExpr : rValStar.getList()) {
-            abstractExpr.codeGenExpr(compiler, offset);
+            resExpr = abstractExpr.codeGenExpr(compiler, offset);
+            if (resExpr[0] > res[0]) {
+                res[0] = resExpr[0];
+            }
+            if (resExpr[1] > res[1]) {
+                res[1] = resExpr[1];
+            }
             compiler.addInstruction(new STORE(GPRegister.getR(offset), new RegisterOffset(-index, GPRegister.SP)));
             index++;
         }
@@ -106,19 +118,20 @@ public class MethodCall extends AbstractExpr {
         if (!getType().isVoid()) {
             compiler.addInstruction(new LOAD(GPRegister.R0, GPRegister.getR(offset)));
         }
-        return rValStar.size() + 3;
+        
+        return res;
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        int nbPush = codeGenExpr(compiler, 2);
-        compiler.addInstruction(new CMP(0, GPRegister.getR(2)));
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        int[] res = codeGenExpr(compiler, offset);
+        compiler.addInstruction(new CMP(0, GPRegister.getR(offset)));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        return nbPush;
+        return res;
     }
 
     @Override

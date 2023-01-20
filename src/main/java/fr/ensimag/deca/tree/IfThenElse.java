@@ -43,19 +43,20 @@ public class IfThenElse extends AbstractInst {
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
+    protected int[] codeGenInst(DecacCompiler compiler) {
         // throw new UnsupportedOperationException("not yet implemented");
         int numLabel = compiler.getLabelNumber();
         compiler.incrLabelNumber();
         Label elseLabel = new Label("else."+numLabel);
         Label endLabel = new Label("end."+numLabel);
-        int nbCondPush = condition.codeGenBool(compiler, false, elseLabel);
-        int nbThenPush = thenBranch.codeGenListInst(compiler);
+        int[] resCond = condition.codeGenBool(compiler, false, elseLabel, 2);
+        int[] resThen = thenBranch.codeGenListInst(compiler);
         compiler.addInstruction(new BRA(endLabel));
         compiler.addLabel(elseLabel);
-        int nbElsePush = elseBranch.codeGenListInst(compiler);
+        int[] resElse = elseBranch.codeGenListInst(compiler);
         compiler.addLabel(endLabel);
-        return Math.max(nbCondPush, Math.max(nbThenPush, nbElsePush));
+        int[] res = {Math.max(resCond[0], Math.max(resThen[0], resElse[0])), Math.max(resCond[1], Math.max(resThen[1], resElse[1]))};
+        return res;
     }
 
     @Override

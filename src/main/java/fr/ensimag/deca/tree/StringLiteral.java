@@ -40,13 +40,14 @@ public class StringLiteral extends AbstractStringLiteral {
     }
 
     @Override
-    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
         compiler.addInstruction(new WSTR(new ImmediateString(value)));
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         throw new UnsupportedOperationException("Should not end up here");
     }
 

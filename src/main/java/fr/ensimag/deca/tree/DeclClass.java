@@ -11,6 +11,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.InlinePortion;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.LabelOperand;
 import fr.ensimag.ima.pseudocode.Line;
@@ -144,14 +145,16 @@ public class DeclClass extends AbstractDeclClass {
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
-        for (int i = 2; i < compiler.getCompilerOptions().getRmax(); i++) {
-            compiler.addInstruction(new PUSH(GPRegister.getR(i)));
-        }
+        InlinePortion pushLine = new InlinePortion("");
+        compiler.add(pushLine);
         
+        int maxReg = 2;
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
             declField.codeGenDeclFieldNull(compiler);
+            maxReg = 3;
         }
+
         int maxPush = 0;
         if (!extension.getName().equals(compiler.environmentType.OBJECT.getName())) {
             compiler.addInstruction(new PUSH(GPRegister.getR(2)));
@@ -160,7 +163,7 @@ public class DeclClass extends AbstractDeclClass {
             maxPush = 3;
         }
 
-        int[] max = {1, maxPush}; // max reg / max push
+        int[] max = {maxReg, maxPush}; // max reg / max push
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
             int[] res = declField.codeGenDeclField(compiler);
             if (res[0] > max[0]) {
@@ -171,12 +174,17 @@ public class DeclClass extends AbstractDeclClass {
             }
         }
         
-        for (int i = compiler.getCompilerOptions().getRmax() - 1; i > 1; i--) {
+        String asmPush = "";
+        for (int i = 2; i <= max[0]; i++) {
+            asmPush += "\tPUSH R" + i + "\n";
+        }
+        pushLine.setAsm(asmPush.substring(0, asmPush.length()-1));
+        for (int i = max[0]; i >= 2; i--) {
             compiler.addInstruction(new POP(GPRegister.getR(i)));
         }
 
-        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(compiler.getCompilerOptions().getRmax() - 2)));
-        lTSTO.setInstruction(new TSTO(new ImmediateInteger(max[1] + compiler.getCompilerOptions().getRmax() - 2)));
+        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(max[0])));
+        lTSTO.setInstruction(new TSTO(new ImmediateInteger(max[0] + max[1])));
 
         compiler.addInstruction(new RTS());
 

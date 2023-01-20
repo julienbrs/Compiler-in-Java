@@ -80,10 +80,10 @@ public class Cast extends AbstractExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int nbPush = expr.codeGenExpr(compiler, offset);
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] resExpr = expr.codeGenExpr(compiler, offset);
         if ((type.getType().isInt() || type.getType().isFloat() || type.getType().isBoolean()) && type.getType().sameType(expr.getType())) {
-            return nbPush;
+            return resExpr;
         }
         if (type.getType().isFloat() && expr.getType().isInt()) {
             compiler.addInstruction(new FLOAT(GPRegister.getR(offset), GPRegister.getR(offset)));
@@ -108,7 +108,7 @@ public class Cast extends AbstractExpr {
             compiler.addInstruction(new BRA(castLabel));
             compiler.addLabel(finLabel);
         }
-        return nbPush;
+        return resExpr;
     }
 
     @Override
