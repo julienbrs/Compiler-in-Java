@@ -217,7 +217,7 @@ public class Identifier extends AbstractIdentifier {
     @Override
     protected int codeGenExpr(DecacCompiler compiler, int offset) {
         if (getDefinition().isField()) {
-            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.SP), GPRegister.getR(offset)));
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
             compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(2)), GPRegister.getR(offset)));
             return 0;
         }
@@ -229,7 +229,7 @@ public class Identifier extends AbstractIdentifier {
     public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
         Triple<Integer, Integer, DAddr> res;
         if (getDefinition().isField()) {
-            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.SP), GPRegister.getR(offset)));
+            compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
             res = new Triple<Integer,Integer,DAddr>(0, offset + 1, new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(2)));
         } else {
             res = new Triple<>(0, offset, getExpDefinition().getOperand());
