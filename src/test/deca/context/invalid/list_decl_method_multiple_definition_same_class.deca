@@ -1,0 +1,15 @@
+// Test de la règle (2.6) : la méthode déclarée porte un nom de méthode
+// déjà attribuée dans la classe
+
+class A  {
+    void displayHello(){
+        println("Hello");
+    }
+    
+    void displayHello(){
+        println("Hi");
+    }
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/list_decl_method_multiple_definition_same_class.deca:9:4: La méthode a déjà été déclarée dans cette classe rule 2.6

@@ -1,0 +1,9 @@
+// Test de la règle (2.9) : On déclare une méthode avec un
+// argument dont le type est void. Cela est interdit.
+
+class A {
+    void method(void x) {}
+    // ERROR: argument de type void
+}
+
+//# src/test/deca/context/invalid/decl_param_one_void_parameters.deca:5:16: Type can't be void : rule 2.9

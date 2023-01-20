@@ -1,0 +1,9 @@
+// Test la règle (1.3) : On ne peut déclarer une classe qui existe
+// déjà dans l'environnement
+
+class A  {}
+
+class A  {}
+
+// Resultat:
+//# src/test/deca/context/invalid/decl_class_class_already_defined.deca:6:0: The class "fr.ensimag.deca.tree.Identifier@2ef5e5e3" is already declared : rule 1.3

@@ -1,4 +1,4 @@
-// Test la règle 2.7: la classe enfant override une méthode parente,
+// Test la règle (2.7) : la classe enfant override une méthode parente,
 // mais ne renvoie pas le même type
 
 class A  {
@@ -14,4 +14,4 @@ class B extends A {
 }
 
 // Resultat:
-//# TODOTEST
+//# src/test/deca/context/invalid/decl_method_not_subtype.deca:11:4: Redéfinition de méthode invalide : rule 2.7

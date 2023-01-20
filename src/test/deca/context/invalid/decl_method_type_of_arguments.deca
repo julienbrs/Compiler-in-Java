@@ -1,4 +1,4 @@
-// Test la règle 2.7: la classe enfant override une méthode parente,
+// Test la règle (2.7) : la classe enfant override une méthode parente,
 // mais ne prend pas les mêmes arguments.
 
 class A  {
@@ -17,4 +17,4 @@ class B extends A  {
 
 
 // Resultat:
-//# TODOTEST bien mettre 2.7 avec phrase
+//# src/test/deca/context/invalid/decl_method_type_of_arguments.deca:11:4: Redéfinition de méthode invalide : rule 2.7

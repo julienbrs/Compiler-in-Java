@@ -7,4 +7,4 @@
 }
 
 // Resultat:
-// TODOTEST
+//# src/test/deca/context/invalid/decl_var_already_declared_in_main.deca:6:8: The variable "x" is already declared : rule 3.17

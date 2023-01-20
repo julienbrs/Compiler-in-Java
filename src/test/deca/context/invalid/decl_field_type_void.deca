@@ -5,4 +5,4 @@ class A  {
 }
 
 // Resultat:
-//# TODOTEST  : rule 2.5
+//# Mettre un bon message d'erreur

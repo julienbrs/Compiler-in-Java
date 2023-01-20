@@ -14,4 +14,4 @@ class A  {
 
 
 // Resultat:
-//TODOTEST
+//# src/test/deca/context/invalid/inst_return_in_void_method_voidMethod.deca:10:8: Return can't be void : rule 3.24

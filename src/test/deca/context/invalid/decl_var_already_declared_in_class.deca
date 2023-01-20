@@ -2,12 +2,9 @@
 // méthode de la même classe
 
 class A {
-
     int x = 12;
-    void simpleMethod(){
-        int x = 5;
-    }
+    int x;
 }
 
 // Resultat:
-//# IL DEVRAIT Y AVOIR UNE ERREUR
+//# src/test/deca/context/invalid/decl_var_already_declared_in_class.deca:6:8: The field "x" is already declared : rule 2.4

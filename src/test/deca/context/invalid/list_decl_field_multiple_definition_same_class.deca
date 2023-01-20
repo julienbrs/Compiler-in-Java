@@ -1,0 +1,9 @@
+// Test la règle (2.4) : le champ est déjà déclaré dans la classe
+
+class A  {
+    int x = 5;
+    float x = 6.4;
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/list_decl_field_multiple_definition_same_class.deca:5:10: The field "x" is already declared : rule 2.4
