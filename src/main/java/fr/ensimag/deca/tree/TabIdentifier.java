@@ -184,9 +184,6 @@ public class TabIdentifier extends AbstractIdentifier{
         }
         setDefinition(def);
         setType(definition.getType());
-        if(listeposs.size()>definition.getLevel()){
-            throw new ContextualError("le tableau n'a pas autant de dimension", getLocation());    
-        }
         return this.getType();
     }
 
