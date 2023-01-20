@@ -1,0 +1,5 @@
+// Test parser, invalid float format avec debordement
+
+{
+    float x = 3.4028235e38f * 2;
+}

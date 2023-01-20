@@ -1,0 +1,14 @@
+// Test parser, cast d'un cast de class en subclass
+
+class Personne {
+
+}
+
+class Roi extends Personne {
+
+}
+
+{
+    Personne lambda = new Personne();
+    Roi roi = (Roi) (lambda);
+}

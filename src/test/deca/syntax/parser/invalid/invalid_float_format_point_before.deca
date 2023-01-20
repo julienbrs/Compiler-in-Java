@@ -1,0 +1,5 @@
+// Test parser, invalid float format car . devant
+
+{
+    float x = .5;
+}

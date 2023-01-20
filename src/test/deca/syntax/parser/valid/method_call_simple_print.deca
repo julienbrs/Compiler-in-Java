@@ -1,0 +1,12 @@
+// Test parser, appel d'une méthode avec un print
+
+class Printer {
+    void testMethod() {
+        println("Bonjour");
+    }
+}
+
+{
+    Printer printer = new Printer();
+    printer.testMethod();
+}

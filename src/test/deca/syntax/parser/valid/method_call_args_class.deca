@@ -1,0 +1,39 @@
+// Test parser, appel d'une méthode avec une classe en argument
+
+class Test {
+    boolean testMethod(float x, float y) {
+        return (x > y);
+    }
+    boolean testMethod2(float x, float y) {
+        return (x >= y);
+    }
+    boolean testMethod3(float x, float y) {
+        return (x < y);
+    }
+    boolean testMethod4(float x, float y) {
+        return (x <= y);
+    }
+    boolean testMethod5(float x, float y) {
+        return (x == y);
+    }
+
+    boolean proxyMethod(float x, float y){
+        return this.testMethod1(x, y);
+    }
+}
+
+
+{
+    boolean a;
+    Test test = new Test();
+    a = test.testMethod1(1.8, 3.5);
+    a = test.testMethod2(1.8, 3.5);
+    a = test.testMethod3(1.8, 3.5);
+    a = test.testMethod4(1.8, 3.5);
+    a = test.testMethod5(1.8, 3.5);
+
+    if (test.testMethod1(1.8, 3.5)){
+        print("Okay");
+    }
+}
+

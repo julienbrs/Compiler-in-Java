@@ -1,0 +1,8 @@
+// Programme de test avec utilisation de not sur boolean
+
+{
+    boolean vrai = true;
+    boolean faux = !x;
+
+    print(faux);
+}
