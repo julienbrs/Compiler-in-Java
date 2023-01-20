@@ -10,8 +10,16 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 import fr.ensimag.ima.pseudocode.instructions.INT;
+import fr.ensimag.ima.pseudocode.instructions.LEA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
  * Instruction
@@ -82,7 +90,23 @@ public class Cast extends AbstractExpr {
         } else if (type.getType().isInt() && expr.getType().isFloat()) {
             compiler.addInstruction(new INT(GPRegister.getR(offset), GPRegister.getR(offset)));
         } else {
-            // TODO : cast des classes
+            int i = compiler.getLabelNumber();
+            compiler.incrLabelNumber();
+            Label finLabel = new Label("cast.fin." + i);
+            Label castLabel = new Label("cast.boucle." + i);
+
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
+            compiler.addInstruction(new BEQ(finLabel));
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.R1));
+            compiler.addInstruction(new LEA(type.getClassDefinition().getOperand(), GPRegister.R0));
+            compiler.addLabel(castLabel);
+            compiler.addInstruction(new CMP(GPRegister.R1, GPRegister.R0));
+            compiler.addInstruction(new BEQ(finLabel));
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.R1));
+            compiler.addInstruction(new BEQ(new Label("cast_impossible")));
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.R1), GPRegister.R1));
+            compiler.addInstruction(new BRA(castLabel));
+            compiler.addLabel(finLabel);
         }
         return nbPush;
     }
