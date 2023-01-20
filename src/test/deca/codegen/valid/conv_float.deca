@@ -30,7 +30,7 @@ class A {
     println(z1);
     println(res2);
     println(z2);
-    //println(res3);
+    println(res3);
     println(z3);
     println(x);
 }

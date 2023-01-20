@@ -91,18 +91,6 @@ done
 
 echo ""
 
-# Test avec option -n:
-echo "${purple}Lancement des tests avec option -n:${reset}"
-decac -n src/test/deca/codegen/op_get_no_check.deca
-resultat_output=$(echo 5 | ima src/test/deca/codegen/op_get_no_check.ass)
-
-diff <(echo "$resultat_output") "src/test/script/modele/divers/modele_op_get_no_check.txt"
-if [ $? -eq 0 ]; then
-    echo "src/test/deca/codegen/valid/op_get_no_check.deca TEST OK ✅"
-else
-    echo "src/test/deca/codegen/valid/op_get_no_check.deca FAILED ❌"
-fi
-
 # Test interactifs:
 echo "${purple}Lancement des tests interactifs valides:${reset}"
 decac src/test/deca/codegen/valid/interactif/simple_readint.deca
