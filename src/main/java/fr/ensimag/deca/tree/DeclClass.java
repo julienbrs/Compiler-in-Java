@@ -15,6 +15,7 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.LabelOperand;
 import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.BSR;
 import fr.ensimag.ima.pseudocode.instructions.LEA;
@@ -140,25 +141,26 @@ public class DeclClass extends AbstractDeclClass {
             compiler.addInstruction(new BOV(new Label("pile_pleine")));
         }
 
-        // Line lADDSP = new Line("");
-        // compiler.add(lADDSP);
+        Line lADDSP = new Line("");
+        compiler.add(lADDSP);
 
-        // TODO : Sauvegarde registre
-        compiler.addInstruction(new PUSH(GPRegister.getR(2)));
-        compiler.addInstruction(new PUSH(GPRegister.getR(3)));
+        for (int i = 2; i < compiler.getCompilerOptions().getRmax(); i++) {
+            compiler.addInstruction(new PUSH(GPRegister.getR(i)));
+        }
         
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
             declField.codeGenDeclFieldNull(compiler);
         }
+        int maxPush = 0;
         if (!extension.getName().equals(compiler.environmentType.OBJECT.getName())) {
             compiler.addInstruction(new PUSH(GPRegister.getR(2)));
             compiler.addInstruction(new BSR(new Label("init." + extension.getName())), "init super class");
             compiler.addInstruction(new SUBSP(new ImmediateInteger(1)));
+            maxPush = 3;
         }
 
-        // calc les val
-        int[] max = {1, 0};
+        int[] max = {1, maxPush}; // max reg / max push
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
             int[] res = declField.codeGenDeclField(compiler);
             if (res[0] > max[0]) {
@@ -168,12 +170,13 @@ public class DeclClass extends AbstractDeclClass {
                 max[1] = res[1];
             }
         }
-        // TODO : restauration registre
-        compiler.addInstruction(new POP(GPRegister.getR(3)));
-        compiler.addInstruction(new POP(GPRegister.getR(2)));
-        // TODO : TSTO et ADDSP
-        // lADDSP.setInstruction(new ADDSP(new ImmediateInteger(max[0] + max[1])));
-        lTSTO.setInstruction(new TSTO(new ImmediateInteger(30)));
+        
+        for (int i = compiler.getCompilerOptions().getRmax() - 1; i > 1; i--) {
+            compiler.addInstruction(new POP(GPRegister.getR(i)));
+        }
+
+        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(compiler.getCompilerOptions().getRmax() - 2)));
+        lTSTO.setInstruction(new TSTO(new ImmediateInteger(max[1] + compiler.getCompilerOptions().getRmax() - 2)));
 
         compiler.addInstruction(new RTS());
 

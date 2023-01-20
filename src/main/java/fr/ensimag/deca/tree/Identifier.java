@@ -39,7 +39,6 @@ public class Identifier extends AbstractIdentifier {
     @Override
     protected void checkDecoration() {
         if (getDefinition() == null) {
-            System.out.println(prettyPrint());
             throw new DecacInternalError("Identifier " + this.getName() + " has no attached Definition");
         }
     }
