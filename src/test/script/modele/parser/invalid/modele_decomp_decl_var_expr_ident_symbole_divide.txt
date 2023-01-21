@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/decl_var_expr_ident_symbole_divide.deca:5:10: extraneous input '=' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

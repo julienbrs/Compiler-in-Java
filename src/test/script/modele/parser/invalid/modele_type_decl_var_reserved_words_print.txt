@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/type_decl_var_reserved_words_print.deca:5:10: missing '(' at 'x'

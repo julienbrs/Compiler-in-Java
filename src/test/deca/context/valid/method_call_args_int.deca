@@ -1,0 +1,13 @@
+// Test context, appel d'une méthode avec des int en argument
+
+class Test {
+    int testMethod(int x, int y) {
+        return (x + y);
+    }
+}
+
+{
+    int z;
+    Test test = new Test();
+    z = test.testMethod(5,12);
+}

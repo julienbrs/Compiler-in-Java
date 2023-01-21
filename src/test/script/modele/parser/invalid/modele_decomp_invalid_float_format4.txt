@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/invalid_float_format4.deca:4:21: mismatched input '5' expecting IDENT

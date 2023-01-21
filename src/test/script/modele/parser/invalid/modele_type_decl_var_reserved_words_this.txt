@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/type_decl_var_reserved_words_this.deca:5:11: extraneous input 'while' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

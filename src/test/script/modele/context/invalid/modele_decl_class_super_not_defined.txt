@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/decl_class_super_not_defined.deca:5:14: 

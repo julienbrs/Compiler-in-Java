@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/decl_var_in_if.deca:7:12: no viable alternative at input 'z'

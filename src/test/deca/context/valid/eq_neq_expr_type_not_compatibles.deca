@@ -1,0 +1,11 @@
+// Test context, on ne peut pas utiliser l'opérateur '==' sur des variables de types différents,
+// sauf pour int et float
+
+
+{
+    int x = 5;
+    float y = 7.5;
+    if (x == y) { 
+        println("x est égal à y");
+    }
+}

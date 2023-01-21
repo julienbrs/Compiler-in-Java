@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/decl_var_wrong_equal_number.deca:5:10: missing ';' at '14'

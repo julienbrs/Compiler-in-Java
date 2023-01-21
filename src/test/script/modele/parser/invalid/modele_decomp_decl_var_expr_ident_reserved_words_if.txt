@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/decl_var_expr_ident_reserved_words_if.deca:5:8: no viable alternative at input 'if'

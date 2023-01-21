@@ -1,0 +1,10 @@
+// Test pour assigner la valeur des attributs dans le main
+
+class Person{
+    int age;
+}
+
+{
+    Person Jean = new Person();
+    Jean.age = 12;
+}

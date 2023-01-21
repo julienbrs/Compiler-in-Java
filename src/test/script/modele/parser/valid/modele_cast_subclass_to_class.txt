@@ -1,0 +1,28 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [3, 0] DeclClass
+   |  ||  +> [3, 6] Identifier (Personne)
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  `> ListDeclMethod [List with 0 elements]
+   |  []> [7, 0] DeclClass
+   |      +> [7, 6] Identifier (Roi)
+   |      +> [7, 10] Identifier (Personne)
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
+   `> [11, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [12, 8] DeclVar
+      |  ||  +> [12, 4] Identifier (Roi)
+      |  ||  +> [12, 8] Identifier (roi)
+      |  ||  `> [12, 12] Initialization
+      |  ||     `> [12, 14] New
+      |  ||        `> [12, 18] Identifier (Roi)
+      |  []> [13, 13] DeclVar
+      |      +> [13, 4] Identifier (Personne)
+      |      +> [13, 13] Identifier (aussiUnePersonne)
+      |      `> [13, 30] Initialization
+      |         `> [13, 32] Cast
+      |            +> [13, 33] Identifier (Personne)
+      |            `> [13, 44] Identifier (roi)
+      `> ListInst [List with 0 elements]

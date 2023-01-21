@@ -1,0 +1,10 @@
+// Test parser, on peut initialiser une variable qui a un type et un nom
+// d'ident en syntaxe, mais pas en contexte
+
+class A {
+    int x = 5;
+}
+
+{
+    A object = A;
+}

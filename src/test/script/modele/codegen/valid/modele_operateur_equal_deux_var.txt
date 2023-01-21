@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/./src/test/deca/codegen/valid/operateur_equal_deux_var.deca:12:12: 

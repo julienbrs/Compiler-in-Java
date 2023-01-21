@@ -1,0 +1,7 @@
+// Contextuellement, il est possible d'appeler une méthode comme int
+
+class A {
+    int int(){
+        return 5;
+    }   
+}

@@ -1,0 +1,60 @@
+`> [1, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [1, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [2, 8] DeclVar
+      |  ||  +> [2, 4] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [2, 8] Identifier (i)
+      |  ||  |  definition: variable defined at [2, 8], type=int
+      |  ||  `> [2, 10] Initialization
+      |  ||     `> [2, 12] Int (0)
+      |  ||        type: int
+      |  []> [3, 8] DeclVar
+      |      +> [3, 4] Identifier (int)
+      |      |  definition: type (builtin), type=int
+      |      +> [3, 8] Identifier (x)
+      |      |  definition: variable defined at [3, 8], type=int
+      |      `> [3, 10] Initialization
+      |         `> [3, 12] Int (10)
+      |            type: int
+      `> ListInst [List with 1 elements]
+         []> [4, 8] While
+             +> [4, 17] Lower
+             |  type: boolean
+             |  +> [4, 15] Identifier (i)
+             |  |  definition: variable defined at [2, 8], type=int
+             |  `> [4, 19] Identifier (x)
+             |     definition: variable defined at [3, 8], type=int
+             `> ListInst [List with 3 elements]
+                []> [5, 12] Println
+                ||  `> ListExpr [List with 2 elements]
+                ||     []> [5, 20] StringLiteral (i est égal à )
+                ||     ||  type: string
+                ||     []> [5, 37] Identifier (i)
+                ||         definition: variable defined at [2, 8], type=int
+                []> [6, 14] Assign
+                ||  type: int
+                ||  +> [6, 12] Identifier (i)
+                ||  |  definition: variable defined at [2, 8], type=int
+                ||  `> [6, 17] Plus
+                ||     type: int
+                ||     +> [6, 16] Identifier (i)
+                ||     |  definition: variable defined at [2, 8], type=int
+                ||     `> [6, 19] Int (1)
+                ||        type: int
+                []> [7, 12] IfThenElse
+                    +> [7, 18] Equals
+                    |  type: boolean
+                    |  +> [7, 16] Identifier (i)
+                    |  |  definition: variable defined at [2, 8], type=int
+                    |  `> [7, 21] Int (5)
+                    |     type: int
+                    +> ListInst [List with 1 elements]
+                    |  []> [8, 18] Assign
+                    |      type: int
+                    |      +> [8, 16] Identifier (x)
+                    |      |  definition: variable defined at [3, 8], type=int
+                    |      `> [8, 20] Int (7)
+                    |         type: int
+                    `> ListInst [List with 0 elements]

@@ -1,0 +1,9 @@
+// Test context pour voir si l'extension de classe marche
+
+class People {
+    int Courage = 50;
+}
+
+class Knight extends People {
+    int Courage = 100;
+} 

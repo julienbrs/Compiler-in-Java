@@ -1,0 +1,2 @@
+z doit être égal à 1, et z = 1
+z doit être égal à 2, et z = 2

@@ -1,0 +1,8 @@
+// Test content, or avec une opérande nombre, syntaxiquement juste mais
+// mais pas contextuellement
+
+{
+    if (x || 15 ){
+        a = 5;
+    }
+}

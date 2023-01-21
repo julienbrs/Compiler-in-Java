@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/decl_class_class_already_defined.deca:6:0: The class "A" is already declared : rule 1.3

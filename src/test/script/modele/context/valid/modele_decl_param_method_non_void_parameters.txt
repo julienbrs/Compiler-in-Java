@@ -1,0 +1,55 @@
+`> [7, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [7, 0] DeclClass
+   |  ||  +> [7, 6] Identifier (A)
+   |  ||  |  definition: type defined at [7, 0], type=A
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  `> ListDeclMethod [List with 1 elements]
+   |  ||     []> [8, 4] DeclMethod
+   |  ||         +> [8, 4] Identifier (void)
+   |  ||         |  definition: type (builtin), type=void
+   |  ||         +> [8, 9] Identifier (methodWithoutParameters)
+   |  ||         |  definition: method defined at [8, 9], type=void
+   |  ||         +> ListParam [List with 0 elements]
+   |  ||         `> [8, 35] MethodBody
+   |  ||            +> ListDeclVar [List with 0 elements]
+   |  ||            +> ListInst [List with 0 elements]
+   |  []> [13, 0] DeclClass
+   |      +> [13, 6] Identifier (B)
+   |      |  definition: type defined at [13, 0], type=B
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [14, 4] DeclMethod
+   |             +> [14, 4] Identifier (void)
+   |             |  definition: type (builtin), type=void
+   |             +> [14, 9] Identifier (methodWithoutNullParameters)
+   |             |  definition: method defined at [14, 9], type=void
+   |             +> ListParam [List with 4 elements]
+   |             |  []> [14, 37] Param
+   |             |  ||  +> [14, 37] Identifier (int)
+   |             |  ||  |  definition: type (builtin), type=int
+   |             |  ||  `> [14, 41] Identifier (i)
+   |             |  ||     definition: parameter defined at [14, 37], type=int
+   |             |  []> [14, 44] Param
+   |             |  ||  +> [14, 44] Identifier (float)
+   |             |  ||  |  definition: type (builtin), type=float
+   |             |  ||  `> [14, 50] Identifier (f)
+   |             |  ||     definition: parameter defined at [14, 44], type=float
+   |             |  []> [14, 53] Param
+   |             |  ||  +> [14, 53] Identifier (boolean)
+   |             |  ||  |  definition: type (builtin), type=boolean
+   |             |  ||  `> [14, 61] Identifier (b)
+   |             |  ||     definition: parameter defined at [14, 53], type=boolean
+   |             |  []> [14, 64] Param
+   |             |      +> [14, 64] Identifier (A)
+   |             |      |  definition: type defined at [7, 0], type=A
+   |             |      `> [14, 66] Identifier (a)
+   |             |         definition: parameter defined at [14, 64], type=A
+   |             `> [14, 69] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 0 elements]
+   `> EmptyMain

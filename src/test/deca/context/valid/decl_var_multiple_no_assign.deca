@@ -1,0 +1,6 @@
+// Test de context, le deuxieme ident n'a pas de valeur
+// assignée,
+
+{
+    int x, y = 8;
+}

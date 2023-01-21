@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/cast_int_to_symbole.deca:5:5: no viable alternative at input '(&&'

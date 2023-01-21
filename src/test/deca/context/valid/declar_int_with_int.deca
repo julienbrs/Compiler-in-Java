@@ -1,0 +1,6 @@
+// Test de context, l'ident est int mais cela ne devrait pas 
+// poser de problème
+
+{
+    float int = 5;
+}

@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/inst_expr_print_add_parenthese.deca:4:12: missing ';' at '5'

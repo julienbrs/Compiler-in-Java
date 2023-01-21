@@ -1,0 +1,5 @@
+// Contextuellement, il n'est pas possible d'appeler une classe comme int
+
+class int {
+    
+}

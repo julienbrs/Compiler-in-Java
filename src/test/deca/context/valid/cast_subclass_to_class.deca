@@ -1,0 +1,15 @@
+// Test context, cast d'un cast de subclass en class, possible dans le contexte
+
+class Personne {
+    int pouvoir = 10;
+}
+
+class Roi extends Personne {
+    int pouvoir = 30;
+    int corruption = 100;
+}
+
+{
+    Roi leRoi = new Roi();
+    Personne aussiUnePersonne = (Personne) (leRoi);
+}

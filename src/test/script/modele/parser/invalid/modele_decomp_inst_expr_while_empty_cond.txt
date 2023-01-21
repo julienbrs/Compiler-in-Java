@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/inst_expr_while_empty_cond.deca:5:11: mismatched input ')' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/decl_var_type_symbole_brace.deca:5:4: mismatched input '{' expecting {'}', 'print', '(', 'println', 'printx', 'printlnx', 'while', 'return', 'if', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT, ';'}

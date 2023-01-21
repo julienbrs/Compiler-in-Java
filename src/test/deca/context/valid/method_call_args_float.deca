@@ -1,0 +1,13 @@
+// Test context, appel d'une méthode avec des float en argument
+
+class Test {
+    float testMethod(float x, float y) {
+        return (x * y);
+    }
+}
+
+{
+    float a;
+    Test test = new Test();
+    a = test.testMethod(1.8, 3.5);
+}

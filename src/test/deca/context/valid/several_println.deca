@@ -1,0 +1,15 @@
+// Test de println contextuellement
+
+{
+    int i = 5;
+    float f = 3.14;
+
+    println();
+    println(i);
+    println(f);
+    println("little string");
+
+    println( 5 + f);
+    println( 5 * i);
+    println(f *3.1);
+}

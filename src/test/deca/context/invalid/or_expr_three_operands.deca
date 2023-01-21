@@ -1,0 +1,9 @@
+// Test context, or avec 3 conditions
+
+{
+  boolean x, y, z;
+  int b;
+  if (x || y || z) {
+    b = 5;
+  }
+}

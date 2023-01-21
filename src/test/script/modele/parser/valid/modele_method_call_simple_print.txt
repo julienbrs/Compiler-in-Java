@@ -1,0 +1,30 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Printer)
+   |      +> [builtin] Identifier (Object)
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [4, 4] DeclMethod
+   |             +> [4, 4] Identifier (void)
+   |             +> [4, 9] Identifier (testMethod)
+   |             +> ListParam [List with 0 elements]
+   |             `> [4, 22] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [5, 8] Println
+   |                |      `> ListExpr [List with 1 elements]
+   |                |         []> [5, 16] StringLiteral (Bonjour)
+   `> [9, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [10, 12] DeclVar
+      |      +> [10, 4] Identifier (Printer)
+      |      +> [10, 12] Identifier (printer)
+      |      `> [10, 20] Initialization
+      |         `> [10, 22] New
+      |            `> [10, 26] Identifier (Printer)
+      `> ListInst [List with 1 elements]
+         []> [11, 11] MethodCall
+             +> [11, 4] Identifier (printer)
+             +> [11, 12] Identifier (testMethod)
+             `> ListExpr [List with 0 elements]

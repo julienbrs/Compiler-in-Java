@@ -1,0 +1,9 @@
+// Contextuellement, il n'est pas possible d'appeler une méthode du nom d'un
+// champ déjà déclaré dans la méthode
+
+class A {
+    int champ;
+    int champ(){
+        return 5;
+    }   
+}

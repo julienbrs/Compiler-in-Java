@@ -1,0 +1,7 @@
+// testing asm
+
+class JustAClass {
+    void justAMethod()
+        asm ("Ce que j'ai envie");
+    
+}

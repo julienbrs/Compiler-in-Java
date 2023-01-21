@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/ineq_expr_assign.deca:3:0: no viable alternative at input 'int'

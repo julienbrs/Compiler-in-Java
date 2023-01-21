@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/invalid_float_format2.deca:4:16: no viable alternative at input 'e'

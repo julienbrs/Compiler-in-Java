@@ -1,0 +1,10 @@
+// Test context, on fait plusieurs opérations dans la condition à la suite
+// si les types sont cohérents
+
+{
+    int x = 5;
+    int y = 6;
+    if (x < y != false) {
+        print(x);
+    }
+}

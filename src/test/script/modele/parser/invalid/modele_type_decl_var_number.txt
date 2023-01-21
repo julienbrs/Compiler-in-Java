@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/type_decl_var_number.deca:5:7: no viable alternative at input 'x'

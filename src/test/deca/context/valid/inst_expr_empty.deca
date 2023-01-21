@@ -1,0 +1,6 @@
+// Test de context, instruction est vide
+
+{
+    int x = 5;
+    ;
+}

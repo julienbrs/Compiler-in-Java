@@ -1,0 +1,1 @@
+/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/class_extends_without_keyword.deca:7:8: no viable alternative at input 'A'
