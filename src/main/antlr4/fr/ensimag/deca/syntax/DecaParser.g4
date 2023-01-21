@@ -229,6 +229,9 @@ expr returns[AbstractExpr tree]
     ;
 
 assign_expr returns[AbstractExpr tree]
+@init {  
+    ArrayLiteral tab;
+}
     : e=or_expr (
         
         /* condition: expression e must be a "LVALUE" */ {
@@ -243,11 +246,23 @@ assign_expr returns[AbstractExpr tree]
             assert($e.tree != null);
             assert($e2.tree != null);
         }
+    |  ( EQUALS OBRACE (
+       e3= assign_expr{   
+        tab = new ArrayLiteral($e3.tree);
+        $tree = tab;
+
+
+        } (COMMA e4= assign_expr{   
+            tab.addExpr($e4.tree);
+        }
+    )*
+    ) CBRACE)
       | /* epsilon */ {
         assert($e.tree != null);  
         $tree=$e.tree;
         
         }
+
       )
     ;
 
@@ -483,12 +498,12 @@ type returns[AbstractIdentifier tree]
          
    |  IDENT OBRACKET
    {
-a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
+a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1),new Identifier(sym.create($IDENT.text)));
         $tree = a;
         setLocation($tree, $IDENT);
    } (expr {  
        
-         a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree);
+         a = new Array(sym.create(($IDENT.text +"[]")),$expr.tree,new Identifier(sym.create($IDENT.text)));
  $tree = a;
  setLocation($tree, $IDENT);
         })?
@@ -505,6 +520,7 @@ a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1));
     ;
 
 literal returns[AbstractExpr tree]
+
     : INT {
         try{
        $tree= new IntLiteral(Integer.parseInt($INT.text));
@@ -669,8 +685,11 @@ decl_method returns [ DeclMethod tree]
         setLocation($tree, $type.start);
         }
       | ASM OPARENT code=multi_line_string CPARENT SEMI {
-        
-        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree,new MethodAsmBody(new StringLiteral($code.text)));
+        StringLiteral sLit = new StringLiteral($code.text);
+        sLit.setLocation($code.location);
+        MethodAsmBody body = new MethodAsmBody(sLit);
+        body.setLocation($code.location);
+        $tree = new DeclMethod($type.tree,$ident.tree,$params.tree, body);
          setLocation($tree, $ASM);
         }
       ) {

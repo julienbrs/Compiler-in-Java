@@ -52,25 +52,29 @@ public class Assign extends AbstractBinaryExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        Triple<Integer, Integer, DAddr> res = getLeftOperand().codeGenLValue(compiler, offset);
-        int nbPush = res.a;
-        offset = res.b;
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        Triple<int[], Integer, DAddr> resTriple = getLeftOperand().codeGenLValue(compiler, offset);
+        int[] resLeft = resTriple.a;
+        offset = resTriple.b;
         Register reg;
+        int[] res = {0, 0};
         if (offset == compiler.getCompilerOptions().getRmax()) {
             offset--;
             compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
-            int nbRightPush = codeGenRightOperande(compiler, offset);
-            nbPush = Math.max(nbPush, nbRightPush);
+            int[] resRight = codeGenRightOperande(compiler, offset);
+            res[0] = Math.max(resLeft[0], resRight[0]);
+            res[1] = Math.max(resLeft[1], resRight[1] + 1);
             compiler.addInstruction(new LOAD(GPRegister.getR(offset), GPRegister.R0));
             reg = GPRegister.R0;
             compiler.addInstruction(new POP(GPRegister.getR(offset)));
         } else {
-            nbPush = codeGenRightOperande(compiler, offset);
+            int[] resRight = codeGenRightOperande(compiler, offset);
+            res[0] = Math.max(resLeft[0], resRight[0]);
+            res[1] = Math.max(resLeft[1], resRight[1]);
             reg = GPRegister.getR(offset);
         }
-        compiler.addInstruction(new STORE(reg, res.c));
-        return nbPush;
+        compiler.addInstruction(new STORE(reg, resTriple.c));
+        return res;
     }
 
 }

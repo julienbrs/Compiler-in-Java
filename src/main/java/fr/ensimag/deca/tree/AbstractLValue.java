@@ -21,5 +21,5 @@ public abstract class AbstractLValue extends AbstractExpr {
     public abstract Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv,
                                          ClassDefinition currentClass) throws ContextualError;
 
-    public abstract Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset);
+    public abstract Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset);
 }

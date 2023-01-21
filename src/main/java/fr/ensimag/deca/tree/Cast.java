@@ -10,8 +10,16 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BRA;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
 import fr.ensimag.ima.pseudocode.instructions.INT;
+import fr.ensimag.ima.pseudocode.instructions.LEA;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
  * Instruction
@@ -36,7 +44,7 @@ public class Cast extends AbstractExpr {
         Type e = expr.verifyExpr(compiler, localEnv, currentClass);
         if (t.isVoid()) {
             // ERROR MSG
-            throw new ContextualError("t1 non void : rule 3.??", getLocation());
+            throw new ContextualError("Can't cast void : rule 3.39", getLocation());
         }
         
         if (t.sameType(e)) {
@@ -56,9 +64,9 @@ public class Cast extends AbstractExpr {
             return getType();
         } else {
             // ERROR MSG
-            ClassType tClass = t.asClassType(" rule 3.??", getLocation());
+            ClassType tClass = t.asClassType("Can't cast \"" + t + "\" to \"" + e + "\" : rule 3.39", getLocation());
             // ERROR MSG
-            ClassType eClass = e.asClassType(" rule 3.??", getLocation());
+            ClassType eClass = e.asClassType("Can't cast \"" + t + "\" to \"" + e + "\" : rule 3.39", getLocation());
             if (tClass.isSubClassOf(eClass)) {
                 setType(t);
                 return getType();
@@ -68,23 +76,39 @@ public class Cast extends AbstractExpr {
             }
         }
         // ERROR MSG
-        throw new ContextualError(" rule 3.??", getLocation());
+        throw new ContextualError("Can't cast \"" + t + "\" to \"" + e + "\" : rule 3.39", getLocation());
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int nbPush = expr.codeGenExpr(compiler, offset);
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] resExpr = expr.codeGenExpr(compiler, offset);
         if ((type.getType().isInt() || type.getType().isFloat() || type.getType().isBoolean()) && type.getType().sameType(expr.getType())) {
-            return nbPush;
+            return resExpr;
         }
         if (type.getType().isFloat() && expr.getType().isInt()) {
             compiler.addInstruction(new FLOAT(GPRegister.getR(offset), GPRegister.getR(offset)));
         } else if (type.getType().isInt() && expr.getType().isFloat()) {
             compiler.addInstruction(new INT(GPRegister.getR(offset), GPRegister.getR(offset)));
         } else {
-            // TODO : cast des classes
+            int i = compiler.getLabelNumber();
+            compiler.incrLabelNumber();
+            Label finLabel = new Label("cast.fin." + i);
+            Label castLabel = new Label("cast.boucle." + i);
+
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
+            compiler.addInstruction(new BEQ(finLabel));
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.R1));
+            compiler.addInstruction(new LEA(type.getClassDefinition().getOperand(), GPRegister.R0));
+            compiler.addLabel(castLabel);
+            compiler.addInstruction(new CMP(GPRegister.R1, GPRegister.R0));
+            compiler.addInstruction(new BEQ(finLabel));
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.R1));
+            compiler.addInstruction(new BEQ(new Label("cast_impossible")));
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.R1), GPRegister.R1));
+            compiler.addInstruction(new BRA(castLabel));
+            compiler.addLabel(finLabel);
         }
-        return nbPush;
+        return resExpr;
     }
 
     @Override

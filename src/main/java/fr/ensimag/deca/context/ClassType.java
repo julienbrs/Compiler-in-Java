@@ -63,6 +63,7 @@ public class ClassType extends Type {
         if (getName().getName().equals("Object")) {
             return sameType(potentialSuperClass);
         }
+        // pas d'erreur car je suis une classe donc ma superclass est une classe
         return isNull()
             || sameType(potentialSuperClass)
             || getDefinition().getSuperClass().getType().asClassType(null, null).isSubClassOf(potentialSuperClass);

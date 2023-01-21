@@ -44,11 +44,12 @@ public class DeclField extends AbstractDeclField{
         Type t = type.verifyType(compiler);
         if (t.isVoid()) {
             // ERROR MSG
-            throw new ContextualError(" : rule 2.5", getLocation());
+            throw new ContextualError("Field can't be of type \"void\" : rule 2.5", getLocation());
         }
         ExpDefinition sDef = superEnv.get(varName.getName());
         if (sDef != null && !sDef.isField()) {
-            throw new ContextualError("??? : rule 2.5", getLocation());
+            // ERROR MSG
+            throw new ContextualError(getName() + " already declare as method in super class : rule 2.5", getLocation());
         }
         try {
             currentClass.incNumberOfFields();

@@ -257,6 +257,12 @@ public class DecacCompiler {
             addInstruction(new WSTR(new ImmediateString("Déréférencement de \\\"null\\\"")));
             addInstruction(new WNL());
             addInstruction(new ERROR());
+
+            // Cast impossible
+            addLabel(new Label("cast_impossible"));
+            addInstruction(new WSTR(new ImmediateString("Cast impossible")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
         }
         // Erreur de lecture
         addLabel(new Label("erreur_de_lecture"));

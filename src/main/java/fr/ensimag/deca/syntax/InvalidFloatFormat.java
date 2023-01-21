@@ -6,7 +6,6 @@ public class InvalidFloatFormat extends DecaRecognitionException{
 
     public InvalidFloatFormat(DecaParser recognizer, ParserRuleContext ctx) {
         super(recognizer, ctx);
-        //TODO Auto-generated constructor stub
     }
     @Override
     public String getMessage() {

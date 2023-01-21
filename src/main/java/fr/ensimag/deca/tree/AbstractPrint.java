@@ -47,15 +47,18 @@ public abstract class AbstractPrint extends AbstractInst {
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
-        int maxPush = 0;
+    protected int[] codeGenInst(DecacCompiler compiler) {
+        int[] res =  {0, 0};
         for (AbstractExpr a : getArguments().getList()) {
-            int nbPush = a.codeGenPrint(compiler, getPrintHex());
-            if (nbPush > maxPush) {
-                maxPush = nbPush;
+            int[] resPrint = a.codeGenPrint(compiler, getPrintHex());
+            if (resPrint[0] > res[0]) {
+                res[0] = resPrint[0];
+            }
+            if (resPrint[1] > res[1]) {
+                res[1] = resPrint[1];
             }
         }
-        return maxPush;
+        return res;
     }
 
     private boolean getPrintHex() {

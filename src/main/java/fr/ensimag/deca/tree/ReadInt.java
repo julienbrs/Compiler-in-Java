@@ -30,11 +30,12 @@ public class ReadInt extends AbstractReadExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new RINT());
         compiler.addInstruction(new BOV(new Label("erreur_de_lecture")));
         compiler.addInstruction(new LOAD(GPRegister.R1, GPRegister.getR(offset)));
-        return 0;
+        int[] res = {offset, 0};
+        return res;
     }
 
     @Override

@@ -35,24 +35,24 @@ public class Not extends AbstractUnaryExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         int labelNumber = compiler.getLabelNumber();
         Label vrai = new Label("is_true."+labelNumber);
         Label end = new Label("end."+labelNumber);
         compiler.incrLabelNumber();
         compiler.incrLabelNumber();
-        int nbPush = codeGenBool(compiler, true, vrai);
+        int[] res = codeGenBool(compiler, true, vrai, offset);
         compiler.addInstruction(new LOAD(0, GPRegister.getR(offset)));
         compiler.addInstruction(new BRA(end));
         compiler.addLabel(vrai);
         compiler.addInstruction(new LOAD(1, GPRegister.getR(offset)));
         compiler.addLabel(end);
-        return nbPush;
+        return res;
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        return getOperand().codeGenBool(compiler, !aim, dest);
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        return getOperand().codeGenBool(compiler, !aim, dest, offset);
     }
 
 

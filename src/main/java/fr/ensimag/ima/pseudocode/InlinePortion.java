@@ -10,10 +10,14 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class InlinePortion extends AbstractLine {
-    private final String asmCode;
+    private String asmCode;
     
     public InlinePortion(String asmCode) {
         super();
+        this.asmCode = asmCode;
+    }
+
+    public void setAsm(String asmCode) {
         this.asmCode = asmCode;
     }
     
