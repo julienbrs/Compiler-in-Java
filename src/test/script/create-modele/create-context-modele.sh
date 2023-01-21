@@ -27,7 +27,7 @@ echo "${purple}Création des modèles de tests context sensés être invalides..
 for cas_de_test in $(find src/test/deca/context/invalid -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
-    output_file=$(src/test/script/modele/context/invalid/modele_$filename.txt)
+    output_file=$(printf "src/test/script/modele/context/invalid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
         test_context "$cas_de_test" >$output_file 2>&1
     else
@@ -40,7 +40,7 @@ echo "${purple}Création des modèles de tests context sensés être valides....
 for cas_de_test in $(find src/test/deca/context/valid/ -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
-    output_file=$(src/test/script/modele/context/valid/modele_$filename.txt)
+    output_file=$(printf "src/test/script/modele/context/valid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
         test_context "$cas_de_test" >$output_file 2>&1
     else
