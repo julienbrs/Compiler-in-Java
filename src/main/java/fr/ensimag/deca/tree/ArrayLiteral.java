@@ -24,13 +24,15 @@ public class ArrayLiteral extends AbstractExpr {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         // TODO Auto-generated method stub
+        
         return null;
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         // TODO Auto-generated method stub
-        return 0;
+        int[] res= {0, 0};
+        return res;
     }
 
     @Override
