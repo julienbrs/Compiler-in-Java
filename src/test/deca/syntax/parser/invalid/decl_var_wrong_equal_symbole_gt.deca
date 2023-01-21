@@ -1,5 +1,4 @@
-// Test de parser, un symbole spécial remplace le symbole
-// égal, ici le symbole supérieur strict >
+// Parser test, special character (=) replaced by a >
 
 {
     int x > 5;

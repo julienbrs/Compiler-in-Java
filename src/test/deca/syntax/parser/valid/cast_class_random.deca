@@ -1,4 +1,4 @@
-// Test de cast, on est dans syntaxe donc on ne s'intéresse ici pas au contexte
+// Cast test, in a syntax (we don't look at the context)
 
 {
     A a = (anOtherClass) (object) ;

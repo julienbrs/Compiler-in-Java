@@ -1,4 +1,4 @@
-// Test de parser, les parenthèses du print ne sont pas fermées
+// Parser test, print impossible (missing string or data)
 
 {
     print(%) ;

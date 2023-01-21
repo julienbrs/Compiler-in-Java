@@ -1,5 +1,4 @@
-// Test parser, pas le droit de déclarer une variable après
-// la liste de déclaration, ici dans un while
+// Parser test, can't declare a variable after a declaration ("while")
 
 {
 

@@ -1,0 +1,97 @@
+; start main program
+; Main program
+; Beginning of main instructions:
+	LOAD #0x0.0p0, R2
+	STORE R2, 1(GB)
+	LOAD #0x1.0p0, R2
+	STORE R2, 2(GB)
+	LOAD #0x1.0p0, R2
+	STORE R2, 3(GB)
+	LOAD #0x1.6fc2ecp-1, R2
+	STORE R2, 4(GB)
+	STORE R2, 5(GB)
+	STORE R2, 6(GB)
+	ADDSP #6
+	BRA while_cond.1
+while_start.1:
+	LOAD 1(GB), R2
+	LOAD 2(GB), R3
+	ADD R3, R2
+	LOAD #0x1.0p1, R3
+	DIV R3, R2
+	STORE R2, 5(GB)
+	LOAD 5(GB), R2
+	LOAD 5(GB), R3
+	LOAD 5(GB), R4
+	LOAD 5(GB), R5
+	LOAD 5(GB), R6
+	LOAD 5(GB), R7
+	LOAD 5(GB), R8
+	LOAD #0x1.0p0, R9
+	LOAD #0x1.3bp12, R10
+	DIV R10, R9
+	MUL R9, R8
+	LOAD #0x1.0p0, R9
+	LOAD #0x1.68p9, R10
+	DIV R10, R9
+	ADD R9, R8
+	MUL R8, R7
+	LOAD #0x1.0p0, R8
+	LOAD #0x1.ep6, R9
+	DIV R9, R8
+	ADD R8, R7
+	MUL R7, R6
+	LOAD #0x1.0p0, R7
+	LOAD #0x1.8p4, R8
+	DIV R8, R7
+	ADD R7, R6
+	MUL R6, R5
+	LOAD #0x1.0p0, R6
+	LOAD #0x1.8p2, R7
+	DIV R7, R6
+	ADD R6, R5
+	MUL R5, R4
+	LOAD #0x1.0p0, R5
+	LOAD #0x1.0p1, R6
+	DIV R6, R5
+	ADD R5, R4
+	MUL R4, R3
+	LOAD #0x1.0p0, R4
+	ADD R4, R3
+	MUL R3, R2
+	LOAD #1, R3
+	FLOAT R3, R3
+	SUB R3, R2
+	STORE R2, 6(GB)
+	LOAD 6(GB), R2
+	LOAD #0x0.0p0, R3
+	CMP R3, R2
+	BLE else.2
+	LOAD 5(GB), R2
+	STORE R2, 2(GB)
+	LOAD 6(GB), R2
+	STORE R2, 4(GB)
+	BRA end.2
+else.2:
+	LOAD 5(GB), R2
+	STORE R2, 1(GB)
+	LOAD 6(GB), R2
+	STORE R2, 3(GB)
+end.2:
+while_cond.1:
+	LOAD 2(GB), R2
+	LOAD 1(GB), R3
+	LOAD #0x1.0p-23, R4
+	ADD R4, R3
+	CMP R3, R2
+	BGE while_cond.1
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WFLOAT
+	WSTR " = "
+	LOAD 1(GB), R2
+	LOAD R2, R1
+	WFLOATX
+	WNL
+	HALT
+; end main program

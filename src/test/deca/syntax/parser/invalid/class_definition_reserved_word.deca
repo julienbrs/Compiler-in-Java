@@ -1,4 +1,4 @@
-// Test parser, déclaration d'une classe avec un mot réservé
+// Parser test, class with a reserved word declared
 
 class if {
     

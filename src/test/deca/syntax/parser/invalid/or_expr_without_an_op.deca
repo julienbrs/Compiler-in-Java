@@ -1,4 +1,4 @@
-// Test parser, or sans opérande de gauche
+// Missing operand after OR
 
 {
     if (x || ){

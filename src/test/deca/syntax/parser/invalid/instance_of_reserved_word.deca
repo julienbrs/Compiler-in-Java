@@ -1,4 +1,4 @@
-// Test parser, instanceof doit prendre un IDENT, ici on a un mot réservé
+// Parser test, instanceof should be followed by an IDENT not a special character
 
 {
     x instanceof . ;

@@ -1,4 +1,4 @@
-// Test parser, invalid float format 
+// Parser test, invalid float format 
 
 {
     float x = 5.a;

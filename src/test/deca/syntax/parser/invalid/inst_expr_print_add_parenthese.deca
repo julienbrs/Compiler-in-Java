@@ -1,4 +1,4 @@
-// Test de parser, une parenthèse fermante avant la fin du print
+// Parser test, parenthese problem
 
 {
     print() 5 );

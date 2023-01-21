@@ -1,4 +1,4 @@
-// Test parser, on fait plusieurs opérations dans la condition à la suite
+// Parser test, several operations in the "if"
 
 {
     if (x < y != 5) {

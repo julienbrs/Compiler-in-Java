@@ -1,0 +1,9 @@
+// Test de la règle (3.39) : on ne peut pas cast de boolean vers null.
+{
+	null var1;
+	boolean var2;
+	var1 = (null)(var2);
+}
+
+// Résultat :
+//# a

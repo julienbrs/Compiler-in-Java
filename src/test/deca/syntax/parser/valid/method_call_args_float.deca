@@ -1,4 +1,4 @@
-// Test parser, appel d'une méthode avec des float en argument
+// Parser test, method call with float as parameters
 
 class Test {
     float testMethod(float x, float y) {

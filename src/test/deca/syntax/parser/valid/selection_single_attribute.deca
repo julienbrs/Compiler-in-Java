@@ -1,4 +1,4 @@
-// Programme de test avec seleciton d'un attribut d'une classe
+// Selection of an attribut from a class
 
 class A {
     int x = 5;

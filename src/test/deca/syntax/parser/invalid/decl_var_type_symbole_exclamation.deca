@@ -1,5 +1,4 @@
-// Test de parser, le type n'est pas valide, mais est un symbole spécial
-// à la place
+// Parser test, type unavailable (!)
 
 {
     ! x = 5;

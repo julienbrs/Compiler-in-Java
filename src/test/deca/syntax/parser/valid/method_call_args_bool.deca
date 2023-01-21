@@ -1,4 +1,4 @@
-// Test parser, appel d'une méthode avec des bool en argument
+// Parser test, method call with bools parameters
 
 class Test {
     boolean testMethodOr(boolean x, boolean y) {

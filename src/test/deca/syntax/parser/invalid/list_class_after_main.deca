@@ -1,4 +1,4 @@
-// Test parser, la liste des classes est avant le EmptyMain
+// Parser test, class has to be before EmptyMain
 
 {
     int x = 5;

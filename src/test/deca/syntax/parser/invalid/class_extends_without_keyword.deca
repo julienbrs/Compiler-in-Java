@@ -1,4 +1,4 @@
-// Test parser, oublie du keyword extends pour étendre
+// Parser test, no keyword "extends" to extend class
 
 class A {
 

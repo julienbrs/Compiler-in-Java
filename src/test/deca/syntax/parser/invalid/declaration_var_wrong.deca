@@ -1,3 +1,5 @@
+// Parser test, no =
+
 {
     int x 5;
 }

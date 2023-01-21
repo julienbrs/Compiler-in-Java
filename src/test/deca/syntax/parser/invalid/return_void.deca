@@ -1,4 +1,4 @@
-// test de parser, le return est vide
+// empty return
 
 {
     return ;

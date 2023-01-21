@@ -1,0 +1,26 @@
+// Test of rule (3.66) : There is two conditions to verify 
+// in order to select a protected field.
+// Here, we try to access a protected field x_a of class A
+// from class B which is not a subclass of A. Moreover,
+// expression 'a' (type A) is not a subtype of current class B.
+// It must fail.
+
+class A {
+  protected int x_a = 1;
+  int getX() {
+    return x_a;
+  }
+}
+
+class B {
+    // B is not a subtype of A
+    //  and
+    // expression 'a' is not a subtype (A) of current class (B)
+    // It fails.
+    A a = new A();
+    int x_b = a.x_a;
+}
+
+// Output:
+//# a
+

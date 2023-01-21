@@ -1,5 +1,5 @@
-// Test avec plusieurs classes, crée un objet pour chaque et
-// appelle leur méthode
+// Test with different classes, creates an objet for each and
+// call their method
 
 class Knight {
     void whoIs() {

@@ -1,4 +1,4 @@
-// Test parser, cast de int to symbole
+// Parser test, int casted to reserved word
 
 {
     int x = 5;
