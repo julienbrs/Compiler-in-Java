@@ -39,14 +39,14 @@ public class New extends AbstractExpr {
         Type t = type.verifyType(compiler);
         if (!t.isClass()) {
             // ERROR MSG
-            throw new ContextualError(" : rule 3.42", getLocation());
+            throw new ContextualError("Can't do \"new\" on \"" + t + "\" : rule 3.42", getLocation());
         }
         setType(t);
         return getType();
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new NEW(type.getClassDefinition().getNumberOfFields() + 1, GPRegister.getR(offset)));
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BOV(new Label("tas_plein")));
@@ -56,7 +56,8 @@ public class New extends AbstractExpr {
         compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
         compiler.addInstruction(new BSR(new Label("init." + type.getName())));
         compiler.addInstruction(new POP(GPRegister.getR(offset)));
-        return 3;
+        int[] res = {offset, 3};
+        return res;
     }
 
     @Override

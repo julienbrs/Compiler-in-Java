@@ -15,21 +15,22 @@ public class Or extends AbstractOpBool {
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        int nbLeftPush;
-        int nbRightPush;
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        int[] resLeft;
+        int[] resRight;
         if (aim) {    
-            nbLeftPush = getLeftOperand().codeGenBool(compiler, true, dest);
-            nbRightPush = getRightOperand().codeGenBool(compiler, true, dest);
+            resLeft = getLeftOperand().codeGenBool(compiler, true, dest, offset);
+            resRight = getRightOperand().codeGenBool(compiler, true, dest, offset);
         } else {
             int labelNumber = compiler.getLabelNumber();
             compiler.incrLabelNumber();
             Label orEnd = new Label("Or_end."+labelNumber);
-            nbLeftPush = getLeftOperand().codeGenBool(compiler, true, orEnd);
-            nbRightPush = getRightOperand().codeGenBool(compiler, false, dest);
+            resLeft = getLeftOperand().codeGenBool(compiler, true, orEnd, offset);
+            resRight = getRightOperand().codeGenBool(compiler, false, dest, offset);
             compiler.addLabel(orEnd);
         }
-        return Math.max(nbLeftPush, nbRightPush);
+        int[] res = {Math.max(resLeft[0], resRight[0]), Math.max(resLeft[1], resRight[1])};
+        return res;
     }
 
     @Override

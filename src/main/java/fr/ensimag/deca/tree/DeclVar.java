@@ -57,11 +57,12 @@ public class DeclVar extends AbstractDeclVar {
     }
 
     @Override
-    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
+    protected int[] codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
         /* Initialization */
         varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, reg));
-        initialization.codeGenInitialization(compiler, 2);
+        int[] res = initialization.codeGenInitialization(compiler, 2);
         compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
+        return res; // {maxReg, maxPush}
     }
     
     @Override

@@ -188,9 +188,10 @@ public class TabIdentifier extends AbstractIdentifier{
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         // TODO Auto-generated method stub
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
 
     @Override
@@ -248,7 +249,7 @@ public class TabIdentifier extends AbstractIdentifier{
     }
 
     @Override
-    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+    public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
         // TODO Auto-generated method stub
         return null;
     }

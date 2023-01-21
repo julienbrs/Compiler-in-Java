@@ -45,12 +45,13 @@ public class Main extends AbstractMain {
     protected int[] codeGenMain(DecacCompiler compiler, int offsetGP) {
                 
         compiler.addComment("Variables declarations:");
-        offsetGP += declVariables.codeGenListDeclVar(compiler, offsetGP, GPRegister.GB);
+        int[] resDecl = declVariables.codeGenListDeclVar(compiler, offsetGP, GPRegister.GB);
+        offsetGP += resDecl[0];
         
         compiler.addComment("Beginning of main instructions:");
-        int maxPush = insts.codeGenListInst(compiler);
+        int[] resInst = insts.codeGenListInst(compiler); // {maxReg, maxPush}
         
-        int[] res = {offsetGP - 1, offsetGP - 1 + maxPush};
+        int[] res = {Math.max(resInst[0], resDecl[1]), offsetGP - 1, offsetGP - 1 + Math.max(resInst[1], resDecl[2])}; // {maxReg, nbDecl, nbDecl + nbPush}
         return res;
     }
     

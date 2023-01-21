@@ -17,7 +17,6 @@ import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LEA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
-import fr.ensimag.ima.pseudocode.instructions.PUSH;
 
 /**
  * Instruction
@@ -42,30 +41,30 @@ public class InstanceOf extends AbstractExpr {
         Type tType = type.verifyType(compiler);
         if (!tExpr.isClassOrNull() || !tType.isClass()) {
             // ERROR MSG
-            throw new ContextualError(" : rule 3.41", getLocation());
+            throw new ContextualError("Can't do \"instanceof\" between \"" + tExpr + "\"  and \"" + tType + "\": rule 3.40", getLocation());
         }
         setType(compiler.environmentType.BOOLEAN);
         return getType();
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         int labelNumber = compiler.getLabelNumber();
         Label vrai = new Label("is_true."+labelNumber);
         Label end = new Label("end."+labelNumber);
         compiler.incrLabelNumber();
         compiler.incrLabelNumber();
-        int nbPush = codeGenBool(compiler, true, vrai);
+        int[] res = codeGenBool(compiler, true, vrai, offset);
         compiler.addInstruction(new LOAD(0, GPRegister.getR(offset)));
         compiler.addInstruction(new BRA(end));
         compiler.addLabel(vrai);
         compiler.addInstruction(new LOAD(1, GPRegister.getR(offset)));
         compiler.addLabel(end);
-        return nbPush;
+        return res;
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         
         int i = compiler.getLabelNumber();
         compiler.incrLabelNumber();
@@ -82,21 +81,21 @@ public class InstanceOf extends AbstractExpr {
             l2 = dest;
         }
 
-        int nbPush = expr.codeGenExpr(compiler, 2);
-        compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(2)));
+        int[] res = expr.codeGenExpr(compiler, offset);
+        compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
         compiler.addInstruction(new BEQ(l1));
-        compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(2)), GPRegister.getR(2)));
-        compiler.addInstruction(new LEA(type.getClassDefinition().getOperand(), GPRegister.getR(3)));
+        compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.getR(offset)));
+        compiler.addInstruction(new LEA(type.getClassDefinition().getOperand(), GPRegister.R0));
         compiler.addLabel(instLabel);
-        compiler.addInstruction(new CMP(GPRegister.getR(2), GPRegister.getR(3)));
+        compiler.addInstruction(new CMP(GPRegister.getR(2), GPRegister.R0));
         compiler.addInstruction(new BEQ(l1));
-        compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(2)));
+        compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
         compiler.addInstruction(new BEQ(l2));
-        compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(2)), GPRegister.getR(2)));
+        compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.getR(offset)));
         compiler.addInstruction(new BRA(instLabel));
         compiler.addLabel(finLabel);
 
-        return nbPush;
+        return res;
     }
 
     @Override

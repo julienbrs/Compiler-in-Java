@@ -55,14 +55,17 @@ public class Selection extends AbstractSelection {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         // ERROR MSG
-        ClassType t = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
+        ClassType t = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("Can't select field from \"" + expr.getType() + "\" : rule 3.65", getLocation());
         ident.verifyExpr(compiler, t.getDefinition().getMembers(), currentClass);
         FieldDefinition def = ident.getFieldDefinition();
         if (def.getVisibility().equals(Visibility.PROTECTED)) {
-            // ERROR MSG
+            if (currentClass == null) {
+                // ERROR MSG
+                throw new ContextualError("Can't acces a protected field in main : rule 3.66", getLocation());
+            }
             if (!t.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getContainingClass().getType())) {
                 // ERROR MSG
-                throw new ContextualError("", getLocation());
+                throw new ContextualError("Can't acces a protected field from a foreign class : rule 3.66", getLocation());
             }
         }
         setType(def.getType());
@@ -70,37 +73,37 @@ public class Selection extends AbstractSelection {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int nbPush = expr.codeGenExpr(compiler, offset);
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] res = expr.codeGenExpr(compiler, offset);
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
             compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
         }
         compiler.addInstruction(new LOAD(new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.getR(offset)));
-        return nbPush;
+        return res;
     }
 
-    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
-        int nbPush = expr.codeGenExpr(compiler, offset);
+    public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        int[] resExpr = expr.codeGenExpr(compiler, offset);
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
             compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
         }
-        Triple<Integer, Integer, DAddr> res = new Triple<>(nbPush, offset + 1, new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)));
+        Triple<int[], Integer, DAddr> res = new Triple<>(resExpr, offset + 1, new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)));
         return res;
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        int nbPush = expr.codeGenExpr(compiler, 2);
-        compiler.addInstruction(new LOAD(new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(2)), GPRegister.R0));
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        int[] res = expr.codeGenExpr(compiler, offset);
+        compiler.addInstruction(new LOAD(new RegisterOffset(ident.getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.R0));
         compiler.addInstruction(new CMP(0, GPRegister.R0));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        return nbPush;
+        return res;
     }
 
     @Override

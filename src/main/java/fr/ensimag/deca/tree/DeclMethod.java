@@ -77,13 +77,13 @@ public class DeclMethod extends AbstractDeclMethod {
                     localEnv.declare(ident.getName(), ident.getExpDefinition());
                 } catch (DoubleDefException e) {
                     // ERROR MSG
-                    throw new ContextualError(" rule ?.??", getLocation());
+                    throw new ContextualError("The method \""+ident.getName()+"\" is already declared : rule 2.6", getLocation());
                 }
                 return;
             }
             if (!sDef.isMethod()) {
                 // ERROR MSG
-                throw new ContextualError("??? : rule 2.7", getLocation());
+                throw new ContextualError(ident.getName() + " already declare as field in super class : rule 2.7", getLocation());
             }
             Signature sig = new Signature();
             listeparametre.verifyListParamMembers(compiler, sig);
@@ -91,16 +91,16 @@ public class DeclMethod extends AbstractDeclMethod {
             if (mDef != null) {
                 if (!mDef.getSignature().equals(sig)) {
                     // ERROR MSG
-                    throw new ContextualError(" : rule 2.7", getLocation());
+                    throw new ContextualError("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
                 }
                 if (!t.sameType(mDef.getType())) {
                     // ERROR MSG
-                    ClassType cType = t.asClassType(" : rule 2.7", getLocation());
+                    ClassType cType = t.asClassType("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
                     // ERROR MSG
-                    ClassType superType = mDef.getType().asClassType(" : rule 2.7", getLocation());
+                    ClassType superType = mDef.getType().asClassType("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
                     if (!cType.isSubClassOf(superType)) {
                         // ERROR MSG
-                        throw new ContextualError(" : rule 2.7", getLocation());
+                        throw new ContextualError("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
                     }
                 }
                 
@@ -112,7 +112,7 @@ public class DeclMethod extends AbstractDeclMethod {
                 localEnv.declare(ident.getName(), ident.getExpDefinition());
             } catch (DoubleDefException e) {
                 // ERROR MSG
-                throw new ContextualError(" rule ?.??", getLocation());
+                throw new ContextualError("The method \""+ident.getName()+"\" is already declared : rule 2.6", getLocation());
             }
 
     }
