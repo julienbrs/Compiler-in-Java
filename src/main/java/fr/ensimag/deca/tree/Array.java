@@ -37,11 +37,10 @@ public class Array extends AbstractIdentifier {
     private ListExpr profondeur;
     private int Level;
 
-    public Array(Symbol name,AbstractExpr expr,AbstractIdentifier nametype ) {
+    public Array(Symbol name,int Level,AbstractIdentifier nametype ) {
         Validate.notNull(name);
         this.name = name;
-        this.profondeur = new ListExpr();
-        this.profondeur.add(expr);
+        this.Level= Level;
         this.nametype = nametype;
     }
     public void addProfondeur(AbstractExpr expr){
@@ -62,13 +61,19 @@ public class Array extends AbstractIdentifier {
  
     @Override
     String prettyPrintNode() {
-        return "Array ("+ this.getName()+Profondeur()   +" )";
+        return "Array ("+ this.getName()+" "+ Level   +" )";
     }
 
     @Override
     protected void iterChildren(TreeFunction f) {
         // TODO Auto-generated method stub
         
+    }
+    public void setLevel(int level){
+        this.Level = level;
+    }
+    public int getLevel(){
+        return this.Level;
     }
 
    String Profondeur(){
