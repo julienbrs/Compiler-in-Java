@@ -1,5 +1,4 @@
-// Test de parser, la valeur assignée du deuxieme ident est
-// invalide, ici un mot réservé POINT
+// Parser test, second value assigned unavailable
 
 {
     int x, y = 8, .;

@@ -1,3 +1,5 @@
+// Parser test : missing '('
+
 {
     x = 2 * 3 + 4) ;
 }

@@ -1,4 +1,4 @@
-// Test parser, cast d'un cast de subclass en class
+// Parser test, cast a subclass cast in class
 
 class Personne {
 

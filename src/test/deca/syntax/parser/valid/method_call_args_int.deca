@@ -1,4 +1,4 @@
-// Test parser, appel d'une méthode avec des int en argument
+// Parser test, method call with int as parameters
 
 class Test {
     void testMethod(int x, int y) {

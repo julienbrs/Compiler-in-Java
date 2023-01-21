@@ -1,4 +1,4 @@
-// Test de parser, le deuxieme ident est null
+// Parser test, seconf identifier is null
 
 {
     int x, = 8;

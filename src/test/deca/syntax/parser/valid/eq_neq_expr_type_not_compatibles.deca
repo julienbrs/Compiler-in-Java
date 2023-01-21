@@ -1,5 +1,5 @@
-// Parser, on peut utiliser l'opérateur '==' sur des variables de types différents
-// dans la syntaxe au moins
+// Parser test, can use the operator '==' on variables of different types
+// (syntaxically correct)
 
 {
     int x = 5;

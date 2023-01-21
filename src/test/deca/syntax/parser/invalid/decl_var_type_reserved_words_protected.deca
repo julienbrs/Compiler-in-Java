@@ -1,5 +1,4 @@
-// Test de parser, le type n'est pas valide, mais est un mot
-// réservé à la place, ici protected
+// Parser test, type unavailable
 
 {
     protected x = 5;

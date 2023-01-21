@@ -1,4 +1,4 @@
-// Test de parser, l'instruction est une expression sans assignation
+// Parser test, the instruction is an expression without assignation
 
 {
     int x = 8;

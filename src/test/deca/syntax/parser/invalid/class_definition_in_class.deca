@@ -1,4 +1,4 @@
-// Test parser, définition d'une classe dans une autre classe
+//Parser test, class definition in another class
 
 class A {
     int x = 5;

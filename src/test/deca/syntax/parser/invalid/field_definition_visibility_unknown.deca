@@ -1,5 +1,4 @@
-// Test parser, déclaration d'une méthode avec une visibilité
-// inconnue
+// Parser test, visibility wrong
 
 class myClass {
     unprotected int x = 12;

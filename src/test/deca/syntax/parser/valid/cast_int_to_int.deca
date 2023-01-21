@@ -1,4 +1,4 @@
-// Test parser, cast d'un cast de type entier sur entier
+// Parser test, cast an int cast in int
 
 {
     int x = 5;

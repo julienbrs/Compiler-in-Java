@@ -1,4 +1,4 @@
-// Test une classe retournant un int
+// Test a class returning an int
 
 class DummyClass {
     int getInt(){

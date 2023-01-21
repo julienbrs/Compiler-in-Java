@@ -1,4 +1,4 @@
-// Test parser, if avec une condition vide
+// Parser test, if with empty condition
 
 {
     if () {

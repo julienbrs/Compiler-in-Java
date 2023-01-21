@@ -1,5 +1,4 @@
-// Test de parser, le while n'a pas de condition mais des parenthèses de 
-// condition
+// Parser test, while with empty condition
 
 {
     while () { print(5);};

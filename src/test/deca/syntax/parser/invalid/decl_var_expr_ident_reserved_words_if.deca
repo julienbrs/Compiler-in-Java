@@ -1,5 +1,4 @@
-// Test de parser, l'ident n'est pas valide, mot réservé 
-// true à la place
+// Parser test, identifier unavailable, reserved word
 
 {
     int if = 5;

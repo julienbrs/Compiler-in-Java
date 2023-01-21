@@ -1,5 +1,4 @@
-// Test de parser, l'ident n'est pas valide, un symbole spécial 
-// est à la place, ici symbole POINT
+// Parser test, identifier unavailable, special character
 
 {
     int . = 5;

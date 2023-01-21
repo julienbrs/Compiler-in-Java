@@ -1,4 +1,4 @@
-// Test parser, if sans condition (pas de parenthèses)
+// Parser test, if without condition
 
 {
     if {

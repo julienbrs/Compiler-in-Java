@@ -1,4 +1,4 @@
-// Test parser, cast d'un cast int sur un float
+// Parser test, cast an int cast in a float
 
 {
     int x = 5;

@@ -1,0 +1,5 @@
+// Should be only one int
+
+{
+    int int x, y;
+}

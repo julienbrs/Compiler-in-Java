@@ -1,8 +1,6 @@
-// Test parser, pas le droit de déclarer une variable après
-// la liste de déclaration, ici dans un if
+// Parser test, can't declare a variable after a declaration ("if")
 
 {
-
     if (x || y ){
         int z = 5;
     }

@@ -1,4 +1,4 @@
-// Test parser, déclaration d'une classe avec un nombre
+// Parser test, class with a number as a name declared
 
 class 145 {
     

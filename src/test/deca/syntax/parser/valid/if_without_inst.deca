@@ -1,4 +1,4 @@
-// Test parser, if sans instruction
+// Parser test, if without instruction
 
 {
     if (true) {

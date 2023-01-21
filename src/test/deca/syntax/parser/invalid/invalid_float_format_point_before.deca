@@ -1,4 +1,4 @@
-// Test parser, invalid float format car . devant
+// Parser test, invalid format, special character not allowed
 
 {
     float x = .5;

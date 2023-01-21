@@ -1,4 +1,4 @@
-// test parser, l'instruction "if" contient un opérateur de comparaison "=" non autorisé
+// Parser test, condition in "if" with an unavailable operator
 
 int x = 5;
 int y = 8;

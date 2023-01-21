@@ -1,4 +1,4 @@
-// Test de parser, les parenthèses du print ne sont pas ouvertes
+// Parser test, parenthese not opened
 
 {
     int x = 5;

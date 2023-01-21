@@ -1,5 +1,4 @@
-// Test parser, or avec une opérande nombre, syntaxiquement juste mais
-// mais pas contextuellement
+// Parser test, or with a number operand, syntaxically correct (not contextually)
 
 {
     if (x || 15 ){

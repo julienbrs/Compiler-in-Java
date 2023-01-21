@@ -1,4 +1,4 @@
-// Test parser, instanceof doit prendre un IDENT, ici on a un boolean
+// Parser test, instanceof should be followed by an IDENT not a boolean
 
 {
     x instanceof true;
