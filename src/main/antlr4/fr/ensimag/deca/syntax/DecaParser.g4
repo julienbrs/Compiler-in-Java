@@ -240,6 +240,9 @@ expr returns[AbstractExpr tree]
     ;
 
 assign_expr returns[AbstractExpr tree]
+@init {  
+    ArrayLiteral tab;
+}
     : e=or_expr (
         
         /* condition: expression e must be a "LVALUE" */ {
@@ -254,11 +257,23 @@ assign_expr returns[AbstractExpr tree]
             assert($e.tree != null);
             assert($e2.tree != null);
         }
+    |  ( EQUALS OBRACE (
+       e3= assign_expr{   
+        tab = new ArrayLiteral($e3.tree);
+        $tree = tab;
+
+
+        } (COMMA e4= assign_expr{   
+            tab.addExpr($e4.tree);
+        }
+    )*
+    ) CBRACE)
       | /* epsilon */ {
         assert($e.tree != null);  
         $tree=$e.tree;
         
         }
+
       )
     ;
 
@@ -530,6 +545,7 @@ a =new Array(sym.create(($IDENT.text+"[]")),new IntLiteral(1),new Identifier(sym
     ;
 
 literal returns[AbstractExpr tree]
+
     : INT {
         try{
        $tree= new IntLiteral(Integer.parseInt($INT.text));
