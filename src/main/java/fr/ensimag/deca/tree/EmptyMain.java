@@ -20,7 +20,7 @@ public class EmptyMain extends AbstractMain {
     @Override
     protected int[] codeGenMain(DecacCompiler compiler, int offsetGP) {
         // throw new UnsupportedOperationException("not yet implemented");
-        int[] res = {offsetGP, offsetGP};
+        int[] res = { 0, offsetGP, offsetGP };
         return res;
     }
 
@@ -31,7 +31,7 @@ public class EmptyMain extends AbstractMain {
     protected void checkLocation() {
         // nothing
     }
-    
+
     @Override
     public void decompile(IndentPrintStream s) {
         // no main program => nothing

@@ -23,7 +23,7 @@ import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.WNL;
 import fr.ensimag.ima.pseudocode.instructions.WSTR;
 
-public class MethodBody extends AbstractMethodBody{
+public class MethodBody extends AbstractMethodBody {
     private ListDeclVar declVar;
     private ListInst listInst;
 
@@ -33,13 +33,13 @@ public class MethodBody extends AbstractMethodBody{
     }
 
     @Override
-    protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
+    protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv,
+            ClassDefinition currentClass, Type returnType) throws ContextualError {
         declVar.verifyListDeclVariable(compiler, paramEnv, currentClass);
         listInst.verifyListInst(compiler, paramEnv, currentClass, returnType);
     }
 
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass, AbstractIdentifier ident) {
-        
 
         Line lTSTO = new Line("");
         if (!compiler.getCompilerOptions().getNoCheck()) {
@@ -51,7 +51,7 @@ public class MethodBody extends AbstractMethodBody{
         compiler.add(lADDSP);
 
         // for (int i = 2; i < compiler.getCompilerOptions().getRmax(); i++) {
-        //     compiler.addInstruction(new PUSH(GPRegister.getR(i)));
+        // compiler.addInstruction(new PUSH(GPRegister.getR(i)));
         // }
         InlinePortion pushLine = new InlinePortion("");
         compiler.add(pushLine);
@@ -73,13 +73,15 @@ public class MethodBody extends AbstractMethodBody{
             compiler.addLabel(returnLabel);
         }
 
-        int[] max = {Math.max(resDecl[1], resInst[0]), Math.max(resDecl[2], resInst[1])};
+        int[] max = { Math.max(resDecl[1], resInst[0]), Math.max(resDecl[2], resInst[1]) };
 
         String asmPush = "";
         for (int i = 2; i <= max[0]; i++) {
             asmPush += "\tPUSH R" + i + "\n";
         }
-        pushLine.setAsm(asmPush.substring(0, asmPush.length()-1));
+        if (!asmPush.equals("")) {
+            pushLine.setAsm(asmPush.substring(0, asmPush.length() - 1));
+        }
         for (int i = max[0]; i >= 2; i--) {
             compiler.addInstruction(new POP(GPRegister.getR(i)));
         }
@@ -87,7 +89,7 @@ public class MethodBody extends AbstractMethodBody{
         compiler.addInstruction(new RTS());
 
         compiler.setReturnLabel(oldReturnLabel);
-        
+
         lADDSP.setInstruction(new ADDSP(new ImmediateInteger(resDecl[0] + max[0])));
 
         lTSTO.setInstruction(new TSTO(new ImmediateInteger(resDecl[0] + max[1] + max[0])));
@@ -105,9 +107,9 @@ public class MethodBody extends AbstractMethodBody{
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        
-        declVar.prettyPrint(s,prefix,false);
-        listInst.prettyPrint(s,prefix,false);
+
+        declVar.prettyPrint(s, prefix, false);
+        listInst.prettyPrint(s, prefix, false);
     }
 
     @Override
@@ -115,6 +117,5 @@ public class MethodBody extends AbstractMethodBody{
         declVar.iter(f);
         listInst.iter(f);
     }
-    
 
 }
