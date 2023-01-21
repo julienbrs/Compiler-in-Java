@@ -11,6 +11,16 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.NEW;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 public class ArrayLiteral extends AbstractExpr {
 
@@ -131,8 +141,40 @@ public class ArrayLiteral extends AbstractExpr {
 
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        int[] res= {0, 0};
+        int len = elementab.size();
+        int localOffset;
+        if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
+            localOffset = offset - 1;
+            compiler.addInstruction(new PUSH(GPRegister.getR(localOffset)));
+        } else {
+            localOffset = offset;
+        }
+        int[] res = {localOffset, 0};
+        compiler.addInstruction(new NEW(len + 1, GPRegister.getR(localOffset)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new BOV(new Label("tas_plein")));
+        }
+        compiler.addInstruction(new LOAD(new ImmediateInteger(len),GPRegister.R0));
+        compiler.addInstruction(new STORE(GPRegister.R0, new RegisterOffset(0, GPRegister.getR(localOffset))));
+        
+        AbstractExpr expr;
+        Iterator<AbstractExpr> ite = elementab.getList().iterator();
+        for (int i = 1; i <= len; i++) {
+            expr = ite.next();
+            int[] resExpr = expr.codeGenExpr(compiler, localOffset + 1);
+            if (resExpr[0] > res[0]) {
+                res[0] = resExpr[0];
+            }
+            if (resExpr[1] > res[1]) {
+                res[1] = resExpr[1];
+            }
+            compiler.addInstruction(new STORE(GPRegister.getR(localOffset + 1), new RegisterOffset(i, GPRegister.getR(offset))));
+        }
+        if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
+            compiler.addInstruction(new LOAD(GPRegister.getR(localOffset), GPRegister.getR(offset)));
+            compiler.addInstruction(new POP(GPRegister.getR(localOffset)));
+            res[1] += 1;
+        }
         return res;
     }
 

@@ -22,4 +22,5 @@ public abstract class AbstractLValue extends AbstractExpr {
                                          ClassDefinition currentClass) throws ContextualError;
 
     public abstract Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset);
+    // {{maxReg, maxPush}, nextOffset, Addr}
 }

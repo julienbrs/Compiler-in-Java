@@ -58,7 +58,17 @@ public class Assign extends AbstractBinaryExpr {
         offset = resTriple.b;
         Register reg;
         int[] res = {0, 0};
-        if (offset == compiler.getCompilerOptions().getRmax()) {
+        if (offset == compiler.getCompilerOptions().getRmax() + 1) {
+            offset -= 2;
+            compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
+            int[] resRight = codeGenRightOperande(compiler, offset);
+            res[0] = Math.max(resLeft[0], resRight[0]);
+            res[1] = Math.max(resLeft[1], resRight[1] + 2);
+            compiler.addInstruction(new LOAD(GPRegister.getR(offset), GPRegister.R1));
+            reg = GPRegister.R1;
+            compiler.addInstruction(new POP(GPRegister.getR(offset)));
+            compiler.addInstruction(new POP(GPRegister.R0));
+        } else if (offset == compiler.getCompilerOptions().getRmax()) {
             offset--;
             compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
             int[] resRight = codeGenRightOperande(compiler, offset);

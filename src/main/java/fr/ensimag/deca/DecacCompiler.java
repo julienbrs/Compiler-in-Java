@@ -263,6 +263,12 @@ public class DecacCompiler {
             addInstruction(new WSTR(new ImmediateString("Cast impossible")));
             addInstruction(new WNL());
             addInstruction(new ERROR());
+
+            // Erreur d'inex
+            addLabel(new Label("index_hors_range"));
+            addInstruction(new WSTR(new ImmediateString("Index hors range")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
         }
         // Erreur de lecture
         addLabel(new Label("erreur_de_lecture"));

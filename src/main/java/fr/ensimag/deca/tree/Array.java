@@ -29,7 +29,6 @@ public class Array extends AbstractIdentifier {
 
     private Symbol name;
     private AbstractIdentifier nametype;
-    private ListExpr profondeur;
     private int level;
 
     public Array(Symbol name, int level,AbstractIdentifier nametype ) {
@@ -37,9 +36,6 @@ public class Array extends AbstractIdentifier {
         this.name = name;
         this.level= level;
         this.nametype = nametype;
-    }
-    public void addProfondeur(AbstractExpr expr){
-        this.profondeur.add(expr);
     }
    
     /**
@@ -61,9 +57,7 @@ public class Array extends AbstractIdentifier {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-       this.nametype.iter(f);
-       this.profondeur.iter(f);
-        
+    //    this.nametype.iter(f);
     }
     public void setLevel(int level){
         this.level = level;
@@ -72,14 +66,6 @@ public class Array extends AbstractIdentifier {
         return this.level;
     }
 
-   String Profondeur(){
-    Iterator<AbstractExpr> it  = profondeur.iterator();
-    String a = new String();
-    while(it.hasNext()){
-        a = a +" "+it.next().decompile();
-    }
-    return a ;
-   }
    private Definition definition;
 
  
@@ -158,12 +144,11 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-          // throw new UnsupportedOperationException("not yet implemented");
           nametype.verifyType(compiler);
           TypeDefinition def = compiler.environmentType.defOfType(nametype.getName());
           if (def == null) {
               // ERROR MSG
-              throw new ContextualError("", getLocation());
+              throw new ContextualError("The type \"" + nametype + "\" doesn't exist : 0.1", getLocation());
           }
           ArrayType arrType = new ArrayType(name, nametype.getType(), getLocation(), level);
           setDefinition(arrType.getDefinition());
@@ -191,9 +176,9 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        int[] res = {0, 0};
-        return res;
+        // int[] res = {0, 0};
+        // return res;
+        throw new UnsupportedOperationException("Should not end up here");
     }
 
     @Override
@@ -209,8 +194,8 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return null;
+        // return null;
+        throw new UnsupportedOperationException("Should not end up here");
     }
  
     
