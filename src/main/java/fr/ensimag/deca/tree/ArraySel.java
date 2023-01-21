@@ -48,8 +48,10 @@ public class ArraySel extends AbstractSelection {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        selExpr.decompile(s);
+        s.print("[");
+        indexExpr.decompile(s);
+        s.print("]");
     }
 
     @Override
@@ -61,7 +63,8 @@ public class ArraySel extends AbstractSelection {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
+        selExpr.iter(f);
+        indexExpr.iter(f);
         
     }
     

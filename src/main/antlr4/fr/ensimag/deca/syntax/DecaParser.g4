@@ -270,6 +270,7 @@ tab_expr returns [AbstractExpr tree]
 : OBRACE( (e1 = tab_expr{
 tab = new ArrayLiteral($e1.tree);
 $tree = tab;
+setLocation($tree,$OBRACE);
 }(COMMA e2 = tab_expr{
 tab.addExpr($e2.tree);
 })*)
@@ -279,6 +280,7 @@ tab.addExpr($e2.tree);
     System.out.println("aaaaaa");
 tab = new ArrayLiteral();
 $tree = tab;
+setLocation($tree,$OBRACE);
 }
 |e4 =or_expr{
     $tree = $e4.tree;
@@ -472,6 +474,7 @@ select_expr returns[AbstractExpr tree]
         )
     | u= select_expr OBRACKET (expr){     
         $tree = new ArraySel($u.tree,$expr.tree);
+        setLocation($tree, $OBRACKET);
     } CBRACKET 
     ;
 
