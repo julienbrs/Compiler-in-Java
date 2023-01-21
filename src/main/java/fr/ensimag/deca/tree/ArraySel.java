@@ -23,8 +23,7 @@ public class ArraySel extends AbstractSelection {
     @Override
     public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+        return verifyExpr(compiler, localEnv, currentClass);
     }
 
     @Override
@@ -36,8 +35,18 @@ public class ArraySel extends AbstractSelection {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+        Type selType = selExpr.verifyExpr(compiler, localEnv, currentClass);
+        if (!selType.isArray()) {
+            // ERROR MSG
+            throw new ContextualError("Can't use \"[]\" on \"" + selType + "\" : rule extension", getLocation());
+        }
+        Type exprType = indexExpr.verifyExpr(compiler, localEnv, currentClass);
+        if (!exprType.isInt()) {
+            // ERROR MSG
+            throw new ContextualError("Can't select from an array with type \"" + exprType + "\" : rule extension", getLocation());
+        }
+        setType(selType.asArrayType(null, getLocation()).subType());
+        return getType();
     }
 
     @Override

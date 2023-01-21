@@ -270,6 +270,7 @@ tab_expr returns [AbstractExpr tree]
 : OBRACE( (e1 = tab_expr{
 tab = new ArrayLiteral($e1.tree);
 $tree = tab;
+setLocation($tree, $OBRACE);
 }(COMMA e2 = tab_expr{
 tab.addExpr($e2.tree);
 })*)

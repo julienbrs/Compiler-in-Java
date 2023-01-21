@@ -4,9 +4,12 @@ import fr.ensimag.deca.tree.Location;
 
 public class ArrayDefinition extends VariableDefinition {
     private int level;
-    public ArrayDefinition(Type type, Location location,int level) {
+    private Type localType;
+    
+    public ArrayDefinition(Type type, Type localType, Location location,int level) {
         super(type, location);
         this.level = level;
+        this.localType = localType;
     }
     @Override
     public int getLevel() {
@@ -15,6 +18,15 @@ public class ArrayDefinition extends VariableDefinition {
     public void setLevel(int level) {
         this.level = level;
     }
+
+    public Type getLocalType() {
+        return localType;
+    }
+
+    public void setLocalType(Type t) {
+        localType = t;
+    }
+
     @Override
     public String getNature() {
         return "array";

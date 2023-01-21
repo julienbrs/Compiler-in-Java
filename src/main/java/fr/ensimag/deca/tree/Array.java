@@ -1,6 +1,5 @@
 package fr.ensimag.deca.tree;
 
-import java.beans.Expression;
 import java.io.PrintStream;
 import java.util.Iterator;
 
@@ -8,7 +7,6 @@ import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.ArrayDefinition;
 import fr.ensimag.deca.context.ArrayType;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -20,27 +18,24 @@ import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
-import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DAddr;
-import fr.ensimag.ima.pseudocode.Register;
 
 public class Array extends AbstractIdentifier {
 
 
 
     private Symbol name;
-    private     AbstractIdentifier nametype;
+    private AbstractIdentifier nametype;
     private ListExpr profondeur;
-    private int Level;
+    private int level;
 
-    public Array(Symbol name,int Level,AbstractIdentifier nametype ) {
+    public Array(Symbol name, int level,AbstractIdentifier nametype ) {
         Validate.notNull(name);
         this.name = name;
-        this.Level= Level;
+        this.level= level;
         this.nametype = nametype;
     }
     public void addProfondeur(AbstractExpr expr){
@@ -61,7 +56,7 @@ public class Array extends AbstractIdentifier {
  
     @Override
     String prettyPrintNode() {
-        return "Array ("+ this.getName()+" "+ Level   +" )";
+        return "Array ("+ this.getName()+" "+ level   +" )";
     }
 
     @Override
@@ -70,10 +65,10 @@ public class Array extends AbstractIdentifier {
         
     }
     public void setLevel(int level){
-        this.Level = level;
+        this.level = level;
     }
     public int getLevel(){
-        return this.Level;
+        return this.level;
     }
 
    String Profondeur(){
@@ -89,9 +84,16 @@ public class Array extends AbstractIdentifier {
  
     @Override
     public ClassDefinition getClassDefinition() {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return (ClassDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a class identifier, you can't call getClassDefinition on it");
+        }
     }
+
     @Override
     public Definition getDefinition() {
 
@@ -99,13 +101,25 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     public FieldDefinition getFieldDefinition() {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return (FieldDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a field identifier, you can't call getFieldDefinition on it");
+        }
     }
     @Override
     public MethodDefinition getMethodDefinition() {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return (MethodDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a method identifier, you can't call getMethodDefinition on it");
+        }
     }
     @Override
     public Symbol getName() {
@@ -116,13 +130,25 @@ public class Array extends AbstractIdentifier {
     }
     @Override
     public ExpDefinition getExpDefinition() {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return (ExpDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a Exp identifier, you can't call getExpDefinition on it");
+        }
     }
     @Override
     public VariableDefinition getVariableDefinition() {
-        // TODO Auto-generated method stub
-        return null;
+        try {
+            return (VariableDefinition) definition;
+        } catch (ClassCastException e) {
+            throw new DecacInternalError(
+                    "Identifier "
+                            + getName()
+                            + " is not a variable identifier, you can't call getVariableDefinition on it");
+        }
     }
     @Override
     public void setDefinition(Definition definition) {
@@ -132,15 +158,18 @@ public class Array extends AbstractIdentifier {
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
           // throw new UnsupportedOperationException("not yet implemented");
+          nametype.verifyType(compiler);
           TypeDefinition def = compiler.environmentType.defOfType(nametype.getName());
           if (def == null) {
               // ERROR MSG
               throw new ContextualError("", getLocation());
           }
-          setDefinition(def);
+          ArrayType arrType = new ArrayType(name, nametype.getType(), getLocation(), level);
+          setDefinition(arrType.getDefinition());
           setType(definition.getType());
           return this.getType();
     }
+
     @Override
     public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv,
             ClassDefinition currentClass) throws ContextualError {
