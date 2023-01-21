@@ -1,7 +1,8 @@
 package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
-import java.util.Iterator;
+
+import org.antlr.v4.runtime.misc.Triple;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
@@ -9,53 +10,52 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.DAddr;
 
-public class ArrayLiteral extends AbstractExpr {
-    private ListExpr elementab;
-    
-    public ArrayLiteral() {
-        this.elementab = new ListExpr();
+public class ArraySel extends AbstractSelection {
+    private AbstractExpr selExpr;
+    private AbstractExpr indexExpr;
+    public ArraySel(AbstractExpr selexpr, AbstractExpr indexExpr) {
+        this.selExpr = selexpr;
+        this.indexExpr = indexExpr;
     }
-    public ArrayLiteral(AbstractExpr elementab) {
-        this.elementab = new ListExpr();
-        this.elementab.add(elementab);
+
+    @Override
+    public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+            throws ContextualError {
+        // TODO Auto-generated method stub
+        return null;
     }
-    public void addExpr(AbstractExpr elementab){
-        this.elementab.add(elementab);
+
+    @Override
+    public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         // TODO Auto-generated method stub
-        
         return null;
     }
 
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         // TODO Auto-generated method stub
-        int[] res= {0, 0};
-        return res;
+        return null;
     }
 
     @Override
     public void decompile(IndentPrintStream s) {
-        s.print("{");
-        Iterator<AbstractExpr> it = elementab.iterator();
-        while(it.hasNext()){
-            it.next().decompile();
-            if(it.hasNext()){
-                s.print(",");
-            }
-        }
-        s.print("}");
+        // TODO Auto-generated method stub
         
     }
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        elementab.prettyPrint(s, prefix, true);
+        selExpr.prettyPrint(s, prefix, false);
+        indexExpr.prettyPrint(s, prefix, true);
         
     }
 

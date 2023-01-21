@@ -42,7 +42,7 @@ public class Cast extends AbstractExpr {
             throws ContextualError {
         Type t = type.verifyType(compiler);
         Type e = expr.verifyExpr(compiler, localEnv, currentClass);
-        if (t.isVoid()) {
+        if (e.isVoid()) {
             // ERROR MSG
             throw new ContextualError("Can't cast void : rule 3.39", getLocation());
         }
