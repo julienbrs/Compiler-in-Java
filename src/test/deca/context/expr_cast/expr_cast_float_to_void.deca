@@ -1,0 +1,9 @@
+// Test de la règle (3.39) : on ne peut pas cast de float vers void.
+{
+	void var1;
+	float var2;
+	var1 = (void)(var2);
+}
+
+// Résultat :
+//# a

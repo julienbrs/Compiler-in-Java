@@ -1,0 +1,14 @@
+// Test of rule (3.66) : 
+
+class Vehicule {
+  protected int nombreRoues = 4;
+}
+
+class Moto extends Vehicule {
+  void setNombreRoues(int n) {
+    Vehicule v = new Vehicule();
+    this.nombreRoues = 2;
+    println(this.nombreRoues);
+  }
+}
+
