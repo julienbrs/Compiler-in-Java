@@ -25,7 +25,7 @@ public class Multiply extends AbstractOpArith {
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         int[] resOp = codeGenOperande(compiler, offset); // {offset, maxReg, maxPush}
         compiler.addInstruction(new MUL(GPRegister.getR(resOp[0]), GPRegister.getR(offset)));
-        if (getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
+        if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BOV(new Label("debordement_arithmetique")));
         }
         int[] res = {resOp[1], resOp[2]};
