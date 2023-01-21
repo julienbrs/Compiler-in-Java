@@ -1,6 +1,5 @@
 package fr.ensimag.deca.tree;
 
-import java.beans.Expression;
 import java.io.PrintStream;
 import java.util.Iterator;
 
@@ -8,8 +7,6 @@ import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.ArrayDefinition;
-import fr.ensimag.deca.context.ArrayType;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
@@ -20,20 +17,15 @@ import fr.ensimag.deca.context.MethodDefinition;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.TypeDefinition;
 import fr.ensimag.deca.context.VariableDefinition;
-import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DAddr;
-import fr.ensimag.ima.pseudocode.Register;
 
 public class Array extends AbstractIdentifier {
 
-
-
     private Symbol name;
-    private     AbstractIdentifier nametype;
+    private AbstractIdentifier nametype;
     private ListExpr profondeur;
     private int Level;
 
