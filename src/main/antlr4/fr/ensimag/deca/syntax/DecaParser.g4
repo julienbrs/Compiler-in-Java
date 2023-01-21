@@ -265,7 +265,6 @@ tab.addExpr($e2.tree);
  )CBRACE
 | OBRACE CBRACE 
 { 
-    System.out.println("aaaaaa");
 tab = new ArrayLiteral();
 $tree = tab;
 }

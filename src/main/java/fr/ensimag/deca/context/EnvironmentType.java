@@ -1,6 +1,8 @@
 package fr.ensimag.deca.context;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+
 import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -17,9 +19,9 @@ import fr.ensimag.ima.pseudocode.Label;
  */
 public class EnvironmentType {
     public EnvironmentType(DecacCompiler compiler) {
-        
+
         envTypes = new HashMap<Symbol, TypeDefinition>();
-        
+
         Symbol intSymb = compiler.createSymbol("int");
         INT = new IntType(intSymb);
         envTypes.put(intSymb, new TypeDefinition(INT, Location.BUILTIN));
@@ -52,8 +54,15 @@ public class EnvironmentType {
         sig.add(OBJECT);
         MethodDefinition mDef = new MethodDefinition(BOOLEAN, Location.BUILTIN, sig, 1);
         mDef.setLabel(new Label("code.Object.equals"));
+        try {
+            Symbol symEq = compiler.createSymbol("equals");
+            objectDef.getMembers().declare(symEq, mDef);
+        } catch (DoubleDefException e) {
+            // Impossible to be here: equals is the first method to be declared
+        }
         objectDef.put(1, mDef);
         envTypes.put(objectSymbol, objectDef);
+
     }
 
     private final Map<Symbol, TypeDefinition> envTypes;
@@ -71,12 +80,12 @@ public class EnvironmentType {
         }
     }
 
-    public final VoidType    VOID;
-    public final IntType     INT;
-    public final FloatType   FLOAT;
-    public final StringType  STRING;
+    public final VoidType VOID;
+    public final IntType INT;
+    public final FloatType FLOAT;
+    public final StringType STRING;
     public final BooleanType BOOLEAN;
-    public final NullType    NULL;
-    public final ClassType   OBJECT;
-    
+    public final NullType NULL;
+    public final ClassType OBJECT;
+
 }
