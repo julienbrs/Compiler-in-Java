@@ -38,13 +38,13 @@ public class Return extends AbstractInst {
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
-        int nbPush = returnExpr.codeGenExpr(compiler, 2);
+    protected int[] codeGenInst(DecacCompiler compiler) {
+        int[] res = returnExpr.codeGenExpr(compiler, 2);
         compiler.addInstruction(new LOAD(GPRegister.getR(2), GPRegister.getR(0)));
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BRA(compiler.getReturnLabel()));
         }
-        return nbPush;
+        return res;
     }
 
     @Override

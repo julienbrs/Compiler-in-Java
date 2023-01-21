@@ -58,7 +58,7 @@ public class Param extends AbstractParam {
             localEnv.declare(name.getName(), name.getExpDefinition());
         } catch (DoubleDefException e) {
             // ERROR MSG
-            throw new ContextualError("??? : rule 3.12", getLocation());
+            throw new ContextualError("The parameter \"" + name.getName() + "\" is already used : rule 3.12", getLocation());
         }
     }
 

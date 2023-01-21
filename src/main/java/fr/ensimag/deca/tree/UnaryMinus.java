@@ -32,10 +32,10 @@ public class UnaryMinus extends AbstractUnaryExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int nbPush = codeGenOperande(compiler, offset);
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] res = codeGenOperande(compiler, offset);
         compiler.addInstruction(new OPP(GPRegister.getR(offset), GPRegister.getR(offset)));
-        return nbPush;
+        return res;
     }
 
     @Override

@@ -206,7 +206,7 @@ public class Identifier extends AbstractIdentifier {
         TypeDefinition def = compiler.environmentType.defOfType(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("", getLocation());
+            throw new ContextualError("The type \"" + name + "\" doesn't exist : rule 0.2", getLocation());
         }
         setDefinition(def);
         setType(definition.getType());
@@ -214,24 +214,28 @@ public class Identifier extends AbstractIdentifier {
     }
     
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
             compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.getR(offset)));
-            return 0;
+            int[] res = {offset, 0};
+            return res;
         }
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
-        return 0;
+        int[] res = {offset, 0};
+        return res;
     }
 
-    public Triple<Integer, Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
-        Triple<Integer, Integer, DAddr> res;
+    public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
+        Triple<int[], Integer, DAddr> res;
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
-            res = new Triple<Integer,Integer,DAddr>(0, offset + 1, new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(2)));
+            int[] max = {offset, 0};
+            res = new Triple<>(max, offset + 1, new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)));
         } else {
-            res = new Triple<>(0, offset, getExpDefinition().getOperand());
+            int[] max = {offset, 0};
+            res = new Triple<>(max, offset, getExpDefinition().getOperand());
         }
         return res;
     }

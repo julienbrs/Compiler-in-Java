@@ -55,14 +55,13 @@ public class MethodCall extends AbstractExpr {
             def = envExp2.get(methodIdent.getName());
         } else {
             // ERROR MSG
-            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("", getLocation());
+            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("Can't call method on \"" + expr.getType() + "\" : rule 3.71", getLocation());
             envExp2 = e.getDefinition().getMembers();
             def = envExp2.get(methodIdent.getName());
         }
-        // ERROR MSG
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("", getLocation());
+            throw new ContextualError("No method called \"" + methodIdent.getName() + "\" :  rule 0.1", getLocation());
         }
         methodIdent.verifyExpr(compiler, envExp2, currentClass);
         MethodDefinition mDef = def.asMethodDefinition("", getLocation());
@@ -70,25 +69,40 @@ public class MethodCall extends AbstractExpr {
         Signature sig = mDef.getSignature();
         if (sig.size() != rValStar.size()) {
             // ERROR MSG
-            throw new ContextualError("", getLocation());
+            throw new ContextualError("The signature don't match expected : rule 3.73", getLocation());
         }
         Iterator<Type> ite = sig.iterator();
+        ListExpr newRValStar = new ListExpr();
         for (AbstractExpr absExpr : rValStar.getList()) {
             Type expType = ite.next();
-            absExpr.verifyRValue(compiler, localEnv, currentClass, expType);
+            newRValStar.add(absExpr.verifyRValue(compiler, localEnv, currentClass, expType));
         }
+        rValStar = newRValStar;
         setType(t);
         return getType();
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] res = {0, rValStar.size() + 3};
         compiler.addInstruction(new ADDSP(new ImmediateInteger(rValStar.size() + 1)));
-        expr.codeGenExpr(compiler, offset);
+        int[] resExpr = expr.codeGenExpr(compiler, offset);
+        if (resExpr[0] > res[0]) {
+            res[0] = resExpr[0];
+        }
+        if (resExpr[1] > res[1]) {
+            res[1] = resExpr[1];
+        }
         compiler.addInstruction(new STORE(GPRegister.getR(offset), new RegisterOffset(0, GPRegister.SP)));
         int index = 1;
         for (AbstractExpr abstractExpr : rValStar.getList()) {
-            abstractExpr.codeGenExpr(compiler, offset);
+            resExpr = abstractExpr.codeGenExpr(compiler, offset);
+            if (resExpr[0] > res[0]) {
+                res[0] = resExpr[0];
+            }
+            if (resExpr[1] > res[1]) {
+                res[1] = resExpr[1];
+            }
             compiler.addInstruction(new STORE(GPRegister.getR(offset), new RegisterOffset(-index, GPRegister.SP)));
             index++;
         }
@@ -103,19 +117,20 @@ public class MethodCall extends AbstractExpr {
         if (!getType().isVoid()) {
             compiler.addInstruction(new LOAD(GPRegister.R0, GPRegister.getR(offset)));
         }
-        return rValStar.size() + 3;
+        
+        return res;
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
-        int nbPush = codeGenExpr(compiler, 2);
-        compiler.addInstruction(new CMP(0, GPRegister.getR(2)));
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        int[] res = codeGenExpr(compiler, offset);
+        compiler.addInstruction(new CMP(0, GPRegister.getR(offset)));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        return nbPush;
+        return res;
     }
 
     @Override

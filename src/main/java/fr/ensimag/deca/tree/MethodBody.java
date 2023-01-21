@@ -11,13 +11,13 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.ImmediateString;
+import fr.ensimag.ima.pseudocode.InlinePortion;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.Line;
 import fr.ensimag.ima.pseudocode.instructions.ADDSP;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.ERROR;
 import fr.ensimag.ima.pseudocode.instructions.POP;
-import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.RTS;
 import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.WNL;
@@ -50,19 +50,21 @@ public class MethodBody extends AbstractMethodBody{
         Line lADDSP = new Line("");
         compiler.add(lADDSP);
 
-        for (int i = 2; i < compiler.getCompilerOptions().getRmax(); i++) {
-            compiler.addInstruction(new PUSH(GPRegister.getR(i)));
-        }
+        // for (int i = 2; i < compiler.getCompilerOptions().getRmax(); i++) {
+        //     compiler.addInstruction(new PUSH(GPRegister.getR(i)));
+        // }
+        InlinePortion pushLine = new InlinePortion("");
+        compiler.add(pushLine);
 
         Label returnLabel = new Label("end." + currentClass.getType().getName() + "." + ident.getName());
         Label oldReturnLabel = compiler.getReturnLabel();
         compiler.setReturnLabel(returnLabel);
 
         compiler.addComment("Variables declarations");
-        int nbDecl = declVar.codeGenListDeclVar(compiler, 1, GPRegister.LB);
+        int[] resDecl = declVar.codeGenListDeclVar(compiler, 1, GPRegister.LB); // {nbVar, maxReg, maxPush}
 
         compiler.addComment("Beginning of instructions");
-        int maxPush = listInst.codeGenListInst(compiler);
+        int[] resInst = listInst.codeGenListInst(compiler); // {maxReg, maxPush}
 
         if (!compiler.getCompilerOptions().getNoCheck() && !ident.getType().isVoid()) {
             compiler.addInstruction(new WSTR(new ImmediateString("pas de return dans une methode sans void")));
@@ -71,7 +73,14 @@ public class MethodBody extends AbstractMethodBody{
             compiler.addLabel(returnLabel);
         }
 
-        for (int i = compiler.getCompilerOptions().getRmax() - 1; i > 1; i--) {
+        int[] max = {Math.max(resDecl[1], resInst[0]), Math.max(resDecl[2], resInst[1])};
+
+        String asmPush = "";
+        for (int i = 2; i <= max[0]; i++) {
+            asmPush += "\tPUSH R" + i + "\n";
+        }
+        pushLine.setAsm(asmPush.substring(0, asmPush.length()-1));
+        for (int i = max[0]; i >= 2; i--) {
             compiler.addInstruction(new POP(GPRegister.getR(i)));
         }
 
@@ -79,9 +88,9 @@ public class MethodBody extends AbstractMethodBody{
 
         compiler.setReturnLabel(oldReturnLabel);
         
-        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(nbDecl + compiler.getCompilerOptions().getRmax() - 2)));
+        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(resDecl[0] + max[0])));
 
-        lTSTO.setInstruction(new TSTO(new ImmediateInteger(nbDecl + maxPush + compiler.getCompilerOptions().getRmax() - 2)));
+        lTSTO.setInstruction(new TSTO(new ImmediateInteger(resDecl[0] + max[1] + max[0])));
     }
 
     @Override
