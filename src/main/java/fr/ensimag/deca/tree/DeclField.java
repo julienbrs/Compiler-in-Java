@@ -48,6 +48,7 @@ public class DeclField extends AbstractDeclField{
         }
         ExpDefinition sDef = superEnv.get(varName.getName());
         if (sDef != null && !sDef.isField()) {
+            // ERROR MSG
             throw new ContextualError(getName() + " already declare as method in super class : rule 2.5", getLocation());
         }
         try {
