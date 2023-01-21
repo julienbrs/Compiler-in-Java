@@ -1,0 +1,35 @@
+// Test de la règle (3.39) : on ne peut pas cast de int vers float.
+{
+	float var1;
+	int var2;
+	var1 = (float)(var2);
+}
+
+// Résultat :
+//# `> [2, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [2, 0] Main
+//#       +> ListDeclVar [List with 2 elements]
+//#       |  []> [3, 7] DeclVar
+//#       |  ||  +> [3, 1] Identifier (float)
+//#       |  ||  |  definition: type (builtin), type=float
+//#       |  ||  +> [3, 7] Identifier (var1)
+//#       |  ||  |  definition: variable defined at [3, 7], type=float
+//#       |  ||  `> NoInitialization
+//#       |  []> [4, 5] DeclVar
+//#       |      +> [4, 1] Identifier (int)
+//#       |      |  definition: type (builtin), type=int
+//#       |      +> [4, 5] Identifier (var2)
+//#       |      |  definition: variable defined at [4, 5], type=int
+//#       |      `> NoInitialization
+//#       `> ListInst [List with 1 elements]
+//#          []> [5, 6] Assign
+//#              type: float
+//#              +> [5, 1] Identifier (var1)
+//#              |  definition: variable defined at [3, 7], type=float
+//#              `> [5, 8] Cast
+//#                 type: float
+//#                 +> [5, 9] Identifier (float)
+//#                 |  definition: type (builtin), type=float
+//#                 `> [5, 16] Identifier (var2)
+//#                    definition: variable defined at [4, 5], type=int

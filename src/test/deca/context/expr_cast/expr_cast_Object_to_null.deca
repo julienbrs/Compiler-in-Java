@@ -1,0 +1,9 @@
+// Test de la règle (3.39) : on ne peut pas cast de Object vers null.
+{
+	null var1;
+	Object var2;
+	var1 = (null)(var2);
+}
+
+// Résultat :
+//# a

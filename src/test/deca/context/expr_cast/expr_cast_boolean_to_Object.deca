@@ -1,0 +1,9 @@
+// Test de la règle (3.39) : on ne peut pas cast de boolean vers Object.
+{
+	Object var1;
+	boolean var2;
+	var1 = (Object)(var2);
+}
+
+// Résultat :
+//# a
