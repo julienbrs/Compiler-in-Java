@@ -61,7 +61,8 @@ public class Array extends AbstractIdentifier {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
+       this.nametype.iter(f);
+       this.profondeur.iter(f);
         
     }
     public void setLevel(int level){
@@ -197,7 +198,7 @@ public class Array extends AbstractIdentifier {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
+        s.print(name.toString());
         
     }
 

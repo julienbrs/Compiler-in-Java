@@ -141,7 +141,7 @@ public class ArrayLiteral extends AbstractExpr {
         s.print("{");
         Iterator<AbstractExpr> it = elementab.iterator();
         while(it.hasNext()){
-            it.next().decompile();
+            it.next().decompile(s);;
             if(it.hasNext()){
                 s.print(",");
             }
@@ -158,7 +158,8 @@ public class ArrayLiteral extends AbstractExpr {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
+        elementab.iter(f);
+        
         
     }
     
