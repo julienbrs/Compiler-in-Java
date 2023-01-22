@@ -1,4 +1,4 @@
-// Test context, appel d'une méthode avec des float en argument
+// Test context, method call with floats as parameters
 
 class Test {
     float testMethod(float x, float y) {

@@ -1,4 +1,4 @@
-// Test of rule (3.66) : 
+// Test of rule (3.66) : access to a protected field with this
 
 class Vehicule {
   protected int nombreRoues = 4;

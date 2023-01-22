@@ -1,5 +1,5 @@
-// Test de la règle (2.6) : on peut déclarer plusieurs fois la
-// même méthode si elles sont dans des classes différentes.
+// Test of the rule (2.6): possible to declare the same method several 
+// times if they are in different classes.
 
 class A {
   void method() {

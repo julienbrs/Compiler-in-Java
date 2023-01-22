@@ -1,4 +1,4 @@
-// Test pour une classe avec constructeur initialisé:
+// Test a class with an initialized constructor
 
 class Person {
     float intelligence;

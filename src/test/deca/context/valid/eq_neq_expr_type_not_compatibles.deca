@@ -1,5 +1,5 @@
-// Test context, on ne peut pas utiliser l'opérateur '==' sur des variables de types différents,
-// sauf pour int et float
+// Test context, can't use the operator '==' on variables of different types,
+// except for int and float
 
 
 {

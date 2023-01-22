@@ -1,4 +1,4 @@
-// Test de context, l'instruction est une expression sans assignation
+// Test context, the instruction is an expression without assignation
 
 {
     int x = 8;

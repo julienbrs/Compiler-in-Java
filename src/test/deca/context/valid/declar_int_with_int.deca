@@ -1,5 +1,4 @@
-// Test de context, l'ident est int mais cela ne devrait pas 
-// poser de problème
+// Test de context, the identifier is an int (does not cause problem)
 
 {
     float int = 5;

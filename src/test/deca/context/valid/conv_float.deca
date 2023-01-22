@@ -1,5 +1,4 @@
-// Test de codegen pour le ConvFloat, on vérifie aussi à la fin
-// que x est toujours un int
+// Codegen test for ConvFloat, check that x is still an int
 
 class A {
     int x = 1;

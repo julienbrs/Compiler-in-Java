@@ -1,4 +1,4 @@
-// Test avec classe ayant un attribut protected
+// Test a class with a protected attribut
 
 class Protector {
     int publiclyProtecting = 9999; 

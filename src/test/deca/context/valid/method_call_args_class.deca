@@ -1,4 +1,4 @@
-// Test context, appel d'une méthode avec une classe en argument
+// Test context, method call with a class as parameter
 
 class Test {
     boolean testMethod1(float x, float y) {

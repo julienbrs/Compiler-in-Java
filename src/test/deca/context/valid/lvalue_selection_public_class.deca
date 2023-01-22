@@ -1,5 +1,5 @@
-// Test de la règle (3.65) : on peut faire une sélection
-// si le type retourné par l'expression est un objet
+// Test of the rule (3.65) : we can make a selection
+// if the type returned by the expression is an object
 
 class Vehicule {
   int nombreRoues;

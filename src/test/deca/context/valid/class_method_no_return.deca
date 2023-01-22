@@ -1,4 +1,4 @@
-// Test une classe avec une méthode qui print mais ne return rien
+// Test a class with a method that prints but does not return anything
 
 class DummyClass {
     void displayName(){

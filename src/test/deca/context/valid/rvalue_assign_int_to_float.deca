@@ -1,4 +1,4 @@
-// Test la règle 3.28: 
+// Test of the rule (3.28): int assigned to a float
 
 {
     float f = 3;    

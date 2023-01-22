@@ -1,7 +1,7 @@
-// Test de la règle (1.3) : déclaration valide d'une classe
-// i.e. la déclaration respecte les deux conditions :
-//  - la classe n'est pas déjà définie
-//  - la super-classe existe
+// Test of rule (1.3) : valid declaration of a class
+// i.e. the declaration respects both conditions :
+//  - class not already defined
+//  - super-class exists
 
 class A {
   // n'est pas déjà définie : OK

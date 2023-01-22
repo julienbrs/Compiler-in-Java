@@ -1,4 +1,4 @@
-// Test pour assigner la valeur des attributs dans le main
+// Test to assign the value of attributs in the main
 
 class Person{
     int age;
