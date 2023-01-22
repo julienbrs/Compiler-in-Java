@@ -16,7 +16,9 @@ public class InvalidLValue extends DecaRecognitionException {
     public InvalidLValue(DecaParser recognizer, ParserRuleContext ctx) {
         super(recognizer, ctx);
     }
-
+    public InvalidLValue(DecaParserExtension recognizer, ParserRuleContext ctx) {
+        super(recognizer, ctx);
+    }
     @Override
     public String getMessage() {
         return "left-hand side of assignment is not an lvalue";
