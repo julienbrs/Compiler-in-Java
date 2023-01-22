@@ -461,7 +461,9 @@ primary_expr returns[AbstractExpr tree]
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
-            $tree = new MethodCall(new This(true), $m.tree, $args.tree);
+            This th = new This(true);
+            th.setLocation($m.tree.getLocation());
+            $tree = new MethodCall(th, $m.tree, $args.tree);
             setLocation($tree, $OPARENT);
         }
     | OPARENT expr CPARENT {
@@ -482,6 +484,11 @@ primary_expr returns[AbstractExpr tree]
             $tree=new New($ident.tree);
             setLocation($tree, $NEW);
         }
+    | NEW tabident OPARENT CPARENT {
+        assert($tabident.tree != null);
+        $tree=new New($tabident.tree);
+        setLocation($tree, $NEW);
+    }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
             assert($expr.tree != null);
@@ -571,7 +578,6 @@ ident returns[AbstractIdentifier tree]
         }
     }
     ;
-
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]
