@@ -1,0 +1,2 @@
+x est inférieur ou égal à 5
+ y est plus grand que 5 et inférieur ou égal à 10

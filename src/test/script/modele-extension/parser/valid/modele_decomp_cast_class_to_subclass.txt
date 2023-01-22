@@ -1,0 +1,11 @@
+class Personne extends Object {
+}
+
+class Roi extends Personne {
+}
+
+{
+	Personne lambda = new Personne();
+	Roi roi = (Roi) (lambda);
+}
+

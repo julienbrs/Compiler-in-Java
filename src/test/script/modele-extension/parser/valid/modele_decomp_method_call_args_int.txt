@@ -1,0 +1,12 @@
+class Test extends Object {
+	void testMethod(int x, int y) {
+		return (x + y);
+	}
+}
+
+{
+	int z;
+	Test test = new Test();
+	(z = test.testMethod(5, 12));
+}
+

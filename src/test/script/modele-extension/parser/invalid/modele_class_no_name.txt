@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/class_no_name.deca:3:6: missing IDENT at '{'

@@ -1,0 +1,8 @@
+class DummyClass extends Object {
+	int getInt() {
+		int life = (42 + 0);
+		return life;
+	}
+}
+
+

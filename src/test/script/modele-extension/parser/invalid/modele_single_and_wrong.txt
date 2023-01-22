@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/single_and_wrong.deca:6:14: token recognition error at: '& '

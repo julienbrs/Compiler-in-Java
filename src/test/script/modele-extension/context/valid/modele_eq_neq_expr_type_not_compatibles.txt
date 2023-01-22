@@ -1,0 +1,36 @@
+`> [5, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [5, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [6, 8] DeclVar
+      |  ||  +> [6, 4] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [6, 8] Identifier (x)
+      |  ||  |  definition: variable defined at [6, 8], type=int
+      |  ||  `> [6, 10] Initialization
+      |  ||     `> [6, 12] Int (5)
+      |  ||        type: int
+      |  []> [7, 10] DeclVar
+      |      +> [7, 4] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [7, 10] Identifier (y)
+      |      |  definition: variable defined at [7, 10], type=float
+      |      `> [7, 12] Initialization
+      |         `> [7, 14] Float (7.5)
+      |            type: float
+      `> ListInst [List with 1 elements]
+         []> [8, 4] IfThenElse
+             +> [8, 10] Equals
+             |  type: boolean
+             |  +> [8, 8] ConvFloat
+             |  |  type: float
+             |  |  `> [8, 8] Identifier (x)
+             |  |     definition: variable defined at [6, 8], type=int
+             |  `> [8, 13] Identifier (y)
+             |     definition: variable defined at [7, 10], type=float
+             +> ListInst [List with 1 elements]
+             |  []> [9, 8] Println
+             |      `> ListExpr [List with 1 elements]
+             |         []> [9, 16] StringLiteral (x est égal à y)
+             |             type: string
+             `> ListInst [List with 0 elements]

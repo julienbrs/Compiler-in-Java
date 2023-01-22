@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/type_not_declared.deca:5:4: The type "typeAlien" doesn't exist : rule 0.2

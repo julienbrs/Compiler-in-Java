@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/decl_two_var_missing_semicolon.deca:4:10: missing ';' at 'int'

@@ -1,0 +1,129 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (DummyClass)
+   |      |  definition: type defined at [3, 0], type=DummyClass
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 3 elements]
+   |         []> [5, 4] DeclMethod
+   |         ||  +> [5, 4] Identifier (int)
+   |         ||  |  definition: type (builtin), type=int
+   |         ||  +> [5, 8] Identifier (getInt)
+   |         ||  |  definition: method defined at [5, 8], type=int
+   |         ||  +> ListParam [List with 0 elements]
+   |         ||  `> [5, 16] MethodBody
+   |         ||     +> ListDeclVar [List with 1 elements]
+   |         ||     |  []> [6, 12] DeclVar
+   |         ||     |      +> [6, 8] Identifier (int)
+   |         ||     |      |  definition: type (builtin), type=int
+   |         ||     |      +> [6, 12] Identifier (life)
+   |         ||     |      |  definition: variable defined at [6, 12], type=int
+   |         ||     |      `> [6, 17] Initialization
+   |         ||     |         `> [6, 21] Plus
+   |         ||     |            type: int
+   |         ||     |            +> [6, 19] Int (42)
+   |         ||     |            |  type: int
+   |         ||     |            `> [6, 22] Int (0)
+   |         ||     |               type: int
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [7, 8] Return
+   |         ||     |      `> [7, 15] Identifier (life)
+   |         ||     |         definition: variable defined at [6, 12], type=int
+   |         []> [10, 4] DeclMethod
+   |         ||  +> [10, 4] Identifier (float)
+   |         ||  |  definition: type (builtin), type=float
+   |         ||  +> [10, 10] Identifier (getFloat)
+   |         ||  |  definition: method defined at [10, 10], type=float
+   |         ||  +> ListParam [List with 0 elements]
+   |         ||  `> [10, 20] MethodBody
+   |         ||     +> ListDeclVar [List with 1 elements]
+   |         ||     |  []> [11, 14] DeclVar
+   |         ||     |      +> [11, 8] Identifier (float)
+   |         ||     |      |  definition: type (builtin), type=float
+   |         ||     |      +> [11, 14] Identifier (life)
+   |         ||     |      |  definition: variable defined at [11, 14], type=float
+   |         ||     |      `> [11, 19] Initialization
+   |         ||     |         `> [11, 25] Plus
+   |         ||     |            type: float
+   |         ||     |            +> [11, 21] Float (42.4)
+   |         ||     |            |  type: float
+   |         ||     |            `> [11, 26] Float (0.6)
+   |         ||     |               type: float
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [12, 8] Return
+   |         ||     |      `> [12, 15] Identifier (life)
+   |         ||     |         definition: variable defined at [11, 14], type=float
+   |         []> [15, 4] DeclMethod
+   |             +> [15, 4] Identifier (boolean)
+   |             |  definition: type (builtin), type=boolean
+   |             +> [15, 12] Identifier (getBool)
+   |             |  definition: method defined at [15, 12], type=boolean
+   |             +> ListParam [List with 0 elements]
+   |             `> [15, 21] MethodBody
+   |                +> ListDeclVar [List with 1 elements]
+   |                |  []> [16, 16] DeclVar
+   |                |      +> [16, 8] Identifier (boolean)
+   |                |      |  definition: type (builtin), type=boolean
+   |                |      +> [16, 16] Identifier (bool_t)
+   |                |      |  definition: variable defined at [16, 16], type=boolean
+   |                |      `> [16, 23] Initialization
+   |                |         `> [16, 25] BooleanLiteral (true)
+   |                |            type: boolean
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [17, 8] Return
+   |                |      `> [17, 15] Identifier (bool_t)
+   |                |         definition: variable defined at [16, 16], type=boolean
+   `> [21, 0] Main
+      +> ListDeclVar [List with 4 elements]
+      |  []> [22, 15] DeclVar
+      |  ||  +> [22, 4] Identifier (DummyClass)
+      |  ||  |  definition: type defined at [3, 0], type=DummyClass
+      |  ||  +> [22, 15] Identifier (dumb)
+      |  ||  |  definition: variable defined at [22, 15], type=DummyClass
+      |  ||  `> [22, 20] Initialization
+      |  ||     `> [22, 22] New
+      |  ||        type: DummyClass
+      |  ||        `> [22, 26] Identifier (DummyClass)
+      |  ||           definition: type defined at [3, 0], type=DummyClass
+      |  []> [23, 8] DeclVar
+      |  ||  +> [23, 4] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [23, 8] Identifier (theInt)
+      |  ||  |  definition: variable defined at [23, 8], type=int
+      |  ||  `> [23, 15] Initialization
+      |  ||     `> [23, 21] MethodCall
+      |  ||        type: int
+      |  ||        +> [23, 17] Identifier (dumb)
+      |  ||        |  definition: variable defined at [22, 15], type=DummyClass
+      |  ||        +> [23, 22] Identifier (getInt)
+      |  ||        |  definition: method defined at [5, 8], type=int
+      |  ||        `> ListExpr [List with 0 elements]
+      |  []> [24, 12] DeclVar
+      |  ||  +> [24, 4] Identifier (boolean)
+      |  ||  |  definition: type (builtin), type=boolean
+      |  ||  +> [24, 12] Identifier (theBool)
+      |  ||  |  definition: variable defined at [24, 12], type=boolean
+      |  ||  `> [24, 20] Initialization
+      |  ||     `> [24, 26] MethodCall
+      |  ||        type: boolean
+      |  ||        +> [24, 22] Identifier (dumb)
+      |  ||        |  definition: variable defined at [22, 15], type=DummyClass
+      |  ||        +> [24, 27] Identifier (getBool)
+      |  ||        |  definition: method defined at [15, 12], type=boolean
+      |  ||        `> ListExpr [List with 0 elements]
+      |  []> [25, 10] DeclVar
+      |      +> [25, 4] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [25, 10] Identifier (theFloat)
+      |      |  definition: variable defined at [25, 10], type=float
+      |      `> [25, 19] Initialization
+      |         `> [25, 25] MethodCall
+      |            type: float
+      |            +> [25, 21] Identifier (dumb)
+      |            |  definition: variable defined at [22, 15], type=DummyClass
+      |            +> [25, 26] Identifier (getFloat)
+      |            |  definition: method defined at [10, 10], type=float
+      |            `> ListExpr [List with 0 elements]
+      `> ListInst [List with 0 elements]
