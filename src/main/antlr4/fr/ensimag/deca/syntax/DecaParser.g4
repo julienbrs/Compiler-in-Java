@@ -458,11 +458,6 @@ primary_expr returns[AbstractExpr tree]
             $tree=new New($ident.tree);
             setLocation($tree, $NEW);
         }
-    | NEW tabident OPARENT CPARENT {
-        assert($tabident.tree != null);
-        $tree=new New($tabident.tree);
-        setLocation($tree, $NEW);
-    }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
             assert($expr.tree != null);
@@ -479,30 +474,12 @@ primary_expr returns[AbstractExpr tree]
 
 type returns[AbstractIdentifier tree]
  @init{ 
-        SymbolTable sym = new SymbolTable();
-         Array a ;
-         int level = 1;
      }
     : ident {
             assert($ident.tree != null);
             $tree=$ident.tree;
-             } catch(DecaRecognitionException e) { $tree=null; }
-        } 
-        }
+             } 
          
-   |  IDENT OBRACKET
-   {
-a =new Array(sym.create(($IDENT.text+"[]")),level,new Identifier(sym.create($IDENT.text)));
-        $tree = a;
-        level++;
-        setLocation($tree, $IDENT);
-   } 
-        CBRACKET
-       (OBRACKET{   
-       a.setName(sym.create(a.getName().toString()+"[]"));
-       a.setLevel(a.getLevel()+1);
-       }
-       CBRACKET)*  
     ;
 
 literal returns[AbstractExpr tree]

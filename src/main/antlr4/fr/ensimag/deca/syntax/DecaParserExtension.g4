@@ -491,7 +491,7 @@ primary_expr returns[AbstractExpr tree]
             assert($m.tree != null);
             This th = new This(true);
             th.setLocation($m.tree.getLocation());
-            $tree = new MethodCall(, $m.tree, $args.tree);
+            $tree = new MethodCall(th , $m.tree, $args.tree);
             setLocation($tree, $OPARENT);
         }
     | OPARENT expr CPARENT {
@@ -629,7 +629,7 @@ tabident  returns[AbstractIdentifier tree]
 :
     IDENT OBRACKET r =expr CBRACKET {  
         listp.add($r.tree);
-        a = new TabIdentifier(sym.create($IDENT.text),listp);
+        a = new TabIdentifier(sym.create($IDENT.text + "[]"), sym.create($IDENT.text),listp, 1);
         $tree = a;
         setLocation($tree,$IDENT);
 
