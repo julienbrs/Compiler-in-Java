@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/main_block_braces_not_open.deca:4:4: no viable alternative at input 'int'

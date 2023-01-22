@@ -1,0 +1,20 @@
+// Test of the rule (3.28): an object of type T1 can be assigned
+// the value of an object of type T2 if of type T1 the value of an
+// object of type T2 if T2 is a subtype of T1
+
+class A {
+    int x = 3;
+}
+
+class B extends A {
+    int x = 2;
+}
+
+{
+    B b = new B();
+    A a = b; // works because B is a subtype of A
+
+    println(a.x);
+    println(b.x);
+}
+

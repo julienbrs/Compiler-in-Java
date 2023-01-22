@@ -1,5 +1,1 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
-DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:33) - verify Main: start
 src/test/deca/context/invalid/inst_return_in_main.deca:5:11: Can't assign type : "int" to type :"void" : rule 3.28

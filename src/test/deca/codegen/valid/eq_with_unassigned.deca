@@ -1,0 +1,11 @@
+// Test codegen, equals can be possible with unassigned var
+
+{
+    int x;
+    int y;
+
+    if (x == y){
+        println("x and y are both equals to 0");
+    }
+
+}

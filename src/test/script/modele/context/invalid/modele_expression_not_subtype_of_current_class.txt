@@ -1,4 +1,1 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
 src/test/deca/context/invalid/lvalue_selection_protected/expression_not_subtype_of_current_class.deca:16:13: Can't acces a protected field from a foreign class : rule 3.66

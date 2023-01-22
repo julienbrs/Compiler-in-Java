@@ -1,0 +1,14 @@
+// Test codegen, you can't use the '==' operator on variables of different types,
+// except for int and float, which is the case here:
+
+
+{
+    int x = 5;
+    float y = 7.5;
+    if (x == y) { 
+        println("x est égal à y");
+    }
+    if (x != y){
+        println("x != y");
+    }
+}

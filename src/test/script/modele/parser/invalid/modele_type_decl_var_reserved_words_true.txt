@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/type_decl_var_reserved_words_true.deca:5:9: no viable alternative at input 'x'

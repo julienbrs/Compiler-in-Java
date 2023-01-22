@@ -1,0 +1,16 @@
+// Assign a class and call directly a method on it, in a print
+// and in a condition
+
+class A {
+    int method()
+    {
+        return 5;
+    }}
+
+    {
+
+    println(new A().method());
+    if (new A().method() == 5){
+        println("It's working perfectly, what a dream");
+    }
+}

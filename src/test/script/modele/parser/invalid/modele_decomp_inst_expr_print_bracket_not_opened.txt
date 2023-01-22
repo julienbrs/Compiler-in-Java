@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/inst_expr_print_bracket_not_opened.deca:5:10: missing '(' at 'x'

@@ -1,0 +1,18 @@
+// Test pour une classe avec constructeur initialisé:
+
+class Person {
+    float intelligence;
+    int age;
+    void init(float intelligence, int age) {
+        this.intelligence = intelligence;
+        this.age = age;
+    }
+}
+
+{
+    Person person = new Person();
+    person.init(99.9, 3);
+    println(person.intelligence);
+    println(person.age);
+}
+

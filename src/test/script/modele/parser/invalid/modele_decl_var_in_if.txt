@@ -1,1 +1,1 @@
-src/test/deca/syntax/parser/invalid/decl_var_in_if.deca:7:12: no viable alternative at input 'z'
+src/test/deca/syntax/parser/invalid/decl_var_in_if.deca:5:12: no viable alternative at input 'z'

@@ -1,0 +1,14 @@
+// Test rule 3.28: 
+
+class A {
+    float f = 3; 
+}
+
+{
+    A a = new A();
+    println(a.f); 
+}
+
+
+
+

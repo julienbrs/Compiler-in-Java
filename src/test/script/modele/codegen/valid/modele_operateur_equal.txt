@@ -1,2 +1,1 @@
-z doit être égal à 1, et z = 1
-z doit être égal à 2, et z = 2
+z doit être égal à 1, et z = 1y doit être égal à 5, et y = 5

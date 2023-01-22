@@ -1,0 +1,72 @@
+// Test codegen, comparison, a proxy method and calling
+// a method in a method in a print
+
+class Test {
+    boolean testMethod1(float x, float y) {
+        return (x > y);
+    }
+    boolean testMethod2(float x, float y) {
+        return (x >= y);
+    }
+    boolean testMethod3(float x, float y) {
+        return (x < y);
+    }
+    boolean testMethod4(float x, float y) {
+        return (x <= y);
+    }
+    boolean testMethod5(float x, float y) {
+        return (x == y);
+    }
+
+    boolean proxyMethod(float x, float y){
+        return this.testMethod1(x, y);
+    }
+
+    void displayRes(boolean b){
+        if (b){
+            println("true");
+        }
+        else {
+            println("false");
+        }
+    }
+}
+
+
+{
+    float a1 = 1;
+    float a3 = 3;
+    float b3 = 3;
+
+    Test test = new Test();
+
+    println("Method1 > :  ");
+    test.displayRes(test.testMethod1(a1, a3));
+    test.displayRes(test.testMethod1(a3, a1));
+    test.displayRes(test.testMethod1(a3, a3));
+
+    println("Method2 >= :  ");
+    test.displayRes(test.testMethod2(a1, a3));
+    test.displayRes(test.testMethod2(a3, a1));
+    test.displayRes(test.testMethod2(a3, a3));
+
+    println("Method3 < : ");
+    test.displayRes(test.testMethod3(a1, a3));
+    test.displayRes(test.testMethod3(a3, a1));
+    test.displayRes(test.testMethod3(a3, a3));
+
+    println("Method4 <= :  ");
+    test.displayRes(test.testMethod4(a1, a3));
+    test.displayRes(test.testMethod4(a3, a1));
+    test.displayRes(test.testMethod4(a3, a3));
+
+    println("Method5 == :  ");
+    test.displayRes(test.testMethod5(a1, a3));
+    test.displayRes(test.testMethod5(a3, a1));
+    test.displayRes(test.testMethod5(a3, a3));
+
+
+    println("Proxy: ");
+    test.displayRes(test.proxyMethod(a1,a3));
+}
+

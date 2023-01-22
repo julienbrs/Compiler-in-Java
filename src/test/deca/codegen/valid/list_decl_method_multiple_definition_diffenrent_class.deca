@@ -1,0 +1,32 @@
+// Test of the rule (2.6) : you can declare the same method several times if they are in different
+// same method if they are in different classes.
+
+class A {
+  void method() {
+    println("I'm A");
+  }
+}
+
+class B {
+  void method() {
+    println("I'm B");
+
+  }
+}
+
+class C extends A {
+  void method() {
+    println("I'm C");
+
+  }
+}
+
+{
+  A a = new A();
+  B b = new B();
+  C c = new C();
+
+  a.method();
+  b.method();
+  c.method();
+}

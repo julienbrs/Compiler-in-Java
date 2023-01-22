@@ -1,0 +1,6 @@
+// Test Codegen, if without instruction
+
+{
+    if (true) {
+    }
+}

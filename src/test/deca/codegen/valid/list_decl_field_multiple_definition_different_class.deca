@@ -1,0 +1,25 @@
+// Test of the rule (2.4): we check that if we try to
+// declare several times a field with the same name but in different
+// different classes, it works.
+
+class A {
+  int x = 2;
+}
+
+class B {
+  int x = 3;
+}
+
+class C extends A {
+  int x = 4;
+}
+
+{
+  A a = new A();
+  B b = new B();
+  C c = new C();
+
+  println(a.x);
+  println(b.x);
+  println(c.x);
+}

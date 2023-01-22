@@ -1,0 +1,20 @@
+/* // Instanceof used on unknown type
+
+class Objet {
+    int x;
+}
+
+{
+    Objet objet = new Objet() {
+        void afficherX() {
+            println(x);
+        }
+    };
+    if (objet instanceof Objet) {
+        println("La variable objet est une instance de Objet");
+    } else {
+        println("La variable objet n'est pas une instance de Objet");
+    }
+} */
+
+// Good test ? TODOTEST

@@ -1,0 +1,12 @@
+// Test to access a protected field in a main
+
+class Protector {
+    int publiclyProtecting = 9999; 
+    protected int secretlyDoing = 1;
+}
+
+{
+    Protector protector = new Protector();
+    println("public: ", protector.publiclyProtecting );
+    println("protected: ", protector.secretlyDoing);
+}

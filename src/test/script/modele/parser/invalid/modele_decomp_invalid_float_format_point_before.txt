@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/invalid_float_format_point_before.deca:4:14: extraneous input '.' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

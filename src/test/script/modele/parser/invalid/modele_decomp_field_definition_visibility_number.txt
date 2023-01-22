@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/field_definition_visibility_number.deca:5:4: mismatched input '145' expecting {'{', 'extends'}

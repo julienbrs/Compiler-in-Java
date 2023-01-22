@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/type_decl_var_symbole_exclamation.deca:5:4: left-hand side of assignment is not an lvalue
