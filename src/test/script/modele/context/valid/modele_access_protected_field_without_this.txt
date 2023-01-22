@@ -1,0 +1,63 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:55) - verify program: end
+`> [3, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [3, 0] DeclClass
+   |  ||  +> [3, 6] Identifier (Vehicule)
+   |  ||  |  definition: type defined at [3, 0], type=Vehicule
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [4, 16] [visibility = PROTECTED]  DeclField
+   |  ||  |      +> [4, 12] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [4, 16] Identifier (nombreRoues)
+   |  ||  |      |  definition: field defined at [4, 16], type=int
+   |  ||  |      +> [4, 28] Initialization
+   |  ||  |      |  `> [4, 30] Int (4)
+   |  ||  |      |     type: int
+   |  ||  `> ListDeclMethod [List with 0 elements]
+   |  []> [7, 0] DeclClass
+   |      +> [7, 6] Identifier (Moto)
+   |      |  definition: type defined at [7, 0], type=Moto
+   |      +> [7, 11] Identifier (Vehicule)
+   |      |  definition: type defined at [3, 0], type=Vehicule
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [8, 2] DeclMethod
+   |             +> [8, 2] Identifier (void)
+   |             |  definition: type (builtin), type=void
+   |             +> [8, 7] Identifier (setNombreRoues)
+   |             |  definition: method defined at [8, 7], type=void
+   |             +> ListParam [List with 1 elements]
+   |             |  []> [8, 22] Param
+   |             |      +> [8, 22] Identifier (int)
+   |             |      |  definition: type (builtin), type=int
+   |             |      `> [8, 26] Identifier (n)
+   |             |         definition: parameter defined at [8, 22], type=int
+   |             `> [8, 29] MethodBody
+   |                +> ListDeclVar [List with 1 elements]
+   |                |  []> [9, 13] DeclVar
+   |                |      +> [9, 4] Identifier (Vehicule)
+   |                |      |  definition: type defined at [3, 0], type=Vehicule
+   |                |      +> [9, 13] Identifier (v)
+   |                |      |  definition: variable defined at [9, 13], type=Vehicule
+   |                |      `> [9, 15] Initialization
+   |                |         `> [9, 17] New
+   |                |            type: Vehicule
+   |                |            `> [9, 21] Identifier (Vehicule)
+   |                |               definition: type defined at [3, 0], type=Vehicule
+   |                +> ListInst [List with 2 elements]
+   |                |  []> [10, 16] Assign
+   |                |  ||  type: int
+   |                |  ||  +> [10, 4] Identifier (nombreRoues)
+   |                |  ||  |  definition: field defined at [4, 16], type=int
+   |                |  ||  `> [10, 18] Int (2)
+   |                |  ||     type: int
+   |                |  []> [11, 4] Println
+   |                |      `> ListExpr [List with 1 elements]
+   |                |         []> [11, 12] Identifier (nombreRoues)
+   |                |             definition: field defined at [4, 16], type=int
+   `> EmptyMain

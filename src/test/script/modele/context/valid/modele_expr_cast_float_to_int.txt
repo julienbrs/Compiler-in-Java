@@ -1,0 +1,33 @@
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:33) - verify Main: start
+DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:39) - verify Main: end
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:55) - verify program: end
+`> [2, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [2, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [3, 5] DeclVar
+      |  ||  +> [3, 1] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [3, 5] Identifier (var1)
+      |  ||  |  definition: variable defined at [3, 5], type=int
+      |  ||  `> NoInitialization
+      |  []> [4, 7] DeclVar
+      |      +> [4, 1] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [4, 7] Identifier (var2)
+      |      |  definition: variable defined at [4, 7], type=float
+      |      `> NoInitialization
+      `> ListInst [List with 1 elements]
+         []> [5, 6] Assign
+             type: int
+             +> [5, 1] Identifier (var1)
+             |  definition: variable defined at [3, 5], type=int
+             `> [5, 8] Cast
+                type: int
+                +> [5, 9] Identifier (int)
+                |  definition: type (builtin), type=int
+                `> [5, 14] Identifier (var2)
+                   definition: variable defined at [4, 7], type=float
