@@ -2,8 +2,6 @@
 
 class ArrayLib {
 
-    int[][] matrice;
-
     void printMatrice(float[][] matrice) {
         int j = 0;
         int i = 0;

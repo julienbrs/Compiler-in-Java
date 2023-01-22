@@ -37,6 +37,11 @@ public class New extends AbstractExpr {
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
         Type t = type.verifyType(compiler);
+        if (t.isArray()) {
+            type.verifyExpr(compiler, localEnv, currentClass);
+            setType(t);
+            return getType();
+        }
         if (!t.isClass()) {
             // ERROR MSG
             throw new ContextualError("Can't do \"new\" on \"" + t + "\" : rule 3.42", getLocation());
@@ -47,6 +52,9 @@ public class New extends AbstractExpr {
 
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        if (type.getType().isArray()) {
+            return type.codeGenExpr(compiler, offset);
+        }
         compiler.addInstruction(new NEW(type.getClassDefinition().getNumberOfFields() + 1, GPRegister.getR(offset)));
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BOV(new Label("tas_plein")));

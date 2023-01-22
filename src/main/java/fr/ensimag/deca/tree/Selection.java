@@ -56,8 +56,6 @@ public class Selection extends AbstractSelection {
             throws ContextualError {
         Type t = expr.verifyExpr(compiler, localEnv, currentClass);
         if (t.isArray()) {
-            // TODO
-            // ident.verifyExpr(compiler, compiler.getArrayEnv(), currentClass);
             if (!ident.getName().getName().equals("length")) {
                 throw new ContextualError("Array as no field named \"" + ident + "\" : rule extension", getLocation());
             }
@@ -86,7 +84,7 @@ public class Selection extends AbstractSelection {
 
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
-        int[] res = expr.codeGenExpr(compiler, offset);
+        int[] res = expr.codeGenExpr(compiler, offset); 
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
             compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
