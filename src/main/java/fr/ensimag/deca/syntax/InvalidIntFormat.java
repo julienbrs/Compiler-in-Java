@@ -8,6 +8,10 @@ public class InvalidIntFormat extends  DecaRecognitionException {
         super(recognizer, ctx);
         
     }
+    public InvalidIntFormat(DecaParserExtension recognizer, ParserRuleContext ctx) {
+        super(recognizer, ctx);
+        
+    }
     @Override
     public String getMessage() {
         return "INT is too big";

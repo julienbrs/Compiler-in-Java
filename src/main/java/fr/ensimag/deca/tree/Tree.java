@@ -253,6 +253,7 @@ public abstract class Tree {
      */
     protected void checkLocation() {
         if (getLocation() == null) {
+            System.out.println(((Identifier) this).getName());
             LOG.info(prettyPrint());
             throw new DecacInternalError("Tree "
                     + getClass().getName()

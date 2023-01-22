@@ -1,4 +1,4 @@
-parser grammar DecaParser;
+parser grammar DecaParserExtension;
 
 options {
     // Default language but name it anyway
@@ -61,11 +61,13 @@ main returns[AbstractMain tree]
 
 block returns[ListDeclVar decls, ListInst insts]
     : OBRACE list_decl list_inst CBRACE {
-        
+        try {
             assert($list_decl.tree != null);
             assert($list_inst.tree != null);
             $decls = $list_decl.tree;
             $insts = $list_inst.tree;
+        }
+        catch(DecaRecognitionException e) { $decls=null; } 
         }
     ;
 
@@ -137,31 +139,41 @@ inst returns[AbstractInst tree]
        setLocation($tree, $SEMI);
         }
     | PRINT OPARENT list_expr CPARENT SEMI {
+                     try{
        $tree=new Print(false, $list_expr.tree);
        setLocation($tree, $PRINT);
+        } catch(DecaRecognitionException e) { $tree=null; }
         
             assert($list_expr.tree != null);
         }
     | PRINTLN OPARENT list_expr CPARENT SEMI {
+               try{
        $tree=new Println(false, $list_expr.tree);
        setLocation($tree, $PRINTLN);
+        } catch(DecaRecognitionException e) { $tree=null; }
         
             assert($list_expr.tree != null);
         }
     | PRINTX OPARENT list_expr CPARENT SEMI {
+                     try{
        $tree=new Print(true, $list_expr.tree);
        setLocation($tree, $PRINTX);
+        } catch(DecaRecognitionException e) { $tree=null; }
         
             assert($list_expr.tree != null);
         }
     | PRINTLNX OPARENT list_expr CPARENT SEMI {
+                     try{
        $tree=new Println(true, $list_expr.tree);
        setLocation($tree, $PRINTLNX);
+        } catch(DecaRecognitionException e) { $tree=null; }
         
             assert($list_expr.tree != null);
         }
     | if_then_else {
+                     try{
        $tree=$if_then_else.tree;
+        } catch(DecaRecognitionException e) { $tree=null; }
         
             assert($if_then_else.tree != null);
         }
@@ -229,7 +241,7 @@ expr returns[AbstractExpr tree]
 
 assign_expr returns[AbstractExpr tree]
 
-    : e=or_expr (
+    : e=tab_expr (
         
         /* condition: expression e must be a "LVALUE" */ {
 
@@ -251,11 +263,31 @@ assign_expr returns[AbstractExpr tree]
 
       )
     ;
+tab_expr returns [AbstractExpr tree]
+@init {  
+    ArrayLiteral tab;
+}
+: OBRACE( (e1 = tab_expr{
+tab = new ArrayLiteral($e1.tree);
+$tree = tab;
+setLocation($tree,$OBRACE);
+}(COMMA e2 = tab_expr{
+tab.addExpr($e2.tree);
+})*)
+ )CBRACE
+| OBRACE CBRACE 
+{ 
+tab = new ArrayLiteral();
+$tree = tab;
+setLocation($tree,$OBRACE);
+}
+|e4 =or_expr{
+    $tree = $e4.tree;
+}
 
 
 
-
-
+;
 or_expr returns[AbstractExpr tree]
     : e=and_expr {
             assert($e.tree != null);
@@ -342,8 +374,10 @@ inequality_expr returns[AbstractExpr tree]
 
 sum_expr returns[AbstractExpr tree]
     : e=mult_expr {
+        try{
         assert($e.tree != null);
         $tree=$e.tree;
+          } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=sum_expr PLUS e2=mult_expr {
             assert($e1.tree != null);
@@ -361,14 +395,18 @@ sum_expr returns[AbstractExpr tree]
 
 mult_expr returns[AbstractExpr tree]
     : e=unary_expr {
+        try{
         assert($e.tree != null);
         $tree=$e.tree;
+          } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=mult_expr TIMES e2=unary_expr {
+            try{
             assert($e1.tree != null);                                         
             assert($e2.tree != null);
             $tree=new Multiply($e1.tree,$e2.tree);
             setLocation($tree, $TIMES);
+            } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=mult_expr SLASH e2=unary_expr {
             assert($e1.tree != null);                                         
@@ -386,26 +424,34 @@ mult_expr returns[AbstractExpr tree]
 
 unary_expr returns[AbstractExpr tree]
     : op=MINUS e=unary_expr {
+         try{
             assert($e.tree != null);
             $tree= new UnaryMinus($e.tree);
             setLocation($tree, $op);
+        } catch(DecaRecognitionException e) { $tree=null; }
         }
     | op=EXCLAM e=unary_expr {
+        try{
             assert($e.tree != null);
             $tree = new Not($e.tree);
             setLocation($tree, $op);
+             } catch(DecaRecognitionException e) { $tree=null; }
         }
     | select_expr {
+         try{
             assert($select_expr.tree != null);
             $tree=$select_expr.tree;
+         } catch(DecaRecognitionException e) { $tree=null; }
         }
     ;
 
 select_expr returns[AbstractExpr tree]
     : e=primary_expr {
             
+         try {  
             $tree= $e.tree;
              assert($e.tree != null);
+            } catch(DecaRecognitionException e) { $tree=null; }
         }
     | e1=select_expr DOT i=ident {
             assert($e1.tree != null);
@@ -425,6 +471,10 @@ select_expr returns[AbstractExpr tree]
             // we matched "e.i"
         }
         )
+    | u= select_expr OBRACKET (expr){     
+        $tree = new ArraySel($u.tree,$expr.tree);
+        setLocation($tree, $OBRACKET);
+    } CBRACKET 
     ;
 
 primary_expr returns[AbstractExpr tree]
@@ -432,12 +482,14 @@ primary_expr returns[AbstractExpr tree]
             assert($ident.tree != null);
             $tree=$ident.tree;
         }
+ //| tabident{ 
+  //      assert($tabident.tree != null);
+  //      $tree=$tabident.tree;
+  //  }
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
-            This th = new This(true);
-            th.setLocation($m.tree.getLocation());
-            $tree = new MethodCall(th, $m.tree, $args.tree);
+            $tree = new MethodCall(new This(true), $m.tree, $args.tree);
             setLocation($tree, $OPARENT);
         }
     | OPARENT expr CPARENT {
@@ -479,10 +531,10 @@ type returns[AbstractIdentifier tree]
          int level = 1;
      }
     : ident {
+         try{
             assert($ident.tree != null);
             $tree=$ident.tree;
              } catch(DecaRecognitionException e) { $tree=null; }
-        } 
         }
          
    |  IDENT OBRACKET
@@ -515,18 +567,24 @@ literal returns[AbstractExpr tree]
         } catch(IllegalArgumentException e) { throw new InvalidFloatFormat(this, $ctx); }
         }
     | STRING {
+         try{
 
        $tree= new StringLiteral($STRING.text.substring(1, $STRING.text.length()-1));
        setLocation($tree, $STRING);
+        } catch(DecaRecognitionException e) { $tree=null; }
         }
     | TRUE {
+        try{
        $tree= new BooleanLiteral(true);
        setLocation($tree, $TRUE);
+        } catch(DecaRecognitionException e) { $tree=null; }
 
         }
     | FALSE {
+         try{
        $tree= new BooleanLiteral(false);
        setLocation($tree, $FALSE);
+        } catch(DecaRecognitionException e) { $tree=null; }
         }
     | THIS {
         $tree = new This(false);
@@ -545,12 +603,32 @@ ident returns[AbstractIdentifier tree]
         SymbolTable sym = new SymbolTable();
          Array a ;
      }
-    : IDENT {
+    :
+    IDENT {
+        try{
             $tree= new Identifier(sym.create($IDENT.text));
             setLocation($tree, $IDENT);
+        } catch(DecaRecognitionException e) {
+            $tree=null;
+        }
     }
     ;
+tabident  returns[AbstractIdentifier tree]
+    @init{ 
+        SymbolTable sym = new SymbolTable();
+        ListExpr listp = new ListExpr();
+     }
+:
+    IDENT OBRACKET r =expr CBRACKET {  
+        listp.add($r.tree);
+        $tree = new TabIdentifier(sym.create($IDENT.text),listp);
+    setLocation($tree,$IDENT);
 
+        }(OBRACKET expr CBRACKET{
+        listp.add($expr.tree);
+        }
+    )*
+;
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]

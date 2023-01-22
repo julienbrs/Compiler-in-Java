@@ -54,22 +54,34 @@ public class Selection extends AbstractSelection {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        // ERROR MSG
-        ClassType t = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("Can't select field from \"" + expr.getType() + "\" : rule 3.65", getLocation());
-        ident.verifyExpr(compiler, t.getDefinition().getMembers(), currentClass);
-        FieldDefinition def = ident.getFieldDefinition();
-        if (def.getVisibility().equals(Visibility.PROTECTED)) {
-            if (currentClass == null) {
-                // ERROR MSG
-                throw new ContextualError("Can't acces a protected field in main : rule 3.66", getLocation());
+        Type t = expr.verifyExpr(compiler, localEnv, currentClass);
+        if (t.isArray()) {
+            // TODO
+            // ident.verifyExpr(compiler, compiler.getArrayEnv(), currentClass);
+            if (!ident.getName().getName().equals("length")) {
+                throw new ContextualError("Array as no field named \"" + ident + "\" : rule extension", getLocation());
             }
-            if (!t.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getContainingClass().getType())) {
-                // ERROR MSG
-                throw new ContextualError("Can't acces a protected field from a foreign class : rule 3.66", getLocation());
+            ident.setDefinition(new FieldDefinition(compiler.environmentType.INT, Location.BUILTIN, null, currentClass, 0));
+            setType(compiler.environmentType.INT);
+            return getType();
+        } else {
+            // ERROR MSG
+            ClassType cType = t.asClassType("Can't select field from \"" + expr.getType() + "\" : rule 3.65", getLocation());
+            ident.verifyExpr(compiler, cType.getDefinition().getMembers(), currentClass);
+            FieldDefinition def = ident.getFieldDefinition();
+            if (def.getVisibility().equals(Visibility.PROTECTED)) {
+                if (currentClass == null) {
+                    // ERROR MSG
+                    throw new ContextualError("Can't acces a protected field in main : rule 3.66", getLocation());
+                }
+                if (!cType.isSubClassOf(currentClass.getType()) || !currentClass.getType().isSubClassOf(def.getContainingClass().getType())) {
+                    // ERROR MSG
+                    throw new ContextualError("Can't acces a protected field from a foreign class : rule 3.66", getLocation());
+                }
             }
+            setType(def.getType());
+            return getType();
         }
-        setType(def.getType());
-        return getType();
     }
 
     @Override
