@@ -1,0 +1,14 @@
+class Vector {
+    protected Rational[] tab;
+    protected int length;
+    
+    void createTab(int length) {
+        if (length <= 0) {
+            println("Can't create a table of length <= 0");
+        } else {
+            this.length = length;
+            tab = new Rational[length]();
+        }
+    }
+}
+
