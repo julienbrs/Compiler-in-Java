@@ -8,6 +8,7 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
 /**
+ * Instruction
  * 
  * @author gl11
  * @date 01/01/2023
@@ -32,6 +33,11 @@ public class ListInst extends TreeList<AbstractInst> {
         }
     }
 
+    /**
+     * // TODO
+     * @param compiler
+     * @return // TODO
+     */
     public int[] codeGenListInst(DecacCompiler compiler) {
         int[] res = {0, 0};
         for (AbstractInst i : getList()) {

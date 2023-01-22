@@ -14,11 +14,13 @@ import fr.ensimag.ima.pseudocode.instructions.STORE;
 import org.apache.log4j.Logger;
 
 /**
- *
+ * ListDeclClass
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class ListDeclClass extends TreeList<AbstractDeclClass> {
+
     private static final Logger LOG = Logger.getLogger(ListDeclClass.class);
     
     @Override
@@ -30,7 +32,9 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
     }
 
     /**
-     * Pass 1 of [SyntaxeContextuelle]
+     * Passe 1 of Contextual syntax for class
+     * @param compiler
+     * @throws ContextualError
      */
     void verifyListClass(DecacCompiler compiler) throws ContextualError {
         LOG.debug("verify listClass: start");
@@ -42,7 +46,9 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
     }
 
     /**
-     * Pass 2 of [SyntaxeContextuelle]
+     * Passe 2 of Contextual syntax for class members
+     * @param compiler
+     * @throws ContextualError
      */
     public void verifyListClassMembers(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
@@ -52,7 +58,9 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
     }
     
     /**
-     * Pass 3 of [SyntaxeContextuelle]
+     * Passe 3 of Contextual syntax for class body
+     * @param compiler
+     * @throws ContextualError
      */
     public void verifyListClassBody(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
@@ -61,6 +69,12 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
         }
     }
 
+    /**
+     * Construction of the table of method labels;
+     * Generation of code to build the table of methods.
+     * @param compiler
+     * @return offset
+     */
     public int codeGenVTable(DecacCompiler compiler) {
         int offset = 3;
         compiler.addComment("Table methodes Object");
@@ -76,6 +90,10 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
         return offset;
     }
 
+    /**
+     * Generates code to the list of declared class
+     * @param compiler
+     */
     public void codeGenBody(DecacCompiler compiler) {
         for (AbstractDeclClass abstractDeclClass : getList()) {
             abstractDeclClass.codeGenBody(compiler);

@@ -7,6 +7,7 @@ import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.ArrayType;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
@@ -22,12 +23,24 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.ima.pseudocode.DAddr;
 
+/**
+ * Array
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class Array extends AbstractIdentifier {
 
     private Symbol name;
     private AbstractIdentifier nametype;
     private int level;
 
+    /**
+     * Sets the arguments for an array
+     * @param name
+     * @param level
+     * @param nametype
+     */
     public Array(Symbol name, int level,AbstractIdentifier nametype ) {
         Validate.notNull(name);
         this.name = name;
@@ -45,8 +58,6 @@ public class Array extends AbstractIdentifier {
      * @throws DecacInternalError
      *             if the definition is not a class definition.
      */
-
- 
     @Override
     String prettyPrintNode() {
         return "Array ("+ this.getName()+" "+ level   +" )";
@@ -56,16 +67,25 @@ public class Array extends AbstractIdentifier {
     protected void iterChildren(TreeFunction f) {
     //    this.nametype.iter(f);
     }
+
+    /**
+     * Sets the level of an array
+     * @param level
+     */
     public void setLevel(int level){
         this.level = level;
     }
+
+    /**
+     * Gets the level of an array
+     * @return the leve of the array
+     */
     public int getLevel(){
         return this.level;
     }
 
-   private Definition definition;
+    private Definition definition;
 
- 
     @Override
     public ClassDefinition getClassDefinition() {
         try {

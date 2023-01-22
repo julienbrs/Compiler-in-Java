@@ -23,9 +23,22 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.POP;
 import fr.ensimag.ima.pseudocode.instructions.PUSH;
 
+/**
+ * Array Literal Selection
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class ArraySel extends AbstractSelection {
+
     private AbstractExpr selExpr;
     private AbstractExpr indexExpr;
+
+    /**
+     * Sets the selection and the index for the expression
+     * @param selexpr
+     * @param indexExpr
+     */
     public ArraySel(AbstractExpr selexpr, AbstractExpr indexExpr) {
         this.selExpr = selexpr;
         this.indexExpr = indexExpr;

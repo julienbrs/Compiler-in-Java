@@ -20,12 +20,21 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class IntLiteral extends AbstractExpr {
+
+    /**
+     * Gets the value of the integer literal
+     * @return
+     */
     public int getValue() {
         return value;
     }
 
     private int value;
 
+    /**
+     * Sets value of the integer literal
+     * @param value
+     */
     public IntLiteral(int value) {
         this.value = value;
     }

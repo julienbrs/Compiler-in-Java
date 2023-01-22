@@ -15,10 +15,14 @@ import fr.ensimag.ima.pseudocode.instructions.SGE;
  */
 public class GreaterOrEqual extends AbstractOpIneq {
 
+    /**
+     * Sets the operands for greater or equal inequality
+     * @param leftOperand
+     * @param rightOperand
+     */
     public GreaterOrEqual(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

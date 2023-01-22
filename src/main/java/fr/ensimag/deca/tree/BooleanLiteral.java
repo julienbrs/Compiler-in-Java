@@ -15,7 +15,8 @@ import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import java.io.PrintStream;
 
 /**
- *
+ * Boolean Literal
+ * 
  * @author gl11
  * @date 01/01/2023
  */
@@ -23,12 +24,13 @@ public class BooleanLiteral extends AbstractExpr {
 
     private boolean value;
 
+    /**
+     * Sets the boolean value for the literal expression 
+     * 
+     * @param value
+     */
     public BooleanLiteral(boolean value) {
         this.value = value;
-    }
-
-    public boolean getValue() {
-        return value;
     }
 
     @Override
@@ -39,6 +41,7 @@ public class BooleanLiteral extends AbstractExpr {
         return this.getType();
     }
 
+    @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         if (value) {
             compiler.addInstruction(new LOAD(new ImmediateInteger(1), GPRegister.getR(offset)));

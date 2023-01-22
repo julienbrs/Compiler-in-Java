@@ -14,6 +14,11 @@ import fr.ensimag.deca.context.EnvironmentExp;
  * @date 01/01/2023
  */
 public class ConvFloat extends AbstractUnaryExpr {
+
+    /**
+     * Sets the operand from expression to convert to float
+     * @param operand
+     */
     public ConvFloat(AbstractExpr operand) {
         super(operand);
     }

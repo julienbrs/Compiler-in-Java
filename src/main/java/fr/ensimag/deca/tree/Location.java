@@ -31,14 +31,26 @@ public class Location implements Serializable {
         }
     }
 
+    /**
+     * Gets the line in a file
+     * @return the line
+     */
     public int getLine() {
         return line;
     }
 
+    /**
+     * Gets the position in line in the file
+     * @return the position
+     */
     public int getPositionInLine() {
         return positionInLine;
     }
 
+    /**
+     * Gets the filename (default name if the file is not named)
+     * @return the filename
+     */
     public String getFilename() {
         if (filename != null) {
             return filename;
@@ -52,6 +64,12 @@ public class Location implements Serializable {
     private final int positionInLine;
     private final String filename;
 
+    /**
+     * Sets the location of a file (line, position in line and filename)
+     * @param line
+     * @param positionInLine
+     * @param filename
+     */
     public Location(int line, int positionInLine, String filename) {
         super();
         this.line = line;

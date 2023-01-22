@@ -166,11 +166,18 @@ public class Identifier extends AbstractIdentifier {
     public Symbol getName() {
         return name;
     }
+
+    @Override
     public void setName(Symbol a ) {
         this.name = a;
     }
+
     private Symbol name;
 
+    /**
+     * Verifies the name of the identifier and sets its value
+     * @param name
+     */
     public Identifier(Symbol name) {
         Validate.notNull(name);
         this.name = name;
@@ -227,6 +234,7 @@ public class Identifier extends AbstractIdentifier {
         return res;
     }
 
+    @Override
     public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
         Triple<int[], Integer, DAddr> res;
         if (getDefinition().isField()) {
@@ -240,7 +248,8 @@ public class Identifier extends AbstractIdentifier {
         return res;
     }
 
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    @Override
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         assert(getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
@@ -250,11 +259,11 @@ public class Identifier extends AbstractIdentifier {
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
     
     private Definition definition;
-
 
     @Override
     protected void iterChildren(TreeFunction f) {

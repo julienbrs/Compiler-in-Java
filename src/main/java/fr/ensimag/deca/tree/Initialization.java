@@ -11,22 +11,36 @@ import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
 /**
+ * Initialization
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Initialization extends AbstractInitialization {
 
+    /**
+     * Gets expression to initialize
+     * @return expresssion
+     */
     public AbstractExpr getExpression() {
         return expression;
     }
 
     private AbstractExpr expression;
 
+    /**
+     * Verifies that the value of expression is not null and sets its value
+     * @param expression
+     */
     public void setExpression(AbstractExpr expression) {
         Validate.notNull(expression);
         this.expression = expression;
     }
 
+    /**
+     * Declares an expression and verifies that its value is not null
+     * @param expression
+     */
     public Initialization(AbstractExpr expression) {
         Validate.notNull(expression);
         this.expression = expression;

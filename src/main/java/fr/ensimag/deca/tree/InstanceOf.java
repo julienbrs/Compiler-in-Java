@@ -19,7 +19,7 @@ import fr.ensimag.ima.pseudocode.instructions.LEA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
- * Instruction
+ * Instance of
  *
  * @author gl11
  * @date 16/01/2023
@@ -29,6 +29,11 @@ public class InstanceOf extends AbstractExpr {
     private AbstractExpr expr;
     private AbstractIdentifier type;
 
+    /**
+     * Declares the expression and type for instance of
+     * @param expr
+     * @param type
+     */
     public InstanceOf(AbstractExpr expr, AbstractIdentifier type) {
         this.expr = expr;
         this.type = type;

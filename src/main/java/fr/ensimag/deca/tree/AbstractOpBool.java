@@ -11,12 +11,18 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
- *
+ *  Boolean operations
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public abstract class AbstractOpBool extends AbstractBinaryExpr {
 
+    /**
+     * Gets left and right operand
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractOpBool(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }

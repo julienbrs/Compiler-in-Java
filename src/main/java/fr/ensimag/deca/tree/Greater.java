@@ -9,16 +9,21 @@ import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SGT;
 
 /**
- *
+ * Greater
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Greater extends AbstractOpIneq {
 
+    /**
+     * Sets the operands for greater inequality
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Greater(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

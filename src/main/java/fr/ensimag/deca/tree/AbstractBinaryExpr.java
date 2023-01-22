@@ -17,20 +17,36 @@ import org.apache.commons.lang.Validate;
  * @date 01/01/2023
  */
 public abstract class AbstractBinaryExpr extends AbstractExpr {
-
+    
+    /**
+     * Gets left operand of an equation.
+     * @return left operand of an equation
+     */
     public AbstractExpr getLeftOperand() {
         return leftOperand;
     }
 
+    /**
+     * Gets right operand of an equation.
+     * @return right operand of an equation
+     */
     public AbstractExpr getRightOperand() {
         return rightOperand;
     }
 
+    /**
+     * Sets left operand of an equation.
+     * @param leftOperand
+     */
     protected void setLeftOperand(AbstractExpr leftOperand) {
         Validate.notNull(leftOperand);
         this.leftOperand = leftOperand;
     }
 
+    /**
+     * Sets right operand of an equation.
+     * @param rightOperand
+     */
     protected void setRightOperand(AbstractExpr rightOperand) {
         Validate.notNull(rightOperand);
         this.rightOperand = rightOperand;
@@ -39,6 +55,11 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     private AbstractExpr leftOperand;
     private AbstractExpr rightOperand;
 
+    /**
+     * Verifies values of operands and sets them.
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractBinaryExpr(AbstractExpr leftOperand,
             AbstractExpr rightOperand) {
         Validate.notNull(leftOperand, "left operand cannot be null");
@@ -48,14 +69,32 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         this.rightOperand = rightOperand;
     }
 
+    /**
+     * Generates the assembly code to compute left operand.
+     * @param compiler
+     * @param offset
+     * @return left operand
+     */
     protected int[] codeGenLeftOperande(DecacCompiler compiler, int offset) {
         return leftOperand.codeGenExpr(compiler, offset);
     }
 
+    /**
+     * Generates the assembly code to compute right operand.
+     * @param compiler
+     * @param offset
+     * @return right operand
+     */
     protected int[] codeGenRightOperande(DecacCompiler compiler, int offset) {
         return rightOperand.codeGenExpr(compiler, offset);
     }
 
+    /**
+     * // TODO
+     * @param compiler
+     * @param offset
+     * @return // TODO
+     */
     protected int[] codeGenOperande(DecacCompiler compiler, int offset) {
         int[] res = {0, 0, 0}; // {offset, maxReg ,maxPush}
         int[] resLeft = codeGenLeftOperande(compiler, offset); // {maxReg, maxPush}
@@ -85,6 +124,10 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
         s.print(")");
     }
 
+    /**
+     * Gets the name of the operator
+     * @return the name of the operator
+     */
     abstract protected String getOperatorName();
 
     @Override

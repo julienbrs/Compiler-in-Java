@@ -24,7 +24,7 @@ class ArrayLib {
         println(rang(matrice));
     }
 
-    IntFloat gaussJordan(float[][] matrix) {
+    RangDet gaussJordan(float[][] matrix) {
 
         int indexPivot = -1;
         float det = 1;
@@ -37,7 +37,7 @@ class ArrayLib {
         int k = 0;
         float coeff = matrix[indexMax][0];
         float multiplicateur = matrix[0][0];
-        IntFloat res = new IntFloat();
+        RangDet res = new RangDet();
 
         while (j < matrix.length) {
             // on cherche la valeur maximale de chaque colonne
@@ -140,7 +140,7 @@ class ArrayLib {
 
 }
 
-class IntFloat {
+class RangDet {
     protected int rang;
     protected float det;
 }

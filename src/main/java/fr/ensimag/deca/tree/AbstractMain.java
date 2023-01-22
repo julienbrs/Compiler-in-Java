@@ -11,11 +11,18 @@ import fr.ensimag.deca.context.ContextualError;
  */
 public abstract class AbstractMain extends Tree {
 
+    /**
+     * // TODO
+     * @param compiler
+     * @param offsetGP
+     * @return // TODO
+     */
     protected abstract int[] codeGenMain(DecacCompiler compiler, int offsetGP);
-
 
     /**
      * Implements non-terminal "main" of [SyntaxeContextuelle] in pass 3 
+     * @param compiler
+     * @throws ContextualError
      */
     protected abstract void verifyMain(DecacCompiler compiler) throws ContextualError;
 }

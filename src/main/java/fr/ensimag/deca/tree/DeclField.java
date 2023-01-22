@@ -20,12 +20,25 @@ import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
+/**
+ * Declaration of fields
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class DeclField extends AbstractDeclField{
     private Visibility visibility;
     private AbstractIdentifier type;
     private AbstractIdentifier varName;
     AbstractInitialization initialization;
 
+    /**
+     * Sets characteristics of a declared field
+     * @param type
+     * @param varName
+     * @param initialization
+     * @param visibility
+     */
     public DeclField(AbstractIdentifier type, AbstractIdentifier varName, AbstractInitialization initialization, Visibility visibility) {
         this.type = type;
         this.varName = varName;
@@ -33,6 +46,10 @@ public class DeclField extends AbstractDeclField{
         this.visibility = visibility;
     }
 
+    /**
+     * Gets the name of a variable
+     * @return the name
+     */
     public Symbol getName() {
         return varName.getName();
     }
@@ -69,6 +86,7 @@ public class DeclField extends AbstractDeclField{
         initialization.verifyInitialization(compiler, t, localEnv, currentClass);   
     }
 
+    @Override
     public void codeGenDeclFieldNull(DecacCompiler compiler) {
         if (varName.getType().isInt() || varName.getType().isBoolean()) {
             compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(3)));
@@ -80,6 +98,7 @@ public class DeclField extends AbstractDeclField{
         compiler.addInstruction(new STORE(GPRegister.getR(3), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));
     }
 
+    @Override
     public int[] codeGenDeclField(DecacCompiler compiler) {
         int[] res = initialization.codeGenInitialization(compiler, 3); // res = {max registre, max push}
         compiler.addInstruction(new STORE(GPRegister.getR(3), new RegisterOffset(varName.getFieldDefinition().getIndex(), GPRegister.getR(2))));

@@ -14,6 +14,11 @@ import fr.ensimag.deca.context.EnvironmentExp;
  */
 public abstract class AbstractOpArith extends AbstractBinaryExpr {
 
+    /**
+     * Gets left and right operand
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractOpArith(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }

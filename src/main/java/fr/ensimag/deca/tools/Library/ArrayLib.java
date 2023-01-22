@@ -23,7 +23,7 @@ public class ArrayLib {
         System.out.println(rang(matrice));
     }
 
-    private static IntFloat gaussJordan(float[][] matrix) {
+    private static RangDet gaussJordan(float[][] matrix) {
 
         int indexPivot = -1;
         float det = 1;
@@ -66,7 +66,7 @@ public class ArrayLib {
                 rang --;
             }
         }
-        return new IntFloat(rang, det);
+        return new RangDet(rang, det);
     }
 
     public static float[][] inverse(float[][] matrix) {
@@ -105,11 +105,11 @@ public class ArrayLib {
 
 }
 
-class IntFloat {
+class RangDet {
     protected int rang;
     protected float det;
 
-    public IntFloat(int rang, float det) {
+    public RangDet(int rang, float det) {
         this.rang = rang;
         this.det = det;
     }

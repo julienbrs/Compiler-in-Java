@@ -9,10 +9,19 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class LocationException extends Exception {
+    
+    /**
+     * Gets the location of an exception
+     * @return the location
+     */
     public Location getLocation() {
         return location;
     }
 
+    /**
+     * 
+     * @param s
+     */
     public void display(PrintStream s) {
         Location loc = getLocation();
         String line;
