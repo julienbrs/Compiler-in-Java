@@ -1,0 +1,35 @@
+// Test of rule (3.39) : we can cast int to int.
+{
+	int var1;
+	int var2;
+	var1 = (int)(var2);
+}
+
+// Output :
+//# `> [2, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [2, 0] Main
+//#       +> ListDeclVar [List with 2 elements]
+//#       |  []> [3, 5] DeclVar
+//#       |  ||  +> [3, 1] Identifier (int)
+//#       |  ||  |  definition: type (builtin), type=int
+//#       |  ||  +> [3, 5] Identifier (var1)
+//#       |  ||  |  definition: variable defined at [3, 5], type=int
+//#       |  ||  `> NoInitialization
+//#       |  []> [4, 5] DeclVar
+//#       |      +> [4, 1] Identifier (int)
+//#       |      |  definition: type (builtin), type=int
+//#       |      +> [4, 5] Identifier (var2)
+//#       |      |  definition: variable defined at [4, 5], type=int
+//#       |      `> NoInitialization
+//#       `> ListInst [List with 1 elements]
+//#          []> [5, 6] Assign
+//#              type: int
+//#              +> [5, 1] Identifier (var1)
+//#              |  definition: variable defined at [3, 5], type=int
+//#              `> [5, 8] Cast
+//#                 type: int
+//#                 +> [5, 9] Identifier (int)
+//#                 |  definition: type (builtin), type=int
+//#                 `> [5, 14] Identifier (var2)
+//#                    definition: variable defined at [4, 5], type=int
