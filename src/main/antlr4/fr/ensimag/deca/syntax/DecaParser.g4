@@ -458,6 +458,11 @@ primary_expr returns[AbstractExpr tree]
             $tree=new New($ident.tree);
             setLocation($tree, $NEW);
         }
+    | NEW tabident OPARENT CPARENT {
+        assert($tabident.tree != null);
+        $tree=new New($tabident.tree);
+        setLocation($tree, $NEW);
+    }
     | cast=OPARENT type CPARENT OPARENT expr CPARENT {
             assert($type.tree != null);
             assert($expr.tree != null);
@@ -550,7 +555,6 @@ ident returns[AbstractIdentifier tree]
             setLocation($tree, $IDENT);
     }
     ;
-
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]
