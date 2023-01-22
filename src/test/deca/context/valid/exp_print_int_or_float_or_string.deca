@@ -1,5 +1,5 @@
-// Test de la règle (3.31) : On peut print une expression
-// dont le type est soit int, soit float, soit string.
+// Test of rule (3.31) : possible to print an expression
+// where the type is int, float, or string.
 
 class A {
     void printSomeThings() {

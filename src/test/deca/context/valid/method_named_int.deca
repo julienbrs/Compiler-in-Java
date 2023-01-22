@@ -1,4 +1,4 @@
-// Contextuellement, il est possible d'appeler une méthode comme int
+// test context, possible to call a method int
 
 class A {
     int int(){

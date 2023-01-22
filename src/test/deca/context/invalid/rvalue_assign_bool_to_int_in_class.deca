@@ -1,5 +1,5 @@
-// Test la règle 3.28: on ne peut pas affecter à un objet de type int 
-// une valeur d'un objet de type float. 
+// Test the rule (3.28): can't assign to an object of type int 
+// a value from an object of type float. 
 
 class A  {
     boolean b = true;

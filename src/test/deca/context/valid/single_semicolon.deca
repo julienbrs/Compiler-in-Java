@@ -1,3 +1,5 @@
+// Contextual test of semicolon
+
 {
     ;
 }

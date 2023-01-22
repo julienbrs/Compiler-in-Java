@@ -1,4 +1,4 @@
-// Test context, appel d'une méthode avec un print
+// Test context, method call with print
 
 class Printer {
     void testMethod() {

@@ -1,7 +1,7 @@
-`> [1, 0] Program
+`> [3, 0] Program
    +> ListDeclClass [List with 0 elements]
-   `> [1, 0] Main
+   `> [3, 0] Main
       +> ListDeclVar [List with 0 elements]
       `> ListInst [List with 1 elements]
-         []> [2, 4] ReadFloat
+         []> [4, 4] ReadFloat
              type: float

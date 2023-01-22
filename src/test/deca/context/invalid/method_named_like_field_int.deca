@@ -1,5 +1,5 @@
-// Contextuellement, il n'est pas possible d'appeler une méthode du nom d'un
-// champ déjà déclaré dans la méthode
+// Contextually, it is not possible to call a method the same way as
+// a field already declared in the class
 
 class A {
     int champ;

@@ -9,6 +9,6 @@ class Person extends Object {
 
 {
 	Person person = new Person();
-	;
+	person.init();
 }
 

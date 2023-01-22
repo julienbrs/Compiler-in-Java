@@ -13,7 +13,7 @@ class King extends Object {
 {
 	Knight Felix = new Knight();
 	King Camille = new King();
-	;
-	;
+	Felix.whoIs();
+	Camille.whoIs();
 }
 

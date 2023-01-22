@@ -1,1 +1,1 @@
-src/test/deca/context/invalid/decl_class_super_not_defined.deca:5:14: The type "Vehicule" doesn't exist : rule 0.2
+src/test/deca/context/invalid/decl_class_super_not_defined.deca:4:14: The type "Vehicule" doesn't exist : rule 0.2

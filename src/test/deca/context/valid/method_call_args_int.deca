@@ -1,4 +1,4 @@
-// Test context, appel d'une méthode avec des int en argument
+// Test context, method call with int as parameters
 
 class Test {
     int testMethod(int x, int y) {

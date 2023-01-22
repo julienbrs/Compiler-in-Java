@@ -1,5 +1,5 @@
-// Test la règle (2.7) : la classe enfant override une méthode parente,
-// mais ne prend pas les mêmes arguments.
+// Test of the rule (2.7) : the new method does not take the same
+// parameters as the original method
 
 class A  {
     void displayHello(int x){

@@ -1,4 +1,4 @@
-// Test context, if sans instruction
+// Test context, if without instruction
 
 {
     if (true) {

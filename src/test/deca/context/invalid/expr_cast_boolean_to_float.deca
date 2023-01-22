@@ -1,4 +1,5 @@
-// Test de la règle (3.39) : on ne peut pas cast de boolean vers float.
+// Test of the rule (3.39) : can't cast boolean to float
+
 {
 	float var1;
 	boolean var2;

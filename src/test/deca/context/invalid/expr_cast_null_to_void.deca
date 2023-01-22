@@ -1,4 +1,5 @@
-// Test de la règle (3.39) : on ne peut pas cast de null vers void.
+// Test of the rule (3.39) : can't cast null to void.
+
 {
 	void var1;
 	null var2;

@@ -1,4 +1,4 @@
-// Test context pour voir si l'extension de classe marche
+// Contextual test to check if "extends" works
 
 class People {
     int Courage = 50;

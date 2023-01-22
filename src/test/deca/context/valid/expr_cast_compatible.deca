@@ -1,7 +1,7 @@
-// Test de la règle (3.39) : Lorsqu'on souhaite cast une
-// expression de type T2 vers le type T1, cela est possible
-// si T1 n'est pas le type void et si T1 est assignable à T2
-// ou T2 est assignable à T1.
+// Test of the rule (3.39): When we want to cast an
+// expression of type T2 to type T1, this is possible
+// if T1 is not the void type and if T1 is assignable to T2
+// or T2 is assignable to T1.
 
 class Animal {}
 

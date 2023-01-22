@@ -1,4 +1,4 @@
-// Test une classe retournant un boolean
+// Test a class that returns a boolean
 
 class DummyClass {
     boolean getBool(){

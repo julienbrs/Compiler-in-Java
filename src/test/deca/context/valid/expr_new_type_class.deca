@@ -1,5 +1,5 @@
-// Test de la règle (3.42) : on ne peut instancier un objet
-// que si la classe de l'objet existe.
+// Test of the rule (3.42): one can instantiate an object
+// only if the class of the object exists.
 
 class A {}
 

@@ -1,4 +1,5 @@
-// Test de la règle (3.39) : on ne peut pas cast de null vers int.
+// Test of the rule (3.39) : can't cast null to int.
+
 {
 	int var1;
 	null var2;

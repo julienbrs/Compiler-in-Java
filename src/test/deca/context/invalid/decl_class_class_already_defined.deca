@@ -1,5 +1,4 @@
-// Test la règle (1.3) : On ne peut déclarer une classe qui existe
-// déjà dans l'environnement
+// Test of the rule (1.3) : can't declare a class that already exists
 
 class A  {}
 

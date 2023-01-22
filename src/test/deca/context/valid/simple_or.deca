@@ -1,3 +1,5 @@
+// Contextual test of if with ||
+
 {
     int x = 2;
     int y = 7;

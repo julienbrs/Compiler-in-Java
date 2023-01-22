@@ -1,5 +1,5 @@
-// Test la règle 2.6: la méthode déclarée porte un nom de méthode
-// déjà attribué d'une classe super
+// Test of rule 2.6: the declared method has the same name than
+// a method already defined in a super class
 
 class A  {
     void displayHello(){

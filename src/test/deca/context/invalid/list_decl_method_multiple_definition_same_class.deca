@@ -1,5 +1,5 @@
-// Test de la règle (2.6) : la méthode déclarée porte un nom de méthode
-// déjà attribuée dans la classe
+// Test of the rule (2.6) : the declared method has a method name
+// already given in the class
 
 class A  {
     void displayHello(){

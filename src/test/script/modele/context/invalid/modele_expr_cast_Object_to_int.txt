@@ -1,5 +1,1 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
-DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:33) - verify Main: start
-src/test/deca/context/invalid/expr_cast_Object_to_int.deca:5:8: Can't cast "int" to "Object" : rule 3.39
+src/test/deca/context/invalid/expr_cast_Object_to_int.deca:6:8: Can't cast "int" to "Object" : rule 3.39

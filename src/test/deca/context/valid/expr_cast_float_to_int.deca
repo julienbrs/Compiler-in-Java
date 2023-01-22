@@ -1,4 +1,5 @@
-// Test de la règle (3.39) : on ne peut pas cast de float vers int.
+// Test of the rule (3.39) : we can't cast from float to int.
+
 {
 	int var1;
 	float var2;

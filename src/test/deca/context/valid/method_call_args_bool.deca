@@ -1,4 +1,4 @@
-// Test context, appel d'une méthode avec des bool en argument
+// Test context, method call with bool in parameters
 
 class Test {
     boolean testMethodOr(boolean x, boolean y) {

@@ -1,4 +1,5 @@
-// Test la règle 3.24: Pas le droit de return quelque chose alors qu'on attend pas de return
+// Test of the rule (3.24): not possible to return something
+// when we are not expecting a return
 
 class A  {
     void voidMethod(){
