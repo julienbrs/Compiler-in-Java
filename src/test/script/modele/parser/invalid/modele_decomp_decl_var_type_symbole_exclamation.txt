@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/decl_var_type_symbole_exclamation.deca:5:4: left-hand side of assignment is not an lvalue

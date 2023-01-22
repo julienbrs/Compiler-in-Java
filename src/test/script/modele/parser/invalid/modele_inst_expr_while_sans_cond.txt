@@ -1,1 +1,1 @@
-src/test/deca/syntax/parser/invalid/inst_expr_while_sans_cond.deca:5:10: mismatched input '{' expecting '('
+src/test/deca/syntax/parser/invalid/inst_expr_while_sans_cond.deca:4:10: missing '(' at '{'

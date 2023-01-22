@@ -1,1 +1,1 @@
-src/test/deca/syntax/parser/invalid/wrong_double_plus.deca:3:7: extraneous input '+' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}
+src/test/deca/syntax/parser/invalid/wrong_double_plus.deca:5:7: extraneous input '+' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}
