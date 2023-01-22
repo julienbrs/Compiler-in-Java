@@ -9,10 +9,10 @@
    |             +> [4, 4] Identifier (void)
    |             +> [4, 9] Identifier (testMethod)
    |             +> ListParam [List with 2 elements]
-   |             |  []> [4, 20] Param
+   |             |  []> [4, 20] DeclParam
    |             |  ||  +> [4, 20] Identifier (int)
    |             |  ||  `> [4, 24] Identifier (x)
-   |             |  []> [4, 27] Param
+   |             |  []> [4, 27] DeclParam
    |             |      +> [4, 27] Identifier (int)
    |             |      `> [4, 31] Identifier (y)
    |             `> [4, 34] MethodBody

@@ -13,11 +13,11 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 
-public class Param extends AbstractParam {
+public class DeclParam extends AbstractDeclParam {
     private AbstractIdentifier type;
     private AbstractIdentifier name;
     
-    public Param(AbstractIdentifier type, AbstractIdentifier name) {
+    public DeclParam(AbstractIdentifier type, AbstractIdentifier name) {
         this.type = type;
         this.name = name;
     }

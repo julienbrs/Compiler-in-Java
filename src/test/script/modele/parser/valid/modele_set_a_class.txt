@@ -17,10 +17,10 @@
    |             +> [7, 4] Identifier (void)
    |             +> [7, 9] Identifier (init)
    |             +> ListParam [List with 2 elements]
-   |             |  []> [7, 14] Param
+   |             |  []> [7, 14] DeclParam
    |             |  ||  +> [7, 14] Identifier (string)
    |             |  ||  `> [7, 21] Identifier (name)
-   |             |  []> [7, 27] Param
+   |             |  []> [7, 27] DeclParam
    |             |      +> [7, 27] Identifier (int)
    |             |      `> [7, 31] Identifier (age)
    |             `> [7, 36] MethodBody
