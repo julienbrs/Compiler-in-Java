@@ -1,14 +1,14 @@
 // Programme de test
 
 #include "Rational.deca"
-//#include "Vector.deca"
+#include "Vector.deca"
 
 {
     /* Set of declarations */
     Rational r1 = new Rational();
     Rational r2 = new Rational();
     int a = 6, b = 6, c;
-    //Vector v = new Vector();
+    Vector v = new Vector();
 
     /* Set of instructions */
     r1.setNum(3);
@@ -54,6 +54,9 @@
     println("pgcd(a, b) = ", c);
     println();
     
-    println("##### Test vector #####");
+     println("##### Test vector #####");
+    
+    v.createTab(7);
+    v.getTab()[1].prettyprint();
 }
 
