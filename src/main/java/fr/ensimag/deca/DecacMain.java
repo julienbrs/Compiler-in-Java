@@ -1,8 +1,12 @@
 package fr.ensimag.deca;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.apache.log4j.Logger;
 
@@ -89,9 +93,23 @@ public class DecacMain {
         }
         if (options.getParallel()) {
             ExecutorService parallel =  Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+            List<Future<Boolean>> futures = new ArrayList<Future<Boolean>>(options.getSourceFiles().size());
             try{
-                
-
+                for (File source : options.getSourceFiles()) {
+                    
+                    Future<Boolean> future=(Future<Boolean>) parallel.submit(()->{ 
+                        DecacCompiler compiler = new DecacCompiler(options, source);
+                        compiler.compile();
+                    });
+                   futures.add(future);
+                }
+                Iterator<Future<Boolean>> it =futures.iterator();
+            for(int i =0;i <options.getSourceFiles().size();i++ ){
+            
+                Future<Boolean> fut= it.next();
+                fut.get();
+                System.out.println("compilation");
+            }
 
 
             } catch(Exception e){

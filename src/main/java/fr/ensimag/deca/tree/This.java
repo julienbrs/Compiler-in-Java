@@ -29,11 +29,11 @@ public class This extends AbstractExpr {
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        Type t = currentClass.getType();
-        if (currentClass.equals(null)) {
+        if (currentClass == null) {
             // ERROR MSG
             throw new ContextualError("Can't call \"this\" in the main program : rule 3.43", getLocation());
         }
+        Type t = currentClass.getType();
         setType(t);
         return getType();
     }

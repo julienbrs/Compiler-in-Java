@@ -2,7 +2,7 @@
 
 {
     // manque un ]
-    int[][ tabInt;
+    int[][] tabInt;
     tabInt = {{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}};
 
     // 1 dimension au lieu de 2

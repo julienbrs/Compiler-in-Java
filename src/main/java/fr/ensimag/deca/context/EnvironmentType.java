@@ -1,6 +1,8 @@
 package fr.ensimag.deca.context;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+
 import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -52,6 +54,12 @@ public class EnvironmentType {
         sig.add(OBJECT);
         MethodDefinition mDef = new MethodDefinition(BOOLEAN, Location.BUILTIN, sig, 1);
         mDef.setLabel(new Label("code.Object.equals"));
+        try {
+            Symbol symEq = compiler.createSymbol("equals");
+            objectDef.getMembers().declare(symEq, mDef);
+        } catch (DoubleDefException e) {
+            // pas de double def
+        }
         objectDef.put(1, mDef);
         envTypes.put(objectSymbol, objectDef);
     }
