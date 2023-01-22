@@ -9,10 +9,10 @@
    |         ||  +> [4, 4] Identifier (boolean)
    |         ||  +> [4, 12] Identifier (testMethodOr)
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [4, 25] Param
+   |         ||  |  []> [4, 25] DeclParam
    |         ||  |  ||  +> [4, 25] Identifier (boolean)
    |         ||  |  ||  `> [4, 33] Identifier (x)
-   |         ||  |  []> [4, 36] Param
+   |         ||  |  []> [4, 36] DeclParam
    |         ||  |      +> [4, 36] Identifier (boolean)
    |         ||  |      `> [4, 44] Identifier (y)
    |         ||  `> [4, 47] MethodBody
@@ -26,10 +26,10 @@
    |             +> [7, 4] Identifier (void)
    |             +> [7, 9] Identifier (testMethodAnd)
    |             +> ListParam [List with 2 elements]
-   |             |  []> [7, 23] Param
+   |             |  []> [7, 23] DeclParam
    |             |  ||  +> [7, 23] Identifier (boolean)
    |             |  ||  `> [7, 31] Identifier (x)
-   |             |  []> [7, 34] Param
+   |             |  []> [7, 34] DeclParam
    |             |      +> [7, 34] Identifier (boolean)
    |             |      `> [7, 42] Identifier (y)
    |             `> [7, 45] MethodBody

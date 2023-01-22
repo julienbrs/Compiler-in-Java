@@ -9,10 +9,10 @@
    |         ||  +> [4, 4] Identifier (boolean)
    |         ||  +> [4, 12] Identifier (testMethod)
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [4, 23] Param
+   |         ||  |  []> [4, 23] DeclParam
    |         ||  |  ||  +> [4, 23] Identifier (float)
    |         ||  |  ||  `> [4, 29] Identifier (x)
-   |         ||  |  []> [4, 32] Param
+   |         ||  |  []> [4, 32] DeclParam
    |         ||  |      +> [4, 32] Identifier (float)
    |         ||  |      `> [4, 38] Identifier (y)
    |         ||  `> [4, 41] MethodBody
@@ -26,10 +26,10 @@
    |         ||  +> [7, 4] Identifier (boolean)
    |         ||  +> [7, 12] Identifier (testMethod2)
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [7, 24] Param
+   |         ||  |  []> [7, 24] DeclParam
    |         ||  |  ||  +> [7, 24] Identifier (float)
    |         ||  |  ||  `> [7, 30] Identifier (x)
-   |         ||  |  []> [7, 33] Param
+   |         ||  |  []> [7, 33] DeclParam
    |         ||  |      +> [7, 33] Identifier (float)
    |         ||  |      `> [7, 39] Identifier (y)
    |         ||  `> [7, 42] MethodBody
@@ -43,10 +43,10 @@
    |         ||  +> [10, 4] Identifier (boolean)
    |         ||  +> [10, 12] Identifier (testMethod3)
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [10, 24] Param
+   |         ||  |  []> [10, 24] DeclParam
    |         ||  |  ||  +> [10, 24] Identifier (float)
    |         ||  |  ||  `> [10, 30] Identifier (x)
-   |         ||  |  []> [10, 33] Param
+   |         ||  |  []> [10, 33] DeclParam
    |         ||  |      +> [10, 33] Identifier (float)
    |         ||  |      `> [10, 39] Identifier (y)
    |         ||  `> [10, 42] MethodBody
@@ -60,10 +60,10 @@
    |         ||  +> [13, 4] Identifier (boolean)
    |         ||  +> [13, 12] Identifier (testMethod4)
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [13, 24] Param
+   |         ||  |  []> [13, 24] DeclParam
    |         ||  |  ||  +> [13, 24] Identifier (float)
    |         ||  |  ||  `> [13, 30] Identifier (x)
-   |         ||  |  []> [13, 33] Param
+   |         ||  |  []> [13, 33] DeclParam
    |         ||  |      +> [13, 33] Identifier (float)
    |         ||  |      `> [13, 39] Identifier (y)
    |         ||  `> [13, 42] MethodBody
@@ -77,10 +77,10 @@
    |         ||  +> [16, 4] Identifier (boolean)
    |         ||  +> [16, 12] Identifier (testMethod5)
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [16, 24] Param
+   |         ||  |  []> [16, 24] DeclParam
    |         ||  |  ||  +> [16, 24] Identifier (float)
    |         ||  |  ||  `> [16, 30] Identifier (x)
-   |         ||  |  []> [16, 33] Param
+   |         ||  |  []> [16, 33] DeclParam
    |         ||  |      +> [16, 33] Identifier (float)
    |         ||  |      `> [16, 39] Identifier (y)
    |         ||  `> [16, 42] MethodBody
@@ -94,10 +94,10 @@
    |             +> [20, 4] Identifier (boolean)
    |             +> [20, 12] Identifier (proxyMethod)
    |             +> ListParam [List with 2 elements]
-   |             |  []> [20, 24] Param
+   |             |  []> [20, 24] DeclParam
    |             |  ||  +> [20, 24] Identifier (float)
    |             |  ||  `> [20, 30] Identifier (x)
-   |             |  []> [20, 33] Param
+   |             |  []> [20, 33] DeclParam
    |             |      +> [20, 33] Identifier (float)
    |             |      `> [20, 39] Identifier (y)
    |             `> [20, 41] MethodBody
