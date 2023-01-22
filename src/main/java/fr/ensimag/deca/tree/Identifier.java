@@ -190,7 +190,7 @@ public class Identifier extends AbstractIdentifier {
         ExpDefinition def = localEnv.get(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("La variable \""+name+"\" n'a pas été déclaré : rule 0.1", getLocation());
+            throw new ContextualError("The " + def.getNature() + "  \""+name+"\" doesn't exist : rule 0.1", getLocation());
         }
         setDefinition(def);
         setType(definition.getType());

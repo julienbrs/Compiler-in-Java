@@ -2,6 +2,7 @@ package fr.ensimag.deca;
 
 import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.syntax.DecaLexer;
+import fr.ensimag.deca.syntax.DecaLexerExtension;
 import fr.ensimag.deca.syntax.DecaParser;
 import fr.ensimag.deca.syntax.DecaParserExtension;
 import fr.ensimag.deca.tools.DecacInternalError;
@@ -309,20 +310,28 @@ public class DecacCompiler {
      */
     protected AbstractProgram doLexingAndParsing(String sourceName, PrintStream err)
             throws DecacFatalError, DecacInternalError {
-        DecaLexer lex;
-        try {
-            lex = new DecaLexer(CharStreams.fromFileName(sourceName));
-        } catch (IOException ex) {
-            throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
-        }
-        lex.setDecacCompiler(this);
+
         if(compilerOptions.getExtension()){
+            DecaLexerExtension lex;
+            try {
+                lex = new DecaLexerExtension(CharStreams.fromFileName(sourceName));
+            } catch (IOException ex) {
+                throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
+            }
+            lex.setDecacCompiler(this);
             CommonTokenStream tokens = new CommonTokenStream(lex);
             DecaParserExtension parser = new DecaParserExtension(tokens);
             parser.setDecacCompiler(this);
             return parser.parseProgramAndManageErrors(err);
 
         } else {
+            DecaLexer lex;
+            try {
+                lex = new DecaLexer(CharStreams.fromFileName(sourceName));
+            } catch (IOException ex) {
+                throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
+            }
+            lex.setDecacCompiler(this);
             CommonTokenStream tokens = new CommonTokenStream(lex);
             DecaParser parser = new DecaParser(tokens);
             parser.setDecacCompiler(this);

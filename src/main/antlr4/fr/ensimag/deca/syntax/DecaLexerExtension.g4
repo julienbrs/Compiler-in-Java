@@ -1,4 +1,4 @@
-lexer grammar DecaLexer;
+lexer grammar DecaLexerExtension;
 
 options {
    language=Java;
@@ -100,3 +100,7 @@ COMMENT : ('/*' .*? '*/' | '//' .*? ('\n'| EOF)) { skip(); };
 //include 
  fragment FILENAME : (LETTER|DIGIT|'.'|'-'|'_')+;
  INCLUDE  : '#include' SPACE*'"'FILENAME'"'{doInclude(getText());};
+//todo
+// Extension 
+OBRACKET : '[';
+CBRACKET : ']';
