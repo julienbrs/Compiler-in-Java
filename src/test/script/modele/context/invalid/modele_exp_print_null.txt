@@ -1,5 +1,1 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
-DEBUG fr.ensimag.deca.tree.Main.verifyMain(Main.java:32) - verify Main: start
 src/test/deca/context/invalid/exp_print_null.deca:5:4: Can't print other than int, float or string : rule 3.31

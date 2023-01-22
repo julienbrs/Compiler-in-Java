@@ -1,7 +1,0 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-Exception in thread "main" java.lang.NullPointerException: Cannot invoke "fr.ensimag.deca.context.TypeDefinition.isClass()" because "tDef" is null
-	at fr.ensimag.deca.tree.DeclClass.verifyClass(DeclClass.java:59)
-	at fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:39)
-	at fr.ensimag.deca.tree.Program.verifyProgram(Program.java:44)
-	at fr.ensimag.deca.context.ManualTestContext.main(ManualTestContext.java:35)

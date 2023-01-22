@@ -8,12 +8,12 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
-public class ListParam extends TreeList<Param> {
+public class ListParam extends TreeList<DeclParam> {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        Iterator<Param> ite = getList().iterator();
-        Param current;
+        Iterator<DeclParam> ite = getList().iterator();
+        DeclParam current;
         if (ite.hasNext()) {
             current = ite.next();
             current.decompile(s);
@@ -26,20 +26,20 @@ public class ListParam extends TreeList<Param> {
     }
     
     public void verifyListParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {
-        for (Param param : this.getList()) {
+        for (DeclParam param : this.getList()) {
             param.verifyParamMembers(compiler, sig);
         }
     }
 
     public void verifyListParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError{
-        for (Param param : this.getList()) {
+        for (DeclParam param : this.getList()) {
             param.verifyParamBody(compiler, localEnv);
         }
     }
 
     public void codeGenParam(DecacCompiler compiler) {
         int index = 3;
-        for (Param p : getList()) {
+        for (DeclParam p : getList()) {
             p.codeGenParam(compiler, index);
             index++;
         }

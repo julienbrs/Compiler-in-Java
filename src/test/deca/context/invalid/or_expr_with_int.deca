@@ -1,5 +1,5 @@
-// Test content, or avec une opérande nombre, syntaxiquement juste mais
-// mais pas contextuellement
+// Test context, OR with a number operand, syntaxically correct 
+// but not contextually
 
 {
     if (x || 15 ){

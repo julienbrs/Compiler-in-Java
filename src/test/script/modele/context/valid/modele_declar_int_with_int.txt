@@ -1,15 +1,15 @@
-`> [4, 0] Program
+`> [3, 0] Program
    +> ListDeclClass [List with 0 elements]
-   `> [4, 0] Main
+   `> [3, 0] Main
       +> ListDeclVar [List with 1 elements]
-      |  []> [5, 10] DeclVar
-      |      +> [5, 4] Identifier (float)
+      |  []> [4, 10] DeclVar
+      |      +> [4, 4] Identifier (float)
       |      |  definition: type (builtin), type=float
-      |      +> [5, 10] Identifier (int)
-      |      |  definition: variable defined at [5, 10], type=float
-      |      `> [5, 14] Initialization
-      |         `> [5, 16] ConvFloat
+      |      +> [4, 10] Identifier (int)
+      |      |  definition: variable defined at [4, 10], type=float
+      |      `> [4, 14] Initialization
+      |         `> [4, 16] ConvFloat
       |            type: float
-      |            `> [5, 16] Int (5)
+      |            `> [4, 16] Int (5)
       |               type: int
       `> ListInst [List with 0 elements]

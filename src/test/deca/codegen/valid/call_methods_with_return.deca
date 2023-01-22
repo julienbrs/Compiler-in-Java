@@ -1,0 +1,33 @@
+// Calling methods that return something, and using the value to do stuff
+
+class DummyClass {
+
+    int getInt(){
+        int life = 42+0;
+        return life;
+    }
+
+    float getFloat(){
+        float life = 42.4+0.6;
+        return life;
+    }
+
+    boolean getBool(){
+        boolean bool_t = true;
+        return bool_t;
+    }
+}
+
+{
+    DummyClass dumb = new DummyClass();
+    int theInt = dumb.getInt();
+    float theFloat = dumb.getFloat();
+    boolean theBool = dumb.getBool();
+
+    println(theInt);
+    println(theFloat);
+
+    if (theBool){
+        println("true");
+    }
+}

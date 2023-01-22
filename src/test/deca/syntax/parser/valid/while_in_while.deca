@@ -1,4 +1,4 @@
-// test while with two conditions AND
+// test while in while
 
 {
     int i = 0;

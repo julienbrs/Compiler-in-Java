@@ -1,5 +1,5 @@
-// Test context, on fait plusieurs opérations dans la condition à la suite
-// si les types sont cohérents
+// Test context, we do several operations in the condition in a row
+// if the types are consistent
 
 {
     int x = 5;

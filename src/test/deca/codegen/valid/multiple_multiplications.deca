@@ -1,0 +1,10 @@
+// Deca file with two multiplications in a row, test 
+// distributivity
+
+{
+  int x = 1 * 2 * 3 + 1;
+  int y = 3 * (5 + 1);
+  
+  println(x);
+  println(y);
+}

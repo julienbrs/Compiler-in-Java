@@ -1,0 +1,10 @@
+// Test of the rule (3.39) : can't cast Object to boolean.
+
+{
+	boolean var1;
+	Object var2;
+	var1 = (boolean)(var2);
+}
+
+// Résultat :
+//# a

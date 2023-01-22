@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/instance_of_string.deca:4:17: mismatched input '"string"' expecting IDENT

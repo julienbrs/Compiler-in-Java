@@ -1,1 +1,1 @@
-src/test/deca/syntax/parser/invalid/decl_var_multiple_assign_word.deca:5:18: mismatched input '.' expecting IDENT
+src/test/deca/syntax/parser/invalid/decl_var_multiple_assign_word.deca:4:18: mismatched input '.' expecting IDENT

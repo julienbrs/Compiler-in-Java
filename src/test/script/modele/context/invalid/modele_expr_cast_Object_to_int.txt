@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/expr_cast_Object_to_int.deca:6:8: Can't cast "int" to "Object" : rule 3.39

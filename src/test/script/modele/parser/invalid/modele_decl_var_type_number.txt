@@ -1,1 +1,1 @@
-src/test/deca/syntax/parser/invalid/decl_var_type_number.deca:5:7: no viable alternative at input 'x'
+src/test/deca/syntax/parser/invalid/decl_var_type_number.deca:4:7: no viable alternative at input 'x'

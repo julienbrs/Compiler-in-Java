@@ -66,7 +66,6 @@ block returns[ListDeclVar decls, ListInst insts]
             assert($list_inst.tree != null);
             $decls = $list_decl.tree;
             $insts = $list_inst.tree;
-        
         }
     ;
 
@@ -230,7 +229,7 @@ expr returns[AbstractExpr tree]
 
 assign_expr returns[AbstractExpr tree]
 
-    : e=tab_expr (
+    : e=or_expr (
         
         /* condition: expression e must be a "LVALUE" */ {
 
@@ -252,30 +251,11 @@ assign_expr returns[AbstractExpr tree]
 
       )
     ;
-tab_expr returns [AbstractExpr tree]
-@init {  
-    ArrayLiteral tab;
-}
-: OBRACE( (e1 = tab_expr{
-tab = new ArrayLiteral($e1.tree);
-$tree = tab;
-}(COMMA e2 = tab_expr{
-tab.addExpr($e2.tree);
-})*)
- )CBRACE
-| OBRACE CBRACE 
-{ 
-    System.out.println("aaaaaa");
-tab = new ArrayLiteral();
-$tree = tab;
-}
-|e4 =or_expr{
-    $tree = $e4.tree;
-}
 
 
 
-;
+
+
 or_expr returns[AbstractExpr tree]
     : e=and_expr {
             assert($e.tree != null);
@@ -445,9 +425,6 @@ select_expr returns[AbstractExpr tree]
             // we matched "e.i"
         }
         )
-    | u= select_expr OBRACKET (expr){     
-        $tree = new ArraySel($u.tree,$expr.tree);
-    } CBRACKET 
     ;
 
 primary_expr returns[AbstractExpr tree]
@@ -455,10 +432,6 @@ primary_expr returns[AbstractExpr tree]
             assert($ident.tree != null);
             $tree=$ident.tree;
         }
- //| tabident{ 
-  //      assert($tabident.tree != null);
-  //      $tree=$tabident.tree;
-  //  }
     | m=ident OPARENT args=list_expr CPARENT {
             assert($args.tree != null);
             assert($m.tree != null);
@@ -501,28 +474,12 @@ primary_expr returns[AbstractExpr tree]
 
 type returns[AbstractIdentifier tree]
  @init{ 
-        SymbolTable sym = new SymbolTable();
-         Array a ;
-         int level = 1;
      }
     : ident {
             assert($ident.tree != null);
             $tree=$ident.tree;
-        }
+             } 
          
-   |  IDENT OBRACKET
-   {
-a =new Array(sym.create(($IDENT.text+"[]")),level,new Identifier(sym.create($IDENT.text)));
-        $tree = a;
-        level++;
-        setLocation($tree, $IDENT);
-   } 
-        CBRACKET
-       (OBRACKET{   
-       a.setName(sym.create(a.getName().toString()+"[]"));
-       a.setLevel(a.getLevel()+1);
-       }
-       CBRACKET)*  
     ;
 
 literal returns[AbstractExpr tree]
@@ -575,22 +532,6 @@ ident returns[AbstractIdentifier tree]
             setLocation($tree, $IDENT);
     }
     ;
-tabident  returns[AbstractIdentifier tree]
-    @init{ 
-        SymbolTable sym = new SymbolTable();
-        ListExpr listp = new ListExpr();
-     }
-:
-    IDENT OBRACKET r =expr CBRACKET {  
-        listp.add($r.tree);
-        $tree = new TabIdentifier(sym.create($IDENT.text),listp);
-    setLocation($tree,$IDENT);
-
-        }(OBRACKET expr CBRACKET{
-        listp.add($expr.tree);
-        }
-    )*
-;
 /****     Class related rules     ****/
 
 list_classes returns[ListDeclClass tree]
@@ -726,9 +667,9 @@ multi_line_string returns[String text, Location location]
         }
     ;
 
-param returns[Param tree]
+param returns[DeclParam tree]
     : type ident {
-        $tree = new Param($type.tree,$ident.tree);
+        $tree = new DeclParam($type.tree,$ident.tree);
         setLocation($tree, $type.start);
         }
     ;

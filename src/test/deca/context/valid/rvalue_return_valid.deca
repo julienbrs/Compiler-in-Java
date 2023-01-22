@@ -1,6 +1,6 @@
-// Test de la règle (3.28) : Lors de l'instruction `return`
-// d'une méthode, il faut que le type de l'objet retourné
-// soit assignable au type de retour de la méthode.
+// Test of the rule (3.28) : When using the `return` statement
+// of a method, the type of the returned object must be assignable
+// to the return type of the method.
 
 class A {
     float getFloat() {

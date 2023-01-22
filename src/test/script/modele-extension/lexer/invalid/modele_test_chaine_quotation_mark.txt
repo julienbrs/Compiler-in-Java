@@ -1,0 +1,4 @@
+STRING: [@0,554:605='"This string contains an unescaped quotation mark: "',<37>,13:0]
+EXCLAM: [@1,607:607='!',<30>,13:53]
+INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=13
+src/test/deca/syntax/lexer/invalid/test_chaine_quotation_mark.deca:13:55: token recognition error at: '"'

@@ -1,4 +1,4 @@
-// Contextuellement, il n'est pas possible d'appeler une classe comme int
+// Contextually, not possible to call class such as int
 
 class int {
     

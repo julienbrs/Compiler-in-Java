@@ -13,6 +13,7 @@
    |             +> [4, 9] Identifier (justAMethod)
    |             |  definition: method defined at [4, 9], type=void
    |             +> ListParam [List with 0 elements]
-   |             `> MethodAsmBody
-   |                `> StringLiteral ("Ce que j'ai envie")
+   |             `> [5, 13] MethodAsmBody
+   |                `> [5, 13] StringLiteral ("Ce que j'ai envie")
+   |                   type: string
    `> EmptyMain

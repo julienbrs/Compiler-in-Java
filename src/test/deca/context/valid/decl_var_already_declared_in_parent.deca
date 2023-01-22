@@ -1,5 +1,5 @@
-// Test la règle 3.17: déclaration d'une variable déjà existante
-// dans la classe parent
+// Test rule 3.17: declaration of a variable already existing in
+// the parent class
 
 class A {
     int x = 12;

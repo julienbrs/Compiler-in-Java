@@ -1,9 +1,0 @@
-// Test de la règle (3.39) : on ne peut pas cast de boolean vers int.
-{
-	int var1;
-	boolean var2;
-	var1 = (int)(var2);
-}
-
-// Résultat :
-//# a

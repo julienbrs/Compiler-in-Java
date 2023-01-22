@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/field_definition_visibility_unknown.deca:5:20: no viable alternative at input 'unprotectedintx'

@@ -1,0 +1,19 @@
+// Test of if else if else
+{
+    int x = 5;
+    int y = 6;
+    if (x > 10) {
+        println("x est plus grand que 10");
+    } else if (x > 5) {
+        println("x est plus grand que 5 et inférieur ou égal à 10");
+    } else {
+        println("x est inférieur ou égal à 5");
+    }
+    if (y > 10) {
+        println(" y est plus grand que 10");
+    } else if ( y > 5) {
+        println(" y est plus grand que 5 et inférieur ou égal à 10");
+    } else {
+        println(" y est inférieur ou égal à 5");
+    }
+}

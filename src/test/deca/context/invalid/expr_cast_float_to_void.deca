@@ -1,0 +1,10 @@
+// Test of the rule (3.39) : can't cast float to void.
+
+{
+	void var1;
+	float var2;
+	var1 = (void)(var2);
+}
+
+// Résultat :
+//# a

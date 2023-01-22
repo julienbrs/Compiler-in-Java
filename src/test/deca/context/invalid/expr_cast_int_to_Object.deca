@@ -1,0 +1,10 @@
+// Test of the rule (3.39) : can't cast int to Object.
+
+{
+	Object var1;
+	int var2;
+	var1 = (Object)(var2);
+}
+
+// Résultat :
+//# a

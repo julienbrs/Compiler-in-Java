@@ -1,9 +1,0 @@
-// Test de la règle (3.39) : on ne peut pas cast de null vers float.
-{
-	float var1;
-	null var2;
-	var1 = (float)(var2);
-}
-
-// Résultat :
-//# a

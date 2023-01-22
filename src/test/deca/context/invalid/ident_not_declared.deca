@@ -1,9 +1,9 @@
-// Test la règle 0.1: il n'y a pas de définition associée à l'identificateur
-// de nom "variable" dans l'environnement.
+// Test of the rule (0.1): there is no definition associated with
+// the name identifier "variable" in the environment.
 
 {
     println("Ma variable préférée est", variable);
 }
 
 // Résultat:
-//# src/test/deca/context/invalid/ident_not_declared.deca:5:40: La variable "variable" n'a pas été déclaré : rule 0.1
+//# src/test/deca/context/invalid/ident_not_declared.deca:5:40: La variable "variable" n'a pas été déclaré : rule (0.1)

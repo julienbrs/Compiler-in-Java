@@ -5,8 +5,13 @@
     int y = 5;
     int z = 6;
     boolean a = (x == y);
+    boolean b = (x == z);
     if (a){
         z = 1;
     }
+    if (b){
+        y = 1;
+    }
     print("z doit être égal à 1, et z = ", z);
+    print("y doit être égal à 5, et y = ", y);
 }

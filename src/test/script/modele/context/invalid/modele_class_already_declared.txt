@@ -1,3 +1,0 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-src/test/deca/context/invalid/class_already_declared.deca:7:0: The class "fr.ensimag.deca.tree.Identifier@5a61f5df" is already declared : rule 1.3

@@ -1,5 +1,5 @@
-// Test la règle 2.3: la méthode déclare porte un nom d'un 
-// attribut déjà déclaré.
+// Test of the rule (2.3): the declared method has the same name than 
+// a variable already declared
 
 class A  {
     int variableName = 5;

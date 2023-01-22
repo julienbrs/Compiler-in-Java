@@ -1,40 +1,40 @@
-`> [5, 0] Program
+`> [4, 0] Program
    +> ListDeclClass [List with 1 elements]
-   |  []> [5, 0] DeclClass
-   |      +> [5, 6] Identifier (A)
-   |      |  definition: type defined at [5, 0], type=A
+   |  []> [4, 0] DeclClass
+   |      +> [4, 6] Identifier (A)
+   |      |  definition: type defined at [4, 0], type=A
    |      +> [builtin] Identifier (Object)
    |      |  definition: type (builtin), type=Object
    |      +> ListDeclField [List with 1 elements]
-   |      |  []> [6, 8] [visibility = PUBLIC]  DeclField
-   |      |      +> [6, 4] Identifier (int)
+   |      |  []> [5, 8] [visibility = PUBLIC]  DeclField
+   |      |      +> [5, 4] Identifier (int)
    |      |      |  definition: type (builtin), type=int
-   |      |      +> [6, 8] Identifier (x)
-   |      |      |  definition: field defined at [6, 8], type=int
+   |      |      +> [5, 8] Identifier (x)
+   |      |      |  definition: field defined at [5, 8], type=int
    |      |      +> NoInitialization
    |      `> ListDeclMethod [List with 1 elements]
-   |         []> [8, 4] DeclMethod
-   |             +> [8, 4] Identifier (void)
+   |         []> [7, 4] DeclMethod
+   |             +> [7, 4] Identifier (void)
    |             |  definition: type (builtin), type=void
-   |             +> [8, 9] Identifier (setX)
-   |             |  definition: method defined at [8, 9], type=void
+   |             +> [7, 9] Identifier (setX)
+   |             |  definition: method defined at [7, 9], type=void
    |             +> ListParam [List with 1 elements]
-   |             |  []> [8, 14] Param
-   |             |      +> [8, 14] Identifier (int)
+   |             |  []> [7, 14] Param
+   |             |      +> [7, 14] Identifier (int)
    |             |      |  definition: type (builtin), type=int
-   |             |      `> [8, 18] Identifier (x)
-   |             |         definition: parameter defined at [8, 14], type=int
-   |             `> [8, 21] MethodBody
+   |             |      `> [7, 18] Identifier (x)
+   |             |         definition: parameter defined at [7, 14], type=int
+   |             `> [7, 21] MethodBody
    |                +> ListDeclVar [List with 0 elements]
    |                +> ListInst [List with 1 elements]
-   |                |  []> [9, 15] Assign
+   |                |  []> [8, 15] Assign
    |                |      type: int
-   |                |      +> [9, 12] Selection
+   |                |      +> [8, 12] Selection
    |                |      |  type: int
-   |                |      |  +> [9, 8] This
+   |                |      |  +> [8, 8] This
    |                |      |  |  type: A
-   |                |      |  `> [9, 13] Identifier (x)
-   |                |      |     definition: field defined at [6, 8], type=int
-   |                |      `> [9, 17] Identifier (x)
-   |                |         definition: parameter defined at [8, 14], type=int
+   |                |      |  `> [8, 13] Identifier (x)
+   |                |      |     definition: field defined at [5, 8], type=int
+   |                |      `> [8, 17] Identifier (x)
+   |                |         definition: parameter defined at [7, 14], type=int
    `> EmptyMain

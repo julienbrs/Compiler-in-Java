@@ -1,9 +1,0 @@
-// Test de la règle (3.39) : on ne peut pas cast de Object vers float.
-{
-	float var1;
-	Object var2;
-	var1 = (float)(var2);
-}
-
-// Résultat :
-//# a

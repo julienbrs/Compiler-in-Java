@@ -1,0 +1,12 @@
+// Test cast class on null
+
+class A {
+    void display(){
+        print("");
+    }
+}
+
+{
+    A a = new A();
+    null none = (null) (a); 
+}

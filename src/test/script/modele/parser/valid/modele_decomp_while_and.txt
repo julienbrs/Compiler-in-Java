@@ -1,1 +1,8 @@
-src/test/script/create-modele/create-parser-modele.sh: line 52: decac: command not found
+{
+	int i = 0;
+	int j = 9;
+	while (((i < 5) && (j > i))) {
+		println("i est égal à ", i);
+	}
+}
+

@@ -1,0 +1,20 @@
+// Test context,  cast of subclass to class, we check if it's successful by 
+// checking field, so we don't use instanceof, which might be bugged (even
+// if it's not)
+
+
+class Personne {
+    int pouvoir = 10;
+}
+
+class Roi extends Personne {
+    int pouvoir = 30;
+    int corruption = 100;
+}
+
+{
+    Roi leRoi = new Roi();
+    Personne aussiUnePersonne = (Personne) (leRoi);
+    println(leRoi.pouvoir);
+    println(aussiUnePersonne.pouvoir);
+}

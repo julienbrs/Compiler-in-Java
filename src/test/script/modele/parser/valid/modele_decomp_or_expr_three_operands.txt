@@ -1,1 +1,7 @@
-src/test/script/create-modele/create-parser-modele.sh: line 52: decac: command not found
+{
+	if (((x || y) || z)) {
+		(x = 5);
+	} else {
+	}
+}
+

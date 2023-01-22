@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/decl_var_wrong_equal_symbole_gt.deca:5:10: mismatched input '>' expecting {',', '=', ';'}

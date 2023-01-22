@@ -1,6 +1,5 @@
-// Test de la règle (3.28) : on peut affecter à un objet
-// de type T1 la valeur d'un objet de type T2 si
-// T2 est un sous-type de T1
+// Test of the rule (3.28) : we can assign to an object of type
+// T1 the value of an object of type T2 if T2 is a subtype of T1
 
 class A {}
 

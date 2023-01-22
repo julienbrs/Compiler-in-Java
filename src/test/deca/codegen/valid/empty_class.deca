@@ -1,0 +1,4 @@
+// Codegen test of an empty class and no main
+
+class Calculator {
+}

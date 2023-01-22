@@ -1,27 +1,27 @@
-`> [1, 0] Program
+`> [3, 0] Program
    +> ListDeclClass [List with 0 elements]
-   `> [1, 0] Main
+   `> [3, 0] Main
       +> ListDeclVar [List with 1 elements]
-      |  []> [2, 8] DeclVar
-      |      +> [2, 4] Identifier (int)
+      |  []> [4, 8] DeclVar
+      |      +> [4, 4] Identifier (int)
       |      |  definition: type (builtin), type=int
-      |      +> [2, 8] Identifier (i)
-      |      |  definition: variable defined at [2, 8], type=int
-      |      `> [2, 10] Initialization
-      |         `> [2, 12] Int (0)
+      |      +> [4, 8] Identifier (i)
+      |      |  definition: variable defined at [4, 8], type=int
+      |      `> [4, 10] Initialization
+      |         `> [4, 12] Int (0)
       |            type: int
       `> ListInst [List with 1 elements]
-         []> [3, 4] While
-             +> [3, 13] Lower
+         []> [5, 4] While
+             +> [5, 13] Lower
              |  type: boolean
-             |  +> [3, 11] Identifier (i)
-             |  |  definition: variable defined at [2, 8], type=int
-             |  `> [3, 15] Int (5)
+             |  +> [5, 11] Identifier (i)
+             |  |  definition: variable defined at [4, 8], type=int
+             |  `> [5, 15] Int (5)
              |     type: int
              `> ListInst [List with 1 elements]
-                []> [4, 8] Println
+                []> [6, 8] Println
                     `> ListExpr [List with 2 elements]
-                       []> [4, 16] StringLiteral (i est égal à )
+                       []> [6, 16] StringLiteral (i est égal à )
                        ||  type: string
-                       []> [4, 33] Identifier (i)
-                           definition: variable defined at [2, 8], type=int
+                       []> [6, 33] Identifier (i)
+                           definition: variable defined at [4, 8], type=int

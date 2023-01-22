@@ -1,0 +1,9 @@
+// Test Codegen, we do several operations in the condition in a row
+// if the types are consistent
+{
+    int x = 5;
+    int y = 6;
+    if (x < y != false) {
+        print(x);
+    }
+}

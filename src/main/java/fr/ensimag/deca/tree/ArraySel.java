@@ -11,6 +11,17 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.DAddr;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffOffset;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BLE;
+import fr.ensimag.ima.pseudocode.instructions.CMP;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
 
 public class ArraySel extends AbstractSelection {
     private AbstractExpr selExpr;
@@ -23,33 +34,89 @@ public class ArraySel extends AbstractSelection {
     @Override
     public Type verifyLValue(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+        return verifyExpr(compiler, localEnv, currentClass);
     }
 
     @Override
     public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return null;
+        int currentOffset = offset;
+        int[] resSel = selExpr.codeGenExpr(compiler, currentOffset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(currentOffset)));
+            compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
+        }
+        if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
+            compiler.addInstruction(new PUSH(GPRegister.getR(currentOffset)));
+        } else {
+            currentOffset++;
+        }
+        int[] resInd = indexExpr.codeGenExpr(compiler, currentOffset);
+        int[] max = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};
+        DAddr addr;
+        if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
+            addr = new RegisterOffOffset(1, GPRegister.R0, GPRegister.getR(currentOffset));
+            max[1]++;
+        } else {
+            addr = new RegisterOffOffset(1, GPRegister.getR(offset), GPRegister.getR(currentOffset));
+        }
+        Triple<int[], Integer, DAddr> res = new Triple<>(max, offset + 2, addr);
+        return res;
     }
 
     @Override
     public Type verifyExpr(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError {
-        // TODO Auto-generated method stub
-        return null;
+        Type selType = selExpr.verifyExpr(compiler, localEnv, currentClass);
+        if (!selType.isArray()) {
+            // ERROR MSG
+            throw new ContextualError("Can't use \"[]\" on \"" + selType + "\" : rule extension", getLocation());
+        }
+        Type exprType = indexExpr.verifyExpr(compiler, localEnv, currentClass);
+        if (!exprType.isInt()) {
+            // ERROR MSG
+            throw new ContextualError("Can't select from an array with type \"" + exprType + "\" : rule extension", getLocation());
+        }
+        setType(selType.asArrayType(null, getLocation()).subType());
+        return getType();
     }
 
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO Auto-generated method stub
-        return null;
+        int[] resSel = selExpr.codeGenExpr(compiler, offset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new CMP(new NullOperand(), GPRegister.getR(offset)));
+            compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
+        }
+        int currOffset = offset;
+        int nextOffset = offset + 1;
+        if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
+            compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
+            currOffset = 0;
+            nextOffset = offset;
+        }
+
+        int[] resInd = indexExpr.codeGenExpr(compiler, nextOffset);
+
+        if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
+            compiler.addInstruction(new POP(GPRegister.R0));
+            resInd[1] += 1;
+        }
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(currOffset)), GPRegister.R1));
+            compiler.addInstruction(new CMP(GPRegister.getR(nextOffset), GPRegister.R1));
+            compiler.addInstruction(new BLE(new Label("index_hors_range")));
+        }
+        compiler.addInstruction(new LOAD(new RegisterOffOffset(1, GPRegister.getR(currOffset), GPRegister.getR(nextOffset)), GPRegister.getR(offset)));
+        int[] res = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};
+        return res;
     }
 
     @Override
     public void decompile(IndentPrintStream s) {
-        // TODO Auto-generated method stub
-        
+        selExpr.decompile(s);
+        s.print("[");
+        indexExpr.decompile(s);
+        s.print("]");
     }
 
     @Override
@@ -61,7 +128,8 @@ public class ArraySel extends AbstractSelection {
 
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
+        selExpr.iter(f);
+        indexExpr.iter(f);
         
     }
     

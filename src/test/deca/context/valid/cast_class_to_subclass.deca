@@ -1,4 +1,4 @@
-// Test parser, cast d'un cast de class en subclass, possible dans le contexte
+// Cast a class cast in a subclass, contextually possible
 
 class Personne {
     int pouvoir = 10;

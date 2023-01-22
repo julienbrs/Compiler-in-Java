@@ -1,4 +1,4 @@
-// Test la règle 2.5: l'attribut a pour type void.
+// Test of the rule 2.5: void is not a type.
 
 class A  {
     void variable = 5;

@@ -1,0 +1,99 @@
+; start main program
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+
+; Generation table des methodes
+; Table methodes Object
+	LOAD #null, R2
+	STORE R2, 1(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 2(GB)
+; Table methodes A
+	LEA 1(GB), R2
+	STORE R2, 3(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 4(GB)
+	LOAD code.A.display, R2
+	STORE R2, 5(GB)
+
+; Main program
+; Variables declarations:
+	LOAD #null, R2
+	CMP #null, R2
+	BEQ cast.fin.1
+	LOAD 0(R2), R1
+	LEA 3(GB), R0
+cast.boucle.1:
+	CMP R1, R0
+	BEQ cast.fin.1
+	CMP #null, R1
+	BEQ cast_impossible
+	LOAD 0(R1), R1
+	BRA cast.boucle.1
+cast.fin.1:
+	STORE R2, 6(GB)
+; Beginning of main instructions:
+	HALT
+
+; Methodes de classe
+code.Object.equals:
+	TSTO #2
+	BOV pile_pleine
+	PUSH R2
+	PUSH R3
+	LOAD -2(LB), R2
+	LOAD -3(LB), R3
+	CMP R2, R3
+	SEQ R0
+	POP R3
+	POP R2
+	RTS
+; Corps des methodes de la classe A
+init.A:
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+	PUSH R2
+	LOAD -2(LB), R2
+	POP R2
+	RTS
+code.A.display:
+	TSTO #0
+	BOV pile_pleine
+	ADDSP #0
+
+; Variables declarations
+; Beginning of instructions
+	WSTR ""
+	RTS
+; end main program
+; Gestion des erreurs d'executions
+pile_pleine:
+	WSTR "Débordement de pile"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Débordement du tas"
+	WNL
+	ERROR
+division_par_0:
+	WSTR "Division par 0"
+	WNL
+	ERROR
+debordement_arithmetique:
+	WSTR "Débordement arithmetique"
+	WNL
+	ERROR
+dereferencement_null:
+	WSTR "Déréférencement de ""null"""
+	WNL
+	ERROR
+cast_impossible:
+	WSTR "Cast impossible"
+	WNL
+	ERROR
+erreur_de_lecture:
+	WSTR "Erreur de lecture"
+	WNL
+	ERROR

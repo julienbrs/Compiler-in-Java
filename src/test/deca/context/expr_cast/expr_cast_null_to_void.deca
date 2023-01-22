@@ -1,9 +1,0 @@
-// Test de la règle (3.39) : on ne peut pas cast de null vers void.
-{
-	void var1;
-	null var2;
-	var1 = (void)(var2);
-}
-
-// Résultat :
-//# a

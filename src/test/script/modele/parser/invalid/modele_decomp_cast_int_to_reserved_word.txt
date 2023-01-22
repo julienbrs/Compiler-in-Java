@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/src/test/deca/syntax/parser/invalid/cast_int_to_reserved_word.deca:5:11: no viable alternative at input '('

@@ -1,8 +1,0 @@
-// Test de la règle (3.39) : on ne peut pas cast de Object vers void.
-{
-	Object var2;
-	int var1 = (void)(var2);
-}
-
-// Résultat :
-//# a

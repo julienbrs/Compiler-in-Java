@@ -1,0 +1,25 @@
+// Test context, declaration of a variable already existing in the 
+// method of the same class
+// We can still access the attribute with "this"
+
+class A {
+
+    int x = 12;
+    int simpleMethod(){
+        int x = 5;
+        return x;
+    }
+    int weirdGeter(){
+        int x = 10;
+        return this.x + x;
+    }
+}
+
+{
+    A a = new A();
+    int x = a.simpleMethod();
+    println(x);
+    println(a.weirdGeter());
+
+}
+

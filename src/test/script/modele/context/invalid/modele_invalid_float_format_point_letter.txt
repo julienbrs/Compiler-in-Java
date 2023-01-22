@@ -1,1 +1,1 @@
-src/test/deca/context/invalid/invalid_float_format_point_letter.deca:4:15: 
+src/test/deca/context/invalid/invalid_float_format_point_letter.deca:4:15: Can't select field from "int" : rule 3.65

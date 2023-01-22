@@ -1,4 +1,4 @@
-// Test context, cast d'un cast int sur un float
+// Contextual test, cast an int cast into a float
 
 {
     int x = 5;

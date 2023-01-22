@@ -1,4 +1,4 @@
-// Test pour une classe avec constructeur:
+// Test a class with constructor:
 
 class Person {
     float intelligence;

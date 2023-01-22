@@ -1,6 +1,5 @@
-// Test de la règle (3.43) : Une instruction commençant par
-// `this` doit obligatoirement se trouver dans une méthode
-// de classe.
+// Rule test (3.43): A statement starting with
+// `this` must necessarily be in a method of a class.
 
 class A {
     int x;

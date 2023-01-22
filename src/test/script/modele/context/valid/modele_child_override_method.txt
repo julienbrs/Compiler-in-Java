@@ -1,7 +1,3 @@
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:40) - verify program: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
-DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:41) - verify listClass: end
-DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:53) - verify program: end
 `> [4, 0] Program
    +> ListDeclClass [List with 2 elements]
    |  []> [4, 0] DeclClass
@@ -15,7 +11,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:53) - verify progr
    |  ||         +> [5, 4] Identifier (void)
    |  ||         |  definition: type (builtin), type=void
    |  ||         +> [5, 9] Identifier (displayHello)
-   |  ||         |  definition: method defined at [5, 4], type=void
+   |  ||         |  definition: method defined at [5, 9], type=void
    |  ||         +> ListParam [List with 0 elements]
    |  ||         `> [5, 23] MethodBody
    |  ||            +> ListDeclVar [List with 0 elements]
@@ -35,7 +31,7 @@ DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:53) - verify progr
    |             +> [11, 4] Identifier (void)
    |             |  definition: type (builtin), type=void
    |             +> [11, 9] Identifier (displayHello)
-   |             |  definition: method defined at [11, 4], type=void
+   |             |  definition: method defined at [11, 9], type=void
    |             +> ListParam [List with 0 elements]
    |             `> [11, 23] MethodBody
    |                +> ListDeclVar [List with 0 elements]

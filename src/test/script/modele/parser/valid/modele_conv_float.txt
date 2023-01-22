@@ -1,116 +1,116 @@
-`> [4, 0] Program
+`> [3, 0] Program
    +> ListDeclClass [List with 1 elements]
-   |  []> [4, 0] DeclClass
-   |      +> [4, 6] Identifier (A)
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (A)
    |      +> [builtin] Identifier (Object)
    |      +> ListDeclField [List with 1 elements]
-   |      |  []> [5, 8] [visibility = PUBLIC]  DeclField
-   |      |      +> [5, 4] Identifier (int)
-   |      |      +> [5, 8] Identifier (x)
-   |      |      +> [5, 10] Initialization
-   |      |      |  `> [5, 12] Int (1)
+   |      |  []> [4, 8] [visibility = PUBLIC]  DeclField
+   |      |      +> [4, 4] Identifier (int)
+   |      |      +> [4, 8] Identifier (x)
+   |      |      +> [4, 10] Initialization
+   |      |      |  `> [4, 12] Int (1)
    |      `> ListDeclMethod [List with 1 elements]
-   |         []> [7, 4] DeclMethod
-   |             +> [7, 4] Identifier (int)
-   |             +> [7, 8] Identifier (getInt)
+   |         []> [6, 4] DeclMethod
+   |             +> [6, 4] Identifier (int)
+   |             +> [6, 8] Identifier (getInt)
    |             +> ListParam [List with 0 elements]
-   |             `> [7, 16] MethodBody
+   |             `> [6, 16] MethodBody
    |                +> ListDeclVar [List with 0 elements]
    |                +> ListInst [List with 1 elements]
-   |                |  []> [8, 8] Return
-   |                |      `> [8, 15] Int (10)
-   `> [12, 0] Main
+   |                |  []> [7, 8] Return
+   |                |      `> [7, 15] Int (10)
+   `> [11, 0] Main
       +> ListDeclVar [List with 9 elements]
-      |  []> [13, 6] DeclVar
-      |  ||  +> [13, 4] Identifier (A)
-      |  ||  +> [13, 6] Identifier (a)
-      |  ||  `> [13, 8] Initialization
-      |  ||     `> [13, 10] New
-      |  ||        `> [13, 14] Identifier (A)
-      |  []> [15, 8] DeclVar
-      |  ||  +> [15, 4] Identifier (int)
-      |  ||  +> [15, 8] Identifier (x)
-      |  ||  `> [15, 10] Initialization
-      |  ||     `> [15, 12] Int (5)
+      |  []> [12, 6] DeclVar
+      |  ||  +> [12, 4] Identifier (A)
+      |  ||  +> [12, 6] Identifier (a)
+      |  ||  `> [12, 8] Initialization
+      |  ||     `> [12, 10] New
+      |  ||        `> [12, 14] Identifier (A)
+      |  []> [14, 8] DeclVar
+      |  ||  +> [14, 4] Identifier (int)
+      |  ||  +> [14, 8] Identifier (x)
+      |  ||  `> [14, 10] Initialization
+      |  ||     `> [14, 12] Int (5)
+      |  []> [15, 10] DeclVar
+      |  ||  +> [15, 4] Identifier (float)
+      |  ||  +> [15, 10] Identifier (f)
+      |  ||  `> [15, 12] Initialization
+      |  ||     `> [15, 14] Float (5.5)
       |  []> [16, 10] DeclVar
       |  ||  +> [16, 4] Identifier (float)
-      |  ||  +> [16, 10] Identifier (f)
-      |  ||  `> [16, 12] Initialization
-      |  ||     `> [16, 14] Float (5.5)
+      |  ||  +> [16, 10] Identifier (z1)
+      |  ||  `> NoInitialization
+      |  []> [16, 14] DeclVar
+      |  ||  +> [16, 4] Identifier (float)
+      |  ||  +> [16, 14] Identifier (z2)
+      |  ||  `> NoInitialization
+      |  []> [16, 18] DeclVar
+      |  ||  +> [16, 4] Identifier (float)
+      |  ||  +> [16, 18] Identifier (z3)
+      |  ||  `> NoInitialization
       |  []> [17, 10] DeclVar
       |  ||  +> [17, 4] Identifier (float)
-      |  ||  +> [17, 10] Identifier (z1)
+      |  ||  +> [17, 10] Identifier (res1)
       |  ||  `> NoInitialization
-      |  []> [17, 14] DeclVar
+      |  []> [17, 16] DeclVar
       |  ||  +> [17, 4] Identifier (float)
-      |  ||  +> [17, 14] Identifier (z2)
+      |  ||  +> [17, 16] Identifier (res2)
       |  ||  `> NoInitialization
-      |  []> [17, 18] DeclVar
-      |  ||  +> [17, 4] Identifier (float)
-      |  ||  +> [17, 18] Identifier (z3)
-      |  ||  `> NoInitialization
-      |  []> [18, 10] DeclVar
-      |  ||  +> [18, 4] Identifier (float)
-      |  ||  +> [18, 10] Identifier (res1)
-      |  ||  `> NoInitialization
-      |  []> [18, 16] DeclVar
-      |  ||  +> [18, 4] Identifier (float)
-      |  ||  +> [18, 16] Identifier (res2)
-      |  ||  `> NoInitialization
-      |  []> [18, 22] DeclVar
-      |      +> [18, 4] Identifier (float)
-      |      +> [18, 22] Identifier (res3)
+      |  []> [17, 22] DeclVar
+      |      +> [17, 4] Identifier (float)
+      |      +> [17, 22] Identifier (res3)
       |      `> NoInitialization
       `> ListInst [List with 12 elements]
-         []> [20, 9] Assign
-         ||  +> [20, 4] Identifier (res1)
-         ||  `> [20, 13] Plus
-         ||     +> [20, 11] Identifier (f)
-         ||     `> [20, 15] Identifier (x)
-         []> [21, 7] Assign
-         ||  +> [21, 4] Identifier (z1)
-         ||  `> [21, 9] Identifier (x)
-         []> [23, 9] Assign
-         ||  +> [23, 4] Identifier (res2)
-         ||  `> [23, 13] Plus
-         ||     +> [23, 11] Identifier (f)
-         ||     `> [23, 16] Selection
-         ||        +> [23, 15] Identifier (a)
-         ||        `> [23, 17] Identifier (x)
-         []> [24, 7] Assign
-         ||  +> [24, 4] Identifier (z2)
-         ||  `> [24, 10] Selection
-         ||     +> [24, 9] Identifier (a)
-         ||     `> [24, 11] Identifier (x)
-         []> [26, 9] Assign
-         ||  +> [26, 4] Identifier (res3)
-         ||  `> [26, 13] Plus
-         ||     +> [26, 11] Identifier (f)
-         ||     `> [26, 16] MethodCall
-         ||        +> [26, 15] Identifier (a)
-         ||        +> [26, 17] Identifier (getInt)
+         []> [19, 9] Assign
+         ||  +> [19, 4] Identifier (res1)
+         ||  `> [19, 13] Plus
+         ||     +> [19, 11] Identifier (f)
+         ||     `> [19, 15] Identifier (x)
+         []> [20, 7] Assign
+         ||  +> [20, 4] Identifier (z1)
+         ||  `> [20, 9] Identifier (x)
+         []> [22, 9] Assign
+         ||  +> [22, 4] Identifier (res2)
+         ||  `> [22, 13] Plus
+         ||     +> [22, 11] Identifier (f)
+         ||     `> [22, 16] Selection
+         ||        +> [22, 15] Identifier (a)
+         ||        `> [22, 17] Identifier (x)
+         []> [23, 7] Assign
+         ||  +> [23, 4] Identifier (z2)
+         ||  `> [23, 10] Selection
+         ||     +> [23, 9] Identifier (a)
+         ||     `> [23, 11] Identifier (x)
+         []> [25, 9] Assign
+         ||  +> [25, 4] Identifier (res3)
+         ||  `> [25, 13] Plus
+         ||     +> [25, 11] Identifier (f)
+         ||     `> [25, 16] MethodCall
+         ||        +> [25, 15] Identifier (a)
+         ||        +> [25, 17] Identifier (getInt)
          ||        `> ListExpr [List with 0 elements]
-         []> [27, 7] Assign
-         ||  +> [27, 4] Identifier (z3)
-         ||  `> [27, 10] MethodCall
-         ||     +> [27, 9] Identifier (a)
-         ||     +> [27, 11] Identifier (getInt)
+         []> [26, 7] Assign
+         ||  +> [26, 4] Identifier (z3)
+         ||  `> [26, 10] MethodCall
+         ||     +> [26, 9] Identifier (a)
+         ||     +> [26, 11] Identifier (getInt)
          ||     `> ListExpr [List with 0 elements]
+         []> [28, 4] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [28, 12] Identifier (res1)
          []> [29, 4] Println
          ||  `> ListExpr [List with 1 elements]
-         ||     []> [29, 12] Identifier (res1)
+         ||     []> [29, 12] Identifier (z1)
          []> [30, 4] Println
          ||  `> ListExpr [List with 1 elements]
-         ||     []> [30, 12] Identifier (z1)
+         ||     []> [30, 12] Identifier (res2)
          []> [31, 4] Println
          ||  `> ListExpr [List with 1 elements]
-         ||     []> [31, 12] Identifier (res2)
-         []> [32, 4] Println
+         ||     []> [31, 12] Identifier (z2)
+         []> [33, 4] Println
          ||  `> ListExpr [List with 1 elements]
-         ||     []> [32, 12] Identifier (z2)
+         ||     []> [33, 12] Identifier (z3)
          []> [34, 4] Println
-         ||  `> ListExpr [List with 1 elements]
-         ||     []> [34, 12] Identifier (z3)
-         []> [35, 4] Println
              `> ListExpr [List with 1 elements]
-                []> [35, 12] Identifier (x)
+                []> [34, 12] Identifier (x)

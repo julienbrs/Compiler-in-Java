@@ -2,7 +2,9 @@ package fr.ensimag.deca;
 
 import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.syntax.DecaLexer;
+import fr.ensimag.deca.syntax.DecaLexerExtension;
 import fr.ensimag.deca.syntax.DecaParser;
+import fr.ensimag.deca.syntax.DecaParserExtension;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -263,6 +265,12 @@ public class DecacCompiler {
             addInstruction(new WSTR(new ImmediateString("Cast impossible")));
             addInstruction(new WNL());
             addInstruction(new ERROR());
+
+            // Erreur d'inex
+            addLabel(new Label("index_hors_range"));
+            addInstruction(new WSTR(new ImmediateString("Index hors range")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
         }
         // Erreur de lecture
         addLabel(new Label("erreur_de_lecture"));
@@ -302,17 +310,34 @@ public class DecacCompiler {
      */
     protected AbstractProgram doLexingAndParsing(String sourceName, PrintStream err)
             throws DecacFatalError, DecacInternalError {
-        DecaLexer lex;
-        try {
-            lex = new DecaLexer(CharStreams.fromFileName(sourceName));
-        } catch (IOException ex) {
-            throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
+
+        if(compilerOptions.getExtension()){
+            DecaLexerExtension lex;
+            try {
+                lex = new DecaLexerExtension(CharStreams.fromFileName(sourceName));
+            } catch (IOException ex) {
+                throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
+            }
+            lex.setDecacCompiler(this);
+            CommonTokenStream tokens = new CommonTokenStream(lex);
+            DecaParserExtension parser = new DecaParserExtension(tokens);
+            parser.setDecacCompiler(this);
+            return parser.parseProgramAndManageErrors(err);
+
+        } else {
+            DecaLexer lex;
+            try {
+                lex = new DecaLexer(CharStreams.fromFileName(sourceName));
+            } catch (IOException ex) {
+                throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
+            }
+            lex.setDecacCompiler(this);
+            CommonTokenStream tokens = new CommonTokenStream(lex);
+            DecaParser parser = new DecaParser(tokens);
+            parser.setDecacCompiler(this);
+            return parser.parseProgramAndManageErrors(err);
         }
-        lex.setDecacCompiler(this);
-        CommonTokenStream tokens = new CommonTokenStream(lex);
-        DecaParser parser = new DecaParser(tokens);
-        parser.setDecacCompiler(this);
-        return parser.parseProgramAndManageErrors(err);
+
     }
 
 }

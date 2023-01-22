@@ -1,0 +1,20 @@
+// codegen test, variables aren't assigned but used so it's
+// their default value
+
+class A {
+
+}
+
+{
+    int x;
+    float f;
+    boolean b;
+    A a;
+    
+    println(x);
+    println(f);
+    if (a.equals(null)){
+        println("a is null");
+    }
+
+}

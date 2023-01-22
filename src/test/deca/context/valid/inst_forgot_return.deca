@@ -1,5 +1,5 @@
-// Test la règle 3.24: Pas le droit de return un boolean
-// alors qu'on attend pas de return
+// Test rule 3.24: No right to return a boolean
+// when no return is expected
 
 class A  {
     int getInt(){

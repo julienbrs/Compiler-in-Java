@@ -1,7 +1,7 @@
-`> [4, 0] Program
+`> [3, 0] Program
    +> ListDeclClass [List with 1 elements]
-   |  []> [4, 0] DeclClass
-   |      +> [4, 6] Identifier (int)
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (int)
    |      +> [builtin] Identifier (Object)
    |      +> ListDeclField [List with 0 elements]
    |      `> ListDeclMethod [List with 0 elements]

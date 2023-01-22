@@ -1,0 +1,33 @@
+// Instanceof on builtin types , shoudln't be possible
+
+{
+    int entier = 10;
+    float flottant = 3.14;
+    boolean bool = true;
+    Object objet = new Object();
+    if (entier instanceof int) {
+        println("La variable entier est une instance de int");
+    } else {
+        println("La variable entier n'est pas une instance de int");
+    }
+
+    if (flottant instanceof float) {
+        println("La variable flottant est une instance de float");
+    } else {
+        println("La variable flottant n'est pas une instance de float");
+    }
+
+    if (bool instanceof boolean) {
+        println("La variable bool est une instance de boolean");
+    } else {
+        println("La variable bool n'est pas une instance de boolean");
+    }
+
+    if (objet instanceof Object) {
+        println("La variable objet est une instance de Object");
+    } else {
+        println("La variable objet n'est pas une instance de Object");
+    }
+}
+
+// TODOTEST: test ok right ?

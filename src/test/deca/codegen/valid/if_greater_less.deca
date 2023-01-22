@@ -1,12 +1,47 @@
 // Programme de test avec comparaison de variable avec une constante: 
 
 {
-    int x = 5;
-    if (x > 3) {
-        println("x est plus grand que 3");
-    } else if (x < 3) {
-        println("x est plus petit que 3");
-    } else {
-        println("x est égal à 3");
+    int a1 = 1;
+    int a3 = 3;
+
+    if (a1 < a3){
+        println( "true");
     }
+    if (a3 < a1){
+        println( "true");
+    }
+    if (a3 < a3){
+        println( "true");
+    }
+
+    if (a1 <= a3){
+        println( "true");
+    }
+    if (a3 <= a1){
+        println( "true");
+    }
+    if (a3 <= a3){
+        println( "true");
+    }
+
+    if (a1 > a3){
+        println( "true");
+    }
+    if (a3 > a1){
+        println( "true");
+    }
+    if (a3 > a3){
+        println( "true");
+    }
+
+    if (a1 >= a3){
+        println( "true");
+    }
+    if (a3 >= a1){
+        println( "true");
+    }
+    if (a3 >= a3){
+        println( "true");
+    }
+
 }

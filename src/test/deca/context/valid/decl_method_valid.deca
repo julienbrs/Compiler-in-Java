@@ -1,6 +1,6 @@
-// Test de la règle (2.7) : si l'on redéfinie une méthode avec
-// les mêmes arguments et un type de retour qui est un sous-type
-// de la méthode redéfinie, alors cela fonctionne.
+// Test of rule (2.7) : if a method is defined for the second time
+// with the same parameters and has a return type that is a subtype
+// of the method, it works
 
 class A {
   float method(int n) {
