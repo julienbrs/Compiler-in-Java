@@ -7,10 +7,6 @@ import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
 
 import fr.ensimag.deca.DecacCompiler;
-<<<<<<< HEAD
-=======
-import fr.ensimag.deca.context.ArrayType;
->>>>>>> 9004d3469eb4d082646a63691a256b4f2329e786
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.Definition;
@@ -30,12 +26,7 @@ public class Array extends AbstractIdentifier {
 
     private Symbol name;
     private AbstractIdentifier nametype;
-<<<<<<< HEAD
-    private ListExpr profondeur;
-    private int Level;
-=======
     private int level;
->>>>>>> 9004d3469eb4d082646a63691a256b4f2329e786
 
     public Array(Symbol name, int level,AbstractIdentifier nametype ) {
         Validate.notNull(name);
