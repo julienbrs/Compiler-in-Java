@@ -1,0 +1,10 @@
+test or: 
+true
+true
+true
+false
+test and: 
+true
+false
+false
+false

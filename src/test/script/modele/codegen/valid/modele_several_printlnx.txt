@@ -1,0 +1,7 @@
+
+5
+0x1.91eb86p+1
+little string
+0x1.047ae2p+3
+25
+0x1.377ceep+3
