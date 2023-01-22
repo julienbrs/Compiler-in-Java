@@ -2,8 +2,8 @@
 
 # Auteur : gl11
 
-# Script de test de la lexicographie.
-# On lance tous les tests en rapport avec la lexicographie
+# Script de test du parser.
+# On lance tous les tests en rapport avec le parser
 # Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
@@ -28,7 +28,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-test_lex_unitaire() {
+test_parser_unitaire() {
     # $1 = premier argument, $2 = deuxieme
     exit_status_waited=$2
     filename=$(basename "$1")
@@ -44,8 +44,10 @@ test_lex_unitaire() {
         path_valid="valid"
     fi
 
-    fichier_modele="src/test/script/modele/lexer/"$path_valid"/modele_$filename.txt"
-    test_lex "$1" >src/main/bin/temporaire_test.txt 2>&1
+    fichier_modele="src/test/script/modele/parser/"$path_valid"/modele_$filename.txt"
+    fichier_modele_decompile="src/test/script/modele/parser/"$path_valid"/modele_$filename.txt"
+
+    test_synt_ext "$1" >src/main/bin/temporaire_test.txt 2>&1
     result=$?
 
     if [ "$result" -eq "$exit_status_waited" ]; then
@@ -59,28 +61,38 @@ test_lex_unitaire() {
         echo "$1: $str_res_not_waited non attendu ❌"
     fi
 
+    resultat_decompil=$(decac "$1" -p 2>&1)
+    result=$?
+    echo "$resultat_decompil" | sed 's#^.*src#src#' >src/main/bin/temporaire_test.txt
+
+    #Test de la décompilation:
+    if [ "$result" -eq "$exit_status_waited" ]; then
+        if [ "$result" -eq "$exit_status_waited" ]; then
+
+            # # On regarde maintenant si l'output est le bon:
+            # if diff -w -b src/main/bin/temporaire_test.txt $fichier_modele_decompile >/dev/null; then
+            echo ".. et pour décompilation: $str_res_waited attendu ✅"
+            # else
+            #     echo ".. et pour décompilation: $str_res_waited mais output non attendu ❌"
+            # fi
+        else
+            echo ".. et pour décompilation: $str_res_not_waited non attendu ❌"
+        fi
+    fi
+
 }
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/invalid/ -name '*.deca'); do
-    test_lex_unitaire "$cas_de_test" 1
+for cas_de_test in $(find src/test/deca/syntax/parser/invalid/ -name '*.deca'); do
+    test_parser_unitaire "$cas_de_test" 1
 done
 
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca'); do
-    test_lex_unitaire "$cas_de_test" 0
+for cas_de_test in $(find src/test/deca/syntax/parser/valid/ -name '*.deca'); do
+    test_parser_unitaire "$cas_de_test" 0
 done
-# On choisit arbitrairement de considérer le test de tous les utf8 comme un "valid test"
-# ./src/test/script/utils-test/lexer-test-all-utf8.sh
-# result_utf8=$?
-# if [ "$result_utf8" -eq 0 ]; then
-#     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Succès attendu ✅"
-# else
-#     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
-#     exit 1
-# fi
 
 # End of the script
 # Check if the --exit-status option was passed

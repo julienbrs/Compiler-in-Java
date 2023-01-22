@@ -18,7 +18,7 @@ options {
     // lexer before the parser. It will also rebuild the
     // parser if the lexer changes.
     //
-    tokenVocab = DecaLexer;
+    tokenVocab = DecaLexerExtension;
 
 }
 
