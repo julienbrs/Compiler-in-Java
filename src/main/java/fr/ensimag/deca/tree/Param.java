@@ -13,10 +13,22 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 
+/**
+ * Parameters
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class Param extends AbstractParam {
+
     private AbstractIdentifier type;
     private AbstractIdentifier name;
     
+    /**
+     * Sets the type and name of parameters
+     * @param type
+     * @param name
+     */
     public Param(AbstractIdentifier type, AbstractIdentifier name) {
         this.type = type;
         this.name = name;
@@ -42,6 +54,12 @@ public class Param extends AbstractParam {
         name.iter(f);        
     }
     
+    /**
+     * Passe 2 of contextual syntax for the parameters members
+     * @param compiler
+     * @param sig
+     * @throws ContextualError
+     */
     public void verifyParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {
         Type t = type.verifyType(compiler);
         if (t.sameType(compiler.environmentType.VOID)) {
@@ -51,6 +69,12 @@ public class Param extends AbstractParam {
         sig.add(t);
     }
 
+    /**
+     * Passe 3 of contextual syntax for the parameters body
+     * @param compiler
+     * @param localEnv
+     * @throws ContextualError
+     */
     public void verifyParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
         Type t = type.verifyType(compiler);
         try {
@@ -62,6 +86,11 @@ public class Param extends AbstractParam {
         }
     }
 
+    /**
+     * Generates code for the parameters
+     * @param compiler
+     * @param offset
+     */
     public void codeGenParam(DecacCompiler compiler, int offset) {
         name.getExpDefinition().setOperand(new RegisterOffset(-offset, GPRegister.LB));
     }

@@ -9,11 +9,17 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
+ * Unary Minus
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class UnaryMinus extends AbstractUnaryExpr {
 
+    /**
+     * Sets the operand for the operation
+     * @param operand
+     */
     public UnaryMinus(AbstractExpr operand) {
         super(operand);
     }

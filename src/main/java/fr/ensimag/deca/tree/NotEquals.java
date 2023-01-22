@@ -7,17 +7,23 @@ import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SNE;
+
 /**
- *
+ * Not equals
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class NotEquals extends AbstractOpExactCmp {
 
+    /**
+     * Sets operands for not equals operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public NotEquals(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

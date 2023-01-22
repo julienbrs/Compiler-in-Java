@@ -20,20 +20,37 @@ import org.apache.log4j.Logger;
  * @date 01/01/2023
  */
 public class Program extends AbstractProgram {
+
     private static final Logger LOG = Logger.getLogger(Program.class);
     
+    /**
+     * Verifies that classes and main are not null before setting values
+     * @param classes
+     * @param main
+     */
     public Program(ListDeclClass classes, AbstractMain main) {
         Validate.notNull(classes);
         Validate.notNull(main);
         this.classes = classes;
         this.main = main;
     }
+
+    /**
+     * Gets classes from the program
+     * @return
+     */
     public ListDeclClass getClasses() {
         return classes;
     }
+
+    /**
+     * Gets main of the program
+     * @return
+     */
     public AbstractMain getMain() {
         return main;
     }
+
     private ListDeclClass classes;
     private AbstractMain main;
 

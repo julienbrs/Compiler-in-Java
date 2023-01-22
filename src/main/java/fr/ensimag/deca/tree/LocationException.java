@@ -19,7 +19,7 @@ public class LocationException extends Exception {
     }
 
     /**
-     * 
+     * Displays the file name, the line, column and the message
      * @param s
      */
     public void display(PrintStream s) {
@@ -39,6 +39,11 @@ public class LocationException extends Exception {
     private static final long serialVersionUID = 7628400022855935597L;
     protected Location location;
 
+    /**
+     * Verifies that the location is not null and that it has a filename. Declares the location and the message
+     * @param message
+     * @param location
+     */
     public LocationException(String message, Location location) {
         super(message);
         assert(location == null || location.getFilename() != null);

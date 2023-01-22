@@ -12,6 +12,12 @@ import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
+/**
+ * Null literal
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class NullLiteral extends AbstractExpr{
 
     @Override

@@ -8,15 +8,21 @@ import fr.ensimag.ima.pseudocode.instructions.BLE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SLE;
 /**
- *
+ * Lower or equal
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class LowerOrEqual extends AbstractOpIneq {
+
+    /**
+     * Sets the operands for the lower or equal inequality
+     * @param leftOperand
+     * @param rightOperand
+     */
     public LowerOrEqual(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

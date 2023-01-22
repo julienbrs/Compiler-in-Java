@@ -39,14 +39,27 @@ import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.ima.pseudocode.instructions.SUB;
 
+/**
+ * TabIdentifier
+ *
+ * @author gl11
+ * @date 16/01/2023
+ */
+public class TabIdentifier extends AbstractIdentifier {
 
-public class TabIdentifier extends AbstractIdentifier{
     private Symbol name;
     private Symbol localType;
     private int level;
     private ListExpr listeposs;
     private Definition definition;
 
+    /**
+     * Declares the name, local type, expression and level of table
+     * @param name
+     * @param localType
+     * @param listeposs
+     * @param level
+     */
     public TabIdentifier(Symbol name, Symbol localType, ListExpr listeposs, int level) {
         this.name = name;
         this.localType = localType;
@@ -54,10 +67,18 @@ public class TabIdentifier extends AbstractIdentifier{
         this.level = level;
     }
 
+    /**
+     * Gets the level of the table
+     * @return the level
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * Sets the level of the table
+     * @param level
+     */
     public void setLevel(int level) {
         this.level = level;
     }
@@ -217,6 +238,14 @@ public class TabIdentifier extends AbstractIdentifier{
         return getType();
     }
 
+    /**
+     * // TODO
+     * @param compiler
+     * @param offset
+     * @param dim
+     * @param level
+     * @return // TODO
+     */
     private int[] codeGenTab(DecacCompiler compiler, int offset, ListExpr dim, int level) {
         
         if (level - 1 == dim.getList().size()) {
@@ -312,6 +341,7 @@ public class TabIdentifier extends AbstractIdentifier{
     String prettyPrintNode() {
         return "TAB Identifier (" +this.getName() + ")";
     }
+
     @Override
     protected void prettyPrintType(PrintStream s, String prefix) {
         Definition d = getDefinition();
@@ -322,14 +352,12 @@ public class TabIdentifier extends AbstractIdentifier{
             s.println();
         }
     }
+
     @Override
     protected void iterChildren(TreeFunction f) {
         // TODO Auto-generated method stub
         
     }
-
-
-
 
     @Override
     public void setName(Symbol a) {

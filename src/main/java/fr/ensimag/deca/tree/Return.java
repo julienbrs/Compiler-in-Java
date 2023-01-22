@@ -13,7 +13,7 @@ import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
- * Instruction
+ * Return
  *
  * @author gl11
  * @date 16/01/2023
@@ -22,6 +22,10 @@ public class Return extends AbstractInst {
 
     private AbstractExpr returnExpr;
 
+    /**
+     * Sets return value
+     * @param returnExpr
+     */
     public Return(AbstractExpr returnExpr) {
         this.returnExpr = returnExpr;
     }

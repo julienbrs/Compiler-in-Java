@@ -8,16 +8,21 @@ import fr.ensimag.ima.pseudocode.instructions.BLT;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SLT;
 /**
- *
+ * Lower
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Lower extends AbstractOpIneq {
 
+    /**
+     * Sets the operands for the lower inequality
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Lower(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

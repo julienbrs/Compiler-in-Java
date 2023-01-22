@@ -9,6 +9,7 @@ import fr.ensimag.deca.tools.IndentPrintStream;
 import java.io.PrintStream;
 
 /**
+ * No operation
  * 
  * @author gl11
  * @date 01/01/2023

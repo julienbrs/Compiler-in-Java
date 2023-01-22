@@ -22,10 +22,22 @@ import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
+/**
+ * Selection
+ *
+ * @author gl11
+ * @date 16/01/2023
+ */
 public class Selection extends AbstractSelection {
+
     private AbstractExpr expr;
     private AbstractIdentifier ident;
 
+    /**
+     * Declares the expression and identifier
+     * @param expr
+     * @param ident
+     */
     public Selection(AbstractExpr expr, AbstractIdentifier ident) {
         this.expr = expr;
         this.ident = ident;
@@ -93,6 +105,7 @@ public class Selection extends AbstractSelection {
         return res;
     }
 
+    @Override
     public Triple<int[], Integer, DAddr> codeGenLValue(DecacCompiler compiler, int offset) {
         int[] resExpr = expr.codeGenExpr(compiler, offset);
         if (!compiler.getCompilerOptions().getNoCheck()) {

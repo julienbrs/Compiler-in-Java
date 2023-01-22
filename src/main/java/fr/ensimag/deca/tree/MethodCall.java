@@ -28,7 +28,7 @@ import fr.ensimag.ima.pseudocode.instructions.STORE;
 import fr.ensimag.ima.pseudocode.instructions.SUBSP;
 
 /**
- * Instruction
+ * Method Call
  *
  * @author gl11
  * @date 16/01/2023
@@ -39,6 +39,12 @@ public class MethodCall extends AbstractExpr {
     private AbstractIdentifier methodIdent;
     private ListExpr rValStar;
 
+    /**
+     * Sets the expression, the method identifier and the the sequence of parameters
+     * @param expr
+     * @param methodIdent
+     * @param rValStar
+     */
     public MethodCall(AbstractExpr expr, AbstractIdentifier methodIdent, ListExpr rValStar) {
         this.expr = expr;
         this.methodIdent = methodIdent;

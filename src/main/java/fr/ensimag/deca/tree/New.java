@@ -20,13 +20,17 @@ import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 /**
- * Instruction
+ * New
  *
  * @author gl11
  * @date 16/01/2023
  */
 public class New extends AbstractExpr {
 
+    /**
+     * Sets the type for a new expression
+     * @param type
+     */
     public New(AbstractIdentifier type) {
         this.type = type;
     }

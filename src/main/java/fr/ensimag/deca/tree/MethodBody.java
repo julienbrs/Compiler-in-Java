@@ -23,10 +23,22 @@ import fr.ensimag.ima.pseudocode.instructions.TSTO;
 import fr.ensimag.ima.pseudocode.instructions.WNL;
 import fr.ensimag.ima.pseudocode.instructions.WSTR;
 
+/**
+ * Method Body
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class MethodBody extends AbstractMethodBody{
+
     private ListDeclVar declVar;
     private ListInst listInst;
 
+    /**
+     * Sets variables and instructions values
+     * @param declVar
+     * @param listInst
+     */
     public MethodBody(ListDeclVar declVar, ListInst listInst) {
         this.declVar = declVar;
         this.listInst = listInst;
@@ -38,9 +50,8 @@ public class MethodBody extends AbstractMethodBody{
         listInst.verifyListInst(compiler, paramEnv, currentClass, returnType);
     }
 
+    @Override
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass, AbstractIdentifier ident) {
-        
-
         Line lTSTO = new Line("");
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.add(lTSTO);

@@ -13,22 +13,37 @@ import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
 /**
- *
+ * While
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class While extends AbstractInst {
+
     private AbstractExpr condition;
     private ListInst body;
 
+    /**
+     * Gets condition on while
+     * @return the while condition
+     */
     public AbstractExpr getCondition() {
         return condition;
     }
 
+    /**
+     * Gets body of the instructions in while
+     * @return body of the instructions in while
+     */
     public ListInst getBody() {
         return body;
     }
 
+    /**
+     * Verifies that the condition and the body are not null and declare them
+     * @param condition
+     * @param body
+     */
     public While(AbstractExpr condition, ListInst body) {
         Validate.notNull(condition);
         Validate.notNull(body);

@@ -13,7 +13,7 @@ import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
- * Instruction
+ * This
  *
  * @author gl11
  * @date 16/01/2023
@@ -22,6 +22,10 @@ public class This extends AbstractExpr {
 
     private boolean isImplicit;
 
+    /**
+     * Declares the boolean for this
+     * @param isImplicit
+     */
     public This(boolean isImplicit) {
         this.isImplicit = isImplicit;
     }
