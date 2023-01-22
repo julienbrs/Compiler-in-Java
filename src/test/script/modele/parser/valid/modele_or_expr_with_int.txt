@@ -1,14 +1,14 @@
-`> [4, 0] Program
+`> [3, 0] Program
    +> ListDeclClass [List with 0 elements]
-   `> [4, 0] Main
+   `> [3, 0] Main
       +> ListDeclVar [List with 0 elements]
       `> ListInst [List with 1 elements]
-         []> [5, 4] IfThenElse
-             +> [5, 10] Or
-             |  +> [5, 8] Identifier (x)
-             |  `> [5, 13] Int (15)
+         []> [4, 4] IfThenElse
+             +> [4, 10] Or
+             |  +> [4, 8] Identifier (x)
+             |  `> [4, 13] Int (15)
              +> ListInst [List with 1 elements]
-             |  []> [6, 10] Assign
-             |      +> [6, 8] Identifier (a)
-             |      `> [6, 12] Int (5)
+             |  []> [5, 10] Assign
+             |      +> [5, 8] Identifier (a)
+             |      `> [5, 12] Int (5)
              `> ListInst [List with 0 elements]
