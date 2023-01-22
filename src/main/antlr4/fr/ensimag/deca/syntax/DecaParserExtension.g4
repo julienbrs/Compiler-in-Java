@@ -18,7 +18,7 @@ options {
     // lexer before the parser. It will also rebuild the
     // parser if the lexer changes.
     //
-    tokenVocab = DecaLexer;
+    tokenVocab = DecaLexerExtension;
 
 }
 
@@ -764,9 +764,9 @@ multi_line_string returns[String text, Location location]
         }
     ;
 
-param returns[Param tree]
+param returns[DeclParam tree]
     : type ident {
-        $tree = new Param($type.tree,$ident.tree);
+        $tree = new DeclParam($type.tree,$ident.tree);
         setLocation($tree, $type.start);
         }
     ;
