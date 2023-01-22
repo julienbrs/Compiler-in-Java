@@ -3,6 +3,7 @@ package fr.ensimag.deca;
 import fr.ensimag.deca.context.EnvironmentType;
 import fr.ensimag.deca.syntax.DecaLexer;
 import fr.ensimag.deca.syntax.DecaParser;
+import fr.ensimag.deca.syntax.DecaParserExtension;
 import fr.ensimag.deca.tools.DecacInternalError;
 import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -315,10 +316,19 @@ public class DecacCompiler {
             throw new DecacFatalError("Failed to open input file: " + ex.getLocalizedMessage());
         }
         lex.setDecacCompiler(this);
-        CommonTokenStream tokens = new CommonTokenStream(lex);
-        DecaParser parser = new DecaParser(tokens);
-        parser.setDecacCompiler(this);
-        return parser.parseProgramAndManageErrors(err);
+        if(compilerOptions.getExtension()){
+            CommonTokenStream tokens = new CommonTokenStream(lex);
+            DecaParserExtension parser = new DecaParserExtension(tokens);
+            parser.setDecacCompiler(this);
+            return parser.parseProgramAndManageErrors(err);
+
+        } else {
+            CommonTokenStream tokens = new CommonTokenStream(lex);
+            DecaParser parser = new DecaParser(tokens);
+            parser.setDecacCompiler(this);
+            return parser.parseProgramAndManageErrors(err);
+        }
+
     }
 
 }
