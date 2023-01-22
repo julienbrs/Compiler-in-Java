@@ -44,8 +44,8 @@ test_lex_unitaire() {
         path_valid="valid"
     fi
 
-    fichier_modele="src/test/script/modele/lexer/"$path_valid"/modele_$filename.txt"
-    test_lex "$1" >src/main/bin/temporaire_test.txt 2>&1
+    fichier_modele="src/test/script/modele-extension/lexer/"$path_valid"/modele_$filename.txt"
+    test_lex_ext "$1" >src/main/bin/temporaire_test.txt 2>&1
     result=$?
 
     if [ "$result" -eq "$exit_status_waited" ]; then

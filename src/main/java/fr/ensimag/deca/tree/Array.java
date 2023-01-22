@@ -1,7 +1,6 @@
 package fr.ensimag.deca.tree;
 
 import java.io.PrintStream;
-import java.util.Iterator;
 
 import org.antlr.v4.runtime.misc.Triple;
 import org.apache.commons.lang.Validate;
