@@ -1,1 +1,1 @@
-src/test/deca/context/invalid/decl_method_number_of_arguments.deca:9:4:  : rule 2.7
+src/test/deca/context/invalid/decl_method_number_of_arguments.deca:9:4: The method "method" is already define in super class with a different signature : rule 2.7

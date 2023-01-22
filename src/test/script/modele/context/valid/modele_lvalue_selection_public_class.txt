@@ -1,0 +1,187 @@
+`> [4, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [4, 0] DeclClass
+   |  ||  +> [4, 6] Identifier (Vehicule)
+   |  ||  |  definition: type defined at [4, 0], type=Vehicule
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [5, 6] [visibility = PUBLIC]  DeclField
+   |  ||  |      +> [5, 2] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [5, 6] Identifier (nombreRoues)
+   |  ||  |      |  definition: field defined at [5, 6], type=int
+   |  ||  |      +> NoInitialization
+   |  ||  `> ListDeclMethod [List with 2 elements]
+   |  ||     []> [7, 2] DeclMethod
+   |  ||     ||  +> [7, 2] Identifier (void)
+   |  ||     ||  |  definition: type (builtin), type=void
+   |  ||     ||  +> [7, 7] Identifier (setNombreRoues)
+   |  ||     ||  |  definition: method defined at [7, 7], type=void
+   |  ||     ||  +> ListParam [List with 1 elements]
+   |  ||     ||  |  []> [7, 22] Param
+   |  ||     ||  |      +> [7, 22] Identifier (int)
+   |  ||     ||  |      |  definition: type (builtin), type=int
+   |  ||     ||  |      `> [7, 26] Identifier (n)
+   |  ||     ||  |         definition: parameter defined at [7, 22], type=int
+   |  ||     ||  `> [7, 29] MethodBody
+   |  ||     ||     +> ListDeclVar [List with 0 elements]
+   |  ||     ||     +> ListInst [List with 1 elements]
+   |  ||     ||     |  []> [8, 21] Assign
+   |  ||     ||     |      type: int
+   |  ||     ||     |      +> [8, 8] Selection
+   |  ||     ||     |      |  type: int
+   |  ||     ||     |      |  +> [8, 4] This
+   |  ||     ||     |      |  |  type: Vehicule
+   |  ||     ||     |      |  `> [8, 9] Identifier (nombreRoues)
+   |  ||     ||     |      |     definition: field defined at [5, 6], type=int
+   |  ||     ||     |      `> [8, 23] Identifier (n)
+   |  ||     ||     |         definition: parameter defined at [7, 22], type=int
+   |  ||     []> [11, 2] DeclMethod
+   |  ||         +> [11, 2] Identifier (int)
+   |  ||         |  definition: type (builtin), type=int
+   |  ||         +> [11, 6] Identifier (getNombreRoues)
+   |  ||         |  definition: method defined at [11, 6], type=int
+   |  ||         +> ListParam [List with 0 elements]
+   |  ||         `> [11, 23] MethodBody
+   |  ||            +> ListDeclVar [List with 0 elements]
+   |  ||            +> ListInst [List with 1 elements]
+   |  ||            |  []> [12, 4] Return
+   |  ||            |      `> [12, 15] Selection
+   |  ||            |         type: int
+   |  ||            |         +> [12, 11] This
+   |  ||            |         |  type: Vehicule
+   |  ||            |         `> [12, 16] Identifier (nombreRoues)
+   |  ||            |            definition: field defined at [5, 6], type=int
+   |  []> [17, 0] DeclClass
+   |      +> [17, 6] Identifier (Garage)
+   |      |  definition: type defined at [17, 0], type=Garage
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 1 elements]
+   |      |  []> [18, 11] [visibility = PUBLIC]  DeclField
+   |      |      +> [18, 2] Identifier (Vehicule)
+   |      |      |  definition: type defined at [4, 0], type=Vehicule
+   |      |      +> [18, 11] Identifier (vehicule)
+   |      |      |  definition: field defined at [18, 11], type=Vehicule
+   |      |      +> NoInitialization
+   |      `> ListDeclMethod [List with 2 elements]
+   |         []> [20, 2] DeclMethod
+   |         ||  +> [20, 2] Identifier (Vehicule)
+   |         ||  |  definition: type defined at [4, 0], type=Vehicule
+   |         ||  +> [20, 11] Identifier (getVehicule)
+   |         ||  |  definition: method defined at [20, 11], type=Vehicule
+   |         ||  +> ListParam [List with 0 elements]
+   |         ||  `> [20, 25] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [21, 4] Return
+   |         ||     |      `> [21, 15] Selection
+   |         ||     |         type: Vehicule
+   |         ||     |         +> [21, 11] This
+   |         ||     |         |  type: Garage
+   |         ||     |         `> [21, 16] Identifier (vehicule)
+   |         ||     |            definition: field defined at [18, 11], type=Vehicule
+   |         []> [24, 2] DeclMethod
+   |             +> [24, 2] Identifier (void)
+   |             |  definition: type (builtin), type=void
+   |             +> [24, 7] Identifier (setVehicule)
+   |             |  definition: method defined at [24, 7], type=void
+   |             +> ListParam [List with 1 elements]
+   |             |  []> [24, 19] Param
+   |             |      +> [24, 19] Identifier (Vehicule)
+   |             |      |  definition: type defined at [4, 0], type=Vehicule
+   |             |      `> [24, 28] Identifier (v)
+   |             |         definition: parameter defined at [24, 19], type=Vehicule
+   |             `> [24, 31] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [25, 18] Assign
+   |                |      type: Vehicule
+   |                |      +> [25, 8] Selection
+   |                |      |  type: Vehicule
+   |                |      |  +> [25, 4] This
+   |                |      |  |  type: Garage
+   |                |      |  `> [25, 9] Identifier (vehicule)
+   |                |      |     definition: field defined at [18, 11], type=Vehicule
+   |                |      `> [25, 20] Identifier (v)
+   |                |         definition: parameter defined at [24, 19], type=Vehicule
+   `> [29, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [30, 11] DeclVar
+      |  ||  +> [30, 2] Identifier (Vehicule)
+      |  ||  |  definition: type defined at [4, 0], type=Vehicule
+      |  ||  +> [30, 11] Identifier (v)
+      |  ||  |  definition: variable defined at [30, 11], type=Vehicule
+      |  ||  `> [30, 13] Initialization
+      |  ||     `> [30, 15] New
+      |  ||        type: Vehicule
+      |  ||        `> [30, 19] Identifier (Vehicule)
+      |  ||           definition: type defined at [4, 0], type=Vehicule
+      |  []> [31, 11] DeclVar
+      |      +> [31, 2] Identifier (Garage)
+      |      |  definition: type defined at [17, 0], type=Garage
+      |      +> [31, 11] Identifier (g)
+      |      |  definition: variable defined at [31, 11], type=Garage
+      |      `> [31, 13] Initialization
+      |         `> [31, 15] New
+      |            type: Garage
+      |            `> [31, 19] Identifier (Garage)
+      |               definition: type defined at [17, 0], type=Garage
+      `> ListInst [List with 5 elements]
+         []> [33, 3] MethodCall
+         ||  type: void
+         ||  +> [33, 2] Identifier (v)
+         ||  |  definition: variable defined at [30, 11], type=Vehicule
+         ||  +> [33, 4] Identifier (setNombreRoues)
+         ||  |  definition: method defined at [7, 7], type=void
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [33, 19] Int (4)
+         ||         type: int
+         []> [34, 16] Assign
+         ||  type: int
+         ||  +> [34, 3] Selection
+         ||  |  type: int
+         ||  |  +> [34, 2] Identifier (v)
+         ||  |  |  definition: variable defined at [30, 11], type=Vehicule
+         ||  |  `> [34, 4] Identifier (nombreRoues)
+         ||  |     definition: field defined at [5, 6], type=int
+         ||  `> [34, 18] Int (2)
+         ||     type: int
+         []> [35, 3] MethodCall
+         ||  type: void
+         ||  +> [35, 2] Identifier (g)
+         ||  |  definition: variable defined at [31, 11], type=Garage
+         ||  +> [35, 4] Identifier (setVehicule)
+         ||  |  definition: method defined at [24, 7], type=void
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [35, 16] Identifier (v)
+         ||         definition: variable defined at [30, 11], type=Vehicule
+         []> [36, 17] MethodCall
+         ||  type: void
+         ||  +> [36, 3] MethodCall
+         ||  |  type: Vehicule
+         ||  |  +> [36, 2] Identifier (g)
+         ||  |  |  definition: variable defined at [31, 11], type=Garage
+         ||  |  +> [36, 4] Identifier (getVehicule)
+         ||  |  |  definition: method defined at [20, 11], type=Vehicule
+         ||  |  `> ListExpr [List with 0 elements]
+         ||  +> [36, 18] Identifier (setNombreRoues)
+         ||  |  definition: method defined at [7, 7], type=void
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [36, 33] Int (3)
+         ||         type: int
+         []> [37, 25] Assign
+             type: int
+             +> [37, 12] Selection
+             |  type: int
+             |  +> [37, 3] Selection
+             |  |  type: Vehicule
+             |  |  +> [37, 2] Identifier (g)
+             |  |  |  definition: variable defined at [31, 11], type=Garage
+             |  |  `> [37, 4] Identifier (vehicule)
+             |  |     definition: field defined at [18, 11], type=Vehicule
+             |  `> [37, 13] Identifier (nombreRoues)
+             |     definition: field defined at [5, 6], type=int
+             `> [37, 27] Int (1)
+                type: int
