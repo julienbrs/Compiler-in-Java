@@ -1,4 +1,5 @@
-// Test de la règle (3.39) : on ne peut pas cast de Object vers boolean.
+// Test of the rule (3.39) : can't cast Object to boolean.
+
 {
 	boolean var1;
 	Object var2;

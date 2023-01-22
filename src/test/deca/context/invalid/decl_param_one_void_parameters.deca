@@ -1,5 +1,5 @@
-// Test de la règle (2.9) : On déclare une méthode avec un
-// argument dont le type est void. Cela est interdit.
+// Test of the rule (2.9) : method declared with one parameter of
+// type void (forbidden and should be detected)
 
 class A {
     void method(void x) {}

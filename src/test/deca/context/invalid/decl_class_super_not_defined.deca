@@ -1,6 +1,5 @@
-// Test de la règle (1.3) : Si l'on essaie de déclarer une
-// classe fille d'une classe mère inexistante, on a une
-// erreur de contexte
+// Test of the rule (1.3) : can't declare a class that extends an
+// inexistant class
 
 class Voiture extends Vehicule {}
 

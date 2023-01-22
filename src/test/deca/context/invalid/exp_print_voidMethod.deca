@@ -1,5 +1,5 @@
-// Test la règle 3.31: On ne peut pas print un objet dont le type n'est ni un
-// flottant, ni un entier, ni un string
+// Test of the rule 3.31: Can't print an object whose type is not
+// a float, an int, or a string
 
 
 class A {

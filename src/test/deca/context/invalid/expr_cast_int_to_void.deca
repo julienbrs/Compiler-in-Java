@@ -1,4 +1,5 @@
-// Test de la règle (3.39) : on ne peut pas cast de int vers void.
+// Test of the rule (3.39) : can't cast int to void.
+
 {
 	void var1;
 	int var2;

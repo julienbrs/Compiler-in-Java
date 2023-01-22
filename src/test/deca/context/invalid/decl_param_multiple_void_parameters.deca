@@ -1,6 +1,6 @@
-// Test de la règle (2.9) : On déclare une méthode avec 
-// plusieurs arguments dont l'un d'eux est de type void.
-// Cela est interdit et doit être détecté.
+// Test of the rule (2.9) : method declared with 
+// several parameters including one of type void (forbidden and
+// should be detected)
 
 class A {
     void method(int i, void x) {}

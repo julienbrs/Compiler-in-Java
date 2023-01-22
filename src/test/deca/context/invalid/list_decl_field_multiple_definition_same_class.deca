@@ -1,4 +1,4 @@
-// Test la règle (2.4) : le champ est déjà déclaré dans la classe
+// Test of the rule (2.4) : a field can't be declared to times in the same class
 
 class A  {
     int x = 5;

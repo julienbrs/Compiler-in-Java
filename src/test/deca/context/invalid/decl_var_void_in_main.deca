@@ -1,4 +1,4 @@
-// Test la règle 3.17: une variable est de type void dans main
+// Test of the rule 3.17: a variable of type void in the main
 
 {
     void x = 12;

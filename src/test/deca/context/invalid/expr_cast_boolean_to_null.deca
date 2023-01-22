@@ -1,4 +1,4 @@
-// Test de la règle (3.39) : on ne peut pas cast de boolean vers null.
+// Test of the rule (3.39) : can't cast boolean to null.
 {
 	null var1;
 	boolean var2;

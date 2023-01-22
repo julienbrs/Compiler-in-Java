@@ -1,5 +1,0 @@
-// Déclaration de variable sur la même ligne
-
-{
-  int x = 1; int y = 2;
-}

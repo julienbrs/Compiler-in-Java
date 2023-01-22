@@ -1,4 +1,5 @@
-// Test la règle 3.17: déclaration d'une variable déjà existante dans le main
+// Test of the rule 3.17: declaration of a variable already existing
+// in the main
 
 {
     int x = 12;

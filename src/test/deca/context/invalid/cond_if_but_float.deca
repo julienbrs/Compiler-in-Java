@@ -1,4 +1,4 @@
-// Test la règle 3.29
+// Test of the rule 3.29 : if should have a boolean as a condition
 
 {
     float cond = 3.14;

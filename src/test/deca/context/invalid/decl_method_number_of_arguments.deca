@@ -1,5 +1,5 @@
-// Test de la règle (2.7) : La nouvelle méthode rajoute
-// un argument à ceux de la méthode redéfinie
+// Test of the rule (2.7) : the new method adds
+// a parameter to the original method
 
 class A {
     void method(int i, float f) {}
