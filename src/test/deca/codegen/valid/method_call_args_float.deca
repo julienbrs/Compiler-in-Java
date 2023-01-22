@@ -1,0 +1,14 @@
+// Test codegen, call a method with float as argument
+
+class Test {
+    float testMethod(float x, float y) {
+        return (x * y);
+    }
+}
+
+{
+    float a;
+    Test test = new Test();
+    a = test.testMethod(1.8, 3.5);
+    print(a);
+}

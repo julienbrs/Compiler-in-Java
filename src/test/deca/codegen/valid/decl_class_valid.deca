@@ -1,0 +1,19 @@
+// Test of rule (1.3) : valid declaration of a class
+// i.e. the declaration respects the two conditions:
+// - the class is not already defined
+// - the superclass exists
+
+class A {
+  // not already defined: OK
+  int x = 20;
+}
+
+class B extends A {
+  // super class is defined: OK
+}
+
+{
+  B b = new B();
+  println(b.x);
+}
+

@@ -1,0 +1,16 @@
+// Test of simple OR
+
+{
+    int x = 2;
+    int y = 7;
+    if (x < 3 || y > 5) {
+        println("x est inférieur à 3 ou y est plus grand que 5");
+    }
+    if (x < 3 || y < 5) {
+        println("true");
+    }
+    if (x > 3 || y > 5) {
+        println("true");
+    }
+
+}

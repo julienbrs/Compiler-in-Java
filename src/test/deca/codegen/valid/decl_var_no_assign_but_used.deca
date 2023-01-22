@@ -1,0 +1,8 @@
+// codegen test, the second ident has no value
+// value assigned so it is 0
+
+{
+    int x, y = 8;
+    println(y);
+    println(x);
+}

@@ -1,0 +1,34 @@
+// Test rule (3.28): During the `return` instruction
+// of a method, the type of the object returned must be
+// must be assignable to the return type of the method.
+
+class A {
+    float getFloat() {
+        return 3.14; // fonctionne car 3.14 est de type float
+    }
+    
+    float getInt() {
+        return 3; // fonctionne car sous-type de float
+    }
+}
+
+class B extends A {
+    A getObjectOfTypeA() {
+        B b = new B();
+        return b; // fonctionne car B sous-type de A
+    }
+}
+
+{
+    A abis;
+    A a = new A();
+    B b = new B();
+
+    println(a.getFloat());
+    println(a.getInt());
+
+    abis = b.getObjectOfTypeA();
+    if (abis instanceof A){
+        println("It works");
+    }
+}

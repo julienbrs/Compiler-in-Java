@@ -1,0 +1,30 @@
+// Test codegen, equals can be possible with unassigned var
+
+{
+    int x;
+    int y;
+
+    float f1;
+    float f2;
+
+    boolean b1;
+    boolean b2;
+
+    if (x == y){
+        println("x and y are both equals to ", x);
+    }
+
+    if (f1 == f2){
+        println("f1 and f2 are both equals to ", f1);
+    }
+
+    if (b1 == b2){
+        if (b1){
+            println("b1 and b2 are both equals to true");
+        }
+        else {
+            println("b1 and b2 are both equals to true");
+        }
+    }
+
+}

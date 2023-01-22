@@ -8,6 +8,10 @@ class A {
     int testMethod(){
         return x;
     }
+
+    void dumbMethod(){ // It's an error
+        return x;
+    }
 }
 
 {

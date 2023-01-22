@@ -1,0 +1,14 @@
+// No return when it was expected
+
+class A  {
+    int getInt(){
+        int x = 5;
+    }
+}
+
+{
+    A a = new A();
+    print(a.getInt());
+}
+
+// TODO: ne devrait on pas throw une erreur plutot qu'un simple print ?

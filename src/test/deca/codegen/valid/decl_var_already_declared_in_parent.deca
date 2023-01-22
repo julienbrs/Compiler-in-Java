@@ -1,0 +1,18 @@
+// Test rule 3.17: declaration of an already existing variable
+// in the parent class
+
+class A {
+    int x = 12;
+
+}
+
+class B extends A {
+    int x = 5;
+}
+
+{
+    A a = new A();
+    B b = new B();
+    println(b.x);
+}
+

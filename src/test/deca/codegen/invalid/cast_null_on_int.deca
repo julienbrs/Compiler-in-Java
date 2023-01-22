@@ -1,0 +1,8 @@
+// Test cast null on int
+// Incompatible cast boolean to int
+
+{
+    if ((int)(true) instanceof int ){
+        println("cast boolean to int");
+    } 
+}
