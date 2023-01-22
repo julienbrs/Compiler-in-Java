@@ -506,7 +506,7 @@ class ArrayTab {
         }
         nbFact = A[0].length;
         nbCol = B[0].length;
-        if (A[0].length == B.length) {
+        if (A[0].length != B.length) {
             return null;
         }
         while (i < matrice.length) {
@@ -542,7 +542,7 @@ class ArrayTab {
         }
         nbFact = A[0].length;
         nbCol = B[0].length;
-        if (A[0].length == B.length) {
+        if (A[0].length != B.length) {
             return null;
         }
         while (i < matrice.length) {
@@ -568,7 +568,7 @@ class ArrayTab {
 
     // ---------- MULT ARRAY MATRIX ----------
 
-    float[] multArrayMatrixInt(float[] A, float[][] B) {
+    float[] multArrayMatrixFloat(float[] A, float[][] B) {
         float[] vector = float[B[0].length]();
         int i = 0;
         int k = 0;
@@ -578,7 +578,7 @@ class ArrayTab {
             return null;
         }
         nbCol = B[0].length;
-        if (A.length == B.length) {
+        if (A.length != B.length) {
             return null;
         }
         while (i < vector.length) {
@@ -604,7 +604,7 @@ class ArrayTab {
             return null;
         }
         nbCol = B[0].length;
-        if (A.length == B.length) {
+        if (A.length != B.length) {
             return null;
         }
         while (i < vector.length) {
@@ -613,6 +613,56 @@ class ArrayTab {
             }
             while (k < A.length) {
                 vector[i] = vector[i] + A[k] * B[k][j];
+                k = k + 1;
+            }
+            i = i + 1;
+        }
+        return vector;
+    }
+
+    // ---------- MULT MATRIX ARRAY ----------
+
+    float[] multMatrixArrayFloat(float[][] A, float[] B) {
+        float[] vector = float[B[0].length]();
+        int i = 0;
+        int k = 0;
+        int nbFact;
+        if (A.length == 0 || B.length == 0) {
+            return null;
+        }
+        if (A[0].length != B.length) {
+            return null;
+        }
+        while (i < vector.length) {
+            if (A[i].length != A[0].length) {
+                return null;
+            }
+            while (k < A[0].length) {
+                vector[i] = vector[i] + A[i][k] * B[k];
+                k = k + 1;
+            }
+            i = i + 1;
+        }
+        return vector;
+    }
+
+    int[] multMatrixArrayInt(int[][] A, int[] B) {
+        int[] vector = int[B[0].length]();
+        int i = 0;
+        int k = 0;
+        int nbFact;
+        if (A.length == 0 || B.length == 0) {
+            return null;
+        }
+        if (A.length != B.length) {
+            return null;
+        }
+        while (i < vector.length) {
+            if (A[i].length != A[0].length) {
+                return null;
+            }
+            while (k < A[0].length) {
+                vector[i] = vector[i] + A[i][k] * B[k];
                 k = k + 1;
             }
             i = i + 1;
