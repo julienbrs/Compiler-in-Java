@@ -1,0 +1,8 @@
+class DummyClass extends Object {
+	bool getBool() {
+		bool bool_t = true;
+		return bool_t;
+	}
+}
+
+

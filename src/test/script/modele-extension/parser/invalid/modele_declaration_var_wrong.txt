@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/declaration_var_wrong.deca:4:10: extraneous input '5' expecting ';'

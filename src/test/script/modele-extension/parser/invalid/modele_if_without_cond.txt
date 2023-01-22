@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/if_without_cond.deca:4:7: missing '(' at '{'

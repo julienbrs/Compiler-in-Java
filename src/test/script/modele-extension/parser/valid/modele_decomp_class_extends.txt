@@ -1,0 +1,9 @@
+class People extends Object {
+	int Courage = 50;
+}
+
+class Knight extends People {
+	int Courage = 100;
+}
+
+
