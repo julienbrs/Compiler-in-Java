@@ -14,7 +14,7 @@ class ArrayLib {
             }
             i = i + 1;
         }
-        print("]);
+        print("]");
     }
 
     void printTabInt(int[] tab) {
@@ -27,7 +27,7 @@ class ArrayLib {
             }
             i = i + 1;
         }
-        print("]);
+        print("]");
     }
 
     // ---------- FILL ----------
@@ -136,9 +136,9 @@ class ArrayLib {
     void quicksortRecFloat(float[] tab, int low, int high) {
         int part;
         if (low < high) {
-            part = partition(tab, low, high);
-            quicksort(tab, low, part-1);
-            quicksort(tab, part + 1, high);
+            part = partitionFloat(tab, low, high);
+            quicksortRecFloat(tab, low, part-1);
+            quicksortRecFloat(tab, part + 1, high);
         }
     }
 
@@ -147,10 +147,10 @@ class ArrayLib {
     }
 
     int partitionInt(int[] tab, int low, int high) {
-        float pivot = tab[high];
+        int pivot = tab[high];
         int index = low - 1;
         int i = low;
-        float tmp;
+        int tmp;
         while (i < high) {
             if (tab[i] < pivot) {
                 index = index + 1;
@@ -170,14 +170,14 @@ class ArrayLib {
     void quicksortRecInt(int[] tab, int low, int high) {
         int part;
         if (low < high) {
-            part = partition(tab, low, high);
-            quicksort(tab, low, part-1);
-            quicksort(tab, part + 1, high);
+            part = partitionInt(tab, low, high);
+            quicksortRecInt(tab, low, part-1);
+            quicksortRecInt(tab, part + 1, high);
         }
     }
 
     void quicksortInt(int[] tab) {
-        quicksortRecFloat(tab, 0, tab.length - 1);
+        quicksortRecInt(tab, 0, tab.length - 1);
     }
 
     // ---------- COMPARE ----------
@@ -287,7 +287,7 @@ class ArrayLib {
     // ---------- DEEPCOPY OF RANGE ----------
 
     float[] deepCopyOfRangeFloat(float[] tab, int deb, int fin) {
-        float[] newTab = float[deb - fin + 1];
+        float[] newTab = new float[deb - fin + 1]();
         int i = deb;
         while (i < fin+1) {
             if (i < tab.length) {
@@ -301,7 +301,7 @@ class ArrayLib {
     }
 
     int[] deepCopyOfRangeInt(int[] tab, int deb, int fin) {
-        int[] newTab = int[deb - fin + 1];
+        int[] newTab = new int[deb - fin + 1]();
         int i = deb;
         while (i < fin+1) {
             if (i < tab.length) {
@@ -315,7 +315,7 @@ class ArrayLib {
     }
 
     boolean[] deepCopyOfRangeBool(boolean[] tab, int deb, int fin) {
-        boolean[] newTab = boolean[deb - fin + 1];
+        boolean[] newTab = new boolean[deb - fin + 1]();
         int i = deb;
         while (i < fin+1) {
             if (i < tab.length) {
