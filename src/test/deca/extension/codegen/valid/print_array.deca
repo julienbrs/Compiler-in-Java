@@ -1,4 +1,7 @@
 #include "ArrayLib.decah"
+
+// Tests the print functions for float and int arrays
+
 {
 ArrayLib a = new ArrayLib();
 int[] r = {4,4} ;

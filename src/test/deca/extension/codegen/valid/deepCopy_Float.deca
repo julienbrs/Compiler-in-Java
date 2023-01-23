@@ -1,4 +1,7 @@
 #include "ArrayLib.decah"
+
+// Tests deepCopy on float arrays
+
 {
 ArrayLib a = new ArrayLib();
 float[] r = {1,2,3};

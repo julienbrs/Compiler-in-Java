@@ -30,6 +30,24 @@ class ArrayLib {
         print("]");
     }
 
+    void printTabBoolean(boolean[] tab) {
+        int i = 0;
+        print("[");
+        while (i < tab.length) {
+            if (tab[i]) {
+                print("true");
+            }
+            else {
+                print("false");
+            }
+            if (i != tab.length - 1) {
+                print(", ");
+            }
+            i = i + 1;
+        }
+        print("]");
+    }
+
     // ---------- FILL ----------
 
     void fillFloat(float[] tab, float element) {
@@ -315,7 +333,7 @@ class ArrayLib {
     }
 
     boolean[] deepCopyOfRangeBool(boolean[] tab, int deb, int fin) {
-        boolean[] newTab = new boolean[deb - fin + 1]();
+        boolean[] newTab = new boolean[fin - deb + 1]();
         int i = deb;
         while (i < fin+1) {
             if (i < tab.length) {

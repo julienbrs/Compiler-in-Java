@@ -1,0 +1,18 @@
+#include "ArrayLib.decah"
+
+// Tests deepCopy on boolean arrays
+
+{
+ArrayLib a = new ArrayLib();
+boolean[] r = {true,false};
+
+boolean[] b= a.deepCopyBool(r);
+println("deepCopy");
+print("r : ");
+a.printTabBoolean(r);
+println();
+print("b : ");
+a.printTabBoolean(b);
+println();
+
+}

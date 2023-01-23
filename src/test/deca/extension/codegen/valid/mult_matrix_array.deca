@@ -1,15 +1,13 @@
 #include "MatrixLib.decah"
 #include "ArrayLib.decah"
+
+// Tests multiplication of two matrix of different lengths
+
 {
 MatrixLib a = new MatrixLib();
 ArrayLib e = new ArrayLib();
 int[][] r = {{4,4},{4,4}} ;
 int[]r1 = {4,4};
 
-
 e.printTabInt(a.multMatrixArrayInt(r,r1));
-
-
-
-
 }
