@@ -1,9 +1,0 @@
-// Programme de test invalide, utilisation d'une variable non déclarée
-
-
-{
-    int x = 5;
-    if (x < y) {
-        println("x est plus grand que 3 et le résultat de la division par deux est inférieur à 10");
-    }
-}
