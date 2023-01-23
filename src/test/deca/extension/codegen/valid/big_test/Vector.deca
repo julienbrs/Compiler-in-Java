@@ -1,3 +1,5 @@
+#include "Rational.deca"
+
 class Vector {
     protected Rational[] tab;
     protected int length;

@@ -1,6 +1,5 @@
 // Programme de test
 
-#include "Rational.deca"
 #include "Vector.deca"
 
 {
