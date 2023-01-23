@@ -1,0 +1,17 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+float[][] r = {{1,2},{1,2}};
+float[][] r1 = {{1,2},{1,2}};
+println("add of r :");
+a.printMatFloat(r);
+println();
+println("with r1 :");
+a.printMatFloat(r1);
+println();
+a.printMatFloat(a.addFloat(r,r1));
+
+println();
+
+
+}

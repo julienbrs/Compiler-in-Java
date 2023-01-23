@@ -1,9 +1,0 @@
-class Person extends Object {
-	int age;
-}
-
-{
-	Person Jean = new Person();
-	(Jean.age = 12);
-}
-

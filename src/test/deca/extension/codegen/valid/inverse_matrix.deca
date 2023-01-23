@@ -1,0 +1,11 @@
+#include "MatrixLib.decah"
+
+// inverse float matrix
+
+{
+MatrixLib a = new MatrixLib();
+float[][] tab1 = {{1, 2}, {3, 4}};
+float[][] newMat = a.inverse(tab1);
+println("inverse of float matrix :");
+a.printMatFloat(newMat);
+}

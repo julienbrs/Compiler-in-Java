@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/cast_int_to_number.deca:5:10: no viable alternative at input '('

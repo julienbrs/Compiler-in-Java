@@ -1,5 +1,0 @@
-i est égal à 0
-i est égal à 1
-i est égal à 2
-i est égal à 3
-i est égal à 4

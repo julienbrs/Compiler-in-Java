@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/method_got_attribute_name.deca:7:4: The method "variableName" is already declared : rule 2.6

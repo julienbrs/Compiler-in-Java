@@ -1,0 +1,1 @@
+src/test/deca/extension/context/invalid/no_tab_in_param.deca:11:8: Can't assign type : "int" to type :"int[]" : rule 3.28

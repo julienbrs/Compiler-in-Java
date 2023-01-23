@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/exp_print_object.deca:10:4: Can't print other than int, float or string : rule 3.31

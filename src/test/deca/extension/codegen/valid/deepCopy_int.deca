@@ -1,4 +1,7 @@
 #include "ArrayLib.decah"
+
+// Tests deepCopy on int arrays
+
 {
 ArrayLib a = new ArrayLib();
 int[] r = {1,2,3};

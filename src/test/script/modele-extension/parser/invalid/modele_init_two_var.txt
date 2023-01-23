@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/init_two_var.deca:4:18: mismatched input '1' expecting IDENT

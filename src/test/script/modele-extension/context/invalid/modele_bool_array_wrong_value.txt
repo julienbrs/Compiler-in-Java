@@ -1,0 +1,1 @@
+src/test/deca/extension/context/invalid/bool_array_wrong_value.deca:5:14: Can't assign "int[]" to "boolean[]" : rule extension

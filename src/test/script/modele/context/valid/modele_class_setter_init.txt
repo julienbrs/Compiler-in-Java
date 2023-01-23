@@ -25,12 +25,12 @@
    |             +> [6, 9] Identifier (init)
    |             |  definition: method defined at [6, 9], type=void
    |             +> ListParam [List with 2 elements]
-   |             |  []> [6, 14] Param
+   |             |  []> [6, 14] DeclParam
    |             |  ||  +> [6, 14] Identifier (float)
    |             |  ||  |  definition: type (builtin), type=float
    |             |  ||  `> [6, 20] Identifier (intelligence)
    |             |  ||     definition: parameter defined at [6, 14], type=float
-   |             |  []> [6, 34] Param
+   |             |  []> [6, 34] DeclParam
    |             |      +> [6, 34] Identifier (int)
    |             |      |  definition: type (builtin), type=int
    |             |      `> [6, 38] Identifier (age)

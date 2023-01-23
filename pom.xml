@@ -319,6 +319,16 @@
                             <goal>exec</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>ALL TEST OF EXTENSION</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-all-extension.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 

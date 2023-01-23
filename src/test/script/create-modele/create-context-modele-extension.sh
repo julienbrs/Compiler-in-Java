@@ -18,13 +18,9 @@ PATH=./src/test/script/launchers:"$PATH"
 
 exit_status_final=0
 
-declare log_activated=false
-if [ "$2" == "--log" ]; then
-    log_activated=true
-fi
-
+###############################
 echo "${purple}Création des modèles de tests context sensés être invalides....${reset}"
-for cas_de_test in $(find src/test/deca/context/invalid -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/context/invalid -maxdepth 1 -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
     output_file=$(printf "src/test/script/modele-extension/context/invalid/modele_%s.txt" "$filename")
@@ -35,9 +31,9 @@ for cas_de_test in $(find src/test/deca/context/invalid -name '*.deca'); do
     fi
 
 done
-
 echo "${purple}Création des modèles de tests context sensés être valides....${reset}"
-for cas_de_test in $(find src/test/deca/context/valid/ -name '*.deca'); do
+
+for cas_de_test in $(find src/test/deca/extension/context/valid/ -maxdepth 1 -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
     output_file=$(printf "src/test/script/modele-extension/context/valid/modele_%s.txt" "$filename")
@@ -47,13 +43,3 @@ for cas_de_test in $(find src/test/deca/context/valid/ -name '*.deca'); do
         echo "modele_$filename déjà existant"
     fi
 done
-
-# End of the script
-# Check if the --exit-status option was passed
-# if [ "$1" == "--exit-status" ]; then
-#     # Print the exit status
-#     echo "The script exited with a status of $?"
-#     exit $exit_status
-# else
-#     exit $exit_status
-# fi

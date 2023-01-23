@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/list_decl_method_multiple_definition_same_class.deca:9:4: The method "displayHello" is already declared : rule 2.6

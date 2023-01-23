@@ -13,7 +13,7 @@
    |  ||         +> [6, 8] Identifier (method)
    |  ||         |  definition: method defined at [6, 8], type=float
    |  ||         +> ListParam [List with 1 elements]
-   |  ||         |  []> [6, 15] Param
+   |  ||         |  []> [6, 15] DeclParam
    |  ||         |      +> [6, 15] Identifier (int)
    |  ||         |      |  definition: type (builtin), type=int
    |  ||         |      `> [6, 19] Identifier (n)
@@ -34,7 +34,7 @@
    |  ||         +> [11, 8] Identifier (method)
    |  ||         |  definition: method defined at [11, 8], type=float
    |  ||         +> ListParam [List with 1 elements]
-   |  ||         |  []> [11, 15] Param
+   |  ||         |  []> [11, 15] DeclParam
    |  ||         |      +> [11, 15] Identifier (int)
    |  ||         |      |  definition: type (builtin), type=int
    |  ||         |      `> [11, 19] Identifier (n)

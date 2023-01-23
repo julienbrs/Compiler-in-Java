@@ -1,0 +1,32 @@
+`> [1, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [1, 0] DeclClass
+   |      +> [1, 6] Identifier (a)
+   |      +> [builtin] Identifier (Object)
+   |      +> ListDeclField [List with 1 elements]
+   |      |  []> [2, 10] [visibility = PUBLIC]  DeclField
+   |      |      +> [2, 4] Array (Int[] 1 )
+   |      |      +> [2, 10] Identifier (a)
+   |      |      +> [2, 13] Initialization
+   |      |      |  `> [2, 15] ArrayLiteral
+   |      |      |     `> ListExpr [List with 3 elements]
+   |      |      |        []> [2, 16] Int (4)
+   |      |      |        []> [2, 18] Int (4)
+   |      |      |        []> [2, 20] Int (5)
+   |      `> ListDeclMethod [List with 0 elements]
+   `> [5, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [6, 6] DeclVar
+      |      +> [6, 4] Identifier (a)
+      |      +> [6, 6] Identifier (b)
+      |      `> [6, 8] Initialization
+      |         `> [6, 10] New
+      |            `> [6, 14] Identifier (a)
+      `> ListInst [List with 1 elements]
+         []> [7, 4] Print
+             `> ListExpr [List with 1 elements]
+                []> [7, 13] ArraySel
+                    +> [7, 11] Selection
+                    |  +> [7, 10] Identifier (a)
+                    |  `> [7, 12] Identifier (a)
+                    `> [7, 14] Int (2)

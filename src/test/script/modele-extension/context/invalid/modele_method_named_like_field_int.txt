@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/method_named_like_field_int.deca:6:4: The method "champ" is already declared : rule 2.6

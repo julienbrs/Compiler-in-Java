@@ -1,2 +1,2 @@
-Error: Could not find or load main class fr.ensimag.deca.DecacMain
-Caused by: java.lang.ClassNotFoundException: fr.ensimag.deca.DecacMain
+false
+true

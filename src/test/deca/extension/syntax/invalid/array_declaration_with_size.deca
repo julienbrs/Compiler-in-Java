@@ -1,5 +1,0 @@
-// Can't put length in the declaration
-
-{
-    int[4] a ;
-}

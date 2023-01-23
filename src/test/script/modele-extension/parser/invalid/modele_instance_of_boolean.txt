@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/instance_of_boolean.deca:4:17: mismatched input 'true' expecting IDENT

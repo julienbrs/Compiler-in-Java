@@ -1,0 +1,1 @@
+src/test/deca/extension/parser/invalid/create_table.deca:9:10: mismatched input ']' expecting {'{', '(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

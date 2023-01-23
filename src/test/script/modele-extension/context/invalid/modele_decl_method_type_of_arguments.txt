@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/decl_method_type_of_arguments.deca:11:4: The method "displayHello" is already define in super class with a different signature : rule 2.7

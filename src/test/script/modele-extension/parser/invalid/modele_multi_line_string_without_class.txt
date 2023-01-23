@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/multi_line_string_without_class.deca:4:2: extraneous input '" I am just a simple\n  multi line string"' expecting '}'
