@@ -1,0 +1,26 @@
+#include "ArrayLib.decah"
+{
+ArrayLib a = new ArrayLib();  
+float[] tab = {1,7,8,9,2,4,5,6,1,2};
+float[] tab2= {1,7,8,9,2,4,5,6,1,2};
+println("partition");
+a.printTabFloat(tab);
+println();
+a.partitionFloat(tab,0,7);
+a.printTabFloat(tab);
+println();
+println("quicksort");
+a.printTabFloat(tab);
+println();
+a.quicksortFloat(tab);
+a.printTabFloat(tab);
+println();
+println("quicksort rec ");
+a.printTabFloat(tab2);
+println();
+a.quicksortRecFloat(tab2,0,4);
+a.printTabFloat(tab2);
+println();
+
+
+}
