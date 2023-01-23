@@ -1,0 +1,17 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+int[][] r = new int[5][1]() ;
+float[][] r1 =new float[5][2]();
+boolean[][] r2 = new boolean[5][3]() ;
+println("remplissage tab");
+a.fillInt(r,4);
+a.fillFloat(r1,4);
+a.fillBoolean(r2,true);
+println("affichage tab");
+a.printMatInt(r);
+println();
+a.printMatFloat(r1);
+
+
+}

@@ -1,0 +1,15 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+float[][] r = {{1,2,3},{1,2,1}};
+
+float[][] b= a.deepCopyOfRangeFloat(r,0,0,1,1);
+println("deepCopy of range 0,0 to 1,1");
+print("r : ");
+a.printMatFloat(r);
+println();
+print("b : ");
+a.printMatFloat(b);
+println();
+
+}

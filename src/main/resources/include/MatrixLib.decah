@@ -11,15 +11,15 @@ class MatrixLib {
         while (i < matrice.length) {
             print("[");
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 print(matrice[i][j]);
-                if (j == matrice[0].length - 1) {
+                if (j != matrice[i].length - 1) {
                     print(", ");
                 }
                 j = j + 1;
             }
             print("]");
-            if (i == matrice.length - 1) {
+            if (i != matrice.length - 1) {
                 print(", ");
             }
             i = i + 1;
@@ -34,15 +34,15 @@ class MatrixLib {
         while (i < matrice.length) {
             print("[");
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 print(matrice[i][j]);
-                if (j == matrice[0].length - 1) {
+                if (j != matrice[i].length - 1) {
                     print(", ");
                 }
                 j = j + 1;
             }
             print("]");
-            if (i == matrice.length - 1) {
+            if (i != matrice.length - 1) {
                 print(", ");
             }
             i = i + 1;
@@ -57,7 +57,7 @@ class MatrixLib {
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j <matrice[i].length) {
                 matrice[i][j] = element;
                 j = j + 1;
             }
@@ -70,7 +70,7 @@ class MatrixLib {
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 matrice[i][j] = element;
                 j = j + 1;
             }
@@ -78,12 +78,12 @@ class MatrixLib {
         }
     }
 
-    void fillBool(boolean[][] matrice, boolean element) {
+    void fillBoolean(boolean[][] matrice, boolean element) {
         int i = 0;
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 matrice[i][j] = element;
                 j = j + 1;
             }
@@ -98,7 +98,7 @@ class MatrixLib {
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 if (matrice[i][j] == element) {
                     return {i, j};
                 }
@@ -114,7 +114,7 @@ class MatrixLib {
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 if (matrice[i][j] == element) {
                     return {i, j};
                 }
@@ -130,7 +130,7 @@ class MatrixLib {
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 if (matrice[i][j] == element) {
                     return {i, j};
                 }
@@ -146,7 +146,7 @@ class MatrixLib {
         int j = 0;
         while (i < matrice.length) {
             j = 0;
-            while (j < matrice[0].length) {
+            while (j < matrice[i].length) {
                 if (matrice[i][j].equals(element)) {
                     return {i, j};
                 }
@@ -229,18 +229,21 @@ class MatrixLib {
 
     float[][] deepCopyFloat(float[][] matrix) {
         float[][] newMatrix;
+        float[] line;
         int i = 0;
         int j = 0;
         if (matrix.length == 0) {
             return {};
         }
-        newMatrix = new float[matrix.length][matrix[0].length]();
+        newMatrix = new float[matrix.length][]();
         while (i < matrix.length) {
             j = 0;
-            while (j < matrix[0].length) {
-                newMatrix[i][j] = matrix[i][j];
+            line = new float[matrix[i].length]();
+            while (j < matrix[i].length) {
+                line[j] = matrix[i][j];
                 j = j + 1;
             }
+            newMatrix[i]=line;
             i = i + 1;
         }
         return newMatrix;
@@ -250,16 +253,19 @@ class MatrixLib {
         int[][] newMatrix;
         int i = 0;
         int j = 0;
+        int[] line;
         if (matrix.length == 0) {
             return {};
         }
         newMatrix = new int[matrix.length][matrix[0].length]();
         while (i < matrix.length) {
             j = 0;
-            while (j < matrix[0].length) {
-                newMatrix[i][j] = matrix[i][j];
+            line = new int[matrix[i].length]();
+            while (j < matrix[i].length) {
+                line[j] = matrix[i][j];
                 j = j + 1;
             }
+            newMatrix[i]=line;
             i = i + 1;
         }
         return newMatrix;
@@ -269,12 +275,15 @@ class MatrixLib {
         boolean[][] newMatrix = new boolean[matrix.length][matrix[0].length]();
         int i = 0;
         int j = 0;
+        boolean[] line;
         while (i < matrix.length) {
             j = 0;
+            line = new boolean[matrix[i].length]();
             while (j < matrix[0].length) {
-                newMatrix[i][j] = matrix[i][j];
+               line[j] = matrix[i][j];
                 j = j + 1;
             }
+            newMatrix[i]=line;
             i = i + 1;
         }
         return newMatrix;
@@ -346,7 +355,7 @@ class MatrixLib {
         int i = 0;
         int n = matrice.length;
         while (i < matrice.length) {
-            if (matrice[i].length == n) {
+            if (matrice[0].length == n) {
                 trace = trace + matrice[i][i];
             } else {
                 matrixError();
@@ -361,7 +370,7 @@ class MatrixLib {
         int i = 0;
         int n = matrice.length;
         while (i < matrice.length) {
-            if (matrice[i].length == n) {
+            if (matrice[0].length == n) {
                 trace = trace + matrice[i][i];
             } else {
                 matrixError();
@@ -660,6 +669,7 @@ class MatrixLib {
                 vector[i] = vector[i] + A[i][k] * B[k];
                 k = k + 1;
             }
+            k=0;
             i = i + 1;
         }
         return vector;
