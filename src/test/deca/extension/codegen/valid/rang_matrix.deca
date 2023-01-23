@@ -1,0 +1,12 @@
+#include "MatrixLib.decah"
+
+// rang float matrix
+
+{
+MatrixLib a = new MatrixLib();
+float[][] tab1 = {{1, 2}, {3, 4}};
+float rg;
+println("rang of float matrix :");
+rg = a.rang(tab1);
+print(rg);
+}
