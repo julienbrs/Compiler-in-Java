@@ -1,7 +1,7 @@
 // Test parser, invalid int format avec debordement
 
 {
-    int x = -2147483648;
-    x = x - 1;
+    int x = -2147483647;
+    x = x - 2;
     println(x);
 }
