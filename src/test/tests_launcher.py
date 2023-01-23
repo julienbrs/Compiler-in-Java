@@ -19,24 +19,28 @@ ROOT_PROJECT_NAME = "gl11"
 
 # @modif : les répertoires de tests qui seront parcourus
 TEST_FOLDERS = [
-    "deca/context/",
+    # "deca/context/invalid/",
     #"deca/syntax/lexer/provided/",
     #"deca/syntax/parser/provided/",
     #"deca/syntax/parser/valid/",
-    #"deca/syntax/parser/invalid/"
+    #"deca/syntax/parser/invalid/",
+    "deca/context/valid/expr_cast/"
 ]
 
 # @modif : les fichiers de tests que l'on souhaite exécuter
 FILES_TO_INCLUDE = [
-    #"deca/syntax/parser/valid/ineq/ineq_float_leq_string.deca",
-    #"deca/syntax/parser/valid/empty.deca",
-    #"deca/codegen/valid/addition_float_int.deca",
+    #"deca/context/invalid/ident_not_declared.deca",
+    #"deca/context/invalid/rvalue_assign_bool_to_int_in_class.deca",
+    #"deca/context/invalid/rvalue_assign_class_to_int_in_class.deca",
+    #"deca/context/invalid/rvalue_assign_float_to_int_in_class.deca",
+    #"deca/context/invalid/rvalue_init_bool_to_int_in_class.deca",
+    #"deca/context/invalid/rvalue_init_class_to_int_in_class.deca",
 ]
 
 # @modif : les fichiers de tests que l'on ne souhaite pas exécuter
 FILES_TO_EXCLUDE = [
     "deca/context/valid/decoration-test.deca",
-    "deca/syntax/parser/provided/moitie.deca"
+    "deca/syntax/parser/provided/moitie.deca",
 ]
 
 class Test(object):
@@ -80,7 +84,7 @@ class Test(object):
             # s += "| " + SR + "OUTPUT A DEFINIR" + ER
             logfile.write("⚠️  " + f"{SB}Test({EB}{self.nom}{SB}): type({EB}{self.type_test}{SB}){EB}\n")
             logfile.write('\t' + SR + "OUTPUT A DEFINIR" + ER + '\n')
-            subprocess.run(f"echo ⚠️' '{SB}Test\({EB}{self.nom}{SB}\): type\({EB}{self.type_test}{SB}\){EB}\n", shell=True)
+            subprocess.run(f"echo ⚠️ ' '{SB}Test\({EB}{self.nom}{SB}\): type\({EB}{self.type_test}{SB}\){EB}\n", shell=True)
             return
 
         test_filename_with_path = self.path + self.nom + self.extension
