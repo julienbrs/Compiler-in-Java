@@ -63,23 +63,13 @@ test_context_unitaire() {
 }
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/context/invalid/ -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/context/invalid/ -name '*.deca'); do
     test_context_unitaire "$cas_de_test" 1
 done
 
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/context/valid/ -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/context/valid/ -name '*.deca'); do
     test_context_unitaire "$cas_de_test" 0
 done
-
-# End of the script
-# Check if the --exit-status option was passed
-# if [ "$1" == "--exit-status" ]; then
-#     # Print the exit status
-#     echo "The script exited with a status of $exit_status"
-#     exit $exit_status
-# else
-#     exit $exit_status
-# fi

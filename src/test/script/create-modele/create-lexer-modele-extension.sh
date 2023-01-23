@@ -16,18 +16,11 @@ cd "$(dirname "$0")"/../../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
-# exit_status_final=0
-
-# declare log_activated=false
-# if [ "$2" == "--log" ]; then
-#     log_activated=true
-# fi
-
 echo "${purple}Création des modèles de tests lexer sensés être invalides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/invalid -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/lexer/invalid -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
-    output_file=$(printf "src/test/script/modele/lexer/invalid/modele_%s.txt" "$filename")
+    output_file=$(printf "src/test/script/modele-extension/lexer/invalid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
         test_lex_ext "$cas_de_test" >"$output_file" 2>&1
     else
@@ -36,10 +29,10 @@ for cas_de_test in $(find src/test/deca/syntax/lexer/invalid -name '*.deca'); do
 done
 
 echo "${purple}Création des modèles de tests lexer sensés être valides....${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/valid -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/lexer/valid -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
-    output_file=$(printf "src/test/script/modele/lexer/valid/modele_%s.txt" "$filename")
+    output_file=$(printf "src/test/script/modele-extension/lexer/valid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
         test_lex_ext "$cas_de_test" >"$output_file" 2>&1
     else
