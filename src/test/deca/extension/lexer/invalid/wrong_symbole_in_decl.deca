@@ -1,0 +1,5 @@
+// Wrong symbol in declaration
+
+{
+    int[] a # {2, 1};
+}

@@ -1,3 +1,5 @@
+// creation of an int array
+
 class a {
     Int[] a  = {4,4,5};
 }

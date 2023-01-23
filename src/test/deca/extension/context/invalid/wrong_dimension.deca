@@ -1,4 +1,5 @@
-{
-int[] a = {{1,5},{1,8}};
+// Wrong dimnesion for the array
 
+{
+    int[] a = {{1,5},{1,8}};
 }
