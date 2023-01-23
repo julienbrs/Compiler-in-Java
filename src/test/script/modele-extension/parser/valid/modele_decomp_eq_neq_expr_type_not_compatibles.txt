@@ -1,9 +1,0 @@
-{
-	int x = 5;
-	float y = 0x1.ep2;
-	if ((x == y)) {
-		println("x est égal à y");
-	} else {
-	}
-}
-

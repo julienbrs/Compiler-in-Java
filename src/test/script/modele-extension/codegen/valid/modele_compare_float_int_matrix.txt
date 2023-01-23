@@ -1,0 +1,3 @@
+r et r1 sont egaux
+r et r2 ne sont pas egaux
+r et r3 ne sont pas egaux

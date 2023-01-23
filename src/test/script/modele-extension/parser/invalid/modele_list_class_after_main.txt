@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/list_class_after_main.deca:7:0: mismatched input 'class' expecting {',', '=', '||', '&&', '==', '!=', '<=', '>=', '>', '<', 'instanceof', '+', '-', '*', '/', '%', '.', ';', '['}

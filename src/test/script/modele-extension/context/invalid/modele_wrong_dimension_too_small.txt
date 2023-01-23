@@ -1,0 +1,1 @@
+src/test/deca/extension/context/invalid/wrong_dimension_too_small.deca:4:25: Can't assign "float[]" to "float[][]" : rule extension

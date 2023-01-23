@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/rvalue_assign_bool_to_int_in_class.deca:6:12: Can't assign type : "boolean" to type :"int" : rule 3.28

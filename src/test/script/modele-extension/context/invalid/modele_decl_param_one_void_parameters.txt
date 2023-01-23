@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/decl_param_one_void_parameters.deca:5:16: Type can't be void : rule 2.9

@@ -1,7 +1,0 @@
-i est égal à 0
-i est égal à 1
-i est égal à 2
-i est égal à 3
-i est égal à 4
-i est égal à 5
-i est égal à 6

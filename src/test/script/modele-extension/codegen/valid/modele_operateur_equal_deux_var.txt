@@ -1,1 +1,0 @@
-/home/julien/ensimag/GL/gl11/./src/test/deca/codegen/valid/operateur_equal_deux_var.deca:12:12: Can't assign type : "float" to type :"int" : rule 3.28

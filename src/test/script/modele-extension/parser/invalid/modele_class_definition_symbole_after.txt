@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/class_definition_symbole_after.deca:3:12: token recognition error at: '# '

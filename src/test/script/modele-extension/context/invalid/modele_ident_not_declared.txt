@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/ident_not_declared.deca:5:40: La variable "variable" n'a pas été déclaré : rule 0.1

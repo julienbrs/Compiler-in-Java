@@ -1,5 +1,0 @@
-class JustAClass extends Object {
-	void justAMethod() asm(""Ce que j'ai envie"");
-}
-
-
