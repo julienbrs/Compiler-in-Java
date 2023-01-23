@@ -7,7 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tree.Location;
+import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 
 // A FAIRE: étendre cette classe pour traiter la partie "avec objet" de Déca
 /**
@@ -49,6 +51,7 @@ public class EnvironmentType {
         Symbol objectSymbol = compiler.createSymbol("Object");
         OBJECT = new ClassType(objectSymbol, Location.BUILTIN, null);
         ClassDefinition objectDef = OBJECT.definition;
+        objectDef.setOperand(new RegisterOffset(0, GPRegister.GB));
         objectDef.setNumberOfMethods(1);
         Signature sig = new Signature();
         sig.add(OBJECT);
