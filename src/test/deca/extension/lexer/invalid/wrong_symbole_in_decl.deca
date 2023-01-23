@@ -1,5 +1,16 @@
-// Wrong symbol in declaration
+// Description:
+//    All unrecognizable tokens
+//
+// Result:
+//    displays
 
-{
-    int[] a # {2, 1};
-}
+ 
+"
+#
+&
+?
+@
+^
+`
+|
+~

@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/decl_var_type_reserved_words_protected.deca:4:4: mismatched input 'protected' expecting {'{', '}', 'print', '(', 'println', 'printx', 'printlnx', 'while', 'return', 'if', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT, ';'}

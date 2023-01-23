@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/lvalue_selection_protected/current_class_not_subclass_and_expr_not_subtype_of_current.deca:21:15: Can't acces a protected field from a foreign class : rule 3.66

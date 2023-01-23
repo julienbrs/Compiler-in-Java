@@ -1,1 +1,0 @@
-x est plus grand que 3 ou le résultat de la division par deux est supérieur à 10

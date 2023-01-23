@@ -1,0 +1,4 @@
+{
+    Object x = null;
+    x.equals(x);
+}

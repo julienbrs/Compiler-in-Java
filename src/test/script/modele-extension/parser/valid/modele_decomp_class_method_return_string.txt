@@ -1,8 +1,0 @@
-class DummyClass extends Object {
-	string getAnswer() {
-		string sensOfLife = "It's 42";
-		return sensOfLife;
-	}
-}
-
-

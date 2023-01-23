@@ -45,6 +45,7 @@ test_lex_unitaire() {
     fi
 
     fichier_modele="src/test/script/modele-extension/lexer/"$path_valid"/modele_$filename.txt"
+
     test_lex_ext "$1" >src/main/bin/temporaire_test.txt 2>&1
     result=$?
 
@@ -62,32 +63,13 @@ test_lex_unitaire() {
 }
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/invalid/ -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/lexer/invalid/ -name '*.deca'); do
     test_lex_unitaire "$cas_de_test" 1
 done
 
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/lexer/valid/ -name '*.deca'); do
     test_lex_unitaire "$cas_de_test" 0
 done
-# On choisit arbitrairement de considérer le test de tous les utf8 comme un "valid test"
-# ./src/test/script/utils-test/lexer-test-all-utf8.sh
-# result_utf8=$?
-# if [ "$result_utf8" -eq 0 ]; then
-#     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Succès attendu ✅"
-# else
-#     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
-#     exit 1
-# fi
-
-# End of the script
-# Check if the --exit-status option was passed
-# if [ "$1" == "--exit-status" ]; then
-#     # Print the exit status
-#     echo "The script exited with a status of $exit_status"
-#     exit $exit_status
-# else
-#     exit $exit_status
-# fi

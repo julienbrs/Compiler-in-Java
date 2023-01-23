@@ -1,5 +1,0 @@
-// Operator not on int and not on boolean
-
-{
-    boolean bool = !5;
-}

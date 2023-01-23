@@ -15,16 +15,9 @@ cd "$(dirname "$0")"/../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
-# exit_status_final=0
-
-# declare log_activated=false
-# if [ "$2" == "--log" ]; then
-#     log_activated=true
-# fi
-
-# Supprime le fichier temporaire dès que le programme finit
 cleanup() {
-    rm -rf ./src/test/deca/codegen/valid/*.ass
+    rm -r src/test/deca/codegen/valid/*.ass
+    rm -r src/test/deca/codegen/invalid/*.ass
 }
 trap cleanup EXIT
 
@@ -61,6 +54,7 @@ test_codegen_unitaire() {
 
         resultat_output=$(ima ./src/test/deca/codegen/$path_valid/$filename.ass)
         cmd_succed=$?
+        resultat_output="$(echo "$resultat_output" | sed 's#.*src#src#')"
 
         if [ "$cmd_succed" -eq "$exit_status_waited" ]; then
             # On regarde maintenant si l'output est le bon:
@@ -76,11 +70,10 @@ test_codegen_unitaire() {
     fi
 
 }
-
-# echo "${purple}Lancement des tests sensés être invalides:${reset}"
-# for cas_de_test in $(find src/test/deca/codegen/invalid/ -name '*.deca' -not -path "src/test/deca/codegen/invalid/interactif/*" -not -path "src/test/deca/codegen/invalid/provided/*"); do
-#     test_codegen_unitaire "$cas_de_test" 1
-# done
+echo "${purple}Lancement des tests sensés être invalides:${reset}"
+for cas_de_test in $(find src/test/deca/codegen/invalid/ -name '*.deca' -not -path "src/test/deca/codegen/valid/interactif/*" -not -path "src/test/deca/codegen/valid/provided/*"); do
+    test_codegen_unitaire "$cas_de_test" 1
+done
 
 echo ""
 
@@ -112,12 +105,3 @@ else
     echo "src/test/deca/codegen/valid/interactif/simple_readfloat.deca FAILED ❌"
 fi
 rm src/test/deca/codegen/valid/interactif/*.ass
-# End of the script
-# Check if the --exit-status option was passed
-# if [ "$1" == "--exit-status" ]; then
-#     # Print the exit status
-#     echo "The script exited with a status of $exit_status"
-#     exit $exit_status
-# else
-#     exit $exit_status
-# fi

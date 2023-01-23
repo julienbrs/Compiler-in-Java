@@ -1,5 +1,0 @@
-// Missing bracket and type in the creation of an array
-
-{
-    a[ ; 
-}

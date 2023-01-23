@@ -1,0 +1,1 @@
+src/test/deca/extension/parser/invalid/array_wrong_call.deca:2:7: mismatched input ';' expecting {'{', '(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

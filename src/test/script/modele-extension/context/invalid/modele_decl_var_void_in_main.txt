@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/decl_var_void_in_main.deca:4:9: Type can't be void : rule 3.17

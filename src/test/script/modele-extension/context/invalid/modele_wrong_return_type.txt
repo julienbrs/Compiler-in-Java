@@ -1,0 +1,1 @@
+src/test/deca/extension/context/invalid/wrong_return_type.deca:6:15: Can't assign type : "int[]" to type :"int" : rule 3.28

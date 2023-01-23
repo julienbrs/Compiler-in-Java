@@ -1,5 +1,0 @@
-IDENT: [@0,215:220='chaine',<47>,10:0]
-IDENT: [@1,222:224='pas',<47>,10:7]
-IDENT: [@2,226:234='commencee',<47>,10:11]
-INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=10
-src/test/deca/syntax/lexer/invalid/test_chaine_non_commencee.deca:10:20: token recognition error at: '"\n'

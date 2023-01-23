@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/if_cond_empty.deca:4:8: extraneous input ')' expecting {'{', '(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

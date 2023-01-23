@@ -1,6 +1,0 @@
-// Using this in the main program
-
-
-{
-    this.field = 5;
-}

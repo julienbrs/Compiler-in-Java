@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/expr_new_type_not_a_class.deca:5:2: The type "A" doesn't exist : rule 0.2
