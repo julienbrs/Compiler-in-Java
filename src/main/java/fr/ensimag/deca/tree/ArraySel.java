@@ -119,7 +119,7 @@ public class ArraySel extends AbstractSelection {
     @Override
     public int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         int[] res = codeGenExpr(compiler, offset);
-        compiler.addInstruction(new CMP(0, GPRegister.R0));
+        compiler.addInstruction(new CMP(0, GPRegister.getR(offset)));
         if (aim) {
             compiler.addInstruction(new BNE(dest));
         } else {
