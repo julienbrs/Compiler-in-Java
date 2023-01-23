@@ -10,5 +10,3 @@ class A {
     A a;
     a.method();
 }
-
-// TODOTEST: devrait throw une erreur plutot que print ?

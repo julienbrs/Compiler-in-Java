@@ -50,9 +50,4 @@ public class Test_verifyMethodMembers_DeclMethod {
 		verify(lOpInt, times(1)).verifyExpr(compiler, null, null);
 		verify(rOpInt, times(1)).verifyExpr(compiler, null, null);
 	}
-
-	@Test
-	public void test() {
-		// TESTTODO
-	}
 }

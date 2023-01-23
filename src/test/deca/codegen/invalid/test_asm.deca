@@ -10,5 +10,3 @@ class A {
     a.justAMethod();
 
 }
-
-// TODOTEST: le test est bon non ?

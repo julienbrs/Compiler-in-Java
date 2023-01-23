@@ -51,8 +51,4 @@ public class Test_verifyExpr_IntLiteral {
 		verify(rOpInt, times(1)).verifyExpr(compiler, null, null);
 	}
 
-	@Test
-	public void test() {
-		// TESTTODO
-	}
 }
