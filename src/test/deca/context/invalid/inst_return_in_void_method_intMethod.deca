@@ -1,0 +1,13 @@
+// Test of the rule (3.24): not possible to return something
+// when we are not expecting a return
+
+class A  {
+
+    int getInt(){
+        return 5;
+    }
+
+    void voidMethod(){
+        return getInt();
+    }
+}

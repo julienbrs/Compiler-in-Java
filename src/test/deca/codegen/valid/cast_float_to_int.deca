@@ -1,0 +1,7 @@
+// Test context, cast d'un cast de type float sur entier
+
+{
+    int x = 5;
+    float y = (float) (x);
+    print(y);
+}

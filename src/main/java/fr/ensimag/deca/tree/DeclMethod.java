@@ -28,6 +28,7 @@ public class DeclMethod extends AbstractDeclMethod {
 
     /**
      * Sets the characteristics for a method
+     * 
      * @param type
      * @param ident
      * @param listeparametre
@@ -67,7 +68,7 @@ public class DeclMethod extends AbstractDeclMethod {
         type.prettyPrint(s, prefix, false);
         ident.prettyPrint(s, prefix, false);
         listeparametre.prettyPrint(s, prefix, false);
-        methodBody.prettyPrint(s,prefix,true);
+        methodBody.prettyPrint(s, prefix, true);
     }
 
     @Override
@@ -75,66 +76,82 @@ public class DeclMethod extends AbstractDeclMethod {
         type.iter(f);
         ident.iter(f);
         listeparametre.iter(f);
-        methodBody.iter(f);        
+        methodBody.iter(f);
     }
-    
-    @Override
-    public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
-            Type t = type.verifyType(compiler);
-            ExpDefinition sDef = superEnv.get(ident.getName());
-            if (sDef == null) {
-                Signature sig = new Signature();
-                listeparametre.verifyListParamMembers(compiler, sig);
-                try {
-                    currentClass.incNumberOfMethods();
-                    ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, currentClass.getNumberOfMethods()));
-                    ident.setType(ident.getDefinition().getType());
-                    currentClass.put(currentClass.getNumberOfMethods(), ident.getMethodDefinition());
-                    localEnv.declare(ident.getName(), ident.getExpDefinition());
-                } catch (DoubleDefException e) {
-                    // ERROR MSG
-                    throw new ContextualError("The method \""+ident.getName()+"\" is already declared : rule 2.6", getLocation());
-                }
-                return;
-            }
-            if (!sDef.isMethod()) {
-                // ERROR MSG
-                throw new ContextualError(ident.getName() + " already declare as field in super class : rule 2.7", getLocation());
-            }
+
+    public void verifyMethodMembers(DecacCompiler compiler, EnvironmentExp superEnv, EnvironmentExp localEnv,
+            ClassDefinition currentClass) throws ContextualError {
+        Type t = type.verifyType(compiler);
+        ExpDefinition sDef = superEnv.get(ident.getName());
+        if (sDef == null) {
             Signature sig = new Signature();
             listeparametre.verifyListParamMembers(compiler, sig);
-            MethodDefinition mDef = (MethodDefinition) sDef;
-            if (mDef != null) {
-                if (!mDef.getSignature().equals(sig)) {
-                    // ERROR MSG
-                    throw new ContextualError("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
-                }
-                if (!t.sameType(mDef.getType())) {
-                    // ERROR MSG
-                    ClassType cType = t.asClassType("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
-                    // ERROR MSG
-                    ClassType superType = mDef.getType().asClassType("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
-                    if (!cType.isSubClassOf(superType)) {
-                        // ERROR MSG
-                        throw new ContextualError("The method \"" + ident.getName() + "\" is already define in super class with a different signature : rule 2.7", getLocation());
-                    }
-                }
-                
-            }
             try {
-                ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, mDef.getIndex()));
+                currentClass.incNumberOfMethods();
+                ident.setDefinition(
+                        new MethodDefinition(t, ident.getLocation(), sig, currentClass.getNumberOfMethods()));
                 ident.setType(ident.getDefinition().getType());
-                currentClass.put(mDef.getIndex(), mDef);
+                currentClass.put(currentClass.getNumberOfMethods(), ident.getMethodDefinition());
                 localEnv.declare(ident.getName(), ident.getExpDefinition());
             } catch (DoubleDefException e) {
                 // ERROR MSG
-                throw new ContextualError("The method \""+ident.getName()+"\" is already declared : rule 2.6", getLocation());
+                throw new ContextualError("The method \"" + ident.getName() + "\" is already declared : rule 2.6",
+                        getLocation());
             }
+            return;
+        }
+        if (!sDef.isMethod()) {
+            // ERROR MSG
+            throw new ContextualError(ident.getName() + " already declare as field in super class : rule 2.7",
+                    getLocation());
+        }
+        Signature sig = new Signature();
+        listeparametre.verifyListParamMembers(compiler, sig);
+        MethodDefinition mDef = (MethodDefinition) sDef;
+        if (mDef != null) {
+            if (!mDef.getSignature().equals(sig)) {
+                // ERROR MSG
+                throw new ContextualError(
+                        "The method \"" + ident.getName()
+                                + "\" is already define in super class with a different signature : rule 2.7",
+                        getLocation());
+            }
+            if (!t.sameType(mDef.getType())) {
+                // ERROR MSG
+                ClassType cType = t.asClassType(
+                        "The method \"" + ident.getName()
+                                + "\" is already define in super class with a different signature : rule 2.7",
+                        getLocation());
+                // ERROR MSG
+                ClassType superType = mDef.getType().asClassType(
+                        "The method \"" + ident.getName()
+                                + "\" is already define in super class with a different signature : rule 2.7",
+                        getLocation());
+                if (!cType.isSubClassOf(superType)) {
+                    // ERROR MSG
+                    throw new ContextualError(
+                            "The method \"" + ident.getName()
+                                    + "\" is already define in super class with a different signature : rule 2.7",
+                            getLocation());
+                }
+            }
+
+        }
+        try {
+            ident.setDefinition(new MethodDefinition(t, ident.getLocation(), sig, mDef.getIndex()));
+            ident.setType(ident.getDefinition().getType());
+            currentClass.put(mDef.getIndex(), mDef);
+            localEnv.declare(ident.getName(), ident.getExpDefinition());
+        } catch (DoubleDefException e) {
+            // ERROR MSG
+            throw new ContextualError("The method \"" + ident.getName() + "\" is already declared : rule 2.6",
+                    getLocation());
+        }
 
     }
 
-    @Override
-    public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass) throws ContextualError {
+    public void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, ClassDefinition currentClass)
+            throws ContextualError {
         Type t = type.verifyType(compiler);
         EnvironmentExp paramEnv = new EnvironmentExp(localEnv);
         listeparametre.verifyListParamBody(compiler, paramEnv);

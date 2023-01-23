@@ -40,9 +40,10 @@ public class DeclClass extends AbstractDeclClass {
     AbstractIdentifier name;
     AbstractIdentifier extension;
     private ClassBody bodyclass;
-    
+
     /**
      * Sets the characteristics of a class
+     * 
      * @param name
      * @param extension
      * @param body
@@ -76,7 +77,8 @@ public class DeclClass extends AbstractDeclClass {
         TypeDefinition tDef = compiler.environmentType.defOfType(extension.getName());
         if (!tDef.isClass()) {
             // ERROR MSG : match msg d'erreur avec doc
-            throw new ContextualError("No super class named : \""+extension.getName()+"\" : rule 1.3", getLocation());
+            throw new ContextualError("No super class named : \"" + extension.getName() + "\" : rule 1.3",
+                    getLocation());
         }
         ClassDefinition supClass = (ClassDefinition) tDef;
         t = new ClassType(name.getName(), getLocation(), supClass);
@@ -84,7 +86,8 @@ public class DeclClass extends AbstractDeclClass {
         b = compiler.environmentType.put(name.getName(), name.getClassDefinition());
         if (!b) {
             // ERROR MSG : match msg d'erreur avec doc
-            throw new ContextualError("The class \""+name+"\" is already declared : rule 1.3", getLocation());
+            throw new ContextualError("The class \"" + name.getName() + "\" is already declared : rule 1.3",
+                    getLocation());
         }
     }
 
@@ -93,17 +96,19 @@ public class DeclClass extends AbstractDeclClass {
     protected void verifyClassMembers(DecacCompiler compiler)
             throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");
-        // ClassDefinition supClassDef = (ClassDefinition) compiler.environmentType.defOfType(extension.getName());
+        // ClassDefinition supClassDef = (ClassDefinition)
+        // compiler.environmentType.defOfType(extension.getName());
         ClassDefinition supClassDef = extension.getClassDefinition();
         EnvironmentExp envExpSuper = supClassDef.getMembers();
-        // EnvironmentExp envExp = ((ClassDefinition) compiler.environmentType.defOfType(name.getName())).getMembers();
+        // EnvironmentExp envExp = ((ClassDefinition)
+        // compiler.environmentType.defOfType(name.getName())).getMembers();
         EnvironmentExp envExp = name.getClassDefinition().getMembers();
         name.getClassDefinition().setNumberOfFields(supClassDef.getNumberOfFields());
-        name.getClassDefinition().setNumberOfMethods(supClassDef.getNumberOfMethods()); 
+        name.getClassDefinition().setNumberOfMethods(supClassDef.getNumberOfMethods());
         bodyclass.getListDeclField().verifyListFieldMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
         bodyclass.getListDeclMethod().verifyListMethodMembers(compiler, envExpSuper, envExp, name.getClassDefinition());
     }
-    
+
     // passe 3
     @Override
     protected void verifyClassBody(DecacCompiler compiler) throws ContextualError {
@@ -116,6 +121,7 @@ public class DeclClass extends AbstractDeclClass {
     /**
      * Construction of the table of method labels;
      * Generation of code to build the table of methods.
+     * 
      * @param compiler
      * @param offset
      * @return number of methods
@@ -129,14 +135,14 @@ public class DeclClass extends AbstractDeclClass {
         } else {
             extAddr = new RegisterOffset(1, GPRegister.GB);
         }
-        compiler.addComment("Table methodes "+name.getName());
+        compiler.addComment("Table methodes " + name.getName());
         compiler.addInstruction(new LEA(extAddr, GPRegister.getR(2)));
         compiler.addInstruction(new STORE(GPRegister.getR(2), addr));
         for (int i = 1; i <= extension.getClassDefinition().getNumberOfMethods(); i++) {
             if (name.getClassDefinition().getMethodDefinition(i) == null) {
                 MethodDefinition mDef = extension.getClassDefinition().getMethodDefinition(i);
                 name.getClassDefinition().put(i, mDef);
-                DAddr destMethodAddr = new RegisterOffset(offset + i ,((RegisterOffset) addr).getRegister());
+                DAddr destMethodAddr = new RegisterOffset(offset + i, ((RegisterOffset) addr).getRegister());
                 compiler.addInstruction(new LOAD(new LabelOperand(mDef.getLabel()), GPRegister.getR(2)));
                 compiler.addInstruction(new STORE(GPRegister.getR(2), destMethodAddr));
             }
@@ -147,24 +153,21 @@ public class DeclClass extends AbstractDeclClass {
 
     /**
      * Generates the body of class methods
+     * 
      * @param compiler
      */
     public void codeGenBody(DecacCompiler compiler) {
         compiler.addComment("Corps des methodes de la classe " + name.getName());
-        compiler.addLabel(new Label("init."+name.getName()));
-        
+        compiler.addLabel(new Label("init." + name.getName()));
+
         Line lTSTO = new Line("");
-        if (!compiler.getCompilerOptions().getNoCheck()){
+        if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.add(lTSTO);
             compiler.addInstruction(new BOV(new Label("pile_pleine")));
         }
-
-        Line lADDSP = new Line("");
-        compiler.add(lADDSP);
-
         InlinePortion pushLine = new InlinePortion("");
         compiler.add(pushLine);
-        
+
         int maxReg = 2;
         compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(2)));
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
@@ -180,7 +183,7 @@ public class DeclClass extends AbstractDeclClass {
             maxPush = 3;
         }
 
-        int[] max = {maxReg, maxPush}; // max reg / max push
+        int[] max = { maxReg, maxPush }; // max reg / max push
         for (AbstractDeclField declField : bodyclass.getListDeclField().getList()) {
             int[] res = declField.codeGenDeclField(compiler);
             if (res[0] > max[0]) {
@@ -190,21 +193,19 @@ public class DeclClass extends AbstractDeclClass {
                 max[1] = res[1];
             }
         }
-        
+
         String asmPush = "";
         for (int i = 2; i <= max[0]; i++) {
             asmPush += "\tPUSH R" + i + "\n";
         }
-        pushLine.setAsm(asmPush.substring(0, asmPush.length()-1));
+        pushLine.setAsm(asmPush.substring(0, asmPush.length() - 1));
         for (int i = max[0]; i >= 2; i--) {
             compiler.addInstruction(new POP(GPRegister.getR(i)));
         }
 
-        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(max[0])));
         lTSTO.setInstruction(new TSTO(new ImmediateInteger(max[0] + max[1])));
 
         compiler.addInstruction(new RTS());
-
 
         for (AbstractDeclMethod declMethod : bodyclass.getListDeclMethod().getList()) {
             declMethod.codeGenBody(compiler, name.getClassDefinition());
@@ -214,13 +215,13 @@ public class DeclClass extends AbstractDeclClass {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        
-        name.prettyPrint(s,prefix,false);
+
+        name.prettyPrint(s, prefix, false);
         if (extension != null) {
             extension.prettyPrint(s, prefix, false);
         }
-        bodyclass.prettyPrintChildren(s,prefix);
-       // throw new UnsupportedOperationException("Not yet supported");
+        bodyclass.prettyPrintChildren(s, prefix);
+        // throw new UnsupportedOperationException("Not yet supported");
     }
 
     @Override

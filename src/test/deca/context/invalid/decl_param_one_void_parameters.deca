@@ -1,0 +1,9 @@
+// Test of the rule (2.9) : method declared with one parameter of
+// type void (forbidden and should be detected)
+
+class A {
+    void method(void x) {}
+    // ERROR: argument de type void
+}
+
+//# src/test/deca/context/invalid/decl_param_one_void_parameters.deca:5:16: Type can't be void : rule 2.9

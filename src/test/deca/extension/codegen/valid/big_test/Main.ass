@@ -1,0 +1,874 @@
+; start main program
+	TSTO #28
+	BOV pile_pleine
+	ADDSP #23
+
+; Generation table des methodes
+; Table methodes Object
+	LOAD #null, R2
+	STORE R2, 1(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 2(GB)
+; Table methodes Rational
+	LEA 1(GB), R2
+	STORE R2, 3(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 4(GB)
+	LOAD code.Rational.setNum, R2
+	STORE R2, 5(GB)
+	LOAD code.Rational.getNum, R2
+	STORE R2, 6(GB)
+	LOAD code.Rational.setDenom, R2
+	STORE R2, 7(GB)
+	LOAD code.Rational.getDenom, R2
+	STORE R2, 8(GB)
+	LOAD code.Rational.prettyprint, R2
+	STORE R2, 9(GB)
+	LOAD code.Rational.mult, R2
+	STORE R2, 10(GB)
+	LOAD code.Rational.add, R2
+	STORE R2, 11(GB)
+	LOAD code.Rational.pgcd, R2
+	STORE R2, 12(GB)
+	LOAD code.Rational.simplify, R2
+	STORE R2, 13(GB)
+; Table methodes Vector
+	LEA 1(GB), R2
+	STORE R2, 14(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 15(GB)
+	LOAD code.Vector.createTab, R2
+	STORE R2, 16(GB)
+	LOAD code.Vector.getTab, R2
+	STORE R2, 17(GB)
+
+; Main program
+; Variables declarations:
+	NEW #3, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.Rational
+	POP R2
+	STORE R2, 18(GB)
+	NEW #3, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.Rational
+	POP R2
+	STORE R2, 19(GB)
+	LOAD #6, R2
+	STORE R2, 20(GB)
+	LOAD #6, R2
+	STORE R2, 21(GB)
+	LOAD #0, R2
+	STORE R2, 22(GB)
+	NEW #3, R2
+	BOV tas_plein
+	LEA 14(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.Vector
+	POP R2
+	STORE R2, 23(GB)
+; Beginning of main instructions:
+	ADDSP #2
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD #3, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	ADDSP #2
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD #2, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	WSTR "r1 = "
+	ADDSP #1
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	WNL
+	ADDSP #2
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD #2, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	ADDSP #2
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD #3, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	WSTR "r2 = "
+	ADDSP #1
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	WNL
+	WNL
+	WSTR "# Test multiplication #"
+	WNL
+	WSTR "r1 = r1 * r2"
+	WNL
+	ADDSP #2
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 19(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 7(R2)
+	SUBSP #2
+	WSTR "r1 = "
+	ADDSP #1
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	WNL
+	WNL
+	ADDSP #2
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD #3, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	ADDSP #2
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD #3, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 4(R2)
+	SUBSP #2
+	WSTR "r2 = "
+	ADDSP #1
+	LOAD 19(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	WNL
+	WNL
+	WSTR "#### Test addition ####"
+	WNL
+	WSTR "r1 = r1 + r2"
+	WNL
+	ADDSP #2
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 19(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 8(R2)
+	SUBSP #2
+	WSTR "r1 = "
+	ADDSP #1
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	WNL
+	WNL
+	WSTR "####### Test pgcd #####"
+	WNL
+	WSTR "a = "
+	LOAD 20(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WSTR "b = "
+	LOAD 21(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	ADDSP #3
+	LOAD 18(GB), R2
+	STORE R2, 0(SP)
+	LOAD 20(GB), R2
+	STORE R2, -1(SP)
+	LOAD 21(GB), R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 9(R2)
+	SUBSP #3
+	LOAD R0, R2
+	STORE R2, 22(GB)
+	WSTR "pgcd(a, b) = "
+	LOAD 22(GB), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	WNL
+	WSTR "##### Test vector #####"
+	WNL
+	ADDSP #2
+	LOAD 23(GB), R2
+	STORE R2, 0(SP)
+	LOAD #7, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	ADDSP #1
+	ADDSP #1
+	LOAD 23(GB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #1
+	LOAD R0, R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #1, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 6(R2)
+	SUBSP #1
+	HALT
+
+; Methodes de classe
+init.Object:
+	RTS
+code.Object.equals:
+	TSTO #2
+	BOV pile_pleine
+	PUSH R2
+	PUSH R3
+	LOAD -2(LB), R2
+	LOAD -3(LB), R3
+	CMP R2, R3
+	SEQ R0
+	POP R3
+	POP R2
+	RTS
+; Corps des methodes de la classe Rational
+init.Rational:
+	TSTO #3
+	BOV pile_pleine
+	PUSH R2
+	PUSH R3
+	LOAD -2(LB), R2
+	LOAD #0, R3
+	STORE R3, 1(R2)
+	LOAD #0, R3
+	STORE R3, 2(R2)
+	LOAD #0, R3
+	STORE R3, 1(R2)
+	LOAD #1, R3
+	STORE R3, 2(R2)
+	POP R3
+	POP R2
+	RTS
+code.Rational.setNum:
+	TSTO #3
+	BOV pile_pleine
+	ADDSP #3
+	PUSH R2
+	PUSH R3
+; Variables declarations
+; Beginning of instructions
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -3(LB), R3
+	STORE R3, 1(R2)
+	POP R3
+	POP R2
+	RTS
+code.Rational.getNum:
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+	PUSH R2
+; Variables declarations
+; Beginning of instructions
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(R2), R2
+	LOAD R2, R0
+	BRA end.Rational.getNum
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.Rational.getNum:
+	POP R2
+	RTS
+code.Rational.setDenom:
+	TSTO #3
+	BOV pile_pleine
+	ADDSP #3
+	PUSH R2
+	PUSH R3
+; Variables declarations
+; Beginning of instructions
+	LOAD -3(LB), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.1
+	WSTR "Denominator can't be zero"
+	WNL
+	BRA end.1
+else.1:
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -3(LB), R3
+	STORE R3, 2(R2)
+end.1:
+	POP R3
+	POP R2
+	RTS
+code.Rational.getDenom:
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+	PUSH R2
+; Variables declarations
+; Beginning of instructions
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(R2), R2
+	LOAD R2, R0
+	BRA end.Rational.getDenom
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.Rational.getDenom:
+	POP R2
+	RTS
+code.Rational.prettyprint:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #2
+	PUSH R2
+; Variables declarations
+; Beginning of instructions
+	WSTR "<"
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 3(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
+	WSTR "/"
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 5(R2)
+	SUBSP #1
+	LOAD R0, R2
+	LOAD R2, R1
+	WINT
+	WSTR ">"
+	POP R2
+	RTS
+code.Rational.mult:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(R3), R3
+	ADDSP #1
+	LOAD -3(LB), R4
+	STORE R4, 0(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	BSR 3(R4)
+	SUBSP #1
+	LOAD R0, R4
+	MUL R4, R3
+	BOV debordement_arithmetique
+	STORE R3, 1(R2)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(R3), R3
+	ADDSP #1
+	LOAD -3(LB), R4
+	STORE R4, 0(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	BSR 5(R4)
+	SUBSP #1
+	LOAD R0, R4
+	MUL R4, R3
+	BOV debordement_arithmetique
+	STORE R3, 2(R2)
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	ADDSP #3
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(R2), R2
+	STORE R2, -1(SP)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(R2), R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 9(R2)
+	SUBSP #3
+	LOAD R0, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 10(R2)
+	SUBSP #2
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.Rational.add:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+; Beginning of instructions
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(R3), R3
+	ADDSP #1
+	LOAD -3(LB), R4
+	STORE R4, 0(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	BSR 5(R4)
+	SUBSP #1
+	LOAD R0, R4
+	MUL R4, R3
+	BOV debordement_arithmetique
+	LOAD -2(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(R4), R4
+	ADDSP #1
+	LOAD -3(LB), R5
+	STORE R5, 0(SP)
+	LOAD 0(SP), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 0(R5), R5
+	BSR 3(R5)
+	SUBSP #1
+	LOAD R0, R5
+	MUL R5, R4
+	BOV debordement_arithmetique
+	ADD R4, R3
+	BOV debordement_arithmetique
+	STORE R3, 1(R2)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(R3), R3
+	ADDSP #1
+	LOAD -3(LB), R4
+	STORE R4, 0(SP)
+	LOAD 0(SP), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	BSR 5(R4)
+	SUBSP #1
+	LOAD R0, R4
+	MUL R4, R3
+	BOV debordement_arithmetique
+	STORE R3, 2(R2)
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	ADDSP #3
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(R2), R2
+	STORE R2, -1(SP)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(R2), R2
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 9(R2)
+	SUBSP #3
+	LOAD R0, R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 10(R2)
+	SUBSP #2
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.Rational.pgcd:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #3
+	PUSH R2
+	PUSH R3
+; Variables declarations
+; Beginning of instructions
+	LOAD -4(LB), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.2
+	LOAD -3(LB), R2
+	LOAD R2, R0
+	BRA end.Rational.pgcd
+	BRA end.2
+else.2:
+	ADDSP #3
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -4(LB), R2
+	STORE R2, -1(SP)
+	LOAD -3(LB), R2
+	LOAD -4(LB), R3
+	REM R3, R2
+	BOV division_par_0
+	STORE R2, -2(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 9(R2)
+	SUBSP #3
+	LOAD R0, R2
+	LOAD R2, R0
+	BRA end.Rational.pgcd
+end.2:
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.Rational.pgcd:
+	POP R3
+	POP R2
+	RTS
+code.Rational.simplify:
+	TSTO #4
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+; Beginning of instructions
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(R3), R3
+	LOAD -3(LB), R4
+	QUO R4, R3
+	BOV division_par_0
+	STORE R3, 1(R2)
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -2(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(R3), R3
+	LOAD -3(LB), R4
+	QUO R4, R3
+	BOV division_par_0
+	STORE R3, 2(R2)
+	POP R4
+	POP R3
+	POP R2
+	RTS
+; Corps des methodes de la classe Vector
+init.Vector:
+	TSTO #3
+	BOV pile_pleine
+	PUSH R2
+	PUSH R3
+	LOAD -2(LB), R2
+	LOAD #null, R3
+	STORE R3, 1(R2)
+	LOAD #0, R3
+	STORE R3, 2(R2)
+	LOAD #null, R3
+	STORE R3, 1(R2)
+	LOAD #0, R3
+	STORE R3, 2(R2)
+	POP R3
+	POP R2
+	RTS
+code.Vector.createTab:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BGT else.3
+	WSTR "Can't create a table of length <= 0"
+	WNL
+	BRA end.3
+else.3:
+	LOAD -2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -3(LB), R3
+	STORE R3, 2(R2)
+	LOAD -2(LB), R2
+	LOAD -3(LB), R3
+	CMP #0, R3
+	BLT taille_negative
+	ADD #1, R3
+	NEW R3, R4
+	SUB #1, R3
+	STORE R3, 0(R4)
+	BRA init.tab.condition.4
+init.tab.boucle.4:
+	LOAD #null, R5
+	STORE R5, 1(R4, R3)
+init.tab.condition.4:
+	SUB #1, R3
+	CMP #-1, R3
+	BNE init.tab.boucle.4
+	LOAD R4, R3
+	STORE R3, 1(R2)
+	BRA while_cond.5
+while_start.5:
+	LOAD -2(LB), R2
+	LOAD 1(R2), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	NEW #3, R4
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R4)
+	PUSH R4
+	BSR init.Rational
+	POP R4
+	STORE R4, 1(R2, R3)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.5:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP R3, R2
+	BLT while_start.5
+end.3:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.Vector.getTab:
+	TSTO #2
+	BOV pile_pleine
+	ADDSP #2
+	PUSH R2
+; Variables declarations
+; Beginning of instructions
+	LOAD -2(LB), R2
+	LOAD 1(R2), R2
+	LOAD R2, R0
+	BRA end.Vector.getTab
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.Vector.getTab:
+	POP R2
+	RTS
+; end main program
+; Gestion des erreurs d'executions
+pile_pleine:
+	WSTR "Débordement de pile"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Débordement du tas"
+	WNL
+	ERROR
+division_par_0:
+	WSTR "Division par 0"
+	WNL
+	ERROR
+debordement_arithmetique:
+	WSTR "Débordement arithmetique"
+	WNL
+	ERROR
+dereferencement_null:
+	WSTR "Déréférencement de ""null"""
+	WNL
+	ERROR
+cast_impossible:
+	WSTR "Cast impossible"
+	WNL
+	ERROR
+index_hors_range:
+	WSTR "Index hors range"
+	WNL
+	ERROR
+taille_negative:
+	WSTR "Taille negative"
+	WNL
+	ERROR
+erreur_de_lecture:
+	WSTR "Erreur de lecture"
+	WNL
+	ERROR

@@ -1,0 +1,22 @@
+// Test operator not, valid operations
+
+
+{
+    boolean a, b, c;
+    a = true;
+    b = !a;
+
+    if (!a){
+        println("true");
+    }
+    else {
+        println("false");
+    }
+    if (!(!a)){
+        println("true");
+    }
+    else{
+        println("false");
+    }
+    c = !(b);
+}

@@ -1,0 +1,5 @@
+// Parser test, while without condition
+
+{
+    while { print(5)};
+}

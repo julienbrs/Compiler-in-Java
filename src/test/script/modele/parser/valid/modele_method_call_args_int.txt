@@ -1,0 +1,45 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Test)
+   |      +> [builtin] Identifier (Object)
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [4, 4] DeclMethod
+   |             +> [4, 4] Identifier (void)
+   |             +> [4, 9] Identifier (testMethod)
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [4, 20] DeclParam
+   |             |  ||  +> [4, 20] Identifier (int)
+   |             |  ||  `> [4, 24] Identifier (x)
+   |             |  []> [4, 27] DeclParam
+   |             |      +> [4, 27] Identifier (int)
+   |             |      `> [4, 31] Identifier (y)
+   |             `> [4, 34] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [5, 8] Return
+   |                |      `> [5, 15] Plus
+   |                |         +> [5, 16] Identifier (x)
+   |                |         `> [5, 20] Identifier (y)
+   `> [9, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [10, 8] DeclVar
+      |  ||  +> [10, 4] Identifier (int)
+      |  ||  +> [10, 8] Identifier (z)
+      |  ||  `> NoInitialization
+      |  []> [11, 9] DeclVar
+      |      +> [11, 4] Identifier (Test)
+      |      +> [11, 9] Identifier (test)
+      |      `> [11, 14] Initialization
+      |         `> [11, 16] New
+      |            `> [11, 20] Identifier (Test)
+      `> ListInst [List with 1 elements]
+         []> [12, 6] Assign
+             +> [12, 4] Identifier (z)
+             `> [12, 12] MethodCall
+                +> [12, 8] Identifier (test)
+                +> [12, 13] Identifier (testMethod)
+                `> ListExpr [List with 2 elements]
+                   []> [12, 24] Int (5)
+                   []> [12, 26] Int (12)

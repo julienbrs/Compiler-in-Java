@@ -1,0 +1,5 @@
+// Parser test, class with a special character declared
+
+class ! {
+    
+}

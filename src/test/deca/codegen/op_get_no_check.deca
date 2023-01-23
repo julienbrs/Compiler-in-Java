@@ -1,0 +1,52 @@
+// Test lancé avec un script dédié pour utiliser l'option de compilation 
+// -n et permet donc de tester la méthode getNoCheck() de CompilerOptions
+
+class A {
+    int x = 12;
+    float f = 3.8;
+
+    int testMethod(){
+        return x;
+    }
+
+    void dumbMethod(){ // It's an error
+        return x;
+    }
+}
+
+{
+    A a = new A();
+
+    int x1 = 3;
+    int x2 = 5;
+    int z;
+
+    float f1 = 3.2;
+    float f2 = 5.6;
+    float f;
+
+    z = x1 + x2;
+    println(z);
+    z = x1 - x2;
+    println(z);
+    z = x1 / x2;
+    println(z);
+    z = x1 % x2;
+    println(z);
+    z = x1 * x2;
+    println(z);
+    z = a.x;
+    println(z);
+
+    f = f1 + f2;
+    println(f);
+    f = f1 - f2;
+    println(f);
+    f = f1 / f2;
+    println(f);
+    f = f1 * f2;
+    println(f);
+    f = a.f;
+    println(f);
+
+}

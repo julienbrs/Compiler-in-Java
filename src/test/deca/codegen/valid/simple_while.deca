@@ -1,9 +1,9 @@
-// Programme de test avec un while
+// Simple test of while
 
 {
     int i = 0;
     while (i < 5) {
         println("i est égal à ", i);
-        i = i + 1;
+        i = i+1;
     }
 }

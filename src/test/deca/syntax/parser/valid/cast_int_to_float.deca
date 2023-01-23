@@ -1,0 +1,6 @@
+// Parser test, cast an int cast in a float
+
+{
+    int x = 5;
+    float f = (float) (x);
+}

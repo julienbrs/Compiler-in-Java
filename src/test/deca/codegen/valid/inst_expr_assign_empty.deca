@@ -1,0 +1,7 @@
+// Codegen test, the statement is an expression without assignment
+
+{
+    int x = 8;
+    x;
+    print(x);
+}

@@ -1,3 +1,5 @@
+// test a simple case of if else if else (= if fitting an other if)
+
 {
     int x = 5;
     if (x > 10) {

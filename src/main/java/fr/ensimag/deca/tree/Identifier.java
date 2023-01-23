@@ -35,7 +35,7 @@ import org.apache.commons.lang.Validate;
  * @date 01/01/2023
  */
 public class Identifier extends AbstractIdentifier {
-    
+
     @Override
     protected void checkDecoration() {
         if (getDefinition() == null) {
@@ -56,7 +56,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a class definition.
+     *                            if the definition is not a class definition.
      */
     @Override
     public ClassDefinition getClassDefinition() {
@@ -78,7 +78,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a method definition.
+     *                            if the definition is not a method definition.
      */
     @Override
     public MethodDefinition getMethodDefinition() {
@@ -100,7 +100,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a field definition.
+     *                            if the definition is not a field definition.
      */
     @Override
     public FieldDefinition getFieldDefinition() {
@@ -122,7 +122,7 @@ public class Identifier extends AbstractIdentifier {
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a field definition.
+     *                            if the definition is not a field definition.
      */
     @Override
     public VariableDefinition getVariableDefinition() {
@@ -137,13 +137,14 @@ public class Identifier extends AbstractIdentifier {
     }
 
     /**
-     * Like {@link #getDefinition()}, but works only if the definition is a ExpDefinition.
+     * Like {@link #getDefinition()}, but works only if the definition is a
+     * ExpDefinition.
      * 
      * This method essentially performs a cast, but throws an explicit exception
      * when the cast fails.
      * 
      * @throws DecacInternalError
-     *             if the definition is not a field definition.
+     *                            if the definition is not a field definition.
      */
     @Override
     public ExpDefinition getExpDefinition() {
@@ -168,7 +169,7 @@ public class Identifier extends AbstractIdentifier {
     }
 
     @Override
-    public void setName(Symbol a ) {
+    public void setName(Symbol a) {
         this.name = a;
     }
 
@@ -176,6 +177,7 @@ public class Identifier extends AbstractIdentifier {
 
     /**
      * Verifies the name of the identifier and sets its value
+     * 
      * @param name
      */
     public Identifier(Symbol name) {
@@ -190,7 +192,8 @@ public class Identifier extends AbstractIdentifier {
         ExpDefinition def = localEnv.get(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("The " + def.getNature() + "  \""+name+"\" doesn't exist : rule 0.1", getLocation());
+            throw new ContextualError("The " + def.getNature() + "  \"" + name + "\" doesn't exist : rule 0.1",
+                    getLocation());
         }
         setDefinition(def);
         setType(definition.getType());
@@ -205,6 +208,7 @@ public class Identifier extends AbstractIdentifier {
 
     /**
      * Implements non-terminal "type" of [SyntaxeContextuelle] in the 3 passes
+     * 
      * @param compiler contains "env_types" attribute
      */
     @Override
@@ -219,18 +223,20 @@ public class Identifier extends AbstractIdentifier {
         setType(definition.getType());
         return this.getType();
     }
-    
+
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
-            compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.getR(offset)));
-            int[] res = {offset, 0};
+            compiler.addInstruction(
+                    new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)),
+                            GPRegister.getR(offset)));
+            int[] res = { offset, 0 };
             return res;
         }
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
-        int[] res = {offset, 0};
+        int[] res = { offset, 0 };
         return res;
     }
 
@@ -239,10 +245,11 @@ public class Identifier extends AbstractIdentifier {
         Triple<int[], Integer, DAddr> res;
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
-            int[] max = {offset, 0};
-            res = new Triple<>(max, offset + 1, new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)));
+            int[] max = { offset, 0 };
+            res = new Triple<>(max, offset + 1,
+                    new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)));
         } else {
-            int[] max = {offset, 0};
+            int[] max = { offset, 0 };
             res = new Triple<>(max, offset, getExpDefinition().getOperand());
         }
         return res;
@@ -250,7 +257,7 @@ public class Identifier extends AbstractIdentifier {
 
     @Override
     protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
-        assert(getType().isBoolean());
+        assert (getType().isBoolean());
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.R0));
         compiler.addInstruction(new CMP(0, GPRegister.R0));
@@ -259,10 +266,10 @@ public class Identifier extends AbstractIdentifier {
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        int[] res = {0, 0};
+        int[] res = { 0, 0 };
         return res;
     }
-    
+
     private Definition definition;
 
     @Override

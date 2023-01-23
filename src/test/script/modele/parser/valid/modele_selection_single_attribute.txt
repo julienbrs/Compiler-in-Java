@@ -1,0 +1,52 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (A)
+   |      +> [builtin] Identifier (Object)
+   |      +> ListDeclField [List with 3 elements]
+   |      |  []> [4, 8] [visibility = PUBLIC]  DeclField
+   |      |  ||  +> [4, 4] Identifier (int)
+   |      |  ||  +> [4, 8] Identifier (x)
+   |      |  ||  +> [4, 10] Initialization
+   |      |  ||  |  `> [4, 12] Int (5)
+   |      |  []> [5, 10] [visibility = PUBLIC]  DeclField
+   |      |  ||  +> [5, 4] Identifier (float)
+   |      |  ||  +> [5, 10] Identifier (f)
+   |      |  ||  +> [5, 12] Initialization
+   |      |  ||  |  `> [5, 14] Float (3.14)
+   |      |  []> [6, 12] [visibility = PUBLIC]  DeclField
+   |      |      +> [6, 4] Identifier (boolean)
+   |      |      +> [6, 12] Identifier (bool)
+   |      |      +> [6, 17] Initialization
+   |      |      |  `> [6, 19] BooleanLiteral (true)
+   |      `> ListDeclMethod [List with 0 elements]
+   `> [9, 0] Main
+      +> ListDeclVar [List with 4 elements]
+      |  []> [10, 6] DeclVar
+      |  ||  +> [10, 4] Identifier (A)
+      |  ||  +> [10, 6] Identifier (a)
+      |  ||  `> [10, 8] Initialization
+      |  ||     `> [10, 10] New
+      |  ||        `> [10, 14] Identifier (A)
+      |  []> [12, 8] DeclVar
+      |  ||  +> [12, 4] Identifier (int)
+      |  ||  +> [12, 8] Identifier (x)
+      |  ||  `> [12, 10] Initialization
+      |  ||     `> [12, 13] Selection
+      |  ||        +> [12, 12] Identifier (a)
+      |  ||        `> [12, 14] Identifier (x)
+      |  []> [13, 10] DeclVar
+      |  ||  +> [13, 4] Identifier (float)
+      |  ||  +> [13, 10] Identifier (f)
+      |  ||  `> [13, 12] Initialization
+      |  ||     `> [13, 15] Selection
+      |  ||        +> [13, 14] Identifier (a)
+      |  ||        `> [13, 16] Identifier (f)
+      |  []> [14, 12] DeclVar
+      |      +> [14, 4] Identifier (boolean)
+      |      +> [14, 12] Identifier (bool)
+      |      `> [14, 17] Initialization
+      |         `> [14, 20] Selection
+      |            +> [14, 19] Identifier (a)
+      |            `> [14, 21] Identifier (bool)
+      `> ListInst [List with 0 elements]

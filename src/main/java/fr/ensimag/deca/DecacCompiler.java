@@ -271,6 +271,13 @@ public class DecacCompiler {
             addInstruction(new WSTR(new ImmediateString("Index hors range")));
             addInstruction(new WNL());
             addInstruction(new ERROR());
+
+            // Erreur de taille
+            addLabel(new Label("taille_negative"));
+            addInstruction(new WSTR(new ImmediateString("Taille negative")));
+            addInstruction(new WNL());
+            addInstruction(new ERROR());
+            
         }
         // Erreur de lecture
         addLabel(new Label("erreur_de_lecture"));

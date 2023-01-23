@@ -1,0 +1,13 @@
+// Test of rule (1.3) : valid declaration of a class
+// i.e. the declaration respects both conditions :
+//  - class not already defined
+//  - super-class exists
+
+class A {
+  // n'est pas déjà définie : OK
+}
+
+class B extends A {
+  // la super-classe A est bien définie : OK
+}
+

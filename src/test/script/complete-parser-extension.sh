@@ -4,7 +4,6 @@
 
 # Script de test du parser.
 # On lance tous les tests en rapport avec le parser
-# Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
 reset=$(tput sgr0)
@@ -44,8 +43,8 @@ test_parser_unitaire() {
         path_valid="valid"
     fi
 
-    fichier_modele="src/test/script/modele/parser/"$path_valid"/modele_$filename.txt"
-    fichier_modele_decompile="src/test/script/modele/parser/"$path_valid"/modele_$filename.txt"
+    fichier_modele="src/test/script/modele-extension/parser/"$path_valid"/modele_$filename.txt"
+    fichier_modele_decompile="src/test/script/modele-extension/parser/"$path_valid"/modele_$filename.txt"
 
     test_synt_ext "$1" >src/main/bin/temporaire_test.txt 2>&1
     result=$?
@@ -83,23 +82,13 @@ test_parser_unitaire() {
 }
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/parser/invalid/ -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/parser/invalid/ -name '*.deca'); do
     test_parser_unitaire "$cas_de_test" 1
 done
 
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/parser/valid/ -name '*.deca'); do
+for cas_de_test in $(find src/test/deca/extension/parser/valid/ -name '*.deca'); do
     test_parser_unitaire "$cas_de_test" 0
 done
-
-# End of the script
-# Check if the --exit-status option was passed
-# if [ "$1" == "--exit-status" ]; then
-#     # Print the exit status
-#     echo "The script exited with a status of $exit_status"
-#     exit $exit_status
-# else
-#     exit $exit_status
-# fi

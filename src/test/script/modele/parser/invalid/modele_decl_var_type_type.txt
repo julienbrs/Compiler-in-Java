@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/decl_var_type_type.deca:4:12: extraneous input 'x' expecting ';'

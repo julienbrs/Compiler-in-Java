@@ -75,6 +75,6 @@
       |            `> ListExpr [List with 0 elements]
       `> ListInst [List with 1 elements]
          []> [25, 13] MethodCall
-             +> This
+             +> [25, 4] This
              +> [25, 4] Identifier (getAnswer)
              `> ListExpr [List with 0 elements]

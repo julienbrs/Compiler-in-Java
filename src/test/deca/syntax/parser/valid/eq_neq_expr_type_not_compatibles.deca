@@ -1,0 +1,10 @@
+// Parser test, can use the operator '==' on variables of different types
+// (syntaxically correct)
+
+{
+    int x = 5;
+    float y = 7.5;
+    if (x == y) { 
+        println("x est égal à y");
+    }
+}

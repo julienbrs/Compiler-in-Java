@@ -1,0 +1,24 @@
+// Test of rule (3.31) : possible to print an expression
+// where the type is int, float, or string.
+
+class A {
+    void printSomeThings() {
+        int i = 1;
+        float pi = 3.14;
+        println(i);
+        println(pi);
+        println(1);
+        println(3.14);
+        println("a string");
+    }
+}
+
+{
+    int i = 1;
+    float pi = 3.14;
+    println(i);
+    println(pi);
+    println(1);
+    println(3.14);
+    println("a string");
+}

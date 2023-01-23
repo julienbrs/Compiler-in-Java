@@ -1,0 +1,5 @@
+// Parser test, instanceof should be followed by an IDENT not a number
+
+{
+    x instanceof 14;
+}

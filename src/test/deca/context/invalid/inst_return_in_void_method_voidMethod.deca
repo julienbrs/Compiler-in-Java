@@ -1,0 +1,18 @@
+// Test of the rule (3.24): not possible to return something
+// when we are not expecting a return
+
+class A  {
+
+    void getInt(){
+        int y = 12;
+    }
+
+    void voidMethod(){
+        return getInt();
+    }
+}
+
+
+
+// Resultat:
+//# src/test/deca/context/invalid/inst_return_in_void_method_voidMethod.deca:10:8: Return can't be void : rule 3.24

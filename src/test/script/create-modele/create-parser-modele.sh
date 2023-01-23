@@ -27,9 +27,12 @@ echo "${purple}Création des modèles de tests parser sensés être invalides...
 for cas_de_test in $(find src/test/deca/syntax/parser/invalid -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
-    test_synt "$cas_de_test" >src/test/script/modele/parser/invalid/modele_$filename.txt 2>&1
-
-    decac "$cas_de_test" -p >src/test/script/modele/parser/invalid/modele_decomp_$filename.txt 2>&1
+    output_file=$(printf "src/test/script/modele/parser/invalid/modele_%s.txt" "$filename")
+    if [ ! -f "$output_file" ]; then
+        test_synt "$cas_de_test" >$output_file 2>&1
+    else
+        echo "modele_$filename déjà existant"
+    fi
 
 done
 
@@ -37,9 +40,19 @@ echo "${purple}Création des modèles de tests parser sensés être valides....$
 for cas_de_test in $(find src/test/deca/syntax/parser/valid/ -name '*.deca'); do
     filename=$(basename "$cas_de_test")
     filename="${filename%.*}"
-    test_synt "$cas_de_test" >$(printf "src/test/script/modele/parser/valid/modele_%s.txt" "$filename") 2>&1
+    output_file=$(printf "src/test/script/modele/parser/valid/modele_%s.txt" "$filename")
 
-    decac "$cas_de_test" -p >src/test/script/modele/parser/valid/modele_decomp_$filename.txt 2>&1
+    if [ ! -f "$output_file" ]; then
+        test_synt "$cas_de_test" >$output_file 2>&1
+    else
+        echo "modele_$filename déjà existant"
+    fi
+    output_file_decomp=$(printf "src/test/script/modele/parser/valid/modele_decomp_%s.txt" "$filename")
+    if [ ! -f "$output_file_decomp" ]; then
+        decac "$cas_de_test" -p >$output_file_decomp 2>&1
+    else
+        echo "modele_decompil_$filename déjà existant"
+    fi
 done
 
 # End of the script

@@ -50,9 +50,4 @@ public class Test_verifyListInst_ListInst {
 		verify(lOpInt, times(1)).verifyExpr(compiler, null, null);
 		verify(rOpInt, times(1)).verifyExpr(compiler, null, null);
 	}
-
-	@Test
-	public void test() {
-		// TESTTODO
-	}
 }

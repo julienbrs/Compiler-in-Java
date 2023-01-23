@@ -1,6 +1,8 @@
+// test while with one condition
+
 {
     int i = 0;
     while (i < 5) {
-        println("i est égal à " + i);
+        println("i est égal à ", i);
     }
 }

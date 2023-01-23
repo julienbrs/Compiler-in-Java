@@ -1,0 +1,15 @@
+// Contextual test of print
+
+{
+    int i = 5;
+    float f = 3.14;
+
+    print();
+    print(i);
+    print(f);
+    print("little string");
+
+    print( 5 + f);
+    print( 5 * i);
+    print(f *3.1);
+}

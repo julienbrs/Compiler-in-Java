@@ -14,6 +14,7 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
+import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.FLOAT;
@@ -94,6 +95,9 @@ public class Cast extends AbstractExpr {
             compiler.addInstruction(new FLOAT(GPRegister.getR(offset), GPRegister.getR(offset)));
         } else if (type.getType().isInt() && expr.getType().isFloat()) {
             compiler.addInstruction(new INT(GPRegister.getR(offset), GPRegister.getR(offset)));
+            if (!compiler.getCompilerOptions().getNoCheck()) {
+                compiler.addInstruction(new BOV(new Label("debordement_arithmetique")));
+            }
         } else {
             int i = compiler.getLabelNumber();
             compiler.incrLabelNumber();

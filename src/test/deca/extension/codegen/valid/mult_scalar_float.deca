@@ -1,0 +1,17 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+float[][] r = {{1,2},{1,2}};
+float r1 = 1;
+println("multiplication of r :");
+a.printMatFloat(r);
+println();
+println("with r1 :");
+print(r1);
+println();
+a.printMatFloat(a.multScalarFloat(r,r1));
+
+println();
+
+
+}

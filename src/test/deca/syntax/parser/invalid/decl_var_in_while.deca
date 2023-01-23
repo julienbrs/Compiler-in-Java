@@ -1,0 +1,8 @@
+// Parser test, can't declare a variable after a declaration ("while")
+
+{
+
+    while (x || y ){
+        int z = 5;
+    }
+}

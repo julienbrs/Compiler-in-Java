@@ -1,0 +1,16 @@
+// Test context, method call with int as parameters
+
+class Test {
+    float testMethod(float x, int y, boolean b) {
+        if (b) {
+            return x;
+        }
+        return (x + y);
+    }
+}
+
+{
+    float z;
+    Test test = new Test();
+    z = test.testMethod(5,12, true);
+}

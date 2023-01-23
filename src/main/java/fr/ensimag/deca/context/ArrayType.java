@@ -57,7 +57,9 @@ public class ArrayType extends Type {
             // pas d'exeption a priori
             otherArrayType = null;
         }
-        if (!getEltType().sameType(otherArrayType.getEltType())) {
+        if (getEltType() == null) {
+            return true;
+        } else if (!getEltType().sameType(otherArrayType.getEltType())) {
             return false;
         }
         if (!(getLevel() == otherArrayType.getLevel())) {

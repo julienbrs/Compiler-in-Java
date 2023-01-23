@@ -29,7 +29,7 @@ for cas_de_test in $(find src/test/deca/syntax/lexer/invalid -name '*.deca'); do
     filename="${filename%.*}"
     output_file=$(printf "src/test/script/modele/lexer/invalid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
-        test_lex "$cas_de_test" >"$output_file" 2>&1
+        test_lex_ext "$cas_de_test" >"$output_file" 2>&1
     else
         echo "modele_$filename déjà existant"
     fi
@@ -41,18 +41,8 @@ for cas_de_test in $(find src/test/deca/syntax/lexer/valid -name '*.deca'); do
     filename="${filename%.*}"
     output_file=$(printf "src/test/script/modele/lexer/valid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
-        test_lex "$cas_de_test" >"$output_file" 2>&1
+        test_lex_ext "$cas_de_test" >"$output_file" 2>&1
     else
         echo "modele_$filename déjà existant"
     fi
 done
-
-# End of the script
-# Check if the --exit-status option was passed
-# if [ "$1" == "--exit-status" ]; then
-#     # Print the exit status
-#     echo "The script exited with a status of $?"
-#     exit $exit_status
-# else
-#     exit $exit_status
-# fi

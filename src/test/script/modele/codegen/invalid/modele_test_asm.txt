@@ -1,0 +1,1 @@
+LIGNE  66 -- erreur syntaxique

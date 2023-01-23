@@ -1,0 +1,32 @@
+#include "ArrayLib.decah"
+
+// Compares int arrays values
+
+{
+ArrayLib a = new ArrayLib();
+int[] r = {4,4} ;
+int[] r1 = {4,4} ;
+int[] r2 = {2,4} ;
+int[] r3 = {4,4,1} ;
+
+
+if(a.compareInt(r,r1)){
+    println("r et r1 sont egaux");
+
+}else{
+    println("r et r1 ne sont pas egaux");
+}
+if(a.compareInt(r,r2)){
+    println("r et r2 sont egaux");
+
+}else{
+    println("r et r2 ne sont pas egaux");
+}if(a.compareInt(r,r3)){
+    println("r et r3 sont egaux");
+
+}else{
+    println("r et r3 ne sont pas egaux");
+}
+
+
+}

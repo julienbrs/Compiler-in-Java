@@ -1,0 +1,8 @@
+// Test of the rule (3.24): not possible to return a boolean
+// when we are not expecting a return
+
+class A  {
+    void getFloat(){
+        return true;
+    }
+}

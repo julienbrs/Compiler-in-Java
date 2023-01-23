@@ -1,0 +1,5 @@
+// Parser test, int identifier name (no problem should be caused)
+
+{
+    float int = 5;
+}

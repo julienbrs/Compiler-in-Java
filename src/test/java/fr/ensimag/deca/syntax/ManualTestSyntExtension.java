@@ -18,7 +18,7 @@ public class ManualTestSyntExtension {
         // Uncomment the following line to activate debug traces
         // unconditionally for test_synt
         // Logger.getRootLogger().setLevel(Level.DEBUG);
-        DecaLexer lex = AbstractDecaLexer.createLexerFromArgs(args);
+        DecaLexerExtension lex = AbstractDecaLexer.createLexerFromArgsExt(args);
         CommonTokenStream tokens = new CommonTokenStream(lex);
         DecaParserExtension parser = new DecaParserExtension(tokens);
         File file = null;

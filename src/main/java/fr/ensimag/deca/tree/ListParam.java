@@ -14,12 +14,12 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  * @author gl11
  * @date 01/01/2023
  */
-public class ListParam extends TreeList<Param> {
+public class ListParam extends TreeList<DeclParam> {
 
     @Override
     public void decompile(IndentPrintStream s) {
-        Iterator<Param> ite = getList().iterator();
-        Param current;
+        Iterator<DeclParam> ite = getList().iterator();
+        DeclParam current;
         if (ite.hasNext()) {
             current = ite.next();
             current.decompile(s);
@@ -30,38 +30,41 @@ public class ListParam extends TreeList<Param> {
             current.decompile(s);
         }
     }
-    
+
     /**
      * Passe 1 of contextual syntax for parameters members
+     * 
      * @param compiler
      * @param sig
      * @throws ContextualError
      */
     public void verifyListParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {
-        for (Param param : this.getList()) {
+        for (DeclParam param : this.getList()) {
             param.verifyParamMembers(compiler, sig);
         }
     }
 
     /**
      * Passe 2 of contextual syntax for parameters body
+     * 
      * @param compiler
      * @param localEnv
      * @throws ContextualError
      */
-    public void verifyListParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError{
-        for (Param param : this.getList()) {
+    public void verifyListParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
+        for (DeclParam param : this.getList()) {
             param.verifyParamBody(compiler, localEnv);
         }
     }
 
     /**
      * Generates code to parameters
+     * 
      * @param compiler
      */
     public void codeGenParam(DecacCompiler compiler) {
         int index = 3;
-        for (Param p : getList()) {
+        for (DeclParam p : getList()) {
             p.codeGenParam(compiler, index);
             index++;
         }

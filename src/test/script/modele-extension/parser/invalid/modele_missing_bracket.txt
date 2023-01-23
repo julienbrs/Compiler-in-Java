@@ -1,0 +1,1 @@
+src/test/deca/extension/parser/invalid/missing_bracket.deca:2:11: missing ']' at ';'

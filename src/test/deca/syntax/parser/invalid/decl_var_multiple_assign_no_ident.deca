@@ -1,0 +1,5 @@
+// Parser test, seconf identifier is null
+
+{
+    int x, = 8;
+}

@@ -158,18 +158,23 @@ public class Array extends AbstractIdentifier {
         this.definition=definition;
         
     }
+
+    public void setIdentLocation() {
+        this.nametype.setLocation(getLocation());
+    }
+
     @Override
     public Type verifyType(DecacCompiler compiler) throws ContextualError {
-          nametype.verifyType(compiler);
-          TypeDefinition def = compiler.environmentType.defOfType(nametype.getName());
-          if (def == null) {
-              // ERROR MSG
-              throw new ContextualError("The type \"" + nametype + "\" doesn't exist : 0.1", getLocation());
-          }
-          ArrayType arrType = new ArrayType(name, nametype.getType(), getLocation(), level);
-          setDefinition(arrType.getDefinition());
-          setType(definition.getType());
-          return this.getType();
+        nametype.verifyType(compiler);
+        TypeDefinition def = compiler.environmentType.defOfType(nametype.getName());
+        if (def == null) {
+            // ERROR MSG
+            throw new ContextualError("The type \"" + nametype + "\" doesn't exist : 0.1", getLocation());
+        }
+        ArrayType arrType = new ArrayType(name, nametype.getType(), getLocation(), level);
+        setDefinition(arrType.getDefinition());
+        setType(definition.getType());
+        return this.getType();
     }
 
     @Override
@@ -205,7 +210,7 @@ public class Array extends AbstractIdentifier {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        // No children to print
         
     }
     @Override

@@ -1,0 +1,29 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+int[][] r = {{4,4} ,{4,4}};
+float[][] r1 = {{4,4} ,{4,4}} ;
+float[][] r2 = {{4,1} ,{4,4}};
+float[][] r3 = {{4,4,1} ,{4,4}} ;
+
+
+if(a.compareIntFloat(r,r1)){
+    println("r et r1 sont egaux");
+
+}else{
+    println("r et r1 ne sont pas egaux");
+}
+if(a.compareIntFloat(r,r2)){
+    println("r et r2 sont egaux");
+
+}else{
+    println("r et r2 ne sont pas egaux");
+}if(a.compareIntFloat(r,r3)){
+    println("r et r3 sont egaux");
+
+}else{
+    println("r et r3 ne sont pas egaux");
+}
+
+
+}

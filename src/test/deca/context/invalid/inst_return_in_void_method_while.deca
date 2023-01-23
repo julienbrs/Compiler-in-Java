@@ -1,0 +1,11 @@
+// Test of the rule (3.24): not possible to return something
+// when we are not expecting a return in a while
+
+class A  {
+
+    void voidMethod(){
+        while (true){
+            return 5;
+        }
+    }
+}

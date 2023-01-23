@@ -1,5 +1,5 @@
-// Test une classe retournant une string
-// Contextuellement faux, type string inexistant
+// Test a class returning a string
+// Contextually wrong, type string does not exist
 
 class DummyClass {
     string getAnswer(){

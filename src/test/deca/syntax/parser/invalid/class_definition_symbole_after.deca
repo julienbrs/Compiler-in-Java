@@ -1,0 +1,5 @@
+// Parser test, class with a special caracter in its name declared
+
+class aClass# {
+    
+}

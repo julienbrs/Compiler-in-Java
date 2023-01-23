@@ -1,0 +1,17 @@
+#include "MatrixLib.decah"
+#include "ArrayLib.decah"
+{
+MatrixLib a = new MatrixLib();
+ArrayLib e = new ArrayLib();
+IntFloat ca;
+
+float[][] rf = {{1,4},{4,4}} ;
+float[]rf1 = {4,4};
+ca =a.gaussJordan(rf);
+a.printMatFloat(rf);
+println();
+println(ca.rang );
+println(ca.det );
+
+
+}

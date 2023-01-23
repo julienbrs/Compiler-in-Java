@@ -1,0 +1,5 @@
+// Parser test, type unavailable
+
+{
+    protected x = 5;
+}

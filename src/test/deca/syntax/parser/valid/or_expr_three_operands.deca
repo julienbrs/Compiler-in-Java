@@ -1,0 +1,7 @@
+// Parser test with 3 conditions in "if"
+
+{
+  if (x || y || z) {
+    x = 5;
+  }
+}

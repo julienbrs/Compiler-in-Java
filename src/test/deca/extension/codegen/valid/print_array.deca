@@ -1,0 +1,17 @@
+#include "ArrayLib.decah"
+
+// Tests the print functions for float and int arrays
+
+{
+ArrayLib a = new ArrayLib();
+int[] r = {4,4} ;
+float[] r1 = {4,4} ;
+float[] r2 = {2,4} ;
+float[] r3 = {4,4,1} ;
+
+
+a.printTabFloat(r1);
+a.printTabInt(r);
+
+
+}

@@ -1,0 +1,9 @@
+// Contextually, it is not possible to call a method the same way as
+// a field already declared in the class
+
+class A {
+    int champ;
+    int champ(){
+        return 5;
+    }   
+}

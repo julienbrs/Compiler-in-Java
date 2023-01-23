@@ -1,0 +1,5 @@
+// Parser test, identifier unavailable, reserved word
+
+{
+    int if = 5;
+}

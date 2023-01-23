@@ -1,4 +1,8 @@
+// Parser test, can't write one string on two lines
+
 {
   " I am just a simple
   multi line string"
 }
+
+//# output

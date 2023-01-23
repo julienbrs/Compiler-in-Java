@@ -1,11 +1,8 @@
-// Test la règle 3.17: une variable est de type void dans main
+// Test of the rule 3.17: a variable of type void in the main
 
 {
     void x = 12;
 }
 
 // Resultat:
-//# DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
-//# DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:28) - verify listClass: start
-//# DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:33) - verify listClass: end
-//# src/test/deca/context/invalid/var_type_void.deca:5:13: Type can't be void : rule 3.17
+//# src/test/deca/context/invalid/decl_var_void_in_main.deca:5:13: Type can't be void : rule 3.17

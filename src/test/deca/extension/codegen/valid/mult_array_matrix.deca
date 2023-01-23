@@ -1,0 +1,16 @@
+#include "MatrixLib.decah"
+#include "ArrayLib.decah"
+{
+MatrixLib a = new MatrixLib();
+ArrayLib e = new ArrayLib();
+int[][] r = {{4,4},{4,4}} ;
+int[]r1 = {4,4};
+
+float[][] rf = {{4,4},{4,4}} ;
+float[]rf1 = {4,4};
+e.printTabInt(a.multArrayMatrixInt(r1,r));
+println();
+e.printTabFloat(a.multArrayMatrixFloat(rf1,rf));
+
+
+}

@@ -1,0 +1,11 @@
+// Test of the rule 3.28: can't assign to an object of type int 
+// a value from an object of type class. 
+
+class A  {
+    
+}
+
+class B {
+    A a = new A();
+    int x = a;
+}

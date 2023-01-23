@@ -1,0 +1,5 @@
+// Test context, the identifier is an int (does not cause problem)
+
+{
+    float int = 5;
+}

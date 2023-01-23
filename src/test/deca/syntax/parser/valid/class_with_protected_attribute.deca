@@ -1,5 +1,5 @@
-// Test avec classe ayant un attribut protected
-// Test contextuellement faux, type string inexistant
+// Test a class with protected attribut 
+// Contextually wrong, type string does not exist
 
 class Protector {
     string publiclyDoing = "IM PROTECTINGGGG"; 

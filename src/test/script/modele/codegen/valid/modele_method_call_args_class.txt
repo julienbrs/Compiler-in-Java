@@ -1,0 +1,22 @@
+Method1 > :  
+false
+true
+false
+Method2 >= :  
+false
+true
+true
+Method3 < : 
+true
+false
+false
+Method4 <= :  
+true
+false
+true
+Method5 == :  
+false
+false
+true
+Proxy: 
+false

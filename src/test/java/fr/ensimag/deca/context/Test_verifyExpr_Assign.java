@@ -45,5 +45,4 @@ public class Test_verifyExpr_Assign {
 		assertTrue(t.isInt());
 	}
 
-	// TESTTODO : do more tests ?
 }

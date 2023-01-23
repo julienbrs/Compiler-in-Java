@@ -1,0 +1,6 @@
+// Parser test, empty instruction
+
+{
+    int x = 5;
+    ;
+}

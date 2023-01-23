@@ -1,0 +1,15 @@
+// Codegen test, we cast from class to subclass
+
+class Personne {
+    int pouvoir = 10;
+}
+
+class Roi extends Personne {
+    int pouvoir = 30;
+    int corruption = 100;
+}
+
+{
+    Personne lambda = new Personne();
+    Roi roi = (Roi) (lambda);
+}

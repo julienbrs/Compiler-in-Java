@@ -40,6 +40,7 @@ public class ConvFloat extends AbstractUnaryExpr {
 
     @Override
     protected String getOperatorName() {
+        /* Code inaccessible à partir d'un .deca */
         return "/* conv float */";
     }
 

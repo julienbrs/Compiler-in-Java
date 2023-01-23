@@ -1,0 +1,6 @@
+// Parser test, the instruction is an expression without assignation
+
+{
+    int x = 8;
+    x;
+}

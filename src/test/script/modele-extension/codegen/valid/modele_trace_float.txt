@@ -1,0 +1,2 @@
+trace of r
+trace of r : 3.00000e+00

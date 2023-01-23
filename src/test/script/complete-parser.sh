@@ -4,7 +4,6 @@
 
 # Script de test du parser.
 # On lance tous les tests en rapport avec le parser
-# Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
 reset=$(tput sgr0)
@@ -67,14 +66,17 @@ test_parser_unitaire() {
 
     #Test de la décompilation:
     if [ "$result" -eq "$exit_status_waited" ]; then
-        # # On regarde maintenant si l'output est le bon:
-        # if diff -w -b src/main/bin/temporaire_test.txt $fichier_modele_decompile >/dev/null; then
-        echo ".. et pour décompilation: $str_res_waited attendu ✅"
-        # else
-        #     echo ".. et pour décompilation: $str_res_waited mais output non attendu ❌"
-        # fi
-    else
-        echo ".. et pour décompilation: $str_res_not_waited non attendu ❌"
+        if [ "$result" -eq "$exit_status_waited" ]; then
+
+            # # On regarde maintenant si l'output est le bon:
+            # if diff -w -b src/main/bin/temporaire_test.txt $fichier_modele_decompile >/dev/null; then
+            echo ".. et pour décompilation: $str_res_waited attendu ✅"
+            # else
+            #     echo ".. et pour décompilation: $str_res_waited mais output non attendu ❌"
+            # fi
+        else
+            echo ".. et pour décompilation: $str_res_not_waited non attendu ❌"
+        fi
     fi
 
 }

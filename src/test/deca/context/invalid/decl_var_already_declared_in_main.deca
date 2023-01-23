@@ -1,0 +1,11 @@
+// Test of the rule 3.17: declaration of a variable already existing
+// in the main
+
+{
+    int x = 12;
+    
+    int x = 5;
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/decl_var_already_declared_in_main.deca:6:8: The variable "x" is already declared : rule 3.17

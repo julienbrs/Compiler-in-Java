@@ -1,4 +1,4 @@
-// Test pour une classe avec constructeur:
+// Test a class with a constructor
 
 class Person {
     string name;

@@ -1,4 +1,4 @@
-// Test si l'extends est bien parsé
+// Test if the extends is parsed
 
 class People {
     int Courage = 50;

@@ -1,0 +1,1 @@
+src/test/deca/extension/parser/invalid/array_declaration_with_size.deca:2:11: no viable alternative at input 'a'

@@ -1,0 +1,7 @@
+// Parser test, can't declare a variable after a declaration ("if")
+
+{
+    if (x || y ){
+        int z = 5;
+    }
+}

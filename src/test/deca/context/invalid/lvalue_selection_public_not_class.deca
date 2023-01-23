@@ -1,0 +1,8 @@
+// Test rule (3.65) : if we try to select a field of a class but the
+// selection on left side of the dot is not an object, it fails.
+
+{
+  int a = 0;
+  a.x = 1;
+}
+

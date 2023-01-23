@@ -33,6 +33,10 @@ public abstract class AbstractOpExactCmp extends AbstractOpCmp {
             setType(compiler.environmentType.BOOLEAN);
             return this.getType();
         }
+        if (lt.isInt() && rt.isArray() || lt.isArray() && rt.isNull()) {
+            setType(compiler.environmentType.BOOLEAN);
+            return this.getType();
+        }
         if ((!lt.isInt() && !lt.isFloat()) || (!rt.isInt() && !rt.isFloat())) {
             // ERROR MSG
             throw new ContextualError("Can't do \""+getOperatorName()+"\" between \""+lt+"\" and \""+rt+"\": rule 3.33", getLocation());

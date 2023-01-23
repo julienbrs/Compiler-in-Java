@@ -1,0 +1,10 @@
+// nesting class in the same class
+
+class A {
+    A subObject = new A();
+}
+
+{
+    A a = new A();
+    A subObject = a.subObject;
+}

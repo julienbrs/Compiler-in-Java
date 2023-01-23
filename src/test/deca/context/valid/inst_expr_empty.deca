@@ -1,0 +1,6 @@
+// Test context, no instruction
+
+{
+    int x = 5;
+    ;
+}

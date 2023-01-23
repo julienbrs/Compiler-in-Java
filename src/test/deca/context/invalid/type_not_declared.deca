@@ -1,10 +1,6 @@
-// Test la règle 0.2: le type utilisé n'existe pas dans 
-// l'environnement des types.
+// Test of the rule (0.2): the type used does not
+// exist in the environnement of types.
 
 {
     typeAlien alien = 15;
 }
-
-// Resultat:
-//# doit afficher erreur regle 0.2
-//# TODOTEST

@@ -1,4 +1,4 @@
-// Test une classe avec une méthode
+// Test a class with a method
 
 class DummyClass {
     void displayName(){

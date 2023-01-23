@@ -1,0 +1,14 @@
+// Test of the rule (2.7) : the new method adds
+// a parameter to the original method
+
+class A {
+    void method(int i, float f) {}
+}
+
+class B extends A {
+    void method(int i, float f, boolean b) {}
+    // les arguments int et float sont corrects
+    // mais on rajoute un 3e argument
+}
+
+//# src/test/deca/context/invalid/decl_method_number_of_arguments.deca:9:4: Redéfinition de méthode invalide : rule 2.7

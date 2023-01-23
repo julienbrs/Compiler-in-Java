@@ -1,0 +1,5 @@
+// Parser test, invalid format, special character not allowed
+
+{
+    float x = .5;
+}
