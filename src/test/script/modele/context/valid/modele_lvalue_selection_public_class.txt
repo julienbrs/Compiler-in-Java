@@ -19,7 +19,7 @@
    |  ||     ||  +> [7, 7] Identifier (setNombreRoues)
    |  ||     ||  |  definition: method defined at [7, 7], type=void
    |  ||     ||  +> ListParam [List with 1 elements]
-   |  ||     ||  |  []> [7, 22] Param
+   |  ||     ||  |  []> [7, 22] DeclParam
    |  ||     ||  |      +> [7, 22] Identifier (int)
    |  ||     ||  |      |  definition: type (builtin), type=int
    |  ||     ||  |      `> [7, 26] Identifier (n)
@@ -88,7 +88,7 @@
    |             +> [24, 7] Identifier (setVehicule)
    |             |  definition: method defined at [24, 7], type=void
    |             +> ListParam [List with 1 elements]
-   |             |  []> [24, 19] Param
+   |             |  []> [24, 19] DeclParam
    |             |      +> [24, 19] Identifier (Vehicule)
    |             |      |  definition: type defined at [4, 0], type=Vehicule
    |             |      `> [24, 28] Identifier (v)

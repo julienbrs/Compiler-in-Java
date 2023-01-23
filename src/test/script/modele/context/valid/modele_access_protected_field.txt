@@ -28,7 +28,7 @@
    |             +> [8, 7] Identifier (setNombreRoues)
    |             |  definition: method defined at [8, 7], type=void
    |             +> ListParam [List with 1 elements]
-   |             |  []> [8, 22] Param
+   |             |  []> [8, 22] DeclParam
    |             |      +> [8, 22] Identifier (int)
    |             |      |  definition: type (builtin), type=int
    |             |      `> [8, 26] Identifier (n)

@@ -1,1 +1,6 @@
-  IMA -- Fichier ./src/test/deca/codegen/temp/rvalue_assign_float_to_int.ass introuvable
+3.00000e+00
+9
+9.00000e+00
+1.00000e+01
+3
+3.00000e+00

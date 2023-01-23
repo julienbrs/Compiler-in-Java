@@ -13,12 +13,12 @@
    |         ||  +> [4, 12] Identifier (testMethod1)
    |         ||  |  definition: method defined at [4, 12], type=boolean
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [4, 24] Param
+   |         ||  |  []> [4, 24] DeclParam
    |         ||  |  ||  +> [4, 24] Identifier (float)
    |         ||  |  ||  |  definition: type (builtin), type=float
    |         ||  |  ||  `> [4, 30] Identifier (x)
    |         ||  |  ||     definition: parameter defined at [4, 24], type=float
-   |         ||  |  []> [4, 33] Param
+   |         ||  |  []> [4, 33] DeclParam
    |         ||  |      +> [4, 33] Identifier (float)
    |         ||  |      |  definition: type (builtin), type=float
    |         ||  |      `> [4, 39] Identifier (y)
@@ -39,12 +39,12 @@
    |         ||  +> [7, 12] Identifier (testMethod2)
    |         ||  |  definition: method defined at [7, 12], type=boolean
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [7, 24] Param
+   |         ||  |  []> [7, 24] DeclParam
    |         ||  |  ||  +> [7, 24] Identifier (float)
    |         ||  |  ||  |  definition: type (builtin), type=float
    |         ||  |  ||  `> [7, 30] Identifier (x)
    |         ||  |  ||     definition: parameter defined at [7, 24], type=float
-   |         ||  |  []> [7, 33] Param
+   |         ||  |  []> [7, 33] DeclParam
    |         ||  |      +> [7, 33] Identifier (float)
    |         ||  |      |  definition: type (builtin), type=float
    |         ||  |      `> [7, 39] Identifier (y)
@@ -65,12 +65,12 @@
    |         ||  +> [10, 12] Identifier (testMethod3)
    |         ||  |  definition: method defined at [10, 12], type=boolean
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [10, 24] Param
+   |         ||  |  []> [10, 24] DeclParam
    |         ||  |  ||  +> [10, 24] Identifier (float)
    |         ||  |  ||  |  definition: type (builtin), type=float
    |         ||  |  ||  `> [10, 30] Identifier (x)
    |         ||  |  ||     definition: parameter defined at [10, 24], type=float
-   |         ||  |  []> [10, 33] Param
+   |         ||  |  []> [10, 33] DeclParam
    |         ||  |      +> [10, 33] Identifier (float)
    |         ||  |      |  definition: type (builtin), type=float
    |         ||  |      `> [10, 39] Identifier (y)
@@ -91,12 +91,12 @@
    |         ||  +> [13, 12] Identifier (testMethod4)
    |         ||  |  definition: method defined at [13, 12], type=boolean
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [13, 24] Param
+   |         ||  |  []> [13, 24] DeclParam
    |         ||  |  ||  +> [13, 24] Identifier (float)
    |         ||  |  ||  |  definition: type (builtin), type=float
    |         ||  |  ||  `> [13, 30] Identifier (x)
    |         ||  |  ||     definition: parameter defined at [13, 24], type=float
-   |         ||  |  []> [13, 33] Param
+   |         ||  |  []> [13, 33] DeclParam
    |         ||  |      +> [13, 33] Identifier (float)
    |         ||  |      |  definition: type (builtin), type=float
    |         ||  |      `> [13, 39] Identifier (y)
@@ -117,12 +117,12 @@
    |         ||  +> [16, 12] Identifier (testMethod5)
    |         ||  |  definition: method defined at [16, 12], type=boolean
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [16, 24] Param
+   |         ||  |  []> [16, 24] DeclParam
    |         ||  |  ||  +> [16, 24] Identifier (float)
    |         ||  |  ||  |  definition: type (builtin), type=float
    |         ||  |  ||  `> [16, 30] Identifier (x)
    |         ||  |  ||     definition: parameter defined at [16, 24], type=float
-   |         ||  |  []> [16, 33] Param
+   |         ||  |  []> [16, 33] DeclParam
    |         ||  |      +> [16, 33] Identifier (float)
    |         ||  |      |  definition: type (builtin), type=float
    |         ||  |      `> [16, 39] Identifier (y)
@@ -143,12 +143,12 @@
    |             +> [20, 12] Identifier (proxyMethod)
    |             |  definition: method defined at [20, 12], type=boolean
    |             +> ListParam [List with 2 elements]
-   |             |  []> [20, 24] Param
+   |             |  []> [20, 24] DeclParam
    |             |  ||  +> [20, 24] Identifier (float)
    |             |  ||  |  definition: type (builtin), type=float
    |             |  ||  `> [20, 30] Identifier (x)
    |             |  ||     definition: parameter defined at [20, 24], type=float
-   |             |  []> [20, 33] Param
+   |             |  []> [20, 33] DeclParam
    |             |      +> [20, 33] Identifier (float)
    |             |      |  definition: type (builtin), type=float
    |             |      `> [20, 39] Identifier (y)
