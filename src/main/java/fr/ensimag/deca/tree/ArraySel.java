@@ -54,6 +54,13 @@ public class ArraySel extends AbstractSelection {
             currentOffset++;
         }
         int[] resInd = indexExpr.codeGenExpr(compiler, currentOffset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(currentOffset - 1)), GPRegister.R1));
+            compiler.addInstruction(new CMP(GPRegister.getR(currentOffset), GPRegister.R1));
+            compiler.addInstruction(new BLE(new Label("index_hors_range")));
+            compiler.addInstruction(new CMP(new ImmediateInteger(0), GPRegister.getR(currentOffset)));
+            compiler.addInstruction(new BLT(new Label("index_hors_range")));
+        }
         int[] max = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};
         DAddr addr;
         if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
