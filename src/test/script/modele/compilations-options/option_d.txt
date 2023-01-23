@@ -1,5 +1,0 @@
-INFO  fr.ensimag.deca.CompilerOptions.parseArgs(CompilerOptions.java:112) - Application-wide trace level set to INFO
-INFO  fr.ensimag.deca.CompilerOptions.parseArgs(CompilerOptions.java:117) - Java assertions enabled
-INFO  fr.ensimag.deca.DecacCompiler.doCompile(DecacCompiler.java:253) - Output file assembly file is: /home/julien/ensimag/GL/gl11/./src/test/deca/codegen/perf/provided/ln2.ass
-INFO  fr.ensimag.deca.DecacCompiler.doCompile(DecacCompiler.java:262) - Writing assembler file ...
-INFO  fr.ensimag.deca.DecacCompiler.doCompile(DecacCompiler.java:265) - Compilation of /home/julien/ensimag/GL/gl11/./src/test/deca/codegen/perf/provided/ln2.deca successful.
