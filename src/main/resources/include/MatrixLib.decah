@@ -228,9 +228,13 @@ class ArrayTab {
     // ---------- DEEPCOPY ----------
 
     float[][] deepCopyFloat(float[][] matrix) {
-        float[][] newMatrix = new float[matrix.length][matrix[0].length]();
+        float[][] newMatrix;
         int i = 0;
         int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new float[matrix.length][matrix[0].length]();
         while (i < matrix.length) {
             j = 0;
             while (j < matrix[0].length) {
@@ -243,9 +247,13 @@ class ArrayTab {
     }
 
     int[][] deepCopyInt(int[][] matrix) {
-        int[][] newMatrix = new int[matrix.length][matrix[0].length]();
+        int[][] newMatrix;
         int i = 0;
         int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new int[matrix.length][matrix[0].length]();
         while (i < matrix.length) {
             j = 0;
             while (j < matrix[0].length) {
@@ -340,6 +348,8 @@ class ArrayTab {
         while (i < matrice.length) {
             if (matrice[i].length == n) {
                 trace = trace + matrice[i][i];
+            } else {
+                matrixError();
             }
             i = i + 1;
         }
@@ -353,6 +363,8 @@ class ArrayTab {
         while (i < matrice.length) {
             if (matrice[i].length == n) {
                 trace = trace + matrice[i][i];
+            } else {
+                matrixError();
             }
             i = i + 1;
         }
@@ -367,13 +379,13 @@ class ArrayTab {
         int j = 0;
         int nbCol;
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < matrice.length) {
             nbCol = A[0].length;
             j = 0;
             if (A[i].length != nbCol || B[i].length != nbCol) {
-                return null;
+                matrixError();
             }
             while (j < nbCol) {
                 matrice[i][j] = matrice[i][j] + B[i][j];
@@ -390,13 +402,13 @@ class ArrayTab {
         int j = 0;
         int nbCol;
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < matrice.length) {
             nbCol = A[0].length;
             j = 0;
             if (A[i].length != nbCol || B[i].length != nbCol) {
-                return null;
+                matrixError();
             }
             while (j < nbCol) {
                 matrice[i][j] = matrice[i][j] + B[i][j];
@@ -415,13 +427,13 @@ class ArrayTab {
         int j = 0;
         int nbCol;
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < matrice.length) {
             nbCol = A[0].length;
             j = 0;
             if (A[i].length != nbCol || B[i].length != nbCol) {
-                return null;
+                matrixError();
             }
             while (j < nbCol) {
                 matrice[i][j] = matrice[i][j] - B[i][j];
@@ -438,13 +450,13 @@ class ArrayTab {
         int j = 0;
         int nbCol;
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < matrice.length) {
             nbCol = A[0].length;
             j = 0;
             if (A[i].length != nbCol || B[i].length != nbCol) {
-                return null;
+                matrixError();
             }
             while (j < nbCol) {
                 matrice[i][j] = matrice[i][j] - B[i][j];
@@ -463,6 +475,9 @@ class ArrayTab {
         int i = 0;
         int j = 0;
         while (i < matrice.length) {
+            if (matrice[i].length != matrice[0].length) {
+                matrixError();
+            }
             j = 0;
             while (j < matrice[0].length) {
                 matrice[i][j] = matrice[i][j] * lambda;
@@ -479,6 +494,9 @@ class ArrayTab {
         int i = 0;
         int j = 0;
         while (i < matrice.length) {
+            if (matrice[i].length != matrice.length) {
+                matrixError();
+            }
             j = 0;
             while (j < matrice[0].length) {
                 matrice[i][j] = matrice[i][j] * lambda;
@@ -492,28 +510,29 @@ class ArrayTab {
     // ---------- MULT MATRIX ----------
 
     float[][] multMatrixFloat(float[][] A, float[][] B) {
-        float[][] matrice = new float[A.length][B[0].length]();
+        float[][] matrice;
         int i = 0;
         int j = 0;
         int k = 0;
         int nbFact;
         int nbCol;
         if (A.length == 0 || B.length == 0 || B[0].length == 0) {
-            return null;
+            matrixError();
         }
+        matrice = new float[A.length][B[0].length]();
         nbFact = A[0].length;
         nbCol = B[0].length;
         if (A[0].length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < matrice.length) {
             if (A[i].length != nbFact) {
-                return null;
+                matrixError();
             }
             j = 0;
             while (j < matrice.length) {
                 if (B[j].length != nbCol) {
-                    return null;
+                    matrixError();
                 }
                 k = 0;
                 while (k < matrice[i].length) {
@@ -528,28 +547,29 @@ class ArrayTab {
     }
 
     int[][] multMatrixInt(int[][] A, int[][] B) {
-        int[][] matrice = new int[A.length][B[0].length]();
+        int[][] matrice;
         int i = 0;
         int j = 0;
         int k = 0;
         int nbFact;
         int nbCol;
         if (A.length == 0 || B.length == 0 || B[0].length == 0) {
-            return null;
+            matrixError();
         }
+        matrice = new int[A.length][B[0].length]();
         nbFact = A[0].length;
         nbCol = B[0].length;
         if (A[0].length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < matrice.length) {
             if (A[i].length != nbFact) {
-                return null;
+                matrixError();
             }
             j = 0;
             while (j < matrice[i].length) {
                 if (B[j].length != nbCol) {
-                    return null;
+                    matrixError();
                 }
                 k = 0;
                 while (k < B.length) {
@@ -566,21 +586,22 @@ class ArrayTab {
     // ---------- MULT ARRAY MATRIX ----------
 
     float[] multArrayMatrixFloat(float[] A, float[][] B) {
-        float[] vector = new float[B[0].length]();
+        float[] vector;
         int i = 0;
         int k = 0;
         int nbFact;
         int nbCol;
         if (A.length == 0 || B.length == 0 || B[0].length == 0) {
-            return null;
+            matrixError();
         }
+        vector = new float[B[0].length]();
         nbCol = B[0].length;
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < vector.length) {
             if (B[i].length != nbCol) {
-                return null;
+                matrixError();
             }
             while (k < A.length) {
                 vector[i] = vector[i] + A[k] * B[k][i];
@@ -592,21 +613,22 @@ class ArrayTab {
     }
 
     int[] multArrayMatrixInt(int[] A, int[][] B) {
-        int[] vector = new int[B[0].length]();
+        int[] vector;
         int i = 0;
         int k = 0;
         int nbFact;
         int nbCol;
         if (A.length == 0 || B.length == 0 || B[0].length == 0) {
-            return null;
+            matrixError();
         }
+        vector = new int[B[0].length]();
         nbCol = B[0].length;
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < vector.length) {
             if (B[i].length != nbCol) {
-                return null;
+                matrixError();
             }
             while (k < A.length) {
                 vector[i] = vector[i] + A[k] * B[k][i];
@@ -625,14 +647,14 @@ class ArrayTab {
         int k = 0;
         int nbFact;
         if (A.length == 0 || B.length == 0) {
-            return null;
+            matrixError();
         }
         if (A[0].length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < vector.length) {
             if (A[i].length != A[0].length) {
-                return null;
+                matrixError();
             }
             while (k < A[0].length) {
                 vector[i] = vector[i] + A[i][k] * B[k];
@@ -649,14 +671,14 @@ class ArrayTab {
         int k = 0;
         int nbFact;
         if (A.length == 0 || B.length == 0) {
-            return null;
+            matrixError();
         }
         if (A.length != B.length) {
-            return null;
+            matrixError();
         }
         while (i < vector.length) {
             if (A[i].length != A[0].length) {
-                return null;
+                matrixError();
             }
             while (k < A[0].length) {
                 vector[i] = vector[i] + A[i][k] * B[k];
@@ -687,8 +709,7 @@ class ArrayTab {
         IntFloat res = new IntFloat();
 
         if (matrix.length == 0 || matrix[0].length == 0) {
-            matrix = null;
-            return null;
+            matrixError();
         }
 
         max = matrix[0][0];
@@ -699,8 +720,7 @@ class ArrayTab {
 
         while (j < matrix.length) {
             if (matrix[j].length != nbCol) {
-                matrix = null;
-                return null;
+                matrixError();
             }
             // on cherche la valeur maximale de chaque colonne
             max = matrix[0][j];
@@ -764,11 +784,11 @@ class ArrayTab {
         IntFloat res;
         float[][] mat = new float[matrix.length][matrix.length]();
         if (matrix.length == 0 || matrix.length != matrix[0].length) {
-            return null;
+            matrixError();
         }
         while (i < matrix.length) {
             if (matrix[i].length != matrix.length) {
-                return null;
+                matrixError();
             }
             j = 0;
             while (j < matrix.length) {
@@ -787,6 +807,7 @@ class ArrayTab {
         }
 
         res = gaussJordan(matrixWithIdentity);
+
         if (res.det == 0) {
             return null;
         }
@@ -809,7 +830,7 @@ class ArrayTab {
         int i = 0;
         while (i < matrix.length) {
             if (matrix[i].length != matrix.length) {
-                return 0;
+                matrixError();
             }
         }
         return gaussJordan(matrix).det;
@@ -818,8 +839,63 @@ class ArrayTab {
     // ---------- RANG ----------
 
     float rang(float[][] matrix) {
+        int i = 0;
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix.length) {
+                matrixError();
+            }
+        }
         return gaussJordan(matrix).rang;
     }
+
+    // ---------- CAST ----------
+
+    float[][] castMatrixIntToFloat(int[][] matrix) {
+        float[][] newMatrix;
+        int i = 0;
+        int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new float[matrix.length][matrix[0].length]();
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix[0].length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = matrix[i][j];
+            }
+        }
+        return newMatrix;
+    }
+
+    int[][] castMatrixFloatToInt(float[][] matrix) {
+        int[][] newMatrix;
+        int i = 0;
+        int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new int[matrix.length][matrix[0].length]();
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix[0].length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = (int) (matrix[i][j]);
+            }
+        }
+        return newMatrix;
+    }
+
+    // ---------- ERREUR ----------
+
+    void matrixError()
+    asm ("WSTR \"Erreur de dimension\"
+    WNL
+    ERROR");
 }
 
 class IntFloat {

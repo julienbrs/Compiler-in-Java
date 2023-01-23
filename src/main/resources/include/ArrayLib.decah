@@ -327,4 +327,22 @@ class ArrayLib {
         }
         return newTab;
     }
+
+    // ---------- CAST ----------
+
+    int[] castArrayFloatToInt(float[] tab) {
+        int[] newTab = new int[tab.length]();
+        int i = 0;
+        while(i < tab.length) {
+            newTab[i] = (int) (tab[i]);
+        }
+    }
+
+    float[] castArrayIntToFloat(int[] tab) {
+        float[] newTab = new float[tab.length]();
+        int i = 0;
+        while(i < tab.length) {
+            newTab[i] = tab[i];
+        }
+    }
 }
