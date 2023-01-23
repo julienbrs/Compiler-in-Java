@@ -1,4 +1,7 @@
 #include "ArrayLib.decah"
+
+// Tests fill functions on int, float and boolean functions
+
 {
 ArrayLib a = new ArrayLib();
 int[] r = new int[5]() ;
@@ -12,6 +15,4 @@ println("affichage tab");
 a.printTabInt(r);
 println();
 a.printTabFloat(r1);
-
-
 }

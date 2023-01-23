@@ -20,6 +20,7 @@ import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BLE;
 import fr.ensimag.ima.pseudocode.instructions.BLT;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.POP;
@@ -53,6 +54,13 @@ public class ArraySel extends AbstractSelection {
             currentOffset++;
         }
         int[] resInd = indexExpr.codeGenExpr(compiler, currentOffset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(currentOffset - 1)), GPRegister.R1));
+            compiler.addInstruction(new CMP(GPRegister.getR(currentOffset), GPRegister.R1));
+            compiler.addInstruction(new BLE(new Label("index_hors_range")));
+            compiler.addInstruction(new CMP(new ImmediateInteger(0), GPRegister.getR(currentOffset)));
+            compiler.addInstruction(new BLT(new Label("index_hors_range")));
+        }
         int[] max = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};
         DAddr addr;
         if (offset + 1 == compiler.getCompilerOptions().getRmax()) {
@@ -112,6 +120,18 @@ public class ArraySel extends AbstractSelection {
         }
         compiler.addInstruction(new LOAD(new RegisterOffOffset(1, GPRegister.getR(currOffset), GPRegister.getR(nextOffset)), GPRegister.getR(offset)));
         int[] res = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};
+        return res;
+    }
+
+    @Override
+    public int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        int[] res = codeGenExpr(compiler, offset);
+        compiler.addInstruction(new CMP(0, GPRegister.getR(offset)));
+        if (aim) {
+            compiler.addInstruction(new BNE(dest));
+        } else {
+            compiler.addInstruction(new BEQ(dest));
+        }
         return res;
     }
 

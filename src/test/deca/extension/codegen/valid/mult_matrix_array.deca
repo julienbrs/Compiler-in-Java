@@ -1,5 +1,8 @@
 #include "MatrixLib.decah"
 #include "ArrayLib.decah"
+
+// Tests multiplication of two matrix of different lengths
+
 {
 MatrixLib a = new MatrixLib();
 ArrayLib e = new ArrayLib();

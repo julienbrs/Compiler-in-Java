@@ -145,10 +145,6 @@ public class DeclClass extends AbstractDeclClass {
             compiler.add(lTSTO);
             compiler.addInstruction(new BOV(new Label("pile_pleine")));
         }
-
-        Line lADDSP = new Line("");
-        compiler.add(lADDSP);
-
         InlinePortion pushLine = new InlinePortion("");
         compiler.add(pushLine);
 
@@ -186,8 +182,7 @@ public class DeclClass extends AbstractDeclClass {
         for (int i = max[0]; i >= 2; i--) {
             compiler.addInstruction(new POP(GPRegister.getR(i)));
         }
-
-        lADDSP.setInstruction(new ADDSP(new ImmediateInteger(max[0])));
+        
         lTSTO.setInstruction(new TSTO(new ImmediateInteger(max[0] + max[1])));
 
         compiler.addInstruction(new RTS());

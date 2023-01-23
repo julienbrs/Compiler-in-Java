@@ -1,4 +1,7 @@
 #include "ArrayLib.decah"
+
+// Tests quicksort on float arrays
+
 {
 ArrayLib a = new ArrayLib();  
 float[] tab = {1,7,8,9,2,4,5,6,1,2};

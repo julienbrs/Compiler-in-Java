@@ -1,4 +1,7 @@
 #include "ArrayLib.decah"
+
+// Compares float arrays values
+
 {
 ArrayLib a = new ArrayLib();
 float[] r = {4,4} ;

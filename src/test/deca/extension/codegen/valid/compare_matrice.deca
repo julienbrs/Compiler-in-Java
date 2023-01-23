@@ -1,4 +1,7 @@
 #include "MatrixLib.decah"
+
+// Compares int matrix
+
 {
 MatrixLib a = new MatrixLib();
 int[][] r = {{4,4},{4,4}} ;
