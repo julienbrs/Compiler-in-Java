@@ -1,0 +1,2 @@
+trace of r
+trace of r : Erreur de dimension

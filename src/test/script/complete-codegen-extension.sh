@@ -83,3 +83,16 @@ echo ""
 for cas_de_test in $(find src/test/deca/extension/codegen/invalid/ -maxdepth 1 -name '*.deca' -not -path "src/test/deca/codegen/valid/interactif/*" -not -path "src/test/deca/codegen/valid/provided/*"); do
     test_codegen_unitaire "$cas_de_test" 1
 done
+
+# LANCEMENT DU BIG TEST
+echo "${purple}Lancement d'un test complet avec extension:${reset}"
+decac src/test/deca/extension/codegen/valid/big_test/Main.deca -tab
+resultat_output=$(ima ./src/test/deca/extension/codegen/valid/big_test/Main.ass)
+fichier_modele="src/test/script/modele-extension/codegen/valid/big_test_main.txt"
+
+diff <(echo "$resultat_output") $fichier_modele
+if [ $? -eq 0 ]; then
+    echo "BIG TEST: SUCCES attendu ✅"
+else
+    echo "BIG TEST: ERROR ❌"
+fi

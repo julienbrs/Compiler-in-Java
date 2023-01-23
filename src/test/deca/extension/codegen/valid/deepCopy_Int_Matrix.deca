@@ -3,7 +3,7 @@
 MatrixLib a = new MatrixLib();
 int[][] r = {{1,2,3},{1}};
 
-int[][] b= a.deepCopyint(r);
+int[][] b= a.deepCopyInt(r);
 println("deepCopy");
 print("r : ");
 a.printMatInt(r);

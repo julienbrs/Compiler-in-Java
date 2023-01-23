@@ -55,7 +55,8 @@ public class MethodCall extends AbstractExpr {
             def = envExp2.get(methodIdent.getName());
         } else {
             // ERROR MSG
-            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass).asClassType("Can't call method on \"" + expr.getType() + "\" : rule 3.71", getLocation());
+            ClassType e = expr.verifyExpr(compiler, localEnv, currentClass)
+                    .asClassType("Can't call method on \"" + expr.getType() + "\" : rule 3.71", getLocation());
             envExp2 = e.getDefinition().getMembers();
             def = envExp2.get(methodIdent.getName());
         }
@@ -84,7 +85,7 @@ public class MethodCall extends AbstractExpr {
 
     @Override
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
-        int[] res = {0, rValStar.size() + 3};
+        int[] res = { 0, rValStar.size() + 3 };
         compiler.addInstruction(new ADDSP(new ImmediateInteger(rValStar.size() + 1)));
         int[] resExpr = expr.codeGenExpr(compiler, offset);
         if (resExpr[0] > res[0]) {
@@ -112,12 +113,13 @@ public class MethodCall extends AbstractExpr {
             compiler.addInstruction(new BEQ(new Label("dereferencement_null")));
         }
         compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(offset)), GPRegister.getR(offset)));
-        compiler.addInstruction(new BSR(new RegisterOffset(methodIdent.getMethodDefinition().getIndex(), GPRegister.getR(offset))));
+        compiler.addInstruction(
+                new BSR(new RegisterOffset(methodIdent.getMethodDefinition().getIndex(), GPRegister.getR(offset))));
         compiler.addInstruction(new SUBSP(new ImmediateInteger(rValStar.size() + 1)));
         if (!getType().isVoid()) {
             compiler.addInstruction(new LOAD(GPRegister.R0, GPRegister.getR(offset)));
         }
-        
+
         return res;
     }
 

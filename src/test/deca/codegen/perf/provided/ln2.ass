@@ -166,6 +166,8 @@ while_cond.1:
 	HALT
 
 ; Methodes de classe
+init.Object:
+	RTS
 code.Object.equals:
 	TSTO #2
 	BOV pile_pleine
@@ -206,6 +208,10 @@ cast_impossible:
 	ERROR
 index_hors_range:
 	WSTR "Index hors range"
+	WNL
+	ERROR
+taille_negative:
+	WSTR "Taille negative"
 	WNL
 	ERROR
 erreur_de_lecture:

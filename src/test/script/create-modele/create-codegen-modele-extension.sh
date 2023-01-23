@@ -22,27 +22,27 @@ trap cleanup EXIT
 cd "$(dirname "$0")"/../../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
 
-echo "${purple}Création des modèles de tests codegen spécifiques sensés être invalides....${reset}"
-## Tests specifiques à l'extension
-for cas_de_test in $(find src/test/deca/extension/codegen/invalid/ -maxdepth 1 -name '*.deca'); do
-    filename=$(basename "$cas_de_test")
-    filename="${filename%.*}"
-    output_file=$(printf "src/test/script/modele-extension/codegen/invalid/modele_%s.txt" "$filename")
-    if [ ! -f "$output_file" ]; then
-        output_compil=$(decac "./src/test/deca/codegen/invalid/$filename.deca" -tab 2>&1)
-        output_compil="$(echo "$output_compil" | sed 's#.*src#src#')"
-        # Si la compilation s'est bien passée mais que l'erreur sera après:
-        if [ $? -eq 0 ]; then
-            resultat_output=$(ima src/test/deca/codegen/invalid/$filename.ass)
-            resultat_output="$(echo "$resultat_output" | sed 's#.*src#src#')"
-            echo "$resultat_output" >"$output_file" 2>&1
-        else
-            echo "$output_compil" >"$output_file" 2>&1
-        fi
-    else
-        echo "modele_$filename déjà existant"
-    fi
-done
+# echo "${purple}Création des modèles de tests codegen spécifiques sensés être invalides....${reset}"
+# ## Tests specifiques à l'extension
+# for cas_de_test in $(find src/test/deca/extension/codegen/invalid/ -maxdepth 1 -name '*.deca'); do
+#     filename=$(basename "$cas_de_test")
+#     filename="${filename%.*}"
+#     output_file=$(printf "src/test/script/modele-extension/codegen/invalid/modele_%s.txt" "$filename")
+#     if [ ! -f "$output_file" ]; then
+#         output_compil=$(decac "./src/test/deca/codegen/invalid/$filename.deca" -tab 2>&1)
+#         output_compil="$(echo "$output_compil" | sed 's#.*src#src#')"
+#         # Si la compilation s'est bien passée mais que l'erreur sera après:
+#         if [ $? -eq 0 ]; then
+#             resultat_output=$(ima src/test/deca/codegen/invalid/$filename.ass)
+#             resultat_output="$(echo "$resultat_output" | sed 's#.*src#src#')"
+#             echo "$resultat_output" >"$output_file" 2>&1
+#         else
+#             echo "$output_compil" >"$output_file" 2>&1
+#         fi
+#     else
+#         echo "modele_$filename déjà existant"
+#     fi
+# done
 
 ######## specifique
 echo "${purple}.. tests spécifiques valides${reset}"
@@ -51,7 +51,7 @@ for cas_de_test in $(find src/test/deca/extension/codegen/valid/ -maxdepth 1 -na
     filename="${filename%.*}"
     output_file=$(printf "src/test/script/modele-extension/codegen/valid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
-        output_compil=$(decac "./src/test/deca/extension/codegen/valid/$filename.deca" -tab 2>&1)
+        output_compil=$(decac -tab "./src/test/deca/extension/codegen/valid/$filename.deca" 2>&1)
         output_compil="$(echo "$output_compil" | sed 's#.*src#src#')"
 
         # Si la compilation s'est bien passée mais que l'erreur sera après:
@@ -68,11 +68,3 @@ for cas_de_test in $(find src/test/deca/extension/codegen/valid/ -maxdepth 1 -na
         echo "modele_$filename déjà existant"
     fi
 done
-
-# Creation des modeles des tests interactifs:
-decac src/test/deca/codegen/valid/interactif/simple_readint.deca -tab
-echo 5 | ima src/test/deca/codegen/valid/interactif/simple_readint.ass >src/test/script/modele-extension/codegen/valid/modele_simple_readint.txt
-
-decac src/test/deca/codegen/valid/interactif/simple_readfloat.deca -tab
-echo 3.14 | ima src/test/deca/codegen/valid/interactif/simple_readfloat.ass >src/test/script/modele-extension/codegen/valid/modele_simple_readfloat.txt
-rm src/test/deca/codegen/valid/interactif/*.ass
