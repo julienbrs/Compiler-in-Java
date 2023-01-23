@@ -1,0 +1,10 @@
+#include "ArrayLib.decah"
+{
+ArrayLib a = new ArrayLib();
+int[] r = {1,2,3};
+float[] tab1 ={1,2,3};
+println("cast int vers float");
+a.printTabFloat(a.castArrayIntToFloat(r));
+println("cast float vers int");
+a.printTabInt(a.castArrayFloatToInt(tab1));
+}

@@ -1,0 +1,36 @@
+#include "ArrayLib.decah"
+{
+ArrayLib a = new ArrayLib();
+int[] r = new int[5]() ;
+float[] r1 =new float[5]();
+boolean[] r2 = new boolean[5]() ;
+println("remplissage tab");
+a.fillInt(r,4);
+a.fillFloat(r1,4);
+a.fillBoolean(r2,true);
+println("affichage tab");
+a.printTabInt(r);
+println();
+a.printTabFloat(r1);
+println();
+println("recherche tab");
+if(a.searchFloat(r1,2)!=-1) {
+    print("l'element 2 est dans le tableau r1 a la position :" );
+    print(a.searchFloat(r1,2));
+    println();
+} else {
+    print("l'element 2 n'est pas dans le tableau r1");
+    println();
+}
+if(a.searchInt(r,4)!=-1) {
+    print("l'element 4 est dans le tableau r1 a la position :");
+    print(a.searchInt(r,4));
+    println();
+} else {
+    print("l'element 4 n'est pas dans le tableau r1");
+    println();
+}
+
+
+
+}
