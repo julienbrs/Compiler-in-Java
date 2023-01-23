@@ -82,6 +82,9 @@ public class Program extends AbstractProgram {
         compiler.add(new Line(""));
         compiler.addComment("Methodes de classe");
 
+        compiler.addLabel(new Label("init.Object"));
+        compiler.addInstruction(new RTS());
+
         compiler.addLabel(new Label("code.Object.equals"));
         if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new TSTO(new ImmediateInteger(2)));
