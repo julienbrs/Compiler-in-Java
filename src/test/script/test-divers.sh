@@ -4,7 +4,6 @@
 
 # Script de test du parser.
 # On lance tous les tests en rapport avec le parser
-# Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
 cyan=$(tput setab 6)

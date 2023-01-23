@@ -9,8 +9,3 @@ class B {
     A a = new A();
     int x = a;
 }
-
-
-
-// Resultat:
-//TODOTEST

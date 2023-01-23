@@ -3,8 +3,3 @@
 class A  {
     int x = true;
 }
-
-
-
-// Resultat:
-//TODOTEST

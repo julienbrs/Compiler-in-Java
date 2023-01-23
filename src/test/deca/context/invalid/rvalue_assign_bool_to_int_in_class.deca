@@ -5,6 +5,3 @@ class A  {
     boolean b = true;
     int x = b;
 }
-
-// Resultat:
-//TODOTEST

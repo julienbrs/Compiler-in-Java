@@ -4,6 +4,3 @@
 {
     print(null);
 }
-
-// Resultat:
-//# TODOTEST 

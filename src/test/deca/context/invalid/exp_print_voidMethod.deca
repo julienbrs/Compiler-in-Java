@@ -11,7 +11,3 @@ class A {
         print(voidMethod());
     }
 }
-
-
-// Resultat:
-//# TODOTEST  HELP FELIX-SAN, SHOULD HAVE THE SAME ERROR NO ?

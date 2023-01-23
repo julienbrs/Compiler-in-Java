@@ -12,5 +12,3 @@ class Velo {
         println("Le velo n'est pas une instance de Velo");
     }
 }
-
-// Normal que ça soit un vélo ??? TODOTEST

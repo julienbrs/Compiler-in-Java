@@ -3,8 +3,6 @@
 # Auteur : gl11
 
 # Script des tests context
-# On lance tous les tests contexts et on compare avec les modèles
-# Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
 reset=$(tput sgr0)

@@ -6,9 +6,3 @@ class A  {
         return 3.14;
     }
 }
-
-
-
-// Resultat:
-
-//# TODO message error

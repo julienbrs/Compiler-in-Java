@@ -6,7 +6,3 @@ class A  {
         return true;
     }
 }
-
-// Resultat:
-
-//# TODO message error
