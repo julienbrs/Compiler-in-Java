@@ -1,0 +1,10232 @@
+; start main program
+	TSTO #87
+	BOV pile_pleine
+	ADDSP #83
+
+; Generation table des methodes
+; Table methodes Object
+	LOAD #null, R2
+	STORE R2, 1(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 2(GB)
+; Table methodes MatrixLib
+	LEA 1(GB), R2
+	STORE R2, 3(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 4(GB)
+	LOAD code.MatrixLib.printMatFloat, R2
+	STORE R2, 5(GB)
+	LOAD code.MatrixLib.printMatInt, R2
+	STORE R2, 6(GB)
+	LOAD code.MatrixLib.printMatBool, R2
+	STORE R2, 7(GB)
+	LOAD code.MatrixLib.fillFloat, R2
+	STORE R2, 8(GB)
+	LOAD code.MatrixLib.fillInt, R2
+	STORE R2, 9(GB)
+	LOAD code.MatrixLib.fillBoolean, R2
+	STORE R2, 10(GB)
+	LOAD code.MatrixLib.searchFloat, R2
+	STORE R2, 11(GB)
+	LOAD code.MatrixLib.searchInt, R2
+	STORE R2, 12(GB)
+	LOAD code.MatrixLib.searchBool, R2
+	STORE R2, 13(GB)
+	LOAD code.MatrixLib.searchObject, R2
+	STORE R2, 14(GB)
+	LOAD code.MatrixLib.compareFloat, R2
+	STORE R2, 15(GB)
+	LOAD code.MatrixLib.compareInt, R2
+	STORE R2, 16(GB)
+	LOAD code.MatrixLib.compareIntFloat, R2
+	STORE R2, 17(GB)
+	LOAD code.MatrixLib.compareBool, R2
+	STORE R2, 18(GB)
+	LOAD code.MatrixLib.deepCopyFloat, R2
+	STORE R2, 19(GB)
+	LOAD code.MatrixLib.deepCopyInt, R2
+	STORE R2, 20(GB)
+	LOAD code.MatrixLib.deepCopyBool, R2
+	STORE R2, 21(GB)
+	LOAD code.MatrixLib.deepCopyOfRangeFloat, R2
+	STORE R2, 22(GB)
+	LOAD code.MatrixLib.deepCopyOfRangeInt, R2
+	STORE R2, 23(GB)
+	LOAD code.MatrixLib.deepCopyOfRangeBool, R2
+	STORE R2, 24(GB)
+	LOAD code.MatrixLib.traceFloat, R2
+	STORE R2, 25(GB)
+	LOAD code.MatrixLib.traceInt, R2
+	STORE R2, 26(GB)
+	LOAD code.MatrixLib.addFloat, R2
+	STORE R2, 27(GB)
+	LOAD code.MatrixLib.addInt, R2
+	STORE R2, 28(GB)
+	LOAD code.MatrixLib.subFloat, R2
+	STORE R2, 29(GB)
+	LOAD code.MatrixLib.subInt, R2
+	STORE R2, 30(GB)
+	LOAD code.MatrixLib.multScalarFloat, R2
+	STORE R2, 31(GB)
+	LOAD code.MatrixLib.multScalarInt, R2
+	STORE R2, 32(GB)
+	LOAD code.MatrixLib.multMatrixFloat, R2
+	STORE R2, 33(GB)
+	LOAD code.MatrixLib.multMatrixInt, R2
+	STORE R2, 34(GB)
+	LOAD code.MatrixLib.multArrayMatrixFloat, R2
+	STORE R2, 35(GB)
+	LOAD code.MatrixLib.multArrayMatrixInt, R2
+	STORE R2, 36(GB)
+	LOAD code.MatrixLib.multMatrixArrayFloat, R2
+	STORE R2, 37(GB)
+	LOAD code.MatrixLib.multMatrixArrayInt, R2
+	STORE R2, 38(GB)
+	LOAD code.MatrixLib.gaussJordan, R2
+	STORE R2, 39(GB)
+	LOAD code.MatrixLib.inverse, R2
+	STORE R2, 40(GB)
+	LOAD code.MatrixLib.det, R2
+	STORE R2, 41(GB)
+	LOAD code.MatrixLib.rang, R2
+	STORE R2, 42(GB)
+	LOAD code.MatrixLib.castMatrixIntToFloat, R2
+	STORE R2, 43(GB)
+	LOAD code.MatrixLib.castMatrixFloatToInt, R2
+	STORE R2, 44(GB)
+	LOAD code.MatrixLib.matrixError, R2
+	STORE R2, 45(GB)
+; Table methodes IntFloat
+	LEA 1(GB), R2
+	STORE R2, 46(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 47(GB)
+; Table methodes ArrayLib
+	LEA 1(GB), R2
+	STORE R2, 48(GB)
+	LOAD code.Object.equals, R2
+	STORE R2, 49(GB)
+	LOAD code.ArrayLib.printTabFloat, R2
+	STORE R2, 50(GB)
+	LOAD code.ArrayLib.printTabInt, R2
+	STORE R2, 51(GB)
+	LOAD code.ArrayLib.printTabBoolean, R2
+	STORE R2, 52(GB)
+	LOAD code.ArrayLib.fillFloat, R2
+	STORE R2, 53(GB)
+	LOAD code.ArrayLib.fillInt, R2
+	STORE R2, 54(GB)
+	LOAD code.ArrayLib.fillBoolean, R2
+	STORE R2, 55(GB)
+	LOAD code.ArrayLib.searchFloat, R2
+	STORE R2, 56(GB)
+	LOAD code.ArrayLib.searchInt, R2
+	STORE R2, 57(GB)
+	LOAD code.ArrayLib.searchBool, R2
+	STORE R2, 58(GB)
+	LOAD code.ArrayLib.searchObject, R2
+	STORE R2, 59(GB)
+	LOAD code.ArrayLib.partitionFloat, R2
+	STORE R2, 60(GB)
+	LOAD code.ArrayLib.quicksortRecFloat, R2
+	STORE R2, 61(GB)
+	LOAD code.ArrayLib.quicksortFloat, R2
+	STORE R2, 62(GB)
+	LOAD code.ArrayLib.partitionInt, R2
+	STORE R2, 63(GB)
+	LOAD code.ArrayLib.quicksortRecInt, R2
+	STORE R2, 64(GB)
+	LOAD code.ArrayLib.quicksortInt, R2
+	STORE R2, 65(GB)
+	LOAD code.ArrayLib.compareFloat, R2
+	STORE R2, 66(GB)
+	LOAD code.ArrayLib.compareInt, R2
+	STORE R2, 67(GB)
+	LOAD code.ArrayLib.compareIntFloat, R2
+	STORE R2, 68(GB)
+	LOAD code.ArrayLib.compareBool, R2
+	STORE R2, 69(GB)
+	LOAD code.ArrayLib.compareObject, R2
+	STORE R2, 70(GB)
+	LOAD code.ArrayLib.deepCopyFloat, R2
+	STORE R2, 71(GB)
+	LOAD code.ArrayLib.deepCopyInt, R2
+	STORE R2, 72(GB)
+	LOAD code.ArrayLib.deepCopyBool, R2
+	STORE R2, 73(GB)
+	LOAD code.ArrayLib.deepCopyOfRangeFloat, R2
+	STORE R2, 74(GB)
+	LOAD code.ArrayLib.deepCopyOfRangeInt, R2
+	STORE R2, 75(GB)
+	LOAD code.ArrayLib.deepCopyOfRangeBool, R2
+	STORE R2, 76(GB)
+	LOAD code.ArrayLib.castArrayFloatToInt, R2
+	STORE R2, 77(GB)
+	LOAD code.ArrayLib.castArrayIntToFloat, R2
+	STORE R2, 78(GB)
+
+; Main program
+; Variables declarations:
+	NEW #1, R2
+	BOV tas_plein
+	LEA 3(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.MatrixLib
+	POP R2
+	STORE R2, 79(GB)
+	NEW #1, R2
+	BOV tas_plein
+	LEA 48(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.ArrayLib
+	POP R2
+	STORE R2, 80(GB)
+	LOAD #null, R2
+	STORE R2, 81(GB)
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	NEW #3, R3
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R3)
+	LOAD #1, R4
+	FLOAT R4, R4
+	STORE R4, 1(R3)
+	LOAD #4, R4
+	FLOAT R4, R4
+	STORE R4, 2(R3)
+	STORE R3, 1(R2)
+	NEW #4, R3
+	BOV tas_plein
+	LOAD #3, R0
+	STORE R0, 0(R3)
+	LOAD #4, R4
+	FLOAT R4, R4
+	STORE R4, 1(R3)
+	LOAD #4, R4
+	FLOAT R4, R4
+	STORE R4, 2(R3)
+	LOAD #1, R4
+	FLOAT R4, R4
+	STORE R4, 3(R3)
+	STORE R3, 2(R2)
+	STORE R2, 82(GB)
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD #4, R3
+	FLOAT R3, R3
+	STORE R3, 1(R2)
+	LOAD #4, R3
+	FLOAT R3, R3
+	STORE R3, 2(R2)
+	STORE R2, 83(GB)
+; Beginning of main instructions:
+	ADDSP #2
+	LOAD 79(GB), R2
+	STORE R2, 0(SP)
+	LOAD 82(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 36(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 81(GB)
+	ADDSP #2
+	LOAD 79(GB), R2
+	STORE R2, 0(SP)
+	LOAD 82(GB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 2(R2)
+	SUBSP #2
+	WNL
+	LOAD 81(GB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(R2), R2
+	LOAD R2, R1
+	WINT
+	WNL
+	LOAD 81(GB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(R2), R2
+	LOAD R2, R1
+	WFLOAT
+	WNL
+	HALT
+
+; Methodes de classe
+init.Object:
+	RTS
+code.Object.equals:
+	TSTO #2
+	BOV pile_pleine
+	PUSH R2
+	PUSH R3
+	LOAD -2(LB), R2
+	LOAD -3(LB), R3
+	CMP R2, R3
+	SEQ R0
+	POP R3
+	POP R2
+	RTS
+; Corps des methodes de la classe MatrixLib
+init.MatrixLib:
+	TSTO #2
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R2
+	POP R2
+	RTS
+code.MatrixLib.printMatFloat:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	WSTR "["
+	BRA while_cond.1
+while_start.1:
+	WSTR "["
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.2
+while_start.2:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD R2, R1
+	WFLOAT
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.3
+	WSTR ", "
+	BRA end.3
+else.3:
+end.3:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.2:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.2
+	WSTR "]"
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.4
+	WSTR ", "
+	BRA end.4
+else.4:
+end.4:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.1:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.1
+	WSTR "]"
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.printMatInt:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	WSTR "["
+	BRA while_cond.5
+while_start.5:
+	WSTR "["
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.6
+while_start.6:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD R2, R1
+	WINT
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.7
+	WSTR ", "
+	BRA end.7
+else.7:
+end.7:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.6:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.6
+	WSTR "]"
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.8
+	WSTR ", "
+	BRA end.8
+else.8:
+end.8:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.5:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.5
+	WSTR "]"
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.printMatBool:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	WSTR "["
+	BRA while_cond.9
+while_start.9:
+	WSTR "["
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.10
+while_start.10:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #0, R2
+	BEQ else.11
+	WSTR "true"
+	BRA end.11
+else.11:
+	WSTR "false"
+end.11:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BNE else.12
+	WSTR ", "
+	BRA end.12
+else.12:
+end.12:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.10:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.10
+	WSTR "]"
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BNE else.13
+	WSTR ", "
+	BRA end.13
+else.13:
+end.13:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.9:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.9
+	WSTR "]"
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.fillFloat:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.14
+while_start.14:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.15
+while_start.15:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.15:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.15
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.14:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.14
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.fillInt:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.16
+while_start.16:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.17
+while_start.17:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.17:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.17
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.16:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.16
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.fillBoolean:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.18
+while_start.18:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.19
+while_start.19:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.19:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.19
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.18:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.18
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.searchFloat:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.20
+while_start.20:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.21
+while_start.21:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP R3, R2
+	BNE else.22
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD 1(LB), R3
+	STORE R3, 1(R2)
+	LOAD 2(LB), R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchFloat
+	BRA end.22
+else.22:
+end.22:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.21:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.21
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.20:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.20
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 1(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.searchFloat:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.searchInt:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.23
+while_start.23:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.24
+while_start.24:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP R3, R2
+	BNE else.25
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD 1(LB), R3
+	STORE R3, 1(R2)
+	LOAD 2(LB), R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchInt
+	BRA end.25
+else.25:
+end.25:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.24:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.24
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.23:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.23
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 1(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.searchInt:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.searchBool:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.26
+while_start.26:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.27
+while_start.27:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP R3, R2
+	BNE else.28
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD 1(LB), R3
+	STORE R3, 1(R2)
+	LOAD 2(LB), R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchBool
+	BRA end.28
+else.28:
+end.28:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.27:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.27
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.26:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.26
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 1(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.searchBool:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.searchObject:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.29
+while_start.29:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.30
+while_start.30:
+	ADDSP #2
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 0(SP)
+	LOAD -4(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	LOAD R0, R2
+	CMP #0, R2
+	BEQ else.31
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD 1(LB), R3
+	STORE R3, 1(R2)
+	LOAD 2(LB), R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchObject
+	BRA end.31
+else.31:
+end.31:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.30:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.30
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.29:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.29
+	NEW #3, R2
+	BOV tas_plein
+	LOAD #2, R0
+	STORE R0, 0(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 1(R2)
+	LOAD #1, R3
+	OPP R3, R3
+	STORE R3, 2(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.searchObject
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.searchObject:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.compareFloat:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.32
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareFloat
+	BRA end.32
+else.32:
+end.32:
+	BRA while_cond.33
+while_start.33:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.34
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareFloat
+	BRA end.34
+else.34:
+end.34:
+	BRA while_cond.35
+while_start.35:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.36
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareFloat
+	BRA end.36
+else.36:
+end.36:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.35:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.35
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.33:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.33
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.compareFloat:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.compareInt:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.37
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareInt
+	BRA end.37
+else.37:
+end.37:
+	BRA while_cond.38
+while_start.38:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.39
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareInt
+	BRA end.39
+else.39:
+end.39:
+	BRA while_cond.40
+while_start.40:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.41
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareInt
+	BRA end.41
+else.41:
+end.41:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.40:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.40
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.38:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.38
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.compareInt:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.compareIntFloat:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.42
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareIntFloat
+	BRA end.42
+else.42:
+end.42:
+	BRA while_cond.43
+while_start.43:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.44
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareIntFloat
+	BRA end.44
+else.44:
+end.44:
+	BRA while_cond.45
+while_start.45:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	FLOAT R2, R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.46
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareIntFloat
+	BRA end.46
+else.46:
+end.46:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.45:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.45
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.43:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.43
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareIntFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.compareIntFloat:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.compareBool:
+	TSTO #6
+	BOV pile_pleine
+	ADDSP #6
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.47
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareBool
+	BRA end.47
+else.47:
+end.47:
+	BRA while_cond.48
+while_start.48:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.49
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareBool
+	BRA end.49
+else.49:
+end.49:
+	BRA while_cond.50
+while_start.50:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.51
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareBool
+	BRA end.51
+else.51:
+end.51:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.50:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.50
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.48:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.48
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.compareBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.compareBool:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.deepCopyFloat:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #null, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.52
+	NEW #1, R2
+	BOV tas_plein
+	LOAD #0, R0
+	STORE R0, 0(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyFloat
+	BRA end.52
+else.52:
+end.52:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.53
+init.tab.boucle.53:
+	LOAD #null, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.53:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.53
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	BRA while_cond.54
+while_start.54:
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.55
+init.tab.boucle.55:
+	LOAD #0x0.0p0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.55:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.55
+	LOAD R3, R2
+	STORE R2, 2(LB)
+	BRA while_cond.56
+while_start.56:
+	LOAD 2(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 4(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 4(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 4(LB)
+while_cond.56:
+	LOAD 4(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 3(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.56
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 2(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.54:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.54
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.deepCopyFloat:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.deepCopyInt:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #null, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.57
+	NEW #1, R2
+	BOV tas_plein
+	LOAD #0, R0
+	STORE R0, 0(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyInt
+	BRA end.57
+else.57:
+end.57:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.58
+init.tab.boucle.58:
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD #0, R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.59
+init.tab.boucle.59:
+	LOAD #0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.59:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.59
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.58:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.58
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	BRA while_cond.60
+while_start.60:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.61
+init.tab.boucle.61:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.61:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.61
+	LOAD R3, R2
+	STORE R2, 4(LB)
+	BRA while_cond.62
+while_start.62:
+	LOAD 4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.62:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.62
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.60:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.60
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.deepCopyInt:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.deepCopyBool:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.63
+init.tab.boucle.63:
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD #0, R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.64
+init.tab.boucle.64:
+	LOAD #0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.64:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.64
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.63:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.63
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #null, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	BRA while_cond.65
+while_start.65:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.66
+init.tab.boucle.66:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.66:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.66
+	LOAD R3, R2
+	STORE R2, 4(LB)
+	BRA while_cond.67
+while_start.67:
+	LOAD 4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.67:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.67
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.65:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.65
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.deepCopyBool:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.deepCopyOfRangeFloat:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD -6(LB), R2
+	LOAD -4(LB), R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.68
+init.tab.boucle.68:
+	LOAD -7(LB), R4
+	LOAD -5(LB), R5
+	SUB R5, R4
+	BOV debordement_arithmetique
+	LOAD #1, R5
+	ADD R5, R4
+	BOV debordement_arithmetique
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.69
+init.tab.boucle.69:
+	LOAD #0x0.0p0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.69:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.69
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.68:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.68
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	STORE R2, 2(LB)
+	LOAD -5(LB), R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.70
+while_start.70:
+	LOAD -5(LB), R2
+	STORE R2, 3(LB)
+	BRA while_cond.71
+while_start.71:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.72
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.72
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD -5(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	BRA end.72
+else.72:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD -5(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	FLOAT R4, R4
+	STORE R4, 1(R2, R3)
+end.72:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.71:
+	LOAD 3(LB), R2
+	LOAD -7(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.71
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.70:
+	LOAD 2(LB), R2
+	LOAD -6(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.70
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyOfRangeFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.deepCopyOfRangeFloat:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.deepCopyOfRangeInt:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD -6(LB), R2
+	LOAD -4(LB), R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.73
+init.tab.boucle.73:
+	LOAD -7(LB), R4
+	LOAD -5(LB), R5
+	SUB R5, R4
+	BOV debordement_arithmetique
+	LOAD #1, R5
+	ADD R5, R4
+	BOV debordement_arithmetique
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.74
+init.tab.boucle.74:
+	LOAD #0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.74:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.74
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.73:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.73
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	STORE R2, 2(LB)
+	LOAD -5(LB), R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.75
+while_start.75:
+	LOAD -5(LB), R2
+	STORE R2, 3(LB)
+	BRA while_cond.76
+while_start.76:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.77
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.77
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD -5(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	BRA end.77
+else.77:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD -5(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	STORE R4, 1(R2, R3)
+end.77:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.76:
+	LOAD 3(LB), R2
+	LOAD -7(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.76
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.75:
+	LOAD 2(LB), R2
+	LOAD -6(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.75
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyOfRangeInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.deepCopyOfRangeInt:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.deepCopyOfRangeBool:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD -6(LB), R2
+	LOAD -4(LB), R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.78
+init.tab.boucle.78:
+	LOAD -7(LB), R4
+	LOAD -5(LB), R5
+	SUB R5, R4
+	BOV debordement_arithmetique
+	LOAD #1, R5
+	ADD R5, R4
+	BOV debordement_arithmetique
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.79
+init.tab.boucle.79:
+	LOAD #0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.79:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.79
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.78:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.78
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	STORE R2, 2(LB)
+	LOAD -5(LB), R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.80
+while_start.80:
+	LOAD -5(LB), R2
+	STORE R2, 3(LB)
+	BRA while_cond.81
+while_start.81:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.82
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.82
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD -5(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	BRA end.82
+else.82:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD -5(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	STORE R4, 1(R2, R3)
+end.82:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.81:
+	LOAD 3(LB), R2
+	LOAD -7(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.81
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.80:
+	LOAD 2(LB), R2
+	LOAD -6(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.80
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.deepCopyOfRangeBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.deepCopyOfRangeBool:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.traceFloat:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	FLOAT R2, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.83
+while_start.83:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 3(LB), R3
+	CMP R3, R2
+	BNE else.84
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+	BRA end.84
+else.84:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+end.84:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.83:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.83
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.traceFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.traceFloat:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.traceInt:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.85
+while_start.85:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 3(LB), R3
+	CMP R3, R2
+	BNE else.86
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+	BRA end.86
+else.86:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+end.86:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.85:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.85
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.traceInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.traceInt:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.addFloat:
+	TSTO #14
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 16(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.87
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.87
+else.87:
+end.87:
+	BRA while_cond.88
+while_start.88:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BNE Or_end.90
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BEQ else.89
+Or_end.90:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.89
+else.89:
+end.89:
+	BRA while_cond.91
+while_start.91:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -4(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.91:
+	LOAD 3(LB), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BLT while_start.91
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.88:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.88
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.addFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.addFloat:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.addInt:
+	TSTO #14
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 17(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.92
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.92
+else.92:
+end.92:
+	BRA while_cond.93
+while_start.93:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BNE Or_end.95
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BEQ else.94
+Or_end.95:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.94
+else.94:
+end.94:
+	BRA while_cond.96
+while_start.96:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -4(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.96:
+	LOAD 3(LB), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BLT while_start.96
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.93:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.93
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.addInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.addInt:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.subFloat:
+	TSTO #14
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 16(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.97
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.97
+else.97:
+end.97:
+	BRA while_cond.98
+while_start.98:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BNE Or_end.100
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BEQ else.99
+Or_end.100:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.99
+else.99:
+end.99:
+	BRA while_cond.101
+while_start.101:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -4(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	SUB R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.101:
+	LOAD 3(LB), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BLT while_start.101
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.98:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.98
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.subFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.subFloat:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.subInt:
+	TSTO #14
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 17(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.102
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.102
+else.102:
+end.102:
+	BRA while_cond.103
+while_start.103:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BNE Or_end.105
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BEQ else.104
+Or_end.105:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.104
+else.104:
+end.104:
+	BRA while_cond.106
+while_start.106:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -4(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	SUB R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.106:
+	LOAD 3(LB), R2
+	LOAD 4(LB), R3
+	CMP R3, R2
+	BLT while_start.106
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.103:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.103
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.subInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.subInt:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multScalarFloat:
+	TSTO #12
+	BOV pile_pleine
+	ADDSP #8
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 16(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.107
+while_start.107:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.108
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.108
+else.108:
+end.108:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.109
+while_start.109:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -4(LB), R5
+	MUL R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.109:
+	LOAD 3(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.109
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.107:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.107
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multScalarFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multScalarFloat:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multScalarInt:
+	TSTO #12
+	BOV pile_pleine
+	ADDSP #8
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 17(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	BRA while_cond.110
+while_start.110:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.111
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.111
+else.111:
+end.111:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.112
+while_start.112:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -4(LB), R5
+	MUL R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.112:
+	LOAD 3(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.112
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.110:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.110
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multScalarInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multScalarInt:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multMatrixFloat:
+	TSTO #16
+	BOV pile_pleine
+	ADDSP #13
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+	LOAD #0, R2
+	STORE R2, 6(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.114
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.114
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.113
+Or_end.114:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.113
+else.113:
+end.113:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.115
+init.tab.boucle.115:
+	LOAD -4(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD #0, R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.116
+init.tab.boucle.116:
+	LOAD #0x0.0p0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.116:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.116
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.115:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.115
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 5(LB)
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 6(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.117
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.117
+else.117:
+end.117:
+	BRA while_cond.118
+while_start.118:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 5(LB), R3
+	CMP R3, R2
+	BEQ else.119
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.119
+else.119:
+end.119:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.120
+while_start.120:
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 6(LB), R3
+	CMP R3, R2
+	BEQ else.121
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.121
+else.121:
+end.121:
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	BRA while_cond.122
+while_start.122:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 4(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD -4(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 4(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 3(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 4(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 4(LB)
+while_cond.122:
+	LOAD 4(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.122
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.120:
+	LOAD 3(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.120
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.118:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.118
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multMatrixFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multMatrixFloat:
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multMatrixInt:
+	TSTO #16
+	BOV pile_pleine
+	ADDSP #13
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+	LOAD #0, R2
+	STORE R2, 6(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.124
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.124
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.123
+Or_end.124:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.123
+else.123:
+end.123:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.125
+init.tab.boucle.125:
+	LOAD -4(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD #0, R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.126
+init.tab.boucle.126:
+	LOAD #0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.126:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.126
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.125:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.125
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 5(LB)
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 6(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.127
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.127
+else.127:
+end.127:
+	BRA while_cond.128
+while_start.128:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 5(LB), R3
+	CMP R3, R2
+	BEQ else.129
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.129
+else.129:
+end.129:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.130
+while_start.130:
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 6(LB), R3
+	CMP R3, R2
+	BEQ else.131
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.131
+else.131:
+end.131:
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	BRA while_cond.132
+while_start.132:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 4(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD -4(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 4(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 3(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 4(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 4(LB)
+while_cond.132:
+	LOAD 4(LB), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.132
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.130:
+	LOAD 3(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 2(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.130
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.128:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.128
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multMatrixInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multMatrixInt:
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multArrayMatrixFloat:
+	TSTO #15
+	BOV pile_pleine
+	ADDSP #12
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.134
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.134
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.133
+Or_end.134:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.133
+else.133:
+end.133:
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.135
+init.tab.boucle.135:
+	LOAD #0x0.0p0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.135:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.135
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 5(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.136
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.136
+else.136:
+end.136:
+	BRA while_cond.137
+while_start.137:
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 5(LB), R3
+	CMP R3, R2
+	BEQ else.138
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.138
+else.138:
+end.138:
+	BRA while_cond.139
+while_start.139:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD -4(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 3(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 2(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.139:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.139
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.137:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.137
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multArrayMatrixFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multArrayMatrixFloat:
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multArrayMatrixInt:
+	TSTO #15
+	BOV pile_pleine
+	ADDSP #12
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.141
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.141
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.140
+Or_end.141:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.140
+else.140:
+end.140:
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.142
+init.tab.boucle.142:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.142:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.142
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 5(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.143
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.143
+else.143:
+end.143:
+	BRA while_cond.144
+while_start.144:
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 5(LB), R3
+	CMP R3, R2
+	BEQ else.145
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.145
+else.145:
+end.145:
+	BRA while_cond.146
+while_start.146:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD -4(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 3(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 2(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.146:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.146
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.144:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.144
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multArrayMatrixInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multArrayMatrixInt:
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multMatrixArrayFloat:
+	TSTO #14
+	BOV pile_pleine
+	ADDSP #11
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+; Variables declarations
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.147
+init.tab.boucle.147:
+	LOAD #0x0.0p0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.147:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.147
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.149
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.148
+Or_end.149:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.148
+else.148:
+end.148:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.150
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.150
+else.150:
+end.150:
+	BRA while_cond.151
+while_start.151:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.152
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.152
+else.152:
+end.152:
+	BRA while_cond.153
+while_start.153:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD -4(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 3(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.153:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.153
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.151:
+	LOAD 2(LB), R2
+	LOAD 1(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.151
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multMatrixArrayFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multMatrixArrayFloat:
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.multMatrixArrayInt:
+	TSTO #13
+	BOV pile_pleine
+	ADDSP #10
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+	PUSH R7
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.154
+init.tab.boucle.154:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.154:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.154
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.156
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.155
+Or_end.156:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.155
+else.155:
+end.155:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.157
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.157
+else.157:
+end.157:
+	BRA while_cond.158
+while_start.158:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.159
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.159
+else.159:
+end.159:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.160
+while_start.160:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 2(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 3(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD -4(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 3(LB), R7
+	LOAD 0(R6), R1
+	CMP R7, R1
+	BLE index_hors_range
+	CMP #0, R7
+	BLT index_hors_range
+	LOAD 1(R6, R7), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	ADD R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.160:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.160
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.158:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.158
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.multMatrixArrayInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.multMatrixArrayInt:
+	POP R7
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.gaussJordan:
+	TSTO #21
+	BOV pile_pleine
+	ADDSP #18
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD #1, R2
+	OPP R2, R2
+	STORE R2, 1(LB)
+	LOAD #0x0.0p0, R2
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+	LOAD #0x0.0p0, R2
+	STORE R2, 6(LB)
+	LOAD #0, R2
+	STORE R2, 7(LB)
+	LOAD #0, R2
+	STORE R2, 8(LB)
+	LOAD #0, R2
+	STORE R2, 9(LB)
+	LOAD #0x0.0p0, R2
+	STORE R2, 10(LB)
+	LOAD #0x0.0p0, R2
+	STORE R2, 11(LB)
+	NEW #3, R2
+	BOV tas_plein
+	LEA 46(GB), R0
+	STORE R0, 0(R2)
+	PUSH R2
+	BSR init.IntFloat
+	POP R2
+	STORE R2, 12(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.162
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.161
+Or_end.162:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.161
+else.161:
+end.161:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 6(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	STORE R2, 7(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 8(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 10(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 11(LB)
+	BRA while_cond.163
+while_start.163:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD 7(LB), R3
+	CMP R3, R2
+	BEQ else.164
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.164
+else.164:
+end.164:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD #0, R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 6(LB)
+	LOAD #0, R2
+	STORE R2, 8(LB)
+	LOAD #0, R2
+	STORE R2, 5(LB)
+	BRA while_cond.165
+while_start.165:
+	LOAD 6(LB), R2
+	LOAD #0, R3
+	FLOAT R3, R3
+	CMP R3, R2
+	BEQ Or_end.167
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD 6(LB), R3
+	DIV R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	FLOAT R3, R3
+	CMP R3, R2
+	BGT Or_end.167
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD 6(LB), R3
+	DIV R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	OPP R3, R3
+	FLOAT R3, R3
+	CMP R3, R2
+	BGE else.166
+Or_end.167:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 6(LB)
+	LOAD 5(LB), R2
+	STORE R2, 8(LB)
+	BRA end.166
+else.166:
+end.166:
+	LOAD 5(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 5(LB)
+while_cond.165:
+	LOAD 5(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.165
+	LOAD 2(LB), R2
+	LOAD 6(LB), R3
+	MUL R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD 6(LB), R2
+	LOAD #0, R3
+	FLOAT R3, R3
+	CMP R3, R2
+	BEQ else.168
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 9(LB)
+	BRA while_cond.169
+while_start.169:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 8(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 9(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 8(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 9(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD 6(LB), R5
+	DIV R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 9(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 9(LB)
+while_cond.169:
+	LOAD 9(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.169
+	LOAD 8(LB), R2
+	LOAD 1(LB), R3
+	CMP R3, R2
+	BEQ else.170
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	OPP R3, R3
+	FLOAT R3, R3
+	MUL R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 9(LB)
+	BRA while_cond.171
+while_start.171:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 8(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 9(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 10(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 8(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 9(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 1(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 9(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 9(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 10(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 9(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 9(LB)
+while_cond.171:
+	LOAD 9(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.171
+	BRA end.170
+else.170:
+end.170:
+	LOAD #0, R2
+	STORE R2, 5(LB)
+	BRA while_cond.172
+while_start.172:
+	LOAD 5(LB), R2
+	LOAD 1(LB), R3
+	CMP R3, R2
+	BEQ else.173
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 4(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 11(LB)
+	LOAD #0, R2
+	STORE R2, 9(LB)
+	BRA while_cond.174
+while_start.174:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 9(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 5(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 9(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 1(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 9(LB), R6
+	LOAD 0(R5), R1
+	CMP R6, R1
+	BLE index_hors_range
+	CMP #0, R6
+	BLT index_hors_range
+	LOAD 1(R5, R6), R5
+	LOAD 11(LB), R6
+	MUL R6, R5
+	BOV debordement_arithmetique
+	SUB R5, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 9(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 9(LB)
+while_cond.174:
+	LOAD 9(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.174
+	BRA end.173
+else.173:
+end.173:
+	LOAD 5(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 5(LB)
+while_cond.172:
+	LOAD 5(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.172
+	BRA end.168
+else.168:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+end.168:
+	LOAD 4(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 4(LB)
+while_cond.163:
+	LOAD 4(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.163
+	LOAD 12(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	STORE R3, 1(R2)
+	LOAD 12(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	STORE R3, 2(R2)
+	LOAD 12(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.gaussJordan
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.gaussJordan:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.inverse:
+	TSTO #15
+	BOV pile_pleine
+	ADDSP #11
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.175
+init.tab.boucle.175:
+	LOAD #2, R4
+	LOAD -3(LB), R5
+	CMP #null, R5
+	BEQ dereferencement_null
+	LOAD 0(R5), R5
+	MUL R5, R4
+	BOV debordement_arithmetique
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.176
+init.tab.boucle.176:
+	LOAD #0x0.0p0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.176:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.176
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.175:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.175
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	LOAD #null, R2
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.177
+init.tab.boucle.177:
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.178
+init.tab.boucle.178:
+	LOAD #0x0.0p0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.178:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.178
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.177:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.177
+	LOAD R3, R2
+	STORE R2, 5(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BEQ Or_end.180
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.179
+Or_end.180:
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.179
+else.179:
+end.179:
+	BRA while_cond.181
+while_start.181:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.182
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.182
+else.182:
+end.182:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.183
+while_start.183:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.183:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.183
+	BRA while_cond.184
+while_start.184:
+	LOAD 2(LB), R2
+	LOAD 3(LB), R3
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BNE else.185
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #1, R4
+	FLOAT R4, R4
+	STORE R4, 1(R2, R3)
+	BRA end.185
+else.185:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	FLOAT R4, R4
+	STORE R4, 1(R2, R3)
+end.185:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.184:
+	LOAD 3(LB), R2
+	LOAD #2, R3
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	MUL R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.184
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.181:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.181
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 1(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 36(R2)
+	SUBSP #2
+	LOAD R0, R2
+	STORE R2, 4(LB)
+	LOAD 4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(R2), R2
+	LOAD #0, R3
+	FLOAT R3, R3
+	CMP R3, R2
+	BNE else.186
+	LOAD #null, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.inverse
+	BRA end.186
+else.186:
+end.186:
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	BRA while_cond.187
+while_start.187:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.188
+while_start.188:
+	LOAD 5(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD -3(LB), R6
+	CMP #null, R6
+	BEQ dereferencement_null
+	LOAD 0(R6), R6
+	ADD R6, R5
+	BOV debordement_arithmetique
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.188:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.188
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.187:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.187
+	LOAD 5(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.inverse
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.inverse:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.det:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.189
+while_start.189:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.190
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.190
+else.190:
+end.190:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.189:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.189
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 36(R2)
+	SUBSP #2
+	LOAD R0, R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(R2), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.det
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.det:
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.rang:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.191
+while_start.191:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.192
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.192
+else.192:
+end.192:
+while_cond.191:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.191
+	ADDSP #2
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 36(R2)
+	SUBSP #2
+	LOAD R0, R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(R2), R2
+	FLOAT R2, R2
+	LOAD R2, R0
+	BRA end.MatrixLib.rang
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.rang:
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.castMatrixIntToFloat:
+	TSTO #12
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.193
+	NEW #1, R2
+	BOV tas_plein
+	LOAD #0, R0
+	STORE R0, 0(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.castMatrixIntToFloat
+	BRA end.193
+else.193:
+end.193:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.194
+init.tab.boucle.194:
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD #0, R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.195
+init.tab.boucle.195:
+	LOAD #0x0.0p0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.195:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.195
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.194:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.194
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	BRA while_cond.196
+while_start.196:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.197
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.197
+else.197:
+end.197:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.198
+while_start.198:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	FLOAT R4, R4
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.198:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.198
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.196:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.196
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.castMatrixIntToFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.castMatrixIntToFloat:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.castMatrixFloatToInt:
+	TSTO #12
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+	PUSH R6
+; Variables declarations
+	LOAD #null, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+	LOAD #0, R2
+	STORE R2, 3(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #0, R3
+	CMP R3, R2
+	BNE else.199
+	NEW #1, R2
+	BOV tas_plein
+	LOAD #0, R0
+	STORE R0, 0(R2)
+	LOAD R2, R0
+	BRA end.MatrixLib.castMatrixFloatToInt
+	BRA end.199
+else.199:
+end.199:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.200
+init.tab.boucle.200:
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD #0, R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 0(R4), R4
+	CMP #0, R4
+	BLT taille_negative
+	ADD #1, R4
+	NEW R4, R5
+	SUB #1, R4
+	STORE R4, 0(R5)
+	BRA init.tab.condition.201
+init.tab.boucle.201:
+	LOAD #0, R6
+	STORE R6, 1(R5, R4)
+init.tab.condition.201:
+	SUB #1, R4
+	CMP #-1, R4
+	BNE init.tab.boucle.201
+	LOAD R5, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.200:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.200
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	BRA while_cond.202
+while_start.202:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.203
+	ADDSP #1
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 42(R2)
+	SUBSP #1
+	BRA end.203
+else.203:
+end.203:
+	LOAD #0, R2
+	STORE R2, 3(LB)
+	BRA while_cond.204
+while_start.204:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 3(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	INT R4, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.204:
+	LOAD 3(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD #0, R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.204
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.202:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.202
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.MatrixLib.castMatrixFloatToInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.MatrixLib.castMatrixFloatToInt:
+	POP R6
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.MatrixLib.matrixError:
+WSTR "Erreur de dimension"
+    WNL
+    ERROR
+; Corps des methodes de la classe IntFloat
+init.IntFloat:
+	TSTO #3
+	BOV pile_pleine
+	PUSH R2
+	PUSH R3
+	LOAD -2(LB), R2
+	LOAD #0, R3
+	STORE R3, 1(R2)
+	LOAD #0x0.0p0, R3
+	STORE R3, 2(R2)
+	LOAD #0, R3
+	STORE R3, 1(R2)
+	LOAD #0x0.0p0, R3
+	STORE R3, 2(R2)
+	POP R3
+	POP R2
+	RTS
+; Corps des methodes de la classe ArrayLib
+init.ArrayLib:
+	TSTO #2
+	BOV pile_pleine
+	PUSH R2
+	LOAD -2(LB), R2
+	POP R2
+	RTS
+code.ArrayLib.printTabFloat:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	WSTR "["
+	BRA while_cond.205
+while_start.205:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD R2, R1
+	WFLOAT
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.206
+	WSTR ", "
+	BRA end.206
+else.206:
+end.206:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.205:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.205
+	WSTR "]"
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.printTabInt:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	WSTR "["
+	BRA while_cond.207
+while_start.207:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD R2, R1
+	WINT
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.208
+	WSTR ", "
+	BRA end.208
+else.208:
+end.208:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.207:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.207
+	WSTR "]"
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.printTabBoolean:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	WSTR "["
+	BRA while_cond.209
+while_start.209:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	CMP #0, R2
+	BEQ else.210
+	WSTR "true"
+	BRA end.210
+else.210:
+	WSTR "false"
+end.210:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	LOAD #1, R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BEQ else.211
+	WSTR ", "
+	BRA end.211
+else.211:
+end.211:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.209:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.209
+	WSTR "]"
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.fillFloat:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.212
+while_start.212:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.212:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.212
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.fillInt:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.213
+while_start.213:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.213:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.213
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.fillBoolean:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.214
+while_start.214:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.214:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.214
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.searchFloat:
+	TSTO #4
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.215
+while_start.215:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP R3, R2
+	BNE else.216
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchFloat
+	BRA end.216
+else.216:
+end.216:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.215:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.215
+	LOAD #1, R2
+	OPP R2, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.searchFloat:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.searchInt:
+	TSTO #4
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.217
+while_start.217:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP R3, R2
+	BNE else.218
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchInt
+	BRA end.218
+else.218:
+end.218:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.217:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.217
+	LOAD #1, R2
+	OPP R2, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.searchInt:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.searchBool:
+	TSTO #4
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.219
+while_start.219:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP R3, R2
+	BNE else.220
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchBool
+	BRA end.220
+else.220:
+end.220:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.219:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.219
+	LOAD #1, R2
+	OPP R2, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.searchBool:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.searchObject:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	BRA while_cond.221
+while_start.221:
+	ADDSP #2
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 0(SP)
+	LOAD -4(LB), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	LOAD R0, R2
+	CMP #0, R2
+	BEQ else.222
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchObject
+	BRA end.222
+else.222:
+end.222:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.221:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.221
+	LOAD #1, R2
+	OPP R2, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.searchObject
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.searchObject:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.partitionFloat:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD -4(LB), R2
+	STORE R2, 3(LB)
+	LOAD #0x0.0p0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	BRA while_cond.223
+while_start.223:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD 1(LB), R3
+	CMP R3, R2
+	BGE else.224
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 4(LB), R4
+	STORE R4, 1(R2, R3)
+	BRA end.224
+else.224:
+end.224:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.223:
+	LOAD 3(LB), R2
+	LOAD -5(LB), R3
+	CMP R3, R2
+	BLT while_start.223
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.partitionFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.partitionFloat:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.quicksortRecFloat:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -4(LB), R2
+	LOAD -5(LB), R3
+	CMP R3, R2
+	BGE else.225
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD -4(LB), R2
+	STORE R2, -2(SP)
+	LOAD -5(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 12(R2)
+	SUBSP #4
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD -4(LB), R2
+	STORE R2, -2(SP)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 13(R2)
+	SUBSP #4
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, -2(SP)
+	LOAD -5(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 13(R2)
+	SUBSP #4
+	BRA end.225
+else.225:
+end.225:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.quicksortFloat:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #3
+	PUSH R2
+	PUSH R3
+; Variables declarations
+; Beginning of instructions
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD #0, R2
+	STORE R2, -2(SP)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 13(R2)
+	SUBSP #4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.partitionInt:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #9
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD -4(LB), R2
+	STORE R2, 3(LB)
+	LOAD #0, R2
+	STORE R2, 4(LB)
+; Beginning of instructions
+	BRA while_cond.226
+while_start.226:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD 1(LB), R3
+	CMP R3, R2
+	BGE else.227
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 3(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 4(LB), R4
+	STORE R4, 1(R2, R3)
+	BRA end.227
+else.227:
+end.227:
+	LOAD 3(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 3(LB)
+while_cond.226:
+	LOAD 3(LB), R2
+	LOAD -5(LB), R3
+	CMP R3, R2
+	BLT while_start.226
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 4(LB)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD -5(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 4(LB), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.partitionInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.partitionInt:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.quicksortRecInt:
+	TSTO #10
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -4(LB), R2
+	LOAD -5(LB), R3
+	CMP R3, R2
+	BGE else.228
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD -4(LB), R2
+	STORE R2, -2(SP)
+	LOAD -5(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 15(R2)
+	SUBSP #4
+	LOAD R0, R2
+	STORE R2, 1(LB)
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD -4(LB), R2
+	STORE R2, -2(SP)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 16(R2)
+	SUBSP #4
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, -2(SP)
+	LOAD -5(LB), R2
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 16(R2)
+	SUBSP #4
+	BRA end.228
+else.228:
+end.228:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.quicksortInt:
+	TSTO #9
+	BOV pile_pleine
+	ADDSP #3
+	PUSH R2
+	PUSH R3
+; Variables declarations
+; Beginning of instructions
+	ADDSP #4
+	LOAD -2(LB), R2
+	STORE R2, 0(SP)
+	LOAD -3(LB), R2
+	STORE R2, -1(SP)
+	LOAD #0, R2
+	STORE R2, -2(SP)
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD #1, R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	STORE R2, -3(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 16(R2)
+	SUBSP #4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.compareFloat:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.229
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareFloat
+	BRA end.229
+else.229:
+end.229:
+	BRA while_cond.230
+while_start.230:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.231
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareFloat
+	BRA end.231
+else.231:
+end.231:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.230:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.230
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.compareFloat:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.compareInt:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.232
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareInt
+	BRA end.232
+else.232:
+end.232:
+	BRA while_cond.233
+while_start.233:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.234
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareInt
+	BRA end.234
+else.234:
+end.234:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.233:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.233
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.compareInt:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.compareIntFloat:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.235
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareIntFloat
+	BRA end.235
+else.235:
+end.235:
+	BRA while_cond.236
+while_start.236:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	FLOAT R2, R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.237
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareIntFloat
+	BRA end.237
+else.237:
+end.237:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.236:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.236
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareIntFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.compareIntFloat:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.compareBool:
+	TSTO #5
+	BOV pile_pleine
+	ADDSP #5
+	PUSH R2
+	PUSH R3
+	PUSH R4
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.238
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareBool
+	BRA end.238
+else.238:
+end.238:
+	BRA while_cond.239
+while_start.239:
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 1(LB), R4
+	LOAD 0(R3), R1
+	CMP R4, R1
+	BLE index_hors_range
+	CMP #0, R4
+	BLT index_hors_range
+	LOAD 1(R3, R4), R3
+	CMP R3, R2
+	BEQ else.240
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareBool
+	BRA end.240
+else.240:
+end.240:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.239:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.239
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.compareBool:
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.compareObject:
+	TSTO #8
+	BOV pile_pleine
+	ADDSP #4
+	PUSH R2
+	PUSH R3
+; Variables declarations
+	LOAD #0, R2
+	STORE R2, 1(LB)
+; Beginning of instructions
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	LOAD -4(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BEQ else.241
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareObject
+	BRA end.241
+else.241:
+end.241:
+	BRA while_cond.242
+while_start.242:
+	ADDSP #2
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, 0(SP)
+	LOAD -4(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 1(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD 1(R2, R3), R2
+	STORE R2, -1(SP)
+	LOAD 0(SP), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	BSR 1(R2)
+	SUBSP #2
+	LOAD R0, R2
+	CMP #0, R2
+	BNE else.243
+	LOAD #0, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareObject
+	BRA end.243
+else.243:
+end.243:
+	LOAD 1(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 1(LB)
+while_cond.242:
+	LOAD 1(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.242
+	LOAD #1, R2
+	LOAD R2, R0
+	BRA end.ArrayLib.compareObject
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.compareObject:
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.deepCopyFloat:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.244
+init.tab.boucle.244:
+	LOAD #0x0.0p0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.244:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.244
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.245
+while_start.245:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.245:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.245
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.deepCopyFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.deepCopyFloat:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.deepCopyInt:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.246
+init.tab.boucle.246:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.246:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.246
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.247
+while_start.247:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.247:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.247
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.deepCopyInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.deepCopyInt:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.deepCopyBool:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.248
+init.tab.boucle.248:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.248:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.248
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.249
+while_start.249:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.249:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.249
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.deepCopyBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.deepCopyBool:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.deepCopyOfRangeFloat:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -5(LB), R2
+	LOAD -4(LB), R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.250
+init.tab.boucle.250:
+	LOAD #0x0.0p0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.250:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.250
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.251
+while_start.251:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.252
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	BRA end.252
+else.252:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	FLOAT R4, R4
+	STORE R4, 1(R2, R3)
+end.252:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.251:
+	LOAD 2(LB), R2
+	LOAD -5(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.251
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.deepCopyOfRangeFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.deepCopyOfRangeFloat:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.deepCopyOfRangeInt:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -5(LB), R2
+	LOAD -4(LB), R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.253
+init.tab.boucle.253:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.253:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.253
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.254
+while_start.254:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.255
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	BRA end.255
+else.255:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	STORE R4, 1(R2, R3)
+end.255:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.254:
+	LOAD 2(LB), R2
+	LOAD -5(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.254
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.deepCopyOfRangeInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.deepCopyOfRangeInt:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.deepCopyOfRangeBool:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -5(LB), R2
+	LOAD -4(LB), R3
+	SUB R3, R2
+	BOV debordement_arithmetique
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.256
+init.tab.boucle.256:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.256:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.256
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD -4(LB), R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.257
+while_start.257:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BGE else.258
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	STORE R4, 1(R2, R3)
+	BRA end.258
+else.258:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD -4(LB), R4
+	SUB R4, R3
+	BOV debordement_arithmetique
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD #0, R4
+	STORE R4, 1(R2, R3)
+end.258:
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.257:
+	LOAD 2(LB), R2
+	LOAD -5(LB), R3
+	LOAD #1, R4
+	ADD R4, R3
+	BOV debordement_arithmetique
+	CMP R3, R2
+	BLT while_start.257
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.deepCopyOfRangeBool
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.deepCopyOfRangeBool:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.castArrayFloatToInt:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.259
+init.tab.boucle.259:
+	LOAD #0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.259:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.259
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.260
+while_start.260:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	INT R4, R4
+	BOV debordement_arithmetique
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.260:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.260
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.castArrayFloatToInt
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.castArrayFloatToInt:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+code.ArrayLib.castArrayIntToFloat:
+	TSTO #7
+	BOV pile_pleine
+	ADDSP #7
+	PUSH R2
+	PUSH R3
+	PUSH R4
+	PUSH R5
+; Variables declarations
+	LOAD -3(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 0(R2), R2
+	CMP #0, R2
+	BLT taille_negative
+	ADD #1, R2
+	NEW R2, R3
+	SUB #1, R2
+	STORE R2, 0(R3)
+	BRA init.tab.condition.261
+init.tab.boucle.261:
+	LOAD #0x0.0p0, R4
+	STORE R4, 1(R3, R2)
+init.tab.condition.261:
+	SUB #1, R2
+	CMP #-1, R2
+	BNE init.tab.boucle.261
+	LOAD R3, R2
+	STORE R2, 1(LB)
+	LOAD #0, R2
+	STORE R2, 2(LB)
+; Beginning of instructions
+	BRA while_cond.262
+while_start.262:
+	LOAD 1(LB), R2
+	CMP #null, R2
+	BEQ dereferencement_null
+	LOAD 2(LB), R3
+	LOAD 0(R2), R1
+	CMP R3, R1
+	BLE index_hors_range
+	CMP #0, R3
+	BLT index_hors_range
+	LOAD -3(LB), R4
+	CMP #null, R4
+	BEQ dereferencement_null
+	LOAD 2(LB), R5
+	LOAD 0(R4), R1
+	CMP R5, R1
+	BLE index_hors_range
+	CMP #0, R5
+	BLT index_hors_range
+	LOAD 1(R4, R5), R4
+	FLOAT R4, R4
+	STORE R4, 1(R2, R3)
+	LOAD 2(LB), R2
+	LOAD #1, R3
+	ADD R3, R2
+	BOV debordement_arithmetique
+	STORE R2, 2(LB)
+while_cond.262:
+	LOAD 2(LB), R2
+	LOAD -3(LB), R3
+	CMP #null, R3
+	BEQ dereferencement_null
+	LOAD 0(R3), R3
+	CMP R3, R2
+	BLT while_start.262
+	LOAD 1(LB), R2
+	LOAD R2, R0
+	BRA end.ArrayLib.castArrayIntToFloat
+	WSTR "pas de return dans une methode sans void"
+	WNL
+	ERROR
+end.ArrayLib.castArrayIntToFloat:
+	POP R5
+	POP R4
+	POP R3
+	POP R2
+	RTS
+; end main program
+; Gestion des erreurs d'executions
+pile_pleine:
+	WSTR "Débordement de pile"
+	WNL
+	ERROR
+tas_plein:
+	WSTR "Débordement du tas"
+	WNL
+	ERROR
+division_par_0:
+	WSTR "Division par 0"
+	WNL
+	ERROR
+debordement_arithmetique:
+	WSTR "Débordement arithmetique"
+	WNL
+	ERROR
+dereferencement_null:
+	WSTR "Déréférencement de ""null"""
+	WNL
+	ERROR
+cast_impossible:
+	WSTR "Cast impossible"
+	WNL
+	ERROR
+index_hors_range:
+	WSTR "Index hors range"
+	WNL
+	ERROR
+taille_negative:
+	WSTR "Taille negative"
+	WNL
+	ERROR
+erreur_de_lecture:
+	WSTR "Erreur de lecture"
+	WNL
+	ERROR

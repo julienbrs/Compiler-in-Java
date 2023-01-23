@@ -38,12 +38,12 @@ for cas_de_test in $(find src/test/deca/codegen/invalid/ -name '*.deca' -not -pa
         output_compil="$(echo "$output_compil" | sed 's#.*src#src#')"
 
         # Si la compilation s'est bien passée mais que l'erreur sera après:
-        if [ $? -eq 1 ]; then
+        if [ $? -eq 0 ]; then
             resultat_output=$(ima src/test/deca/codegen/invalid/$filename.ass)
             resultat_output="$(echo "$resultat_output" | sed 's#.*src#src#')"
-            "$resultat_output" >"$output_file" 2>&1
+            echo "$resultat_output" >"$output_file" 2>&1
         else
-            "$output_compil" >"$output_file" 2>&1
+            echo "$output_compil" >"$output_file" 2>&1
         fi
     else
         echo "modele_$filename déjà existant"
