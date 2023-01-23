@@ -1,0 +1,11 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+float[][] r = {{1,2},{1,2}};
+println("trace of r");
+print("trace of r : ");
+print(a.traceFloat(r));
+println();
+
+
+}
