@@ -8,5 +8,3 @@ class A {
     A a = new A();
     A subObject = a.subObject;
 }
-
-// TODOTEST : c'est good ?

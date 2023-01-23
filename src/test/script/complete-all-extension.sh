@@ -4,7 +4,6 @@
 
 # Script de test de la lexicographie.
 # On lance tous les tests en rapport avec la lexicographie
-# Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
 reset=$(tput sgr0)

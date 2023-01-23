@@ -19,5 +19,3 @@ class B extends A {
     a.displayHello();
     b.displayHello();
 }
-// Resultat:
-//# TODOTEST

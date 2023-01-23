@@ -11,9 +11,3 @@ class A  {
         return getInt();
     }
 }
-
-
-
-// Resultat:
-
-//# TODO message error

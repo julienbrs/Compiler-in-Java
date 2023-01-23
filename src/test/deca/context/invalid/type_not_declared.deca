@@ -4,7 +4,3 @@
 {
     typeAlien alien = 15;
 }
-
-// Resultat:
-//# doit afficher erreur regle 0.2
-//# TODOTEST

@@ -13,8 +13,3 @@ class B {
         return a;
     }
 }
-
-
-
-// Resultat:
-//# TODO message error

@@ -12,6 +12,3 @@ class B extends A {
         println("Hi");
     }
 }
-
-// Resultat:
-//# TODOTEST

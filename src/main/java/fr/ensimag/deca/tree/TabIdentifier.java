@@ -329,8 +329,7 @@ public class TabIdentifier extends AbstractIdentifier{
     }
     @Override
     protected void iterChildren(TreeFunction f) {
-        // TODO Auto-generated method stub
-        
+        listeposs.iter(f);
     }
 
 

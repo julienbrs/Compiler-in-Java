@@ -193,7 +193,7 @@ public class Array extends AbstractIdentifier {
 
     @Override
     protected void prettyPrintChildren(PrintStream s, String prefix) {
-        // TODO Auto-generated method stub
+        // No children to print
         
     }
     @Override

@@ -9,6 +9,3 @@ class A {
     A a = new A();
     print(a);
 }
-
-// Resultat:
-//# TODOTEST 
