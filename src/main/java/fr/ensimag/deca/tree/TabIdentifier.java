@@ -29,6 +29,7 @@ import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.RegisterOffOffset;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.ADD;
+import fr.ensimag.ima.pseudocode.instructions.BLT;
 import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.BRA;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
@@ -245,6 +246,10 @@ public class TabIdentifier extends AbstractIdentifier{
         }
 
         dim.getList().get(level - 1).codeGenExpr(compiler, currOffset);
+        if (!compiler.getCompilerOptions().getNoCheck()) {
+            compiler.addInstruction(new CMP(new ImmediateInteger(0), GPRegister.getR(currOffset)));
+            compiler.addInstruction(new BLT(new Label("taille_negative")));
+        }
         compiler.addInstruction(new ADD(new ImmediateInteger(1), GPRegister.getR(currOffset)));
         compiler.addInstruction(new NEW(GPRegister.getR(currOffset), GPRegister.getR(currOffset + 1)));
         compiler.addInstruction(new SUB(new ImmediateInteger(1), GPRegister.getR(currOffset)));
