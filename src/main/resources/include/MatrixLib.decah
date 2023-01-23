@@ -755,7 +755,7 @@ class MatrixLib {
 
 
         int indexPivot = -1;
-        float det;
+        float det = 1;
         int rang = matrix.length;
 
         int j = 0;
@@ -783,9 +783,9 @@ class MatrixLib {
                 matrixError();
             }
             // on cherche la valeur maximale de chaque colonne
-            max = matrix[0][j];
-            indexMax = 0;
-            i = 0;
+            max = matrix[indexPivot + 1][j];
+            indexMax = indexPivot + 1;
+            i = indexPivot + 2;
             while (i < matrix.length) {
                 if (max == 0 || matrix[i][j] / max > 1 || matrix[i][j] / max < -1) {
                     max = matrix[i][j];
@@ -794,7 +794,7 @@ class MatrixLib {
                 i = i + 1;
             }
             det = det * max;
-            
+
             if (max != 0) {
                 indexPivot = indexPivot + 1;
                 k = 0;
