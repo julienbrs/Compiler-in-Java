@@ -1,0 +1,7 @@
+// Test context, cast d'un cast int sur un float
+
+{
+    int x = 5;
+    float f = (float) (x);
+    println(x);
+}

@@ -1,0 +1,16 @@
+// Test of the rule (3.24): not possible to return something
+// when we are not expecting a return in else
+
+class A  {
+
+    void voidMethod(){
+        int x = 12;
+        if (false){
+            x = 5;
+        }
+        else{
+            return x;
+        }
+        
+    }
+}

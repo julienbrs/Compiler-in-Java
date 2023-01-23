@@ -1,0 +1,12 @@
+// Calling a method on an object not initialized
+
+class A {
+    void method(){
+        print("I'm doing stuff");
+    }
+}
+
+{
+    A a;
+    a.method();
+}

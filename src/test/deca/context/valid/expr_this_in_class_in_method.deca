@@ -1,0 +1,12 @@
+// Rule test (3.43): A statement starting with
+// `this` must necessarily be in a method of a class.
+
+class A {
+    int x;
+
+    void setX(int x) {
+        this.x = x;
+        // fonctionne car on est dans une méthode de classe
+    }
+}
+

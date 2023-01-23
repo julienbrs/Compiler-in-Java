@@ -1,0 +1,20 @@
+r1 = <3/2>
+r2 = <2/3>
+
+# Test multiplication #
+r1 = r1 * r2
+r1 = <1/1>
+
+r2 = <3/3>
+
+#### Test addition ####
+r1 = r1 + r2
+r1 = <2/1>
+
+####### Test pgcd #####
+a = 6
+b = 6
+pgcd(a, b) = 6
+
+##### Test vector #####
+<0/1>

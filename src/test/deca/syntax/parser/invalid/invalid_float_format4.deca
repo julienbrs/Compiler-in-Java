@@ -1,0 +1,5 @@
+// Parser test, invalid float format
+
+{
+    float x = 1.2e+1.5;
+}

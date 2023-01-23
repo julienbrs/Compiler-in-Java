@@ -5,8 +5,7 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.ImmediateInteger;
-import fr.ensimag.ima.pseudocode.instructions.ADDSP;
+import fr.ensimag.ima.pseudocode.Register;
 
 /**
  * List of declarations (e.g. int x; float y,z).
@@ -43,12 +42,20 @@ public class ListDeclVar extends TreeList<AbstractDeclVar> {
                 }
     }
 
-    public int codeGenListDeclVar(DecacCompiler compiler, int offsetSP) {
+    public int[] codeGenListDeclVar(DecacCompiler compiler, int offsetSP, Register reg) {
+        int[] res = {0, 0, 0};
         int j = 0;
         for (AbstractDeclVar i : getList()) {
-            i.codeGenDeclVar(compiler, j + offsetSP);
+            int[] resDecl = i.codeGenDeclVar(compiler, j + offsetSP, reg); // {maxReg, maxPush}
+            if (resDecl[0] > res[1]) {
+                res[1] = resDecl[0];
+            }
+            if (resDecl[1] > res[2]) {
+                res[2] = resDecl[1];
+            }
             j++;
         }
-        return j;
+        res[0] = j; // {nbVar, maxReg, maxPush}
+        return res;
     }
 }

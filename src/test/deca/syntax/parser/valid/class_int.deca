@@ -1,0 +1,5 @@
+// Name a class as a type, correct syntaxically not contextually
+
+class int {
+    
+}

@@ -1,7 +1,6 @@
 package fr.ensimag.deca;
 
 import java.io.File;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -51,7 +50,7 @@ public class CompilerOptions {
     private boolean noCheck = false;
     private List<File> sourceFiles = new ArrayList<File>();
     private String string;
-
+    private boolean extension = false;
     
     public void parseArgs(String[] args) throws CLIException {
         if (args.length == 0) {
@@ -67,6 +66,7 @@ public class CompilerOptions {
                 verification = false;
                 noCheck = false;
                 parse = false;
+                extension = false;
             }
             else if(string.equals("-P")){
                 printBanner = false;
@@ -79,6 +79,10 @@ public class CompilerOptions {
             else if(string.equals("-p")){
                 printBanner = false;
                 parse = true;
+            }
+            else if(string.equals("-tab")){
+                printBanner = false;
+                extension = true;
             }
             else if(string.equals("-n")){
                 printBanner = false;
@@ -159,5 +163,8 @@ public class CompilerOptions {
 
     public boolean getNoCheck() {
         return noCheck;
+    }
+    public boolean getExtension (){
+        return extension;
     }
 }

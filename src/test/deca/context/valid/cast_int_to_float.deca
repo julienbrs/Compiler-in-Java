@@ -1,0 +1,6 @@
+// Contextual test, cast an int cast into a float
+
+{
+    int x = 5;
+    float f = (float) (x);
+}

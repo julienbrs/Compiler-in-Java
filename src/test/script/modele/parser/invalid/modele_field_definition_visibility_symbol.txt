@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/field_definition_visibility_symbol.deca:4:4: mismatched input '.' expecting {'{', 'extends'}

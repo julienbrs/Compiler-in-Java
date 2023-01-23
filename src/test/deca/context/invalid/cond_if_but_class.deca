@@ -1,0 +1,8 @@
+// Test of the rule 3.29 : if should have a boolean as a condition
+
+{
+    A a = new A();
+    if (a){
+
+    };
+}

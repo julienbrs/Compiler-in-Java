@@ -1,0 +1,9 @@
+// Test of the rule (3.39) : can't cast Object to void.
+
+{
+	Object var2;
+	int var1 = (void)(var2);
+}
+
+// Résultat :
+//# a

@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/class_int.deca:3:0: The class "int" is already declared : rule 1.3

@@ -1,0 +1,38 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Person)
+   |      |  definition: type defined at [3, 0], type=Person
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 1 elements]
+   |      |  []> [4, 8] [visibility = PUBLIC]  DeclField
+   |      |      +> [4, 4] Identifier (int)
+   |      |      |  definition: type (builtin), type=int
+   |      |      +> [4, 8] Identifier (age)
+   |      |      |  definition: field defined at [4, 8], type=int
+   |      |      +> NoInitialization
+   |      `> ListDeclMethod [List with 0 elements]
+   `> [7, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [8, 11] DeclVar
+      |      +> [8, 4] Identifier (Person)
+      |      |  definition: type defined at [3, 0], type=Person
+      |      +> [8, 11] Identifier (Jean)
+      |      |  definition: variable defined at [8, 11], type=Person
+      |      `> [8, 16] Initialization
+      |         `> [8, 18] New
+      |            type: Person
+      |            `> [8, 22] Identifier (Person)
+      |               definition: type defined at [3, 0], type=Person
+      `> ListInst [List with 1 elements]
+         []> [9, 13] Assign
+             type: int
+             +> [9, 8] Selection
+             |  type: int
+             |  +> [9, 4] Identifier (Jean)
+             |  |  definition: variable defined at [8, 11], type=Person
+             |  `> [9, 9] Identifier (age)
+             |     definition: field defined at [4, 8], type=int
+             `> [9, 15] Int (12)
+                type: int

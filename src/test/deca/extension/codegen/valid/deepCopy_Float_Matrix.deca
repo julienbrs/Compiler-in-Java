@@ -1,0 +1,15 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+float[][] r = {{1,2,3},{1}};
+
+float[][] b= a.deepCopyFloat(r);
+println("deepCopy");
+print("r : ");
+a.printMatFloat(r);
+println();
+print("b : ");
+a.printMatFloat(b);
+println();
+
+}

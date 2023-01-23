@@ -1,0 +1,17 @@
+// Test of the rule (2.9) : when we declare a method, all its parameters
+// must be of type different from void. We check that we are able to
+// declare a method which has zero parameters, and a method which has
+// all its parameters of type different from void.
+
+class A {
+    void methodWithoutParameters() {
+        // pas de paramètres : OK
+    }
+}
+
+class B {
+    void methodWithoutNullParameters(int i, float f, boolean b, A a) {
+        // tous ses paramètres ont des type non void : OK
+    }
+}
+

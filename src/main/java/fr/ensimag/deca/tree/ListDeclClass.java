@@ -3,6 +3,14 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.tools.IndentPrintStream;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.LabelOperand;
+import fr.ensimag.ima.pseudocode.NullOperand;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.STORE;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -53,5 +61,25 @@ public class ListDeclClass extends TreeList<AbstractDeclClass> {
         }
     }
 
+    public int codeGenVTable(DecacCompiler compiler) {
+        int offset = 3;
+        compiler.addComment("Table methodes Object");
+        // Ajout de "null"
+        compiler.addInstruction(new LOAD(new NullOperand(), GPRegister.getR(2)));
+        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(1, GPRegister.GB)));
+        // Ajout de "equals"
+        compiler.addInstruction(new LOAD(new LabelOperand(new Label("code.Object.equals")), GPRegister.getR(2)));
+        compiler.addInstruction(new STORE(GPRegister.getR(2), new RegisterOffset(2, GPRegister.GB)));
+        for (AbstractDeclClass abstractDeclClass : this.getList()) {
+            offset += abstractDeclClass.codeGenVTable(compiler, offset);
+        }
+        return offset;
+    }
+
+    public void codeGenBody(DecacCompiler compiler) {
+        for (AbstractDeclClass abstractDeclClass : getList()) {
+            abstractDeclClass.codeGenBody(compiler);
+        }
+    }
 
 }

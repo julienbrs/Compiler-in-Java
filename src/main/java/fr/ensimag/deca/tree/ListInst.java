@@ -6,7 +6,6 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.Label;
 
 /**
  * 
@@ -33,15 +32,18 @@ public class ListInst extends TreeList<AbstractInst> {
         }
     }
 
-    public int codeGenListInst(DecacCompiler compiler) {
-        int maxPush = 0;
+    public int[] codeGenListInst(DecacCompiler compiler) {
+        int[] res = {0, 0};
         for (AbstractInst i : getList()) {
-            int nbPush = i.codeGenInst(compiler);
-            if (nbPush > maxPush) {
-                maxPush = nbPush;
+            int[] resInst = i.codeGenInst(compiler);
+            if (resInst[0] > res[0]) {
+                res[0] = resInst[0];
+            }
+            if (resInst[1] > res[1]) {
+                res[1] = resInst[1];
             }
         }
-        return maxPush;
+        return res;
     }
 
     @Override

@@ -1,0 +1,10 @@
+// Test of if else
+
+{
+    int x = 2;
+    if (x > 3) {
+        println("x est plus grand que 3");
+    } else {
+        println("x est inférieur ou égal à 3");
+    }
+}

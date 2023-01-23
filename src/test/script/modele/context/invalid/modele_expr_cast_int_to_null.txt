@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/expr_cast_int_to_null.deca:4:6: no viable alternative at input 'var1'

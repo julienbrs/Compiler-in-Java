@@ -1,0 +1,3 @@
+x est inférieur à 3 ou y est plus grand que 5
+true
+true

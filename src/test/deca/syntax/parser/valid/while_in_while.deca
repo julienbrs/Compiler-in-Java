@@ -1,0 +1,11 @@
+// test while in while
+
+{
+    int i = 0;
+    int j = 9;
+    while (i < 5) {
+        while (j > i) {
+        println("i est égal à ", i);
+        }
+    }
+}

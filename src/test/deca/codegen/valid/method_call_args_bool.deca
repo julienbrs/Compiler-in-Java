@@ -1,0 +1,46 @@
+// Test context, call a method with bool as argument
+
+class Test {
+    boolean testMethodOr(boolean x, boolean y) {
+        return (x || y);
+    }
+    boolean testMethodAnd(boolean x, boolean y) {
+        return (x && y);
+    }
+
+    void printResult(boolean x){
+        if (x){
+            println("true");
+        }
+        else {
+            println("false");
+        }
+    }
+}
+
+{
+
+    Test test = new Test();
+
+    boolean a1 = test.testMethodOr(true,true);
+    boolean a2 = test.testMethodOr(true,false);
+    boolean a3 = test.testMethodOr(false,true);
+    boolean a4 = test.testMethodOr(false,false);
+
+    boolean b1 = test.testMethodAnd(true,true);
+    boolean b2 = test.testMethodAnd(true,false);
+    boolean b3 = test.testMethodAnd(false,true);
+    boolean b4 = test.testMethodAnd(false,false);
+
+    println("test or: ");
+    test.printResult(a1);
+    test.printResult(a2);
+    test.printResult(a3);
+    test.printResult(a4);
+
+    println("test and: ");
+    test.printResult(b1);
+    test.printResult(b2);
+    test.printResult(b3);
+    test.printResult(b4);
+}

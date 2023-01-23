@@ -1,0 +1,13 @@
+{
+	int x = 5;
+	if ((x > 10)) {
+		println("x est plus grand que 10");
+	} else {
+		if ((x > 5)) {
+			println("x est plus grand que 5 et inférieur ou égal à 10");
+		} else {
+			println("x est inférieur ou égal à 5");
+		}
+	}
+}
+

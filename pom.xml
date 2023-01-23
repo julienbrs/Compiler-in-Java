@@ -290,6 +290,16 @@
                         </goals>
                     </execution>
                     <execution>
+                        <id>complete-context</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-context.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>complete-codegen</id>
                         <configuration>
                             <executable>./src/test/script/complete-codegen.sh</executable>
@@ -303,6 +313,16 @@
                         <id>complete-compilation-options</id>
                         <configuration>
                             <executable>./src/test/script/complete-compilation-options.sh</executable>
+                        </configuration>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>ALL TEST OF EXTENSION</id>
+                        <configuration>
+                            <executable>./src/test/script/complete-all-extension.sh</executable>
                         </configuration>
                         <phase>test</phase>
                         <goals>

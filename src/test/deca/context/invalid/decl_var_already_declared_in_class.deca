@@ -1,0 +1,10 @@
+// Test of the rule 3.17: declaration of a variable already existing
+// in the method of the same class
+
+class A {
+    int x = 12;
+    int x;
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/decl_var_already_declared_in_class.deca:6:8: The field "x" is already declared : rule 2.4

@@ -1,0 +1,22 @@
+// Test avec plusieurs classes, crée un objet pour chaque et
+// appelle leur méthode
+
+class Knight {
+    void whoIs() {
+        println("Brave protector of the King");
+    }
+}
+
+class King {
+    void whoIs() {
+        println("Just a sleeper guy");
+    }
+}
+
+{
+    Knight Felix = new Knight();
+    King Camille = new King();
+    Felix.whoIs();
+    Camille.whoIs();
+
+}

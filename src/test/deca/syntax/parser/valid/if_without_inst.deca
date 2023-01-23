@@ -1,0 +1,6 @@
+// Parser test, if without instruction
+
+{
+    if (true) {
+    }
+}

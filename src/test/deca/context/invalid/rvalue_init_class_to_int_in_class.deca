@@ -1,0 +1,10 @@
+// Test la règle 3.28: 
+
+class A  {
+    
+}
+
+class B {
+
+    int x = new A();
+}

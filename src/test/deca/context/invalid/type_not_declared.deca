@@ -1,0 +1,6 @@
+// Test of the rule (0.2): the type used does not
+// exist in the environnement of types.
+
+{
+    typeAlien alien = 15;
+}

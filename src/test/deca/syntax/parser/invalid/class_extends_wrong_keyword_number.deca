@@ -1,0 +1,9 @@
+// Parser test, keyword number instead of "extends"
+
+class A {
+
+}
+
+class B 8 A {
+
+}

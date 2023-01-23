@@ -3,18 +3,8 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.ImmediateInteger;
-import fr.ensimag.ima.pseudocode.ImmediateString;
-import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.Line;
-import fr.ensimag.ima.pseudocode.instructions.ADDSP;
-import fr.ensimag.ima.pseudocode.instructions.BOV;
-import fr.ensimag.ima.pseudocode.instructions.ERROR;
-import fr.ensimag.ima.pseudocode.instructions.TSTO;
-import fr.ensimag.ima.pseudocode.instructions.WNL;
-import fr.ensimag.ima.pseudocode.instructions.WSTR;
+import fr.ensimag.ima.pseudocode.GPRegister;
 
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -29,6 +19,7 @@ public class Main extends AbstractMain {
     
     private ListDeclVar declVariables;
     private ListInst insts;
+    
     public Main(ListDeclVar declVariables,
             ListInst insts) {
         Validate.notNull(declVariables);
@@ -40,13 +31,11 @@ public class Main extends AbstractMain {
     @Override
     protected void verifyMain(DecacCompiler compiler) throws ContextualError {
         LOG.debug("verify Main: start");
-        // A FAIRE: Appeler méthodes "verify*" de ListDeclVarSet et ListInst.
-        // Vous avez le droit de changer le profil fourni pour ces méthodes
-        // (mais ce n'est à priori pas nécessaire).
 
         EnvironmentExp localEnv = new EnvironmentExp(null);
         declVariables.verifyListDeclVariable(compiler, localEnv, null);
         insts.verifyListInst(compiler, localEnv, null, compiler.environmentType.VOID);
+        
         LOG.debug("verify Main: end");
         
         // throw new UnsupportedOperationException("not yet implemented");
@@ -54,15 +43,15 @@ public class Main extends AbstractMain {
 
     @Override
     protected int[] codeGenMain(DecacCompiler compiler, int offsetGP) {
-        
-        
+                
         compiler.addComment("Variables declarations:");
-        offsetGP += declVariables.codeGenListDeclVar(compiler, offsetGP);
+        int[] resDecl = declVariables.codeGenListDeclVar(compiler, offsetGP, GPRegister.GB);
+        offsetGP += resDecl[0];
         
         compiler.addComment("Beginning of main instructions:");
-        int maxPush = insts.codeGenListInst(compiler);
+        int[] resInst = insts.codeGenListInst(compiler); // {maxReg, maxPush}
         
-        int[] res = {offsetGP, offsetGP + maxPush};
+        int[] res = {Math.max(resInst[0], resDecl[1]), offsetGP - 1, offsetGP - 1 + Math.max(resInst[1], resDecl[2])}; // {maxReg, nbDecl, nbDecl + nbPush}
         return res;
     }
     

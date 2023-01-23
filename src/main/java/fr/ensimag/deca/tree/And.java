@@ -2,7 +2,6 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.instructions.BNE;
 
 /**
  *
@@ -21,19 +20,21 @@ public class And extends AbstractOpBool {
     }
     
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         if (aim) {
             int labelNumber = compiler.getLabelNumber();
             compiler.incrLabelNumber();
             Label andEnd = new Label("And_end."+labelNumber);
-            int nbLeftPush = getLeftOperand().codeGenBool(compiler, false, andEnd);
-            int nbRightPush = getRightOperand().codeGenBool(compiler, true, dest);
+            int[] resLeft = getLeftOperand().codeGenBool(compiler, false, andEnd, offset);
+            int[] resRight = getRightOperand().codeGenBool(compiler, true, dest, offset);
             compiler.addLabel(andEnd);
-            return Math.max(nbLeftPush, nbRightPush);
+            int[] res = {Math.max(resLeft[0], resRight[0]), Math.max(resLeft[1], resRight[1])};
+            return res;
         } else {
-            int nbLeftPush = getLeftOperand().codeGenBool(compiler, false, dest);
-            int nbRightPush = getRightOperand().codeGenBool(compiler, false, dest);
-            return Math.max(nbLeftPush, nbRightPush);
+            int[] resLeft = getLeftOperand().codeGenBool(compiler, false, dest, offset);
+            int[] resRight = getRightOperand().codeGenBool(compiler, false, dest, offset);
+            int[] res = {Math.max(resLeft[0], resRight[0]), Math.max(resLeft[1], resRight[1])};
+            return res;
         }
     }
 

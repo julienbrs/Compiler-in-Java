@@ -1,0 +1,12 @@
+// No return when it was expected
+
+class A  {
+    int getInt(){
+        int x = 5;
+    }
+}
+
+{
+    A a = new A();
+    print(a.getInt());
+}

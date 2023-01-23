@@ -1,0 +1,48 @@
+// Using instanceof to check which child is it
+
+
+class Personne {
+    int taille;
+}
+
+class Marchand extends Personne {
+    float commerce;
+}
+
+class Chevalier extends Personne {
+    float force;
+}
+
+{
+    Marchand antiquaire;
+    Chevalier paladin;
+    Personne personne1;
+    Personne personne2;
+    personne1 = new Marchand();
+    personne1.taille = 180;
+    println(personne1.taille);
+    if (personne1 instanceof Marchand) {
+        antiquaire = (Marchand) (personne1);
+        antiquaire.commerce = 11.5;
+        println(antiquaire.commerce);
+    }
+    if (personne1 instanceof Chevalier) {
+        paladin = (Chevalier) (personne1);
+        paladin.force = 99.99;
+        println(paladin.force);
+    }
+
+    personne2 = new Chevalier();
+    personne2.taille = 180;
+    println(personne2.taille);
+    if (personne2 instanceof Marchand) {
+        antiquaire = (Marchand) (personne2);
+        antiquaire.commerce = 11.5;
+        println(antiquaire.commerce);
+    }
+    if (personne2 instanceof Chevalier) {
+        paladin = (Chevalier) (personne2);
+        paladin.force = 99.99;
+        println(paladin.force);
+    }
+}

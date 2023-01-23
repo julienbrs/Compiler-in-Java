@@ -1,0 +1,5 @@
+// Parser test, visibility replaced by a special charatcer (.)
+
+class myClass {
+    . int x = 12;
+}

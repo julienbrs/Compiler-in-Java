@@ -3,7 +3,6 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.SUB;
 
@@ -23,12 +22,13 @@ public class Minus extends AbstractOpArith {
     }
     
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int[] res = codeGenOperande(compiler, offset);
-        compiler.addInstruction(new SUB(GPRegister.getR(res[0]), GPRegister.getR(offset)));
-        if (getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] resOp = codeGenOperande(compiler, offset); // {offset, maxReg, maxPush}
+        compiler.addInstruction(new SUB(GPRegister.getR(resOp[0]), GPRegister.getR(offset)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BOV(new Label("debordement_arithmetique")));
         }
-        return res[1];
+        int[] res = {resOp[1], resOp[2]};
+        return res;
     }
 }

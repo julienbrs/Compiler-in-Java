@@ -1,0 +1,13 @@
+#include "MatrixLib.decah"
+
+// Cast matrix int to float and float to int
+
+{
+MatrixLib a = new MatrixLib();
+int[][] r = {{1, 2}, {3, 4}};
+float[][] tab1 = {{1, 2}, {3, 4}};
+println("cast int vers float");
+a.printMatFloat(a.castMatrixIntToFloat(r));
+println("cast float vers int");
+a.printMatInt(a.castMatrixFloatToInt(tab1));
+}

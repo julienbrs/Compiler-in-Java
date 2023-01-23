@@ -1,0 +1,15 @@
+// Test with selection of an attribut from a class
+
+class A {
+    int x = 5;
+    float f = 3.14;
+    boolean bool = true;
+}
+
+{
+    A a = new A();
+
+    int x = a.x;
+    float f = a.f;
+    boolean bool = a.bool;
+}

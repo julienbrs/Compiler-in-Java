@@ -10,7 +10,6 @@ import org.mockito.MockitoAnnotations;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.tree.AbstractExpr;
 import fr.ensimag.deca.tree.UnaryMinus;
-import fr.ensimag.deca.context.Type;
 
 /**
  * 
@@ -30,6 +29,7 @@ public class Test_verifyExpr_UnaryMinus {
 	@Mock
 	AbstractExpr opBoolean;
 
+	@SuppressWarnings("deprecation")
 	@BeforeEach
 	public void setup() throws ContextualError {
 		MockitoAnnotations.initMocks(this);

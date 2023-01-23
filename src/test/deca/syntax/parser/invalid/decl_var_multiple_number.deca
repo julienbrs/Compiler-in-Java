@@ -1,0 +1,5 @@
+// Parser test, second identifier replaced by a number
+
+{
+    int x, 15 = 5,8;
+}

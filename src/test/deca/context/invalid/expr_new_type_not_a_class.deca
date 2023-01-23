@@ -1,0 +1,10 @@
+// Test of the rule (3.42) : If we try to instanciate an object of a class
+// that does not exists, it fails.
+
+{
+  A a = new A();
+}
+
+//# a
+
+

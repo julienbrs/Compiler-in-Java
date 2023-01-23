@@ -1,0 +1,5 @@
+// Parser test, special character (=) replaced by a >
+
+{
+    int x > 5;
+}

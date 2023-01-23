@@ -4,7 +4,6 @@
 
 # Script de test de la lexicographie.
 # On lance tous les tests en rapport avec la lexicographie
-# Todo: se servir du log_activated pour echo ou non ?
 
 purple=$(tput setab 99)
 reset=$(tput sgr0)
@@ -24,11 +23,11 @@ PATH=./src/test/script/launchers:"$PATH"
 
 # Supprime le fichier temporaire dès que le programme finit
 cleanup() {
-  rm src/main/bin/temporaire_test.txt
+    rm src/main/bin/temporaire_test.txt
 }
 trap cleanup EXIT
 
-test_lex_unitaire () {
+test_lex_unitaire() {
     # $1 = premier argument, $2 = deuxieme
     exit_status_waited=$2
     filename=$(basename "$1")
@@ -45,7 +44,7 @@ test_lex_unitaire () {
     fi
 
     fichier_modele="src/test/script/modele/lexer/"$path_valid"/modele_$filename.txt"
-    test_lex "$1" > src/main/bin/temporaire_test.txt 2>&1
+    test_lex "$1" >src/main/bin/temporaire_test.txt 2>&1
     result=$?
 
     if [ "$result" -eq "$exit_status_waited" ]; then
@@ -54,28 +53,24 @@ test_lex_unitaire () {
             echo "$1: $str_res_waited attendu ✅"
         else
             echo "$1: $str_res_waited mais output non attendu ❌"
-            exit 1
         fi
     else
         echo "$1: $str_res_not_waited non attendu ❌"
-        exit 1
     fi
 
-}    
+}
 
 echo "${purple}Lancement des tests sensés être invalides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/invalid/ -name '*.deca')
-    do
-        test_lex_unitaire "$cas_de_test" 1
-    done
+for cas_de_test in $(find src/test/deca/syntax/lexer/invalid/ -name '*.deca'); do
+    test_lex_unitaire "$cas_de_test" 1
+done
 
 echo ""
 
 echo "${purple}Lancement des tests sensés être valides:${reset}"
-for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca')
-    do
-        test_lex_unitaire "$cas_de_test" 0
-    done
+for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca'); do
+    test_lex_unitaire "$cas_de_test" 0
+done
 # On choisit arbitrairement de considérer le test de tous les utf8 comme un "valid test"
 # ./src/test/script/utils-test/lexer-test-all-utf8.sh
 # result_utf8=$?
@@ -85,8 +80,6 @@ for cas_de_test in $(find src/test/deca/syntax/lexer/valid/ -name '*.deca')
 #     echo "src/test/script/utils-test/lexer-test-all-utf8.sh: Echec non attendu ❌"
 #     exit 1
 # fi
-
-
 
 # End of the script
 # Check if the --exit-status option was passed

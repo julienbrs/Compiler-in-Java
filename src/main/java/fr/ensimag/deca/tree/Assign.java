@@ -3,7 +3,14 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
+import fr.ensimag.ima.pseudocode.instructions.LOAD;
+import fr.ensimag.ima.pseudocode.instructions.POP;
+import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
+
+import org.antlr.v4.runtime.misc.Triple;
+
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -45,11 +52,39 @@ public class Assign extends AbstractBinaryExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int nbPush = codeGenRightOperande(compiler, offset);
-        DAddr addr = ((AbstractIdentifier) getLeftOperand()).getExpDefinition().getOperand();
-        compiler.addInstruction(new STORE(GPRegister.getR(offset), addr));
-        return nbPush;
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        Triple<int[], Integer, DAddr> resTriple = getLeftOperand().codeGenLValue(compiler, offset);
+        int[] resLeft = resTriple.a;
+        offset = resTriple.b;
+        Register reg;
+        int[] res = {0, 0};
+        if (offset == compiler.getCompilerOptions().getRmax() + 1) {
+            offset -= 2;
+            compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
+            int[] resRight = codeGenRightOperande(compiler, offset);
+            res[0] = Math.max(resLeft[0], resRight[0]);
+            res[1] = Math.max(resLeft[1], resRight[1] + 2);
+            compiler.addInstruction(new LOAD(GPRegister.getR(offset), GPRegister.R1));
+            reg = GPRegister.R1;
+            compiler.addInstruction(new POP(GPRegister.getR(offset)));
+            compiler.addInstruction(new POP(GPRegister.R0));
+        } else if (offset == compiler.getCompilerOptions().getRmax()) {
+            offset--;
+            compiler.addInstruction(new PUSH(GPRegister.getR(offset)));
+            int[] resRight = codeGenRightOperande(compiler, offset);
+            res[0] = Math.max(resLeft[0], resRight[0]);
+            res[1] = Math.max(resLeft[1], resRight[1] + 1);
+            compiler.addInstruction(new LOAD(GPRegister.getR(offset), GPRegister.R0));
+            reg = GPRegister.R0;
+            compiler.addInstruction(new POP(GPRegister.getR(offset)));
+        } else {
+            int[] resRight = codeGenRightOperande(compiler, offset);
+            res[0] = Math.max(resLeft[0], resRight[0]);
+            res[1] = Math.max(resLeft[1], resRight[1]);
+            reg = GPRegister.getR(offset);
+        }
+        compiler.addInstruction(new STORE(reg, resTriple.c));
+        return res;
     }
 
 }

@@ -1,0 +1,5 @@
+// Wrong dimension : float[] != float[][]
+
+{
+    float[][] tabFloat = {2.5, -1.5};
+}

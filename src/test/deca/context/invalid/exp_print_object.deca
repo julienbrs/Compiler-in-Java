@@ -1,0 +1,11 @@
+// Test of the rule 3.31: Can't print an object whose type is not
+// a float, an int, or a string
+
+class A {
+
+}
+
+{
+    A a = new A();
+    print(a);
+}

@@ -2,15 +2,14 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.VariableDefinition;
-import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
@@ -58,11 +57,12 @@ public class DeclVar extends AbstractDeclVar {
     }
 
     @Override
-    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+    protected int[] codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
         /* Initialization */
-        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, GPRegister.GB));
-        initialization.codeGenInitialization(compiler);
+        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, reg));
+        int[] res = initialization.codeGenInitialization(compiler, 2);
         compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
+        return res; // {maxReg, maxPush}
     }
     
     @Override

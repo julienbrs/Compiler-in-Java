@@ -1,0 +1,5 @@
+// Parser test, missing '{'
+
+
+    int x = 5;
+}

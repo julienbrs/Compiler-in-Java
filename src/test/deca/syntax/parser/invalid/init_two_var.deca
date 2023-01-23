@@ -1,0 +1,5 @@
+// Initialized two variables
+
+{
+    int x, y = 3, 1;
+}

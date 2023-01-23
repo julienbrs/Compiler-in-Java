@@ -3,6 +3,7 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
@@ -98,8 +99,19 @@ public abstract class AbstractExpr extends AbstractInst {
             newThis.setLocation(loc);
             newThis.verifyExpr(compiler, localEnv, currentClass);
             return newThis;
+        } else if (t.isNull() && expectedType.isArray()) {
+            return this;
+        } else if (t.isNull() && expectedType.isClass()) {
+            return this;
+        } else {
+            // ERROR MSG
+            ClassType cType = t.asClassType("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
+            // ERROR MSG
+            ClassType expType = expectedType.asClassType("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
+            if (cType.isSubClassOf(expType)) {
+                return this;
+            }
         }
-        // TODO : verifier les sous type dans le avec objet
         // ERROR MSG
         throw new ContextualError("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
     }
@@ -139,9 +151,9 @@ public abstract class AbstractExpr extends AbstractInst {
      *
      * @param compiler
      */
-    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
         // throw new UnsupportedOperationException("not yet implemented");
-        int nbPush = codeGenExpr(compiler, 2);
+        int[] res = codeGenExpr(compiler, 2);
         compiler.addInstruction(new LOAD(GPRegister.getR(2), GPRegister.R1));
         Type t = getType();
         if (t.isInt()) {
@@ -153,18 +165,18 @@ public abstract class AbstractExpr extends AbstractInst {
                 compiler.addInstruction(new WFLOAT());
             }
         }
-        return nbPush;
+        return res;
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
+    protected int[] codeGenInst(DecacCompiler compiler) {
         // throw new UnsupportedOperationException("not yet implemented");
         return codeGenExpr(compiler, 2);
     }
 
-    protected abstract int codeGenExpr(DecacCompiler compiler, int offset);
+    protected abstract int[] codeGenExpr(DecacCompiler compiler, int offset);
     
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         throw new UnsupportedOperationException("Should not end up here");
     }
 

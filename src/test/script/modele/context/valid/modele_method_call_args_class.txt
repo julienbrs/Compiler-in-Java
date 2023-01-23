@@ -1,0 +1,282 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Test)
+   |      |  definition: type defined at [3, 0], type=Test
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 6 elements]
+   |         []> [4, 4] DeclMethod
+   |         ||  +> [4, 4] Identifier (boolean)
+   |         ||  |  definition: type (builtin), type=boolean
+   |         ||  +> [4, 12] Identifier (testMethod1)
+   |         ||  |  definition: method defined at [4, 12], type=boolean
+   |         ||  +> ListParam [List with 2 elements]
+   |         ||  |  []> [4, 24] DeclParam
+   |         ||  |  ||  +> [4, 24] Identifier (float)
+   |         ||  |  ||  |  definition: type (builtin), type=float
+   |         ||  |  ||  `> [4, 30] Identifier (x)
+   |         ||  |  ||     definition: parameter defined at [4, 24], type=float
+   |         ||  |  []> [4, 33] DeclParam
+   |         ||  |      +> [4, 33] Identifier (float)
+   |         ||  |      |  definition: type (builtin), type=float
+   |         ||  |      `> [4, 39] Identifier (y)
+   |         ||  |         definition: parameter defined at [4, 33], type=float
+   |         ||  `> [4, 42] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [5, 8] Return
+   |         ||     |      `> [5, 15] Greater
+   |         ||     |         type: boolean
+   |         ||     |         +> [5, 16] Identifier (x)
+   |         ||     |         |  definition: parameter defined at [4, 24], type=float
+   |         ||     |         `> [5, 20] Identifier (y)
+   |         ||     |            definition: parameter defined at [4, 33], type=float
+   |         []> [7, 4] DeclMethod
+   |         ||  +> [7, 4] Identifier (boolean)
+   |         ||  |  definition: type (builtin), type=boolean
+   |         ||  +> [7, 12] Identifier (testMethod2)
+   |         ||  |  definition: method defined at [7, 12], type=boolean
+   |         ||  +> ListParam [List with 2 elements]
+   |         ||  |  []> [7, 24] DeclParam
+   |         ||  |  ||  +> [7, 24] Identifier (float)
+   |         ||  |  ||  |  definition: type (builtin), type=float
+   |         ||  |  ||  `> [7, 30] Identifier (x)
+   |         ||  |  ||     definition: parameter defined at [7, 24], type=float
+   |         ||  |  []> [7, 33] DeclParam
+   |         ||  |      +> [7, 33] Identifier (float)
+   |         ||  |      |  definition: type (builtin), type=float
+   |         ||  |      `> [7, 39] Identifier (y)
+   |         ||  |         definition: parameter defined at [7, 33], type=float
+   |         ||  `> [7, 42] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [8, 8] Return
+   |         ||     |      `> [8, 15] GreaterOrEqual
+   |         ||     |         type: boolean
+   |         ||     |         +> [8, 16] Identifier (x)
+   |         ||     |         |  definition: parameter defined at [7, 24], type=float
+   |         ||     |         `> [8, 21] Identifier (y)
+   |         ||     |            definition: parameter defined at [7, 33], type=float
+   |         []> [10, 4] DeclMethod
+   |         ||  +> [10, 4] Identifier (boolean)
+   |         ||  |  definition: type (builtin), type=boolean
+   |         ||  +> [10, 12] Identifier (testMethod3)
+   |         ||  |  definition: method defined at [10, 12], type=boolean
+   |         ||  +> ListParam [List with 2 elements]
+   |         ||  |  []> [10, 24] DeclParam
+   |         ||  |  ||  +> [10, 24] Identifier (float)
+   |         ||  |  ||  |  definition: type (builtin), type=float
+   |         ||  |  ||  `> [10, 30] Identifier (x)
+   |         ||  |  ||     definition: parameter defined at [10, 24], type=float
+   |         ||  |  []> [10, 33] DeclParam
+   |         ||  |      +> [10, 33] Identifier (float)
+   |         ||  |      |  definition: type (builtin), type=float
+   |         ||  |      `> [10, 39] Identifier (y)
+   |         ||  |         definition: parameter defined at [10, 33], type=float
+   |         ||  `> [10, 42] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [11, 8] Return
+   |         ||     |      `> [11, 15] Lower
+   |         ||     |         type: boolean
+   |         ||     |         +> [11, 16] Identifier (x)
+   |         ||     |         |  definition: parameter defined at [10, 24], type=float
+   |         ||     |         `> [11, 20] Identifier (y)
+   |         ||     |            definition: parameter defined at [10, 33], type=float
+   |         []> [13, 4] DeclMethod
+   |         ||  +> [13, 4] Identifier (boolean)
+   |         ||  |  definition: type (builtin), type=boolean
+   |         ||  +> [13, 12] Identifier (testMethod4)
+   |         ||  |  definition: method defined at [13, 12], type=boolean
+   |         ||  +> ListParam [List with 2 elements]
+   |         ||  |  []> [13, 24] DeclParam
+   |         ||  |  ||  +> [13, 24] Identifier (float)
+   |         ||  |  ||  |  definition: type (builtin), type=float
+   |         ||  |  ||  `> [13, 30] Identifier (x)
+   |         ||  |  ||     definition: parameter defined at [13, 24], type=float
+   |         ||  |  []> [13, 33] DeclParam
+   |         ||  |      +> [13, 33] Identifier (float)
+   |         ||  |      |  definition: type (builtin), type=float
+   |         ||  |      `> [13, 39] Identifier (y)
+   |         ||  |         definition: parameter defined at [13, 33], type=float
+   |         ||  `> [13, 42] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [14, 8] Return
+   |         ||     |      `> [14, 15] LowerOrEqual
+   |         ||     |         type: boolean
+   |         ||     |         +> [14, 16] Identifier (x)
+   |         ||     |         |  definition: parameter defined at [13, 24], type=float
+   |         ||     |         `> [14, 21] Identifier (y)
+   |         ||     |            definition: parameter defined at [13, 33], type=float
+   |         []> [16, 4] DeclMethod
+   |         ||  +> [16, 4] Identifier (boolean)
+   |         ||  |  definition: type (builtin), type=boolean
+   |         ||  +> [16, 12] Identifier (testMethod5)
+   |         ||  |  definition: method defined at [16, 12], type=boolean
+   |         ||  +> ListParam [List with 2 elements]
+   |         ||  |  []> [16, 24] DeclParam
+   |         ||  |  ||  +> [16, 24] Identifier (float)
+   |         ||  |  ||  |  definition: type (builtin), type=float
+   |         ||  |  ||  `> [16, 30] Identifier (x)
+   |         ||  |  ||     definition: parameter defined at [16, 24], type=float
+   |         ||  |  []> [16, 33] DeclParam
+   |         ||  |      +> [16, 33] Identifier (float)
+   |         ||  |      |  definition: type (builtin), type=float
+   |         ||  |      `> [16, 39] Identifier (y)
+   |         ||  |         definition: parameter defined at [16, 33], type=float
+   |         ||  `> [16, 42] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [17, 8] Return
+   |         ||     |      `> [17, 15] Equals
+   |         ||     |         type: boolean
+   |         ||     |         +> [17, 16] Identifier (x)
+   |         ||     |         |  definition: parameter defined at [16, 24], type=float
+   |         ||     |         `> [17, 21] Identifier (y)
+   |         ||     |            definition: parameter defined at [16, 33], type=float
+   |         []> [20, 4] DeclMethod
+   |             +> [20, 4] Identifier (boolean)
+   |             |  definition: type (builtin), type=boolean
+   |             +> [20, 12] Identifier (proxyMethod)
+   |             |  definition: method defined at [20, 12], type=boolean
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [20, 24] DeclParam
+   |             |  ||  +> [20, 24] Identifier (float)
+   |             |  ||  |  definition: type (builtin), type=float
+   |             |  ||  `> [20, 30] Identifier (x)
+   |             |  ||     definition: parameter defined at [20, 24], type=float
+   |             |  []> [20, 33] DeclParam
+   |             |      +> [20, 33] Identifier (float)
+   |             |      |  definition: type (builtin), type=float
+   |             |      `> [20, 39] Identifier (y)
+   |             |         definition: parameter defined at [20, 33], type=float
+   |             `> [20, 41] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [21, 8] Return
+   |                |      `> [21, 19] MethodCall
+   |                |         type: boolean
+   |                |         +> [21, 15] This
+   |                |         |  type: Test
+   |                |         +> [21, 20] Identifier (testMethod1)
+   |                |         |  definition: method defined at [4, 12], type=boolean
+   |                |         `> ListExpr [List with 2 elements]
+   |                |            []> [21, 32] Identifier (x)
+   |                |            ||  definition: parameter defined at [20, 24], type=float
+   |                |            []> [21, 35] Identifier (y)
+   |                |                definition: parameter defined at [20, 33], type=float
+   `> [26, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [27, 12] DeclVar
+      |  ||  +> [27, 4] Identifier (boolean)
+      |  ||  |  definition: type (builtin), type=boolean
+      |  ||  +> [27, 12] Identifier (a)
+      |  ||  |  definition: variable defined at [27, 12], type=boolean
+      |  ||  `> NoInitialization
+      |  []> [28, 9] DeclVar
+      |      +> [28, 4] Identifier (Test)
+      |      |  definition: type defined at [3, 0], type=Test
+      |      +> [28, 9] Identifier (test)
+      |      |  definition: variable defined at [28, 9], type=Test
+      |      `> [28, 14] Initialization
+      |         `> [28, 16] New
+      |            type: Test
+      |            `> [28, 20] Identifier (Test)
+      |               definition: type defined at [3, 0], type=Test
+      `> ListInst [List with 6 elements]
+         []> [29, 6] Assign
+         ||  type: boolean
+         ||  +> [29, 4] Identifier (a)
+         ||  |  definition: variable defined at [27, 12], type=boolean
+         ||  `> [29, 12] MethodCall
+         ||     type: boolean
+         ||     +> [29, 8] Identifier (test)
+         ||     |  definition: variable defined at [28, 9], type=Test
+         ||     +> [29, 13] Identifier (testMethod1)
+         ||     |  definition: method defined at [4, 12], type=boolean
+         ||     `> ListExpr [List with 2 elements]
+         ||        []> [29, 25] Float (1.8)
+         ||        ||  type: float
+         ||        []> [29, 30] Float (3.5)
+         ||            type: float
+         []> [30, 6] Assign
+         ||  type: boolean
+         ||  +> [30, 4] Identifier (a)
+         ||  |  definition: variable defined at [27, 12], type=boolean
+         ||  `> [30, 12] MethodCall
+         ||     type: boolean
+         ||     +> [30, 8] Identifier (test)
+         ||     |  definition: variable defined at [28, 9], type=Test
+         ||     +> [30, 13] Identifier (testMethod2)
+         ||     |  definition: method defined at [7, 12], type=boolean
+         ||     `> ListExpr [List with 2 elements]
+         ||        []> [30, 25] Float (1.8)
+         ||        ||  type: float
+         ||        []> [30, 30] Float (3.5)
+         ||            type: float
+         []> [31, 6] Assign
+         ||  type: boolean
+         ||  +> [31, 4] Identifier (a)
+         ||  |  definition: variable defined at [27, 12], type=boolean
+         ||  `> [31, 12] MethodCall
+         ||     type: boolean
+         ||     +> [31, 8] Identifier (test)
+         ||     |  definition: variable defined at [28, 9], type=Test
+         ||     +> [31, 13] Identifier (testMethod3)
+         ||     |  definition: method defined at [10, 12], type=boolean
+         ||     `> ListExpr [List with 2 elements]
+         ||        []> [31, 25] Float (1.8)
+         ||        ||  type: float
+         ||        []> [31, 30] Float (3.5)
+         ||            type: float
+         []> [32, 6] Assign
+         ||  type: boolean
+         ||  +> [32, 4] Identifier (a)
+         ||  |  definition: variable defined at [27, 12], type=boolean
+         ||  `> [32, 12] MethodCall
+         ||     type: boolean
+         ||     +> [32, 8] Identifier (test)
+         ||     |  definition: variable defined at [28, 9], type=Test
+         ||     +> [32, 13] Identifier (testMethod4)
+         ||     |  definition: method defined at [13, 12], type=boolean
+         ||     `> ListExpr [List with 2 elements]
+         ||        []> [32, 25] Float (1.8)
+         ||        ||  type: float
+         ||        []> [32, 30] Float (3.5)
+         ||            type: float
+         []> [33, 6] Assign
+         ||  type: boolean
+         ||  +> [33, 4] Identifier (a)
+         ||  |  definition: variable defined at [27, 12], type=boolean
+         ||  `> [33, 12] MethodCall
+         ||     type: boolean
+         ||     +> [33, 8] Identifier (test)
+         ||     |  definition: variable defined at [28, 9], type=Test
+         ||     +> [33, 13] Identifier (testMethod5)
+         ||     |  definition: method defined at [16, 12], type=boolean
+         ||     `> ListExpr [List with 2 elements]
+         ||        []> [33, 25] Float (1.8)
+         ||        ||  type: float
+         ||        []> [33, 30] Float (3.5)
+         ||            type: float
+         []> [35, 4] IfThenElse
+             +> [35, 12] MethodCall
+             |  type: boolean
+             |  +> [35, 8] Identifier (test)
+             |  |  definition: variable defined at [28, 9], type=Test
+             |  +> [35, 13] Identifier (testMethod1)
+             |  |  definition: method defined at [4, 12], type=boolean
+             |  `> ListExpr [List with 2 elements]
+             |     []> [35, 25] Float (1.8)
+             |     ||  type: float
+             |     []> [35, 30] Float (3.5)
+             |         type: float
+             +> ListInst [List with 1 elements]
+             |  []> [36, 8] Print
+             |      `> ListExpr [List with 1 elements]
+             |         []> [36, 14] StringLiteral (Okay)
+             |             type: string
+             `> ListInst [List with 0 elements]

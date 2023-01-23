@@ -39,21 +39,23 @@ public class BooleanLiteral extends AbstractExpr {
         return this.getType();
     }
 
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         if (value) {
-            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(offset)));
-        } else {
             compiler.addInstruction(new LOAD(new ImmediateInteger(1), GPRegister.getR(offset)));
+        } else {
+            compiler.addInstruction(new LOAD(new ImmediateInteger(0), GPRegister.getR(offset)));
         }
-        return 0;
+        int[] res = {offset, 0};
+        return res;
     }
 
     @Override
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         if ((value && aim) || (!value && !aim)) {
             compiler.addInstruction(new BRA(dest));
         }
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
 
     @Override

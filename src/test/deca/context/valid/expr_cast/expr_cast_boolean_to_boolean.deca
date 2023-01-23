@@ -1,0 +1,35 @@
+// Test of rule (3.39) : we can cast boolean to boolean.
+{
+	boolean var1;
+	boolean var2;
+	var1 = (boolean)(var2);
+}
+
+// Output :
+//# `> [2, 0] Program
+//#    +> ListDeclClass [List with 0 elements]
+//#    `> [2, 0] Main
+//#       +> ListDeclVar [List with 2 elements]
+//#       |  []> [3, 9] DeclVar
+//#       |  ||  +> [3, 1] Identifier (boolean)
+//#       |  ||  |  definition: type (builtin), type=boolean
+//#       |  ||  +> [3, 9] Identifier (var1)
+//#       |  ||  |  definition: variable defined at [3, 9], type=boolean
+//#       |  ||  `> NoInitialization
+//#       |  []> [4, 9] DeclVar
+//#       |      +> [4, 1] Identifier (boolean)
+//#       |      |  definition: type (builtin), type=boolean
+//#       |      +> [4, 9] Identifier (var2)
+//#       |      |  definition: variable defined at [4, 9], type=boolean
+//#       |      `> NoInitialization
+//#       `> ListInst [List with 1 elements]
+//#          []> [5, 6] Assign
+//#              type: boolean
+//#              +> [5, 1] Identifier (var1)
+//#              |  definition: variable defined at [3, 9], type=boolean
+//#              `> [5, 8] Cast
+//#                 type: boolean
+//#                 +> [5, 9] Identifier (boolean)
+//#                 |  definition: type (builtin), type=boolean
+//#                 `> [5, 18] Identifier (var2)
+//#                    definition: variable defined at [4, 9], type=boolean

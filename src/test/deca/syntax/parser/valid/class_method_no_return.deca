@@ -1,0 +1,10 @@
+// Test a class with a method
+
+class DummyClass {
+    void displayName(){
+        print("It's my name");
+        println(" OH IM REPEATING");
+        printx("REPEATOR");
+        printlnx("REPEATOOOOOOOR");
+    }
+}

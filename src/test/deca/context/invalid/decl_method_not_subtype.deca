@@ -1,0 +1,17 @@
+// Test of the rule (2.7) : the child class overrides a parent
+// method, but does not return the same type
+
+class A  {
+    void displayHello(){
+        println("Hello");
+    }
+}
+
+class B extends A {
+    int displayHello(){
+        return 5;
+    }
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/decl_method_not_subtype.deca:11:4: Redéfinition de méthode invalide : rule 2.7

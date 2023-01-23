@@ -50,51 +50,91 @@
         <task id="22" name="" note="" work="3600" start="20230103T000000Z" end="20230103T090000Z" work-start="20230103T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
     </task>
-    <task id="23" name="Sprint 2 - Compilateur sans objet" note="" work="144000" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="23" name="Sprint 2 - Compilateur sans objet" note="" work="230400" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
-      <task id="24" name="D&#xE9;clarations variables" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="25" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="24" name="D&#xE9;clarations variables" note="" work="54000" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="25" name="Cr&#xE9;ation de tests sur la d&#xE9;claration de variables pour les 3 &#xE9;tapes" note="" work="21600" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="26" name="Lexer reconnait d&#xE9;clarations de variables et les tokens associ&#xE9;s" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="27" name="Parser accepte d&#xE9;clarations de variables" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="28" name="Analyse cont. v&#xE9;rifie variables correctement d&#xE9;clar&#xE9;es et utilis&#xE9;es dans le programme" note="" work="10800" start="20230104T090000Z" end="20230104T120000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="29" name="G&#xE9;n&#xE9;ration de code" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="26" name="Op&#xE9;rations arithm&#xE9;tiques de base" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="27" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="30" name="Op&#xE9;rations arithm&#xE9;tiques de base" note="" work="54000" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="31" name="Cr&#xE9;ation de tests sur les op&#xE9;rations arithm&#xE9;tiques de base pour les 3 &#xE9;tapes" note="" work="21600" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="32" name="Lexer reconnait les op&#xE9;rations arithm&#xE9;tiques et les tokens associ&#xE9;s" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="33" name="Parser accepte les op&#xE9;rations arithm&#xE9;tiques" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="34" name="Analyse cont. v&#xE9;rifie op&#xE9;rations arithm&#xE9;tiques correctement utilis&#xE9;es dans le programme" note="" work="10800" start="20230104T090000Z" end="20230104T120000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="35" name="G&#xE9;n&#xE9;ration de code" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="28" name="Conditions if, else" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="29" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="36" name="Conditions if, else" note="" work="61200" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="37" name="Cr&#xE9;ation de tests sur les conditions pour les 3 &#xE9;tapes" note="" work="21600" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="38" name="Lexer reconnait les conditions et les tokens associ&#xE9;s" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="39" name="Parser accepte les conditions" note="" work="10800" start="20230104T090000Z" end="20230104T120000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="40" name="Analyse cont. v&#xE9;rifie conditions correctement utilis&#xE9;es dans le programme" note="" work="10800" start="20230104T090000Z" end="20230104T120000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="41" name="G&#xE9;n&#xE9;ration de code" note="" work="10800" start="20230104T090000Z" end="20230104T120000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="30" name="Boucle while" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="31" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-      </task>
-      <task id="32" name="[Extension] Tableaux" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="33" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="42" name="Boucle while" note="" work="61200" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="43" name="Cr&#xE9;ation de tests sur les boucles while pour les 3 &#xE9;tapes" note="" work="21600" start="20230104T090000Z" end="20230104T160000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="44" name="Lexer reconnait les boucles while et les tokens associ&#xE9;s" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="45" name="Parser accepte les boucles while" note="" work="7200" start="20230104T090000Z" end="20230104T110000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="46" name="Analyse cont. v&#xE9;rifie boucles while correctement utilis&#xE9;es dans le programme" note="" work="10800" start="20230104T090000Z" end="20230104T120000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="47" name="G&#xE9;n&#xE9;ration de code" note="" work="14400" start="20230104T090000Z" end="20230104T140000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
     </task>
-    <task id="34" name="Sprint 3 - Compilateur pour la totalit&#xE9; du langage" note="" work="28800" start="20230105T090000Z" end="20230106T090000Z" work-start="20230105T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="48" name="Sprint 3 - Compilateur pour la totalit&#xE9; du langage" note="" work="381600" start="20230104T160000Z" end="20230106T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="23" type="FS"/>
       </predecessors>
-      <task id="35" name="Tests" note="" work="28800" start="20230105T090000Z" end="20230106T090000Z" work-start="20230105T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="49" name="[US] Instancier des objets" note="" work="104400" start="20230104T160000Z" end="20230106T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="50" name="Cr&#xE9;ation des tests sur la cr&#xE9;ation d'objets" note="" work="14400" start="20230104T160000Z" end="20230105T110000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="51" name="Extension du parser" note="" work="14400" start="20230104T160000Z" end="20230105T110000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="52" name="Impl&#xE9;mentation de la v&#xE9;rification contextuelles pour les objets" note="" work="18000" start="20230104T160000Z" end="20230105T120000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="53" name="G&#xE9;n&#xE9;ration de code pour les objets" note="" work="57600" start="20230104T160000Z" end="20230106T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      </task>
+      <task id="54" name="[US] Cr&#xE9;ation et manipulation de tableaux" note="" work="93600" start="20230104T160000Z" end="20230105T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="55" name="Cr&#xE9;ation de tests sur les tableaux basiques" note="" work="21600" start="20230104T160000Z" end="20230105T140000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="56" name="Ecrire la nouvelle grammaire" note="" work="14400" start="20230104T160000Z" end="20230105T110000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="57" name="Extension du parser" note="" work="10800" start="20230104T160000Z" end="20230105T100000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="58" name="Impl&#xE9;mentation de la v&#xE9;rification contextuelle de tableaux basiques" note="" work="18000" start="20230104T160000Z" end="20230105T120000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="59" name="G&#xE9;n&#xE9;ration de code pour les tableaux basiques" note="" work="28800" start="20230104T160000Z" end="20230105T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      </task>
+      <task id="60" name="[US] Manipulation avanc&#xE9;e de tableaux" note="" work="82800" start="20230104T160000Z" end="20230105T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="61" name="Cr&#xE9;ation de tests sur la manipulation avanc&#xE9;e de tableaux" note="" work="14400" start="20230104T160000Z" end="20230105T110000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="62" name="Extension du parser" note="" work="21600" start="20230104T160000Z" end="20230105T140000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="63" name="Impl&#xE9;mentation de la v&#xE9;rification contextuelle de manipulation avanc&#xE9;e de tableaux" note="" work="18000" start="20230104T160000Z" end="20230105T120000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="64" name="G&#xE9;n&#xE9;ration de code pour la manipulation avanc&#xE9;e de tableaux" note="" work="28800" start="20230104T160000Z" end="20230105T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      </task>
+      <task id="65" name="[US] Manipulation avanc&#xE9;e de matrice" note="" work="90000" start="20230104T160000Z" end="20230105T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="66" name="Cr&#xE9;ation de tests sur la manipulation avanc&#xE9;e de matrices" note="" work="21600" start="20230104T160000Z" end="20230105T140000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="67" name="Extension du parser" note="" work="21600" start="20230104T160000Z" end="20230105T140000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="68" name="Impl&#xE9;mentation de la v&#xE9;rification contextuelle de matrices" note="" work="18000" start="20230104T160000Z" end="20230105T120000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="69" name="G&#xE9;n&#xE9;ration de code pour la manipulation avanc&#xE9;e de matrices" note="" work="28800" start="20230104T160000Z" end="20230105T160000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      </task>
+      <task id="70" name="Cr&#xE9;ation du &quot;grand test&quot;" note="" work="10800" start="20230104T160000Z" end="20230105T100000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="71" name="Objectif : passer le grand test avec succ&#xE8;s" note="" work="10800" start="20230104T160000Z" end="20230105T100000Z" work-start="20230104T160000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      </task>
     </task>
-    <task id="36" name="Suivi 1" note="9h45" work="0" start="20230109T000000Z" end="20230109T000000Z" work-start="20230109T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="72" name="Suivi 1" note="9h45" work="0" start="20230109T000000Z" end="20230109T000000Z" work-start="20230109T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230109T000000Z"/>
     </task>
-    <task id="37" name="Suivi 2" note="9h45" work="0" start="20230112T000000Z" end="20230112T000000Z" work-start="20230112T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="73" name="Suivi 2" note="9h45" work="0" start="20230112T000000Z" end="20230112T000000Z" work-start="20230112T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230112T000000Z"/>
     </task>
-    <task id="38" name="Rendu version interm&#xE9;diaire" note="" work="0" start="20230116T000000Z" end="20230116T000000Z" work-start="20230116T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="74" name="Rendu version interm&#xE9;diaire" note="" work="0" start="20230116T000000Z" end="20230116T000000Z" work-start="20230116T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230116T000000Z"/>
     </task>
-    <task id="39" name="Rendu Final" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="75" name="Rendu Final" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230123T000000Z"/>
     </task>
-    <task id="40" name="Rendu documentation" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="76" name="Rendu documentation" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230123T000000Z"/>
     </task>
-    <task id="41" name="Rendu Bilan" note="" work="0" start="20230125T000000Z" end="20230125T000000Z" work-start="20230125T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="77" name="Rendu Bilan" note="" work="0" start="20230125T000000Z" end="20230125T000000Z" work-start="20230125T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230125T000000Z"/>
     </task>
-    <task id="42" name="Soutenance" note="" work="0" start="20230126T000000Z" end="20230126T000000Z" work-start="20230126T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="78" name="Soutenance" note="" work="0" start="20230126T000000Z" end="20230126T000000Z" work-start="20230126T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230126T000000Z"/>
     </task>
   </tasks>

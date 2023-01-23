@@ -37,7 +37,9 @@ public abstract class Definition {
     public Location getLocation() {
         return location;
     }
-
+    public int getLevel() throws ContextualError{
+        throw new ContextualError("cannot be here", location);
+    }
     public void setLocation(Location location) {
         this.location = location;
     }

@@ -1,5 +1,9 @@
+// Missing {} after if
+
 {
     int x = 5;
     if (x > 3)
         println("x est plus grand que 3");
 }
+
+//# output

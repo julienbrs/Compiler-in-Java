@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/instance_of_reserved_word.deca:4:17: mismatched input '.' expecting IDENT

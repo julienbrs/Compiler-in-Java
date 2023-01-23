@@ -1,0 +1,5 @@
+// Contextual test, arithmetic calculation assigned to x
+
+{
+  int x = 2 * (1 + 3);
+}

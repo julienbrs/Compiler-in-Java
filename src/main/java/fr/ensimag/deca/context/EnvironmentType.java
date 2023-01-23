@@ -1,10 +1,15 @@
 package fr.ensimag.deca.context;
 
 import fr.ensimag.deca.DecacCompiler;
+import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
+
 import java.util.HashMap;
 import java.util.Map;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tree.Location;
+import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Label;
+import fr.ensimag.ima.pseudocode.RegisterOffset;
 
 // A FAIRE: étendre cette classe pour traiter la partie "avec objet" de Déca
 /**
@@ -16,9 +21,9 @@ import fr.ensimag.deca.tree.Location;
  */
 public class EnvironmentType {
     public EnvironmentType(DecacCompiler compiler) {
-        
+
         envTypes = new HashMap<Symbol, TypeDefinition>();
-        
+
         Symbol intSymb = compiler.createSymbol("int");
         INT = new IntType(intSymb);
         envTypes.put(intSymb, new TypeDefinition(INT, Location.BUILTIN));
@@ -40,12 +45,27 @@ public class EnvironmentType {
         // not added to envTypes, it's not visible for the user.
 
         Symbol nullSymb = compiler.createSymbol("null");
-        NullType NULL = new NullType(nullSymb);
+        NULL = new NullType(nullSymb);
         envTypes.put(nullSymb, new TypeDefinition(NULL, Location.BUILTIN));
 
         Symbol objectSymbol = compiler.createSymbol("Object");
-        OBJECT = new ClassType(objectSymbol);
-        envTypes.put(objectSymbol, new ClassDefinition(OBJECT, Location.BUILTIN, null));
+        OBJECT = new ClassType(objectSymbol, Location.BUILTIN, null);
+        ClassDefinition objectDef = OBJECT.definition;
+        objectDef.setOperand(new RegisterOffset(0, GPRegister.GB));
+        objectDef.setNumberOfMethods(1);
+        Signature sig = new Signature();
+        sig.add(OBJECT);
+        MethodDefinition mDef = new MethodDefinition(BOOLEAN, Location.BUILTIN, sig, 1);
+        mDef.setLabel(new Label("code.Object.equals"));
+        try {
+            Symbol symEq = compiler.createSymbol("equals");
+            objectDef.getMembers().declare(symEq, mDef);
+        } catch (DoubleDefException e) {
+            // Impossible to be here: equals is the first method to be declared
+        }
+        objectDef.put(1, mDef);
+        envTypes.put(objectSymbol, objectDef);
+
     }
 
     private final Map<Symbol, TypeDefinition> envTypes;
@@ -63,11 +83,12 @@ public class EnvironmentType {
         }
     }
 
-    public final VoidType    VOID;
-    public final IntType     INT;
-    public final FloatType   FLOAT;
-    public final StringType  STRING;
+    public final VoidType VOID;
+    public final IntType INT;
+    public final FloatType FLOAT;
+    public final StringType STRING;
     public final BooleanType BOOLEAN;
-    public final ClassType   OBJECT;
-    
+    public final NullType NULL;
+    public final ClassType OBJECT;
+
 }

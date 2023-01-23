@@ -1,0 +1,5 @@
+// Parser test, second value assigned unavailable
+
+{
+    int x, y = 8, .;
+}

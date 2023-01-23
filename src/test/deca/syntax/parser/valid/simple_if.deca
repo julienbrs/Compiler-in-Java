@@ -1,3 +1,5 @@
+// test simple if, only one condition
+
 {
     int x = 5;
     if (x > 3) {

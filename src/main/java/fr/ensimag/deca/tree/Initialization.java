@@ -6,10 +6,6 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.DAddr;
-import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
-import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
@@ -46,8 +42,8 @@ public class Initialization extends AbstractInitialization {
     }
 
     @Override
-    protected void codeGenInitialization(DecacCompiler compiler) {
-        expression.codeGenExpr(compiler, 2);
+    protected int[] codeGenInitialization(DecacCompiler compiler, int offset) {
+        return expression.codeGenExpr(compiler, offset); // {maxReg, maxPush}
     }
 
     @Override

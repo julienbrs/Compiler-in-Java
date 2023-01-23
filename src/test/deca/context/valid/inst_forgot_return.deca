@@ -1,0 +1,8 @@
+// Test rule 3.24: No right to return a boolean
+// when no return is expected
+
+class A  {
+    int getInt(){
+        int x = 5;
+    }
+}

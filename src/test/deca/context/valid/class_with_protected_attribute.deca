@@ -1,0 +1,6 @@
+// Test a class with a protected attribut
+
+class Protector {
+    int publiclyProtecting = 9999; 
+    protected int secretlyDoing = 1;
+}

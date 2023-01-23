@@ -1,0 +1,11 @@
+// Test cast null on class, 3.39
+
+class A {
+    void display(){
+        print("");
+    }
+}
+
+{
+    A a = (A) (null); 
+}

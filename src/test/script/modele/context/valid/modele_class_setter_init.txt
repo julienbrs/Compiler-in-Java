@@ -1,0 +1,84 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Person)
+   |      |  definition: type defined at [3, 0], type=Person
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 2 elements]
+   |      |  []> [4, 10] [visibility = PUBLIC]  DeclField
+   |      |  ||  +> [4, 4] Identifier (float)
+   |      |  ||  |  definition: type (builtin), type=float
+   |      |  ||  +> [4, 10] Identifier (intelligence)
+   |      |  ||  |  definition: field defined at [4, 10], type=float
+   |      |  ||  +> NoInitialization
+   |      |  []> [5, 8] [visibility = PUBLIC]  DeclField
+   |      |      +> [5, 4] Identifier (int)
+   |      |      |  definition: type (builtin), type=int
+   |      |      +> [5, 8] Identifier (age)
+   |      |      |  definition: field defined at [5, 8], type=int
+   |      |      +> NoInitialization
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [6, 4] DeclMethod
+   |             +> [6, 4] Identifier (void)
+   |             |  definition: type (builtin), type=void
+   |             +> [6, 9] Identifier (init)
+   |             |  definition: method defined at [6, 9], type=void
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [6, 14] DeclParam
+   |             |  ||  +> [6, 14] Identifier (float)
+   |             |  ||  |  definition: type (builtin), type=float
+   |             |  ||  `> [6, 20] Identifier (intelligence)
+   |             |  ||     definition: parameter defined at [6, 14], type=float
+   |             |  []> [6, 34] DeclParam
+   |             |      +> [6, 34] Identifier (int)
+   |             |      |  definition: type (builtin), type=int
+   |             |      `> [6, 38] Identifier (age)
+   |             |         definition: parameter defined at [6, 34], type=int
+   |             `> [6, 43] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 2 elements]
+   |                |  []> [7, 26] Assign
+   |                |  ||  type: float
+   |                |  ||  +> [7, 12] Selection
+   |                |  ||  |  type: float
+   |                |  ||  |  +> [7, 8] This
+   |                |  ||  |  |  type: Person
+   |                |  ||  |  `> [7, 13] Identifier (intelligence)
+   |                |  ||  |     definition: field defined at [4, 10], type=float
+   |                |  ||  `> [7, 28] Identifier (intelligence)
+   |                |  ||     definition: parameter defined at [6, 14], type=float
+   |                |  []> [8, 17] Assign
+   |                |      type: int
+   |                |      +> [8, 12] Selection
+   |                |      |  type: int
+   |                |      |  +> [8, 8] This
+   |                |      |  |  type: Person
+   |                |      |  `> [8, 13] Identifier (age)
+   |                |      |     definition: field defined at [5, 8], type=int
+   |                |      `> [8, 19] Identifier (age)
+   |                |         definition: parameter defined at [6, 34], type=int
+   `> [12, 0] Main
+      +> ListDeclVar [List with 1 elements]
+      |  []> [13, 11] DeclVar
+      |      +> [13, 4] Identifier (Person)
+      |      |  definition: type defined at [3, 0], type=Person
+      |      +> [13, 11] Identifier (person)
+      |      |  definition: variable defined at [13, 11], type=Person
+      |      `> [13, 18] Initialization
+      |         `> [13, 20] New
+      |            type: Person
+      |            `> [13, 24] Identifier (Person)
+      |               definition: type defined at [3, 0], type=Person
+      `> ListInst [List with 1 elements]
+         []> [14, 10] MethodCall
+             type: void
+             +> [14, 4] Identifier (person)
+             |  definition: variable defined at [13, 11], type=Person
+             +> [14, 11] Identifier (init)
+             |  definition: method defined at [6, 9], type=void
+             `> ListExpr [List with 2 elements]
+                []> [14, 16] Float (99.9)
+                ||  type: float
+                []> [14, 22] Int (3)
+                    type: int

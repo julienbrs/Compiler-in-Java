@@ -1,0 +1,7 @@
+// Codegen test, the ident is int but this should
+// not be a problem 
+
+{
+    int int = 5;
+    print(int);
+}

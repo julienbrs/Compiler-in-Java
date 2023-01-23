@@ -1,0 +1,14 @@
+// Test of rule 2.6: the declared method has the same name than
+// a method already defined in a super class
+
+class A  {
+    void displayHello(){
+        println("Hello");
+    }
+}
+
+class B extends A {
+    void displayHello(){
+        println("Hi");
+    }
+}

@@ -1,0 +1,8 @@
+// Test of the rule 2.5: void is not a type.
+
+class A  {
+    void variable = 5;
+}
+
+// Resultat:
+//# Mettre un bon message d'erreur
