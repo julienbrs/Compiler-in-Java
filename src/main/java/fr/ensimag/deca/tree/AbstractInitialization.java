@@ -14,10 +14,18 @@ import fr.ensimag.deca.context.EnvironmentExp;
  */
 public abstract class AbstractInitialization extends Tree {
     
+    /**
+     * Sets the type at initialization
+     * @param t
+     */
     protected void setType(Type t) {
         type = t;
     }
 
+    /**
+     * Gets the type
+     * @return the type
+     */
     protected Type getType() {
         return type;
     }
@@ -36,5 +44,11 @@ public abstract class AbstractInitialization extends Tree {
             Type t, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
+    /**
+     * Generates code for the initialization
+     * @param compiler
+     * @param offset
+     * @return maximum register used, maximum push used
+     */
     protected abstract int[] codeGenInitialization(DecacCompiler compiler, int offset);
 }

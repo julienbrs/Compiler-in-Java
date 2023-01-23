@@ -8,7 +8,8 @@ import java.util.List;
 import org.apache.commons.lang.Validate;
 
 /**
- *
+ * Tree List
+ * 
  * @author gl11
  * @date 01/01/2023
  */
@@ -22,6 +23,10 @@ public abstract class TreeList<TreeType extends Tree> extends Tree {
 
     private List<TreeType> list = new ArrayList<TreeType>();
 
+    /**
+     * Adds a tree type to the tree if its not null
+     * @param i
+     */
     public void add(TreeType i) {
         Validate.notNull(i);
         list.add(i);
@@ -35,18 +40,36 @@ public abstract class TreeList<TreeType extends Tree> extends Tree {
         return Collections.unmodifiableList(list);
     }
 
+    /**
+     * Sets the index and element of a tree type
+     * @param index
+     * @param element
+     * @return
+     */
     public TreeType set(int index, TreeType element) {
         return list.set(index, element);
     }
 
+    /**
+     * Check if the tree is empty or not
+     * @return a boolean
+     */
     public boolean isEmpty() {
         return list.isEmpty();
     }
 
+    /**
+     * Adds a tree type to the list
+     * @return an iterator of tree type
+     */
     public Iterator<TreeType> iterator() {
         return list.iterator();
     }
 
+    /**
+     * The size of the tree
+     * @return the size
+     */
     public int size() {
         return list.size();
     }

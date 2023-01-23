@@ -30,5 +30,13 @@ public abstract class AbstractDeclVar extends Tree {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
+    /**
+     * Generates code for a declared variable
+     * @param compiler
+     * @param offsetFromSP
+     * @param reg
+     * @return maximum register used, maximum push used
+     * 
+     */
     protected abstract int[] codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg);
 }

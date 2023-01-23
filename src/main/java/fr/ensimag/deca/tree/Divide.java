@@ -8,15 +8,20 @@ import fr.ensimag.ima.pseudocode.instructions.DIV;
 import fr.ensimag.ima.pseudocode.instructions.QUO;
 
 /**
- *
+ * Division
  * @author gl11
  * @date 01/01/2023
  */
 public class Divide extends AbstractOpArith {
+
+    /**
+     * Sets the operands for the division
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Divide(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

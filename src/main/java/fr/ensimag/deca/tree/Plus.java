@@ -6,15 +6,22 @@ import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.instructions.ADD;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 /**
+ * Plus
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Plus extends AbstractOpArith {
+
+    /**
+     * Sets the operands for the plus operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Plus(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
  
-
     @Override
     protected String getOperatorName() {
         return "+";

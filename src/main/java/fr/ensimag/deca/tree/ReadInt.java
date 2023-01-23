@@ -15,7 +15,8 @@ import fr.ensimag.ima.pseudocode.instructions.RINT;
 import java.io.PrintStream;
 
 /**
- *
+ * ReadInt
+ * 
  * @author gl11
  * @date 01/01/2023
  */

@@ -41,6 +41,13 @@ public class DeclClass extends AbstractDeclClass {
     AbstractIdentifier extension;
     private ClassBody bodyclass;
 
+    /**
+     * Sets the characteristics of a class
+     * 
+     * @param name
+     * @param extension
+     * @param body
+     */
     public DeclClass(AbstractIdentifier name, AbstractIdentifier extension, ClassBody body) {
         this.name = name;
         this.extension = extension;
@@ -111,6 +118,14 @@ public class DeclClass extends AbstractDeclClass {
         bodyclass.getListDeclMethod().verifyListMethodBody(compiler, localEnv, name.getClassDefinition());
     }
 
+    /**
+     * Construction of the table of method labels;
+     * Generation of code to build the table of methods.
+     * 
+     * @param compiler
+     * @param offset
+     * @return number of methods
+     */
     public int codeGenVTable(DecacCompiler compiler, int offset) {
         DAddr addr = new RegisterOffset(offset, GPRegister.GB);
         name.getClassDefinition().setOperand(addr);
@@ -136,6 +151,11 @@ public class DeclClass extends AbstractDeclClass {
         return name.getClassDefinition().getNumberOfMethods() + 1;
     }
 
+    /**
+     * Generates the body of class methods
+     * 
+     * @param compiler
+     */
     public void codeGenBody(DecacCompiler compiler) {
         compiler.addComment("Corps des methodes de la classe " + name.getName());
         compiler.addLabel(new Label("init." + name.getName()));
@@ -182,7 +202,7 @@ public class DeclClass extends AbstractDeclClass {
         for (int i = max[0]; i >= 2; i--) {
             compiler.addInstruction(new POP(GPRegister.getR(i)));
         }
-        
+
         lTSTO.setInstruction(new TSTO(new ImmediateInteger(max[0] + max[1])));
 
         compiler.addInstruction(new RTS());

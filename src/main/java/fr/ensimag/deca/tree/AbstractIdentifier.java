@@ -13,7 +13,8 @@ import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 
 /**
- *
+ * Identifier
+ * 
  * @author gl11
  * @date 01/01/2023
  */
@@ -31,6 +32,10 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      */
     public abstract ClassDefinition getClassDefinition();
 
+    /**
+     * Gets the definition
+     * @return definition of the identifier
+     */
     public abstract Definition getDefinition();
 
     /**
@@ -57,6 +62,10 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      */
     public abstract MethodDefinition getMethodDefinition();
 
+    /**
+     * Gets the name of the identifier
+     * @return the name of the identifier
+     */
     public abstract SymbolTable.Symbol getName();
 
     /**
@@ -82,6 +91,10 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      */
     public abstract VariableDefinition getVariableDefinition();
 
+    /**
+     * Sets the definition of the identifier.
+     * @param definition
+     */
     public abstract void setDefinition(Definition definition);
 
 
@@ -94,5 +107,9 @@ public abstract class AbstractIdentifier extends AbstractLValue {
      */
     public abstract Type verifyType(DecacCompiler compiler) throws ContextualError;
 
+    /**
+     * Sets the name of the identifier
+     * @param a
+     */
     public abstract void setName(Symbol a );
 }

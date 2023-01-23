@@ -23,12 +23,20 @@ import org.apache.commons.lang.Validate;
  */
 public class FloatLiteral extends AbstractExpr {
 
+    /**
+     * Gets the value of the float literal
+     * @return the value
+     */
     public float getValue() {
         return value;
     }
 
     private float value;
 
+    /**
+     * Verifies the value of the float literal and sets the value
+     * @param value
+     */
     public FloatLiteral(float value) {
         Validate.isTrue(!Float.isInfinite(value),
                 "literal values cannot be infinite");

@@ -31,6 +31,11 @@ public class Assign extends AbstractBinaryExpr {
         return (AbstractLValue)super.getLeftOperand();
     }
 
+    /**
+     * Sets the operands for the assignment
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Assign(AbstractLValue leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }

@@ -8,6 +8,12 @@ import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.tools.IndentPrintStream;
 
+/**
+ * Parameters
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class ListParam extends TreeList<DeclParam> {
 
     @Override
@@ -24,19 +30,38 @@ public class ListParam extends TreeList<DeclParam> {
             current.decompile(s);
         }
     }
-    
+
+    /**
+     * Passe 1 of contextual syntax for parameters members
+     * 
+     * @param compiler
+     * @param sig
+     * @throws ContextualError
+     */
     public void verifyListParamMembers(DecacCompiler compiler, Signature sig) throws ContextualError {
         for (DeclParam param : this.getList()) {
             param.verifyParamMembers(compiler, sig);
         }
     }
 
-    public void verifyListParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError{
+    /**
+     * Passe 2 of contextual syntax for parameters body
+     * 
+     * @param compiler
+     * @param localEnv
+     * @throws ContextualError
+     */
+    public void verifyListParamBody(DecacCompiler compiler, EnvironmentExp localEnv) throws ContextualError {
         for (DeclParam param : this.getList()) {
             param.verifyParamBody(compiler, localEnv);
         }
     }
 
+    /**
+     * Generates code to parameters
+     * 
+     * @param compiler
+     */
     public void codeGenParam(DecacCompiler compiler) {
         int index = 3;
         for (DeclParam p : getList()) {

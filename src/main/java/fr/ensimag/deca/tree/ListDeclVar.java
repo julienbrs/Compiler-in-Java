@@ -42,6 +42,13 @@ public class ListDeclVar extends TreeList<AbstractDeclVar> {
                 }
     }
 
+    /**
+     * Generates code for the declaration of variables
+     * @param compiler
+     * @param offsetSP
+     * @param reg
+     * @return index, maximum register used, maximum push used
+     */
     public int[] codeGenListDeclVar(DecacCompiler compiler, int offsetSP, Register reg) {
         int[] res = {0, 0, 0};
         int j = 0;

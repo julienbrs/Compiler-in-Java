@@ -20,14 +20,27 @@ public abstract class AbstractPrint extends AbstractInst {
     private boolean printHex;
     private ListExpr arguments = new ListExpr();
     
+    /**
+     * Gets the suffix 
+     * @return the suffix
+     */
     abstract String getSuffix();
 
+    /**
+     * Verifies the arguments of the expression and sets them
+     * @param printHex
+     * @param arguments
+     */
     public AbstractPrint(boolean printHex, ListExpr arguments) {
         Validate.notNull(arguments);
         this.arguments = arguments;
         this.printHex = printHex;
     }
 
+    /**
+     * Gets the arguments
+     * @return the arguments
+     */
     public ListExpr getArguments() {
         return arguments;
     }
@@ -61,6 +74,10 @@ public abstract class AbstractPrint extends AbstractInst {
         return res;
     }
 
+    /**
+     * Gets a boolean to know if it has to be a hexadecimal or not
+     * @return true if it has to be print in hexadecimal
+     */
     private boolean getPrintHex() {
         return printHex;
     }

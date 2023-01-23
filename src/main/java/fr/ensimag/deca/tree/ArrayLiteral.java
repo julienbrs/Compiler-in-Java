@@ -23,21 +23,44 @@ import fr.ensimag.ima.pseudocode.instructions.POP;
 import fr.ensimag.ima.pseudocode.instructions.PUSH;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
+/**
+ * Array Literal
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class ArrayLiteral extends AbstractExpr {
 
     private ListExpr elementab;
     
+    /**
+     * Constructor by default
+     */
     public ArrayLiteral() {
         this.elementab = new ListExpr();
     }
+
+    /**
+     * Sets the expression in the array
+     * @param elementab
+     */
     public ArrayLiteral(AbstractExpr elementab) {
         this.elementab = new ListExpr();
         this.elementab.add(elementab);
     }
+
+    /**
+     * Adds an expression to an expression in array
+     * @param elementab
+     */
     public void addExpr(AbstractExpr elementab){
         this.elementab.add(elementab);
     }
 
+    /**
+     * Adds recursively ConvFloat nodes on the array values
+     * @throws ContextualError
+     */
     public void addConvFloat() throws ContextualError{
         ListExpr newList = new ListExpr();
         for (AbstractExpr expr : elementab.getList()) {

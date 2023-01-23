@@ -11,6 +11,8 @@ import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 
 /**
+ * Main
+ * 
  * @author gl11
  * @date 01/01/2023
  */
@@ -20,6 +22,11 @@ public class Main extends AbstractMain {
     private ListDeclVar declVariables;
     private ListInst insts;
     
+    /**
+     * Verifies that variables and instructions are not null. Declares those two parameters.
+     * @param declVariables
+     * @param insts
+     */
     public Main(ListDeclVar declVariables,
             ListInst insts) {
         Validate.notNull(declVariables);

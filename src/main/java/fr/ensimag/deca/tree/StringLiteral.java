@@ -26,6 +26,10 @@ public class StringLiteral extends AbstractStringLiteral {
 
     private String value;
 
+    /**
+     * Declares the value of the string literal after verifying that it is not null
+     * @param value
+     */
     public StringLiteral(String value) {
         Validate.notNull(value);
         this.value = value;

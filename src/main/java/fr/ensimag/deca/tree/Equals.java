@@ -9,16 +9,21 @@ import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.SEQ;
 
 /**
- *
+ * Equals
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Equals extends AbstractOpExactCmp {
 
+    /**
+     * Sets the operands for equals
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Equals(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

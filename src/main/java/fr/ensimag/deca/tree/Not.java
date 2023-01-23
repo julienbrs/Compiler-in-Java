@@ -11,12 +11,17 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
- *
+ * Not
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Not extends AbstractUnaryExpr {
 
+    /**
+     * Sets the operands for not
+     * @param operand
+     */
     public Not(AbstractExpr operand) {
         super(operand);
     }

@@ -23,6 +23,7 @@ public abstract class AbstractInst extends Tree {
      *          corresponds to the "class" attribute (null in the main bloc).
      * @param returnType
      *          corresponds to the "return" attribute (void in the main bloc).
+     * @throws ContextualError
      */    
     protected abstract void verifyInst(DecacCompiler compiler,
             EnvironmentExp localEnv, ClassDefinition currentClass, Type returnType) throws ContextualError;
@@ -31,6 +32,7 @@ public abstract class AbstractInst extends Tree {
      * Generate assembly code for the instruction.
      * 
      * @param compiler
+     * @return maximum number of the register used, maximum number of stacking on the pile
      */
     protected abstract int[] codeGenInst(DecacCompiler compiler);
 
@@ -39,6 +41,7 @@ public abstract class AbstractInst extends Tree {
      * Decompile the tree, considering it as an instruction.
      *
      * In most case, this simply calls decompile(), but it may add a semicolon if needed
+     * @param s
      */
     protected void decompileInst(IndentPrintStream s) {
         decompile(s);

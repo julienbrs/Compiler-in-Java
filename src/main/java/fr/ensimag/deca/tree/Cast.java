@@ -23,7 +23,7 @@ import fr.ensimag.ima.pseudocode.instructions.LEA;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 
 /**
- * Instruction
+ * Cast
  *
  * @author gl11
  * @date 16/01/2023
@@ -33,6 +33,11 @@ public class Cast extends AbstractExpr {
     private AbstractIdentifier type;
     private AbstractExpr expr;
 
+    /**
+     * Sets the type and the expression to cast
+     * @param type
+     * @param expr
+     */
     public Cast(AbstractIdentifier type, AbstractExpr expr) {
         this.type = type;
         this.expr = expr;

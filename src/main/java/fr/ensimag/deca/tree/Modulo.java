@@ -12,12 +12,18 @@ import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.REM;
 
 /**
- *
+ * Modulo
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Modulo extends AbstractOpArith {
 
+    /**
+     * Declares the operands for the modulo operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Modulo(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
@@ -34,7 +40,6 @@ public class Modulo extends AbstractOpArith {
         setType(compiler.environmentType.INT);
         return this.getType();
     }
-
 
     @Override
     protected String getOperatorName() {

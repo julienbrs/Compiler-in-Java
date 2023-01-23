@@ -9,10 +9,19 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class LocationException extends Exception {
+    
+    /**
+     * Gets the location of an exception
+     * @return the location
+     */
     public Location getLocation() {
         return location;
     }
 
+    /**
+     * Displays the file name, the line, column and the message
+     * @param s
+     */
     public void display(PrintStream s) {
         Location loc = getLocation();
         String line;
@@ -30,6 +39,11 @@ public class LocationException extends Exception {
     private static final long serialVersionUID = 7628400022855935597L;
     protected Location location;
 
+    /**
+     * Verifies that the location is not null and that it has a filename. Declares the location and the message
+     * @param message
+     * @param location
+     */
     public LocationException(String message, Location location) {
         super(message);
         assert(location == null || location.getFilename() != null);

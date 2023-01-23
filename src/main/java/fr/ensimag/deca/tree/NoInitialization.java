@@ -31,7 +31,6 @@ public class NoInitialization extends AbstractInitialization {
         setType(t);
     }
 
-
     /**
      * Node contains no real information, nothing to check.
      */

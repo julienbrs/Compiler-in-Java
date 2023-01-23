@@ -15,7 +15,8 @@ import fr.ensimag.ima.pseudocode.instructions.RFLOAT;
 import java.io.PrintStream;
 
 /**
- *
+ * ReadFloat
+ * 
  * @author gl11
  * @date 01/01/2023
  */

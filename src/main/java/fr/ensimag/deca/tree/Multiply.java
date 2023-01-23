@@ -7,14 +7,21 @@ import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.MUL;
 
 /**
+ * Multiply
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Multiply extends AbstractOpArith {
+
+    /**
+     * Declares the operands for the multiply operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Multiply(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

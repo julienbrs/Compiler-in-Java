@@ -14,12 +14,26 @@ import fr.ensimag.deca.context.Signature;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 
+/**
+ * Declaration of a method
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class DeclMethod extends AbstractDeclMethod {
     private AbstractIdentifier type;
     private AbstractIdentifier ident;
     private ListParam listeparametre;
     private AbstractMethodBody methodBody;
 
+    /**
+     * Sets the characteristics for a method
+     * 
+     * @param type
+     * @param ident
+     * @param listeparametre
+     * @param methodBody
+     */
     public DeclMethod(AbstractIdentifier type, AbstractIdentifier ident, ListParam listeparametre,
             AbstractMethodBody methodBody) {
         this.type = type;
@@ -28,10 +42,12 @@ public class DeclMethod extends AbstractDeclMethod {
         this.methodBody = methodBody;
     }
 
+    @Override
     public AbstractIdentifier getIdent() {
         return ident;
     }
 
+    @Override
     public Symbol getName() {
         return ident.getName();
     }
@@ -142,6 +158,7 @@ public class DeclMethod extends AbstractDeclMethod {
         methodBody.verifyMethodBody(compiler, localEnv, paramEnv, currentClass, t);
     }
 
+    @Override
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass) {
         compiler.addLabel(ident.getMethodDefinition().getLabel());
         listeparametre.codeGenParam(compiler);

@@ -167,11 +167,19 @@ public class Identifier extends AbstractIdentifier {
     public Symbol getName() {
         return name;
     }
-    public void setName(Symbol a ) {
+
+    @Override
+    public void setName(Symbol a) {
         this.name = a;
     }
+
     private Symbol name;
 
+    /**
+     * Verifies the name of the identifier and sets its value
+     * 
+     * @param name
+     */
     public Identifier(Symbol name) {
         Validate.notNull(name);
         this.name = name;
@@ -184,7 +192,8 @@ public class Identifier extends AbstractIdentifier {
         ExpDefinition def = localEnv.get(name);
         if (def == null) {
             // ERROR MSG
-            throw new ContextualError("La variable \"" + name + "\" n'a pas été déclaré : rule 0.1", getLocation());
+            throw new ContextualError("The " + def.getNature() + "  \"" + name + "\" doesn't exist : rule 0.1",
+                    getLocation());
         }
         setDefinition(def);
         setType(definition.getType());
@@ -219,13 +228,15 @@ public class Identifier extends AbstractIdentifier {
     protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
-            compiler.addInstruction(new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)), GPRegister.getR(offset)));
-            int[] res = {offset, 0};
+            compiler.addInstruction(
+                    new LOAD(new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)),
+                            GPRegister.getR(offset)));
+            int[] res = { offset, 0 };
             return res;
         }
         DAddr addr = getExpDefinition().getOperand();
         compiler.addInstruction(new LOAD(addr, GPRegister.getR(offset)));
-        int[] res = {offset, 0};
+        int[] res = { offset, 0 };
         return res;
     }
 
@@ -233,10 +244,11 @@ public class Identifier extends AbstractIdentifier {
         Triple<int[], Integer, DAddr> res;
         if (getDefinition().isField()) {
             compiler.addInstruction(new LOAD(new RegisterOffset(-2, GPRegister.LB), GPRegister.getR(offset)));
-            int[] max = {offset, 0};
-            res = new Triple<>(max, offset + 1, new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)));
+            int[] max = { offset, 0 };
+            res = new Triple<>(max, offset + 1,
+                    new RegisterOffset(getFieldDefinition().getIndex(), GPRegister.getR(offset)));
         } else {
-            int[] max = {offset, 0};
+            int[] max = { offset, 0 };
             res = new Triple<>(max, offset, getExpDefinition().getOperand());
         }
         return res;
@@ -253,7 +265,7 @@ public class Identifier extends AbstractIdentifier {
         } else {
             compiler.addInstruction(new BEQ(dest));
         }
-        int[] res = {0,0};
+        int[] res = { 0, 0 };
         return res;
     }
 

@@ -10,17 +10,30 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.InlinePortion;
 
+/**
+ * Method Asm Body
+ * 
+ * @author gl11
+ * @date 01/01/2023
+ */
 public class MethodAsmBody extends AbstractMethodBody {
+
     private StringLiteral asm; 
 
+    /**
+     * Sets the asm value
+     * @param asm
+     */
     public MethodAsmBody(StringLiteral asm) {
         this.asm = asm;
     }
     
+    @Override
     protected void verifyMethodBody(DecacCompiler compiler, EnvironmentExp localEnv, EnvironmentExp paramEnv, ClassDefinition currentClass, Type returnType) throws ContextualError {
         asm.verifyExpr(compiler, localEnv, currentClass);
     }
 
+    @Override
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass, AbstractIdentifier ident) {
         compiler.add(new InlinePortion(asm.getValue().substring(1, asm.getValue().length()-1).replace("\\\"","\"").replace("\\\\","\\")));
     }

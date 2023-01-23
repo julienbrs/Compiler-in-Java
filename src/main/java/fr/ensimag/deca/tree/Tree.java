@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
  * Factors all the common elements and utility functions to manipulate trees
  * (location in source-code, pretty-printing, ...).
  *
+ * Tree
+ * 
  * @author gl11
  * @date 01/01/2023
  *
@@ -21,17 +23,32 @@ public abstract class Tree {
 
     private static final Logger LOG = Logger.getLogger(Main.class);
 
+    /**
+     * Gets location of the tree
+     * @return the location
+     */
     public Location getLocation() {
         return location;
     }
 
+    /**
+     * Sets location of the tree
+     * @param location
+     */
     public void setLocation(Location location) {
         this.location = location;
     }
 
+    /**
+     * Declares a new location knowing its line, column, filename
+     * @param line
+     * @param column
+     * @param filename
+     */
     public void setLocation(int line, int column, String filename) {
         this.location = new Location(line, column, filename);
     }
+
     private Location location;
 
     /**
@@ -41,12 +58,17 @@ public abstract class Tree {
      */
     public abstract void decompile(IndentPrintStream s);
 
+    /**
+     * Decompile the tree
+     * @param s
+     */
     public void decompile(PrintStream s) {
         decompile(new IndentPrintStream(s));
     }
 
     /**
      * Display the tree as a (compilable) source program
+     * @return the tree
      */
     public String decompile() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -122,6 +144,8 @@ public abstract class Tree {
 
     /**
      * Pretty-print the type of the tree, if applicable
+     * @param s
+     * @param prefix
      */
     protected void prettyPrintType(PrintStream s, String prefix) {
         // Nothing by default
@@ -129,6 +153,8 @@ public abstract class Tree {
 
     /**
      * Pretty-print the definition of the tree, if applicable
+     * @param s
+     * @param newPrefix
      */
     protected void prettyPrintDefinition(PrintStream s, String newPrefix) {
         // Nothing by default
@@ -138,6 +164,7 @@ public abstract class Tree {
      * Print the node information on a single line.
      *
      * Does not print the children (the recursive call is done by prettyPrint).
+     * @return name of the class
      */
     String prettyPrintNode() {
         return this.getClass().getSimpleName();
@@ -152,10 +179,11 @@ public abstract class Tree {
     public final void prettyPrint(PrintStream s) {
         prettyPrint(s, "", true, false);
     }
-
+ 
     /**
      * Pretty-print the tree as a String, using ASCII-art to show the tree
      * hierarchy. Useful for debugging.
+     * @return
      */
     public final String prettyPrint() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -164,6 +192,12 @@ public abstract class Tree {
         return out.toString();
     }
 
+    /**
+     * Displays (prettily) the node
+     * @param s
+     * @param prefix
+     * @param last
+     */
     protected final void prettyPrint(PrintStream s, String prefix,
             boolean last) {
         prettyPrint(s, prefix, last, false);

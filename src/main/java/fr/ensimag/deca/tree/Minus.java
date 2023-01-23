@@ -7,14 +7,22 @@ import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.SUB;
 
 /**
+ * Minus
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Minus extends AbstractOpArith {
+
+    /**
+     * Declares the operands for the minus operation
+     * 
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Minus(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {

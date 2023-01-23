@@ -12,6 +12,7 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class EmptyMain extends AbstractMain {
+    
     @Override
     protected void verifyMain(DecacCompiler compiler) throws ContextualError {
         // throw new UnsupportedOperationException("not yet implemented");

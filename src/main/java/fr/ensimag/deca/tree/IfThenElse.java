@@ -24,6 +24,12 @@ public class IfThenElse extends AbstractInst {
     private final ListInst thenBranch;
     private ListInst elseBranch;
 
+    /**
+     * Verifies the instructions and conditions and sets their values
+     * @param condition
+     * @param thenBranch
+     * @param elseBranch
+     */
     public IfThenElse(AbstractExpr condition, ListInst thenBranch, ListInst elseBranch) {
         Validate.notNull(condition);
         Validate.notNull(thenBranch);

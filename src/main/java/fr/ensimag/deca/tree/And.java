@@ -4,12 +4,18 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.Label;
 
 /**
- *
+ * And
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class And extends AbstractOpBool {
 
+    /**
+     * Sets the operands to the and operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public And(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
