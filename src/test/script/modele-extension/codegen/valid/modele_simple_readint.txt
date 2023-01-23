@@ -1,2 +1,0 @@
-Saisissez un entier :
-Vous avez saisi : 5

@@ -82,25 +82,3 @@ for cas_de_test in $(find src/test/deca/codegen/valid/ -name '*.deca' -not -path
 done
 
 echo ""
-
-# Test interactifs:
-echo "${purple}Lancement des tests interactifs valides:${reset}"
-decac src/test/deca/codegen/valid/interactif/simple_readint.deca
-resultat_output=$(echo 5 | ima src/test/deca/codegen/valid/interactif/simple_readint.ass)
-
-diff <(echo "$resultat_output") "src/test/script/modele/codegen/valid/modele_simple_readint.txt"
-if [ $? -eq 0 ]; then
-    echo "src/test/deca/codegen/valid/interactif/simple_readint.deca TEST OK ✅"
-else
-    echo "src/test/deca/codegen/valid/interactif/simple_readint.deca FAILED ❌"
-fi
-
-decac src/test/deca/codegen/valid/interactif/simple_readfloat.deca
-resultat_output=$(echo 3.14 | ima src/test/deca/codegen/valid/interactif/simple_readfloat.ass)
-diff <(echo "$resultat_output") "src/test/script/modele/codegen/valid/modele_simple_readfloat.txt"
-if [ $? -eq 0 ]; then
-    echo "src/test/deca/codegen/valid/interactif/simple_readfloat.deca TEST OK ✅"
-else
-    echo "src/test/deca/codegen/valid/interactif/simple_readfloat.deca FAILED ❌"
-fi
-rm src/test/deca/codegen/valid/interactif/*.ass

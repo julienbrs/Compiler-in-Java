@@ -7,7 +7,7 @@ println("multiplication of r :");
 a.printMatInt(r);
 println();
 println("with r1 :");
-a.print(r1);
+print(r1);
 println();
 a.printMatInt(a.multScalarInt(r,r1));
 

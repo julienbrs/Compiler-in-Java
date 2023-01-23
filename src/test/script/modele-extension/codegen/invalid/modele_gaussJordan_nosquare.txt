@@ -1,1 +1,1 @@
-src/test/deca/codegen/invalid/gaussJordan_nosquare.ass introuvable
+Erreur de dimension
