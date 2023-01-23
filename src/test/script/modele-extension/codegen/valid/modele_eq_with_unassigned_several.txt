@@ -1,3 +1,0 @@
-x and y are both equals to 0
-f1 and f2 are both equals to 0.00000e+00
-b1 and b2 are both equals to true

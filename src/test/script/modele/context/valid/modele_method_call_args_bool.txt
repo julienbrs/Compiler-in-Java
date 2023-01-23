@@ -13,12 +13,12 @@
    |         ||  +> [4, 12] Identifier (testMethodOr)
    |         ||  |  definition: method defined at [4, 12], type=boolean
    |         ||  +> ListParam [List with 2 elements]
-   |         ||  |  []> [4, 25] Param
+   |         ||  |  []> [4, 25] DeclParam
    |         ||  |  ||  +> [4, 25] Identifier (boolean)
    |         ||  |  ||  |  definition: type (builtin), type=boolean
    |         ||  |  ||  `> [4, 33] Identifier (x)
    |         ||  |  ||     definition: parameter defined at [4, 25], type=boolean
-   |         ||  |  []> [4, 36] Param
+   |         ||  |  []> [4, 36] DeclParam
    |         ||  |      +> [4, 36] Identifier (boolean)
    |         ||  |      |  definition: type (builtin), type=boolean
    |         ||  |      `> [4, 44] Identifier (y)
@@ -39,12 +39,12 @@
    |             +> [7, 12] Identifier (testMethodAnd)
    |             |  definition: method defined at [7, 12], type=boolean
    |             +> ListParam [List with 2 elements]
-   |             |  []> [7, 26] Param
+   |             |  []> [7, 26] DeclParam
    |             |  ||  +> [7, 26] Identifier (boolean)
    |             |  ||  |  definition: type (builtin), type=boolean
    |             |  ||  `> [7, 34] Identifier (x)
    |             |  ||     definition: parameter defined at [7, 26], type=boolean
-   |             |  []> [7, 37] Param
+   |             |  []> [7, 37] DeclParam
    |             |      +> [7, 37] Identifier (boolean)
    |             |      |  definition: type (builtin), type=boolean
    |             |      `> [7, 45] Identifier (y)

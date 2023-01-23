@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/decl_method_not_class_subtype.deca:13:4: The method "getMe" is already define in super class with a different signature : rule 2.7

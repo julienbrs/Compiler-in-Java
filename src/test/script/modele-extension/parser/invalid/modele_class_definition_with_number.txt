@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/class_definition_with_number.deca:3:6: mismatched input '145' expecting IDENT

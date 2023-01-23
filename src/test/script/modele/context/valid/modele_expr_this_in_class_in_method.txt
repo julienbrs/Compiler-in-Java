@@ -19,7 +19,7 @@
    |             +> [7, 9] Identifier (setX)
    |             |  definition: method defined at [7, 9], type=void
    |             +> ListParam [List with 1 elements]
-   |             |  []> [7, 14] Param
+   |             |  []> [7, 14] DeclParam
    |             |      +> [7, 14] Identifier (int)
    |             |      |  definition: type (builtin), type=int
    |             |      `> [7, 18] Identifier (x)

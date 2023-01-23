@@ -1,1 +1,0 @@
-  IMA -- Fichier ./src/test/deca/codegen/temp/decl_class_valid.ass introuvable

@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/testing_null.deca:5:10: Can't do "==" between "int" and "null": rule 3.33

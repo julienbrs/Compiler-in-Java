@@ -1,0 +1,1 @@
+src/test/script/create-modele/create-codegen-modele.sh: line 46: src/test/deca/codegen/invalid/cast_on_void.deca:11:17: Can't cast void : rule 3.39: No such file or directory

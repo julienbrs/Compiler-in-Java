@@ -1,7 +1,0 @@
-{
-	int i = 0;
-	while ((i < 5)) {
-		println("i est égal à ", i);
-	}
-}
-

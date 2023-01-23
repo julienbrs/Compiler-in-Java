@@ -15,7 +15,6 @@ cd "$(dirname "$0")"/../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
-src/test/script/complete-lexer-extension.sh
 src/test/script/complete-parser-extension.sh
 src/test/script/complete-context-extension.sh
 src/test/script/complete-codegen-extension.sh

@@ -13,12 +13,12 @@
    |             +> [4, 8] Identifier (testMethod)
    |             |  definition: method defined at [4, 8], type=int
    |             +> ListParam [List with 2 elements]
-   |             |  []> [4, 19] Param
+   |             |  []> [4, 19] DeclParam
    |             |  ||  +> [4, 19] Identifier (int)
    |             |  ||  |  definition: type (builtin), type=int
    |             |  ||  `> [4, 23] Identifier (x)
    |             |  ||     definition: parameter defined at [4, 19], type=int
-   |             |  []> [4, 26] Param
+   |             |  []> [4, 26] DeclParam
    |             |      +> [4, 26] Identifier (int)
    |             |      |  definition: type (builtin), type=int
    |             |      `> [4, 30] Identifier (y)

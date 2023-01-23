@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/inst_return_in_void_method_voidMethod.deca:11:8: Return can't be void : rule 3.24

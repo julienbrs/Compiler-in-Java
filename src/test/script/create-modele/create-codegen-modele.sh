@@ -17,7 +17,12 @@ cd "$(dirname "$0")"/../../../.. || exit 1
 PATH=./src/test/script/launchers:"$PATH"
 
 # exit_status_final=0
+cleanup() {
+    rm -r src/test/deca/codegen/valid/*.ass
+    rm -r src/test/deca/codegen/invalid/*.ass
 
+}
+trap cleanup EXIT
 # declare log_activated=false
 # if [ "$2" == "--log" ]; then
 #     log_activated=true
@@ -30,12 +35,15 @@ for cas_de_test in $(find src/test/deca/codegen/invalid/ -name '*.deca' -not -pa
     output_file=$(printf "src/test/script/modele/codegen/invalid/modele_%s.txt" "$filename")
     if [ ! -f "$output_file" ]; then
         output_compil=$(decac "./src/test/deca/codegen/invalid/$filename.deca" 2>&1)
+        output_compil="$(echo "$output_compil" | sed 's#.*src#src#')"
+
         # Si la compilation s'est bien passée mais que l'erreur sera après:
         if [ $? -eq 1 ]; then
             resultat_output=$(ima src/test/deca/codegen/invalid/$filename.ass)
-            "$resultat_output" >"$output_file" 2>1
+            resultat_output="$(echo "$resultat_output" | sed 's#.*src#src#')"
+            "$resultat_output" >"$output_file" 2>&1
         else
-            "$output_compil" >"$output_file" 2>1
+            "$output_compil" >"$output_file" 2>&1
         fi
     else
         echo "modele_$filename déjà existant"
@@ -49,7 +57,7 @@ for cas_de_test in $(find src/test/deca/codegen/valid/ -name '*.deca' -not -path
     output_file=$(printf "src/test/script/modele/codegen/valid/modele_%s.txt" "$filename")
 
     if [ ! -f "$output_file" ]; then
-        output_compil=$(decac "./src/test/deca/codegen/valid/$filename.deca" 2>&1)
+        output_compil=$(decac "src/test/deca/codegen/valid/$filename.deca" 2>&1)
         # Si la compilation s'est bien passée mais que l'erreur sera après:
         if [ $? -eq 0 ]; then
             resultat_output=$(ima src/test/deca/codegen/valid/$filename.ass)

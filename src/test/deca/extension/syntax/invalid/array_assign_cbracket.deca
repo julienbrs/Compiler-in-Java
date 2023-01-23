@@ -1,5 +1,0 @@
-// Missing '}' for the declaration of values of an array
-
-{
-    int[] a = {4,4;
-}

@@ -15,16 +15,9 @@ cd "$(dirname "$0")"/../../.. || exit 1
 
 PATH=./src/test/script/launchers:"$PATH"
 
-# exit_status_final=0
-
-# declare log_activated=false
-# if [ "$2" == "--log" ]; then
-#     log_activated=true
-# fi
-
-# Supprime le fichier temporaire dès que le programme finit
 cleanup() {
-    rm -rf ./src/test/deca/codegen/valid/*.ass
+    rm -r src/test/deca/codegen/valid/*.ass
+    rm -r src/test/deca/codegen/invalid/*.ass
 }
 trap cleanup EXIT
 

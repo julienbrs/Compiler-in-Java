@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/decl_var_multiple_assign_no_ident.deca:4:11: missing IDENT at '='

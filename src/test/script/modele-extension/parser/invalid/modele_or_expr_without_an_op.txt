@@ -1,1 +1,0 @@
-src/test/deca/syntax/parser/invalid/or_expr_without_an_op.deca:4:13: mismatched input ')' expecting {'(', '-', '!', 'readInt', 'readFloat', 'new', INT, FLOAT, STRING, 'true', 'false', 'this', 'null', IDENT}

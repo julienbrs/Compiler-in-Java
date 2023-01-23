@@ -1,1 +1,2 @@
-  IMA -- Fichier ./src/test/deca/codegen/temp/decl_var_already_declared_in_method.ass introuvable
+5
+22

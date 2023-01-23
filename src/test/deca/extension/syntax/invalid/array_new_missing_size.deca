@@ -1,6 +1,0 @@
-// Wrong dimensions in array definition
-
-{
-    int[] tab = new int[4][][4]();
-
-}

@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/inst_return_in_void_method_float.deca:6:15: Can't assign type : "float" to type :"void" : rule 3.28

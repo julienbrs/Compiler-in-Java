@@ -1,1 +1,1 @@
-/home/julien/ensimag/GL/gl11/./src/test/deca/codegen/valid/operateur_not_on_bool.deca:5:20: La variable "x" n'a pas été déclaré : rule 0.1
+/home/julien/ensimag/GL/gl11/src/test/deca/codegen/valid/operateur_not_on_bool.deca:5:20: La variable "x" n'a pas été déclaré : rule 0.1

@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/cond_if_but_class.deca:4:4: The type "A" doesn't exist : rule 0.2

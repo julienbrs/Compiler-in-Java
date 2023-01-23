@@ -1,1 +1,0 @@
-src/test/deca/context/invalid/expr_cast_int_to_void.deca:4:6: Type can't be void : rule 3.17
