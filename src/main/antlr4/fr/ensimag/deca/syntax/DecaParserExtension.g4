@@ -550,6 +550,7 @@ a =new Array(sym.create(($IDENT.text+"[]")),level,new Identifier(sym.create($IDE
         $tree = a;
         level++;
         setLocation($tree, $IDENT);
+        a.setIdentLocation();
    } 
         CBRACKET
        (OBRACKET{   

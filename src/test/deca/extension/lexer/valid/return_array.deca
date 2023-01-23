@@ -1,3 +1,5 @@
+// returns an int array
+
 class retur {
     int[] a ;
     int[] delta (){

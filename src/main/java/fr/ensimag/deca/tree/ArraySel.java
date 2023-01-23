@@ -12,12 +12,14 @@ import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.DAddr;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.ImmediateInteger;
 import fr.ensimag.ima.pseudocode.Label;
 import fr.ensimag.ima.pseudocode.NullOperand;
 import fr.ensimag.ima.pseudocode.RegisterOffOffset;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BLE;
+import fr.ensimag.ima.pseudocode.instructions.BLT;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.POP;
@@ -105,6 +107,8 @@ public class ArraySel extends AbstractSelection {
             compiler.addInstruction(new LOAD(new RegisterOffset(0, GPRegister.getR(currOffset)), GPRegister.R1));
             compiler.addInstruction(new CMP(GPRegister.getR(nextOffset), GPRegister.R1));
             compiler.addInstruction(new BLE(new Label("index_hors_range")));
+            compiler.addInstruction(new CMP(new ImmediateInteger(0), GPRegister.getR(nextOffset)));
+            compiler.addInstruction(new BLT(new Label("index_hors_range")));
         }
         compiler.addInstruction(new LOAD(new RegisterOffOffset(1, GPRegister.getR(currOffset), GPRegister.getR(nextOffset)), GPRegister.getR(offset)));
         int[] res = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};

@@ -50,51 +50,59 @@
         <task id="22" name="" note="" work="3600" start="20230103T000000Z" end="20230103T090000Z" work-start="20230103T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
     </task>
-    <task id="23" name="Sprint 2 - Compilateur sans objet" note="" work="144000" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="23" name="Sprint 2 - Compilateur sans objet" note="" work="374400" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
-      <task id="24" name="D&#xE9;clarations variables" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="25" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="24" name="D&#xE9;clarations variables" note="" work="86400" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="25" name="Parser accepte d&#xE9;clarations de variables" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="26" name="Analyse cont. v&#xE9;rifie variables correctement d&#xE9;clar&#xE9;es et utilis&#xE9;es dans le programme" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="27" name="Tester le compilateur avec des exemples de d&#xE9;clarations de variables et s'assurer qu'il produit une sortie sans erreur" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="26" name="Op&#xE9;rations arithm&#xE9;tiques de base" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="27" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="28" name="Op&#xE9;rations arithm&#xE9;tiques de base" note="" work="86400" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="29" name="Parser accepte op&#xE9;rations arithm&#xE9;tiques de base" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="30" name="Analyse cont. v&#xE9;rifie contexte op&#xE9;rations" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="31" name="Tester le compilateur avec des exemples de d&#xE9;clarations de variables et s'assurer qu'il produit une sortie sans erreur" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="28" name="Conditions if, else" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="29" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="32" name="Conditions if, else" note="" work="86400" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="33" name="Parser accepte les conditions" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="34" name="Analyse cont. v&#xE9;rifie expressions bool&#xE9;ennes" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="35" name="Tester le compilateur avec des exemples de d&#xE9;clarations de variables et s'assurer qu'il produit une sortie sans erreur" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="30" name="Boucle while" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="31" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="36" name="Boucle while" note="" work="86400" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="37" name="Parser accepte boucles while" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="38" name="Analyse cont. v&#xE9;rifie expression bool&#xE9;enne" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="39" name="Tester le compilateur avec des exemples de d&#xE9;clarations de variables et s'assurer qu'il produit une sortie sans erreur" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
-      <task id="32" name="[Extension] Tableaux" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-        <task id="33" name="" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="40" name="[Extension] Tableaux" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <task id="41" name="Sp&#xE9;cification" note="" work="28800" start="20230104T090000Z" end="20230105T090000Z" work-start="20230104T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
       </task>
     </task>
-    <task id="34" name="Sprint 3 - Compilateur pour la totalit&#xE9; du langage" note="" work="28800" start="20230105T090000Z" end="20230106T090000Z" work-start="20230105T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="42" name="Sprint 3 - Compilateur pour la totalit&#xE9; du langage" note="" work="28800" start="20230105T090000Z" end="20230106T090000Z" work-start="20230105T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="23" type="FS"/>
       </predecessors>
-      <task id="35" name="Tests" note="" work="28800" start="20230105T090000Z" end="20230106T090000Z" work-start="20230105T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="43" name="Tests" note="" work="28800" start="20230105T090000Z" end="20230106T090000Z" work-start="20230105T090000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
     </task>
-    <task id="36" name="Suivi 1" note="9h45" work="0" start="20230109T000000Z" end="20230109T000000Z" work-start="20230109T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="44" name="Suivi 1" note="9h45" work="0" start="20230109T000000Z" end="20230109T000000Z" work-start="20230109T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230109T000000Z"/>
     </task>
-    <task id="37" name="Suivi 2" note="9h45" work="0" start="20230112T000000Z" end="20230112T000000Z" work-start="20230112T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="45" name="Suivi 2" note="9h45" work="0" start="20230112T000000Z" end="20230112T000000Z" work-start="20230112T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230112T000000Z"/>
     </task>
-    <task id="38" name="Rendu version interm&#xE9;diaire" note="" work="0" start="20230116T000000Z" end="20230116T000000Z" work-start="20230116T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="46" name="Rendu version interm&#xE9;diaire" note="" work="0" start="20230116T000000Z" end="20230116T000000Z" work-start="20230116T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230116T000000Z"/>
     </task>
-    <task id="39" name="Rendu Final" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="47" name="Rendu Final" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230123T000000Z"/>
     </task>
-    <task id="40" name="Rendu documentation" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="48" name="Rendu documentation" note="" work="0" start="20230123T000000Z" end="20230123T000000Z" work-start="20230123T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230123T000000Z"/>
     </task>
-    <task id="41" name="Rendu Bilan" note="" work="0" start="20230125T000000Z" end="20230125T000000Z" work-start="20230125T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="49" name="Rendu Bilan" note="" work="0" start="20230125T000000Z" end="20230125T000000Z" work-start="20230125T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230125T000000Z"/>
     </task>
-    <task id="42" name="Soutenance" note="" work="0" start="20230126T000000Z" end="20230126T000000Z" work-start="20230126T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
+    <task id="50" name="Soutenance" note="" work="0" start="20230126T000000Z" end="20230126T000000Z" work-start="20230126T080000Z" percent-complete="0" priority="0" type="milestone" scheduling="fixed-work">
       <constraint type="must-start-on" time="20230126T000000Z"/>
     </task>
   </tasks>

@@ -1,3 +1,5 @@
+// Returning an int array
+
 class retur {
     int[] a ;
     int[] delta (){
@@ -7,6 +9,7 @@ class retur {
         a[0] = b;
     }
 }
+
 {
     retur e = new retur();
     e.setA(1);

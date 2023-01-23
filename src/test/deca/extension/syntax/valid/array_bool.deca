@@ -1,0 +1,5 @@
+// Boolean table declared
+
+{
+    boolean[] tabBool = {0, 1, 1, 0};
+}
