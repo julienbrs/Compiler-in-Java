@@ -10,7 +10,7 @@ class Test {
 }
 
 {
-    int z;
+    float z;
     Test test = new Test();
-    z = test.testMethod(5,12);
+    z = test.testMethod(5,12, true);
 }
