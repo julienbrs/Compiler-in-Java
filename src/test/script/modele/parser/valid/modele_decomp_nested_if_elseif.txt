@@ -1,0 +1,15 @@
+{
+	int x = 8;
+	int y = 10;
+	if ((x > 5)) {
+		if ((y > 8)) {
+			(x = (3 + 1));
+			println("x est plus grand que 5 et y est plus grand que 8");
+		} else {
+			println("x est plus grand que 5 mais y est inférieur ou égal à 8");
+		}
+	} else {
+		println("x est inférieur ou égal à 5");
+	}
+}
+

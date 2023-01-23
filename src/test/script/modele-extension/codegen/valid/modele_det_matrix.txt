@@ -1,0 +1,2 @@
+Det of float matrix :
+-2.00000e+00

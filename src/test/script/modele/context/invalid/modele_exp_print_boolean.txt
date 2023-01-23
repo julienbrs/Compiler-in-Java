@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/exp_print_boolean.deca:6:4: Can't print other than int, float or string : rule 3.31

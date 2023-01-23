@@ -1,0 +1,6 @@
+// Test of the rule (3.24): not possible to return in a main
+
+{
+    int x = 5;
+    return x;
+}

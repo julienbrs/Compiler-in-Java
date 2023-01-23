@@ -1,0 +1,42 @@
+`> [5, 0] Program
+   +> ListDeclClass [List with 3 elements]
+   |  []> [5, 0] DeclClass
+   |  ||  +> [5, 6] Identifier (A)
+   |  ||  |  definition: type defined at [5, 0], type=A
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [6, 6] [visibility = PUBLIC]  DeclField
+   |  ||  |      +> [6, 2] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [6, 6] Identifier (x)
+   |  ||  |      |  definition: field defined at [6, 6], type=int
+   |  ||  |      +> NoInitialization
+   |  ||  `> ListDeclMethod [List with 0 elements]
+   |  []> [9, 0] DeclClass
+   |  ||  +> [9, 6] Identifier (B)
+   |  ||  |  definition: type defined at [9, 0], type=B
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 1 elements]
+   |  ||  |  []> [10, 6] [visibility = PUBLIC]  DeclField
+   |  ||  |      +> [10, 2] Identifier (int)
+   |  ||  |      |  definition: type (builtin), type=int
+   |  ||  |      +> [10, 6] Identifier (x)
+   |  ||  |      |  definition: field defined at [10, 6], type=int
+   |  ||  |      +> NoInitialization
+   |  ||  `> ListDeclMethod [List with 0 elements]
+   |  []> [13, 0] DeclClass
+   |      +> [13, 6] Identifier (C)
+   |      |  definition: type defined at [13, 0], type=C
+   |      +> [13, 8] Identifier (A)
+   |      |  definition: type defined at [5, 0], type=A
+   |      +> ListDeclField [List with 1 elements]
+   |      |  []> [14, 6] [visibility = PUBLIC]  DeclField
+   |      |      +> [14, 2] Identifier (int)
+   |      |      |  definition: type (builtin), type=int
+   |      |      +> [14, 6] Identifier (x)
+   |      |      |  definition: field defined at [14, 6], type=int
+   |      |      +> NoInitialization
+   |      `> ListDeclMethod [List with 0 elements]
+   `> EmptyMain

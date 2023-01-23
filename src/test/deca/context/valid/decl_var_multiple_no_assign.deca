@@ -1,0 +1,5 @@
+// Test context, the second identifier does not have an assigned value
+
+{
+    int x, y = 8;
+}

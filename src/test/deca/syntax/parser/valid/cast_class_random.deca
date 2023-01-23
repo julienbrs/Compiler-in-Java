@@ -1,0 +1,5 @@
+// Cast test, in a syntax (we don't look at the context)
+
+{
+    A a = (anOtherClass) (object) ;
+}

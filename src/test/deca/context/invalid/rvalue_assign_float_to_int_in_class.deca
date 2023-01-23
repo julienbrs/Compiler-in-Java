@@ -1,0 +1,7 @@
+// Test of the rule (3.28): an't assign to an object of type int 
+// a value from an object of type float.  
+
+class A  {
+    float f = 3.14;
+    int x = f;
+}

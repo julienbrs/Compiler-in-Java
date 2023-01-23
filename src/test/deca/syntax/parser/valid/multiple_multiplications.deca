@@ -1,4 +1,5 @@
-// Fichier deca avec deux multiplications à la suite
+// Two following multiplications
+
 {
   int x = 1 * 2 * 3;
 }

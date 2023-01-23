@@ -1,0 +1,12 @@
+// testing asm function
+
+class A {
+    void justAMethod()
+        asm ("Ce que j'ai envie;");
+}
+
+{
+    A a = new A();
+    a.justAMethod();
+
+}

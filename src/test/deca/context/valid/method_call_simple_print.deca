@@ -1,0 +1,12 @@
+// Test context, method call with print
+
+class Printer {
+    void testMethod() {
+        println("Bonjour");
+    }
+}
+
+{
+    Printer printer = new Printer();
+    printer.testMethod();
+}

@@ -1,0 +1,7 @@
+// Parser test, if without condition
+
+{
+    if {
+        print(5);
+    }
+}

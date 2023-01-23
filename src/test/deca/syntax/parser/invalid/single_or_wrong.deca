@@ -1,3 +1,5 @@
+// Missing | for OR in if
+
 {
     int x = 5;
     int y = 7;
@@ -5,3 +7,5 @@
         println("x est plus grand que 3 et y est inférieur à 10");
     }
 }
+
+//# output

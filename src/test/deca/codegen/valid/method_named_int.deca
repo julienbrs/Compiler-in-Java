@@ -1,0 +1,12 @@
+// Aat execution, it is possible to call a method like int
+
+class A {
+    int int(){
+        return 5;
+    }   
+}
+
+{
+    A a = new A();
+    println(a.int());
+}

@@ -1,0 +1,9 @@
+// Parser test, no keyword "extends" to extend class
+
+class A {
+
+}
+
+class B A {
+
+}

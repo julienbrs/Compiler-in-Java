@@ -1,0 +1,6 @@
+// Parser test, cast an int cast in int
+
+{
+    int x = 5;
+    int y = (int) (x);
+}

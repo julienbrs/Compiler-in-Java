@@ -1,0 +1,9 @@
+// Test of the rule (3.43) : if we try to use `this` statement in main program, it
+// fails.
+
+{
+  this.x = 3;
+}
+
+//# a
+

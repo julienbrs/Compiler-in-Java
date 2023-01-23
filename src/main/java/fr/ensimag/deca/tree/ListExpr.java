@@ -12,22 +12,24 @@ import fr.ensimag.deca.tools.IndentPrintStream;
  */
 public class ListExpr extends TreeList<AbstractExpr> {
 
-
     @Override
     public void decompile(IndentPrintStream s) {
-        //throw new UnsupportedOperationException("Not yet implemented");
+        // throw new UnsupportedOperationException("Not yet implemented");
 
         // boolean first = true;
         // for (AbstractExpr i : getList()) {
-        //     if (!first) {
-        //         s.print(', ');
-        //     }
-        //     i.decompileInst(s);
+        // if (!first) {
+        // s.print(', ');
+        // }
+        // i.decompileInst(s);
         // }
 
         Iterator<AbstractExpr> ite = getList().iterator();
-        AbstractExpr current = ite.next();
-        current.decompile(s);
+        AbstractExpr current;
+        if (ite.hasNext()) {
+            current = ite.next();
+            current.decompile(s);
+        }
         while (ite.hasNext()) {
             current = ite.next();
             s.print(", ");

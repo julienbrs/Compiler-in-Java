@@ -1,0 +1,35 @@
+// Test of the rule (2.9) : when declaring a method, all
+// its parameters must be of type other than void.
+// We check that we are able to declare a method which has 
+// zero parameters, and a method which has all its parameters
+// of type different from void.
+
+class A {
+    void methodWithoutParameters() {
+        // no parameters : OK
+        println("I'm A");
+    }
+}
+
+class B {
+    void methodWithoutNullParameters(int i, float f, boolean b, A a) {
+        // all its parameters have non void type : OK
+        println(i);
+        println(f);
+        if (true){
+            println("true");
+        }
+        else {
+            println("false");
+        }
+        a.methodWithoutParameters();
+    }
+}
+
+{
+    A a = new A();
+    B b = new B();
+
+    a.methodWithoutParameters();
+    b.methodWithoutNullParameters(5, 3.14, true, a);
+}

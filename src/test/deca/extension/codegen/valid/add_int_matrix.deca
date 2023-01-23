@@ -1,0 +1,17 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+int[][] r = {{1,2},{1,2}};
+int[][] r1 = {{1,2},{1,2}};
+println("add of r :");
+a.printMatInt(r);
+println();
+println("with r1 :");
+a.printMatInt(r1);
+println();
+a.printMatInt(a.addInt(r,r1));
+
+println();
+
+
+}

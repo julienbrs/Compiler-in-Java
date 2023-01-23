@@ -1,3 +1,5 @@
+// Missing {} after else
+
 {
     int x = 2;
     if (x > 3) {
@@ -5,3 +7,5 @@
     } else
         println("x est inférieur ou égal à 3");  
 }
+
+//# output

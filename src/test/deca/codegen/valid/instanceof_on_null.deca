@@ -1,0 +1,14 @@
+// Instanceof sur null
+
+class Velo {
+    int marque;
+}
+
+{
+    Velo velo = null;
+    if (velo instanceof Velo) {
+        println("Le velo est une instance de Velo");
+    } else {
+        println("Le velo n'est pas une instance de Velo");
+    }
+}

@@ -1,0 +1,5 @@
+// Parser test, print impossible (missing string or data)
+
+{
+    print(%) ;
+}

@@ -1,0 +1,17 @@
+// Parser test, method call with bools parameters
+
+class Test {
+    boolean testMethodOr(boolean x, boolean y) {
+        return (x || y);
+    }
+    void testMethodAnd(boolean x, boolean y) {
+        return (x || y);
+    }
+}
+
+{
+    boolean a, b;
+    Test test = new Test();
+    a = test.testMethodOr(true,false);
+    b = test.testMethodAnd(true,false);
+}

@@ -1,0 +1,8 @@
+// Test of the rule 3.17: a variable of type void in the main
+
+{
+    void x = 12;
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/decl_var_void_in_main.deca:5:13: Type can't be void : rule 3.17

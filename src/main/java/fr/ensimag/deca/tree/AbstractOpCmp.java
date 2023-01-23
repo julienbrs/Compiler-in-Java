@@ -1,18 +1,18 @@
 package fr.ensimag.deca.tree;
 
-import fr.ensimag.deca.context.Type;
-import fr.ensimag.deca.DecacCompiler;
-import fr.ensimag.deca.context.ClassDefinition;
-import fr.ensimag.deca.context.ContextualError;
-import fr.ensimag.deca.context.EnvironmentExp;
-
 /**
- *
+ * Comparing operation (exact and inexact)
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public abstract class AbstractOpCmp extends AbstractBinaryExpr {
 
+    /**
+     * Gets left and right operand
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractOpCmp(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }

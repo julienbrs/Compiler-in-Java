@@ -1,0 +1,5 @@
+// Parser test, visibility wrong
+
+class myClass {
+    unprotected int x = 12;
+}

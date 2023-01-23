@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/rvalue_assign_class_to_int_in_class.deca:10:12: Can't assign type : "A" to type :"int" : rule 3.28

@@ -6,31 +6,41 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.DAddr;
-import fr.ensimag.ima.pseudocode.GPRegister;
-import fr.ensimag.ima.pseudocode.Register;
-import fr.ensimag.ima.pseudocode.instructions.STORE;
 
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
 /**
+ * Initialization
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Initialization extends AbstractInitialization {
 
+    /**
+     * Gets expression to initialize
+     * @return expresssion
+     */
     public AbstractExpr getExpression() {
         return expression;
     }
 
     private AbstractExpr expression;
 
+    /**
+     * Verifies that the value of expression is not null and sets its value
+     * @param expression
+     */
     public void setExpression(AbstractExpr expression) {
         Validate.notNull(expression);
         this.expression = expression;
     }
 
+    /**
+     * Declares an expression and verifies that its value is not null
+     * @param expression
+     */
     public Initialization(AbstractExpr expression) {
         Validate.notNull(expression);
         this.expression = expression;
@@ -46,8 +56,8 @@ public class Initialization extends AbstractInitialization {
     }
 
     @Override
-    protected void codeGenInitialization(DecacCompiler compiler) {
-        expression.codeGenExpr(compiler, 2);
+    protected int[] codeGenInitialization(DecacCompiler compiler, int offset) {
+        return expression.codeGenExpr(compiler, offset); // {maxReg, maxPush}
     }
 
     @Override

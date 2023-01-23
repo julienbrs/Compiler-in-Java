@@ -1,0 +1,5 @@
+// Array declaration of type float and dimension 1
+
+{
+    float[] a = {4,2,1};
+}

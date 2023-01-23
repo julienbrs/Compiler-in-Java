@@ -1,0 +1,19 @@
+// Test une classe retournant un boolean
+
+class DummyClass {
+    boolean getBool(){
+        boolean bool_t = false;
+        return bool_t;
+    }
+}
+
+{
+    DummyClass dummy = new DummyClass();
+    boolean bool = dummy.getBool();
+    if (bool){
+        print("true");
+    }
+    else {
+        print("false");
+    }
+}

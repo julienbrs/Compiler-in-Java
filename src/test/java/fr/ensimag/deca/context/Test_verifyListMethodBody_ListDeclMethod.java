@@ -10,7 +10,6 @@ import org.mockito.MockitoAnnotations;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.tree.AbstractExpr;
 import fr.ensimag.deca.tree.Plus;
-import fr.ensimag.deca.context.Type;
 
 /**
  * 
@@ -31,6 +30,7 @@ public class Test_verifyListMethodBody_ListDeclMethod {
 
 	DecacCompiler compiler;
 
+	@SuppressWarnings("deprecation")
 	@BeforeEach
 	public void setup() throws ContextualError {
 		MockitoAnnotations.initMocks(this);
@@ -49,10 +49,5 @@ public class Test_verifyListMethodBody_ListDeclMethod {
 		verify(rOpInt).verifyExpr(compiler, null, null);
 		verify(lOpInt, times(1)).verifyExpr(compiler, null, null);
 		verify(rOpInt, times(1)).verifyExpr(compiler, null, null);
-	}
-
-	@Test
-	public void test() {
-		// TESTTODO
 	}
 }

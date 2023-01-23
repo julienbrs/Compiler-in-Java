@@ -1,0 +1,16 @@
+// Test of the rule (2.4): we check that if we try to
+// declare several times a field with the same name but in different
+// different classes, it works.
+
+class A {
+  int x;
+}
+
+class B {
+  int x;
+}
+
+class C extends A {
+  int x;
+}
+

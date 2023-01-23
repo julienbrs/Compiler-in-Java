@@ -1,0 +1,5 @@
+// Test la règle 3.28: 
+
+class A  {
+    int x = true;
+}

@@ -1,0 +1,13 @@
+// Test context, declaration of a variable already existing in the
+// method of the same class
+
+class A {
+
+    int x = 12;
+    void simpleMethod(){
+        int x = 5;
+    }
+}
+
+// Resultat:
+//# IL DEVRAIT Y AVOIR UNE ERREUR

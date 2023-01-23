@@ -1,0 +1,10 @@
+// Test of the rule (2.9) : method declared with 
+// several parameters including one of type void (forbidden and
+// should be detected)
+
+class A {
+    void method(int i, void x) {}
+    // ERROR: un argument est de type void
+}
+
+//# src/test/deca/context/invalid/decl_param_multiple_void_parameters.deca:6:23: Type can't be void : rule 2.9

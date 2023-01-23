@@ -1,0 +1,8 @@
+// Test context, OR with a number operand, syntaxically correct 
+// but not contextually
+
+{
+    if (x || 15 ){
+        a = 5;
+    }
+}

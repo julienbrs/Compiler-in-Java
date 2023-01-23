@@ -1,0 +1,5 @@
+// Parser test, type unavailable
+
+{
+    true x = 5;
+}

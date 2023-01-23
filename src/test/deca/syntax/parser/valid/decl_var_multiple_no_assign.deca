@@ -1,0 +1,6 @@
+// Parser test, the first identifier does not have any explicit value
+// assiged. Syntaxically correct, not contextually
+
+{
+    int x, y = 8;
+}

@@ -1,0 +1,6 @@
+// Contextual test, cast an int cast into an int
+
+{
+    int x = 5;
+    int y = (int) (x);
+}

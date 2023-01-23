@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/expr_cast_Object_to_void.deca:5:12: Can't cast "void" to "Object" : rule 3.39

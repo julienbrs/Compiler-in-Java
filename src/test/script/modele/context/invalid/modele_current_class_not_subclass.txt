@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/lvalue_selection_protected/current_class_not_subclass.deca:20:16: La variable "x_a" n'a pas été déclaré : rule 0.1

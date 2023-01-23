@@ -1,0 +1,8 @@
+// Test of the rule 3.29 : if should have a boolean as a condition
+
+{
+    int cond = 5;
+    if (cond){
+
+    };
+}

@@ -1,0 +1,12 @@
+#include "MatrixLib.decah"
+
+// det float matrix
+
+{
+MatrixLib a = new MatrixLib();
+float[][] tab1 = {{1, 2}, {3, 4}};
+float deter;
+println("Det of float matrix :");
+deter = a.det(tab1);
+print(deter);
+}

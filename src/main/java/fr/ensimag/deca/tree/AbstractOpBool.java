@@ -11,12 +11,18 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
- *
+ *  Boolean operations
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public abstract class AbstractOpBool extends AbstractBinaryExpr {
 
+    /**
+     * Gets left and right operand
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractOpBool(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
@@ -36,19 +42,19 @@ public abstract class AbstractOpBool extends AbstractBinaryExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         int labelNumber = compiler.getLabelNumber();
         Label vrai = new Label("is_true."+labelNumber);
         Label end = new Label("end."+labelNumber);
         compiler.incrLabelNumber();
         compiler.incrLabelNumber();
-        int nbPush = codeGenBool(compiler, true, vrai);
+        int[] res = codeGenBool(compiler, true, vrai, offset);
         compiler.addInstruction(new LOAD(0, GPRegister.getR(offset)));
         compiler.addInstruction(new BRA(end));
         compiler.addLabel(vrai);
         compiler.addInstruction(new LOAD(1, GPRegister.getR(offset)));
         compiler.addLabel(end);
-        return nbPush;
+        return res;
     }
 
 }

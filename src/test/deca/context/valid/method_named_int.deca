@@ -1,0 +1,7 @@
+// test context, possible to call a method int
+
+class A {
+    int int(){
+        return 5;
+    }   
+}

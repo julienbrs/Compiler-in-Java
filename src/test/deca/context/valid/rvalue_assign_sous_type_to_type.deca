@@ -1,0 +1,12 @@
+// Test of the rule (3.28) : we can assign to an object of type
+// T1 the value of an object of type T2 if T2 is a subtype of T1
+
+class A {}
+
+class B extends A {}
+
+{
+    B b = new B();
+    A a = b; // fonctionne car B est un sous-type de A
+}
+

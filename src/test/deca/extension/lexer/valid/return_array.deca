@@ -1,0 +1,16 @@
+// returns an int array
+
+class retur {
+    int[] a ;
+    int[] delta (){
+        return a;
+    }
+    void setA(int b){
+        a[0] = b;
+    }
+}
+{
+    retur e = new retur();
+    e.setA(1);
+    println(e.delta()[1]);
+}

@@ -1,0 +1,116 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Test)
+   |      |  definition: type defined at [3, 0], type=Test
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 2 elements]
+   |         []> [4, 4] DeclMethod
+   |         ||  +> [4, 4] Identifier (boolean)
+   |         ||  |  definition: type (builtin), type=boolean
+   |         ||  +> [4, 12] Identifier (testMethodOr)
+   |         ||  |  definition: method defined at [4, 12], type=boolean
+   |         ||  +> ListParam [List with 2 elements]
+   |         ||  |  []> [4, 25] DeclParam
+   |         ||  |  ||  +> [4, 25] Identifier (boolean)
+   |         ||  |  ||  |  definition: type (builtin), type=boolean
+   |         ||  |  ||  `> [4, 33] Identifier (x)
+   |         ||  |  ||     definition: parameter defined at [4, 25], type=boolean
+   |         ||  |  []> [4, 36] DeclParam
+   |         ||  |      +> [4, 36] Identifier (boolean)
+   |         ||  |      |  definition: type (builtin), type=boolean
+   |         ||  |      `> [4, 44] Identifier (y)
+   |         ||  |         definition: parameter defined at [4, 36], type=boolean
+   |         ||  `> [4, 47] MethodBody
+   |         ||     +> ListDeclVar [List with 0 elements]
+   |         ||     +> ListInst [List with 1 elements]
+   |         ||     |  []> [5, 8] Return
+   |         ||     |      `> [5, 15] Or
+   |         ||     |         type: boolean
+   |         ||     |         +> [5, 16] Identifier (x)
+   |         ||     |         |  definition: parameter defined at [4, 25], type=boolean
+   |         ||     |         `> [5, 21] Identifier (y)
+   |         ||     |            definition: parameter defined at [4, 36], type=boolean
+   |         []> [7, 4] DeclMethod
+   |             +> [7, 4] Identifier (boolean)
+   |             |  definition: type (builtin), type=boolean
+   |             +> [7, 12] Identifier (testMethodAnd)
+   |             |  definition: method defined at [7, 12], type=boolean
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [7, 26] DeclParam
+   |             |  ||  +> [7, 26] Identifier (boolean)
+   |             |  ||  |  definition: type (builtin), type=boolean
+   |             |  ||  `> [7, 34] Identifier (x)
+   |             |  ||     definition: parameter defined at [7, 26], type=boolean
+   |             |  []> [7, 37] DeclParam
+   |             |      +> [7, 37] Identifier (boolean)
+   |             |      |  definition: type (builtin), type=boolean
+   |             |      `> [7, 45] Identifier (y)
+   |             |         definition: parameter defined at [7, 37], type=boolean
+   |             `> [7, 48] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [8, 8] Return
+   |                |      `> [8, 15] And
+   |                |         type: boolean
+   |                |         +> [8, 16] Identifier (x)
+   |                |         |  definition: parameter defined at [7, 26], type=boolean
+   |                |         `> [8, 21] Identifier (y)
+   |                |            definition: parameter defined at [7, 37], type=boolean
+   `> [12, 0] Main
+      +> ListDeclVar [List with 3 elements]
+      |  []> [13, 12] DeclVar
+      |  ||  +> [13, 4] Identifier (boolean)
+      |  ||  |  definition: type (builtin), type=boolean
+      |  ||  +> [13, 12] Identifier (a)
+      |  ||  |  definition: variable defined at [13, 12], type=boolean
+      |  ||  `> NoInitialization
+      |  []> [13, 15] DeclVar
+      |  ||  +> [13, 4] Identifier (boolean)
+      |  ||  |  definition: type (builtin), type=boolean
+      |  ||  +> [13, 15] Identifier (b)
+      |  ||  |  definition: variable defined at [13, 15], type=boolean
+      |  ||  `> NoInitialization
+      |  []> [14, 9] DeclVar
+      |      +> [14, 4] Identifier (Test)
+      |      |  definition: type defined at [3, 0], type=Test
+      |      +> [14, 9] Identifier (test)
+      |      |  definition: variable defined at [14, 9], type=Test
+      |      `> [14, 14] Initialization
+      |         `> [14, 16] New
+      |            type: Test
+      |            `> [14, 20] Identifier (Test)
+      |               definition: type defined at [3, 0], type=Test
+      `> ListInst [List with 2 elements]
+         []> [15, 6] Assign
+         ||  type: boolean
+         ||  +> [15, 4] Identifier (a)
+         ||  |  definition: variable defined at [13, 12], type=boolean
+         ||  `> [15, 12] MethodCall
+         ||     type: boolean
+         ||     +> [15, 8] Identifier (test)
+         ||     |  definition: variable defined at [14, 9], type=Test
+         ||     +> [15, 13] Identifier (testMethodOr)
+         ||     |  definition: method defined at [4, 12], type=boolean
+         ||     `> ListExpr [List with 2 elements]
+         ||        []> [15, 26] BooleanLiteral (true)
+         ||        ||  type: boolean
+         ||        []> [15, 31] BooleanLiteral (false)
+         ||            type: boolean
+         []> [16, 6] Assign
+             type: boolean
+             +> [16, 4] Identifier (b)
+             |  definition: variable defined at [13, 15], type=boolean
+             `> [16, 12] MethodCall
+                type: boolean
+                +> [16, 8] Identifier (test)
+                |  definition: variable defined at [14, 9], type=Test
+                +> [16, 13] Identifier (testMethodAnd)
+                |  definition: method defined at [7, 12], type=boolean
+                `> ListExpr [List with 2 elements]
+                   []> [16, 27] BooleanLiteral (true)
+                   ||  type: boolean
+                   []> [16, 32] BooleanLiteral (false)
+                       type: boolean

@@ -1,0 +1,57 @@
+class Rational {
+    protected int num;
+    protected int denom = 1;
+  
+    /* Getters and Setters */
+    void setNum(int n) {
+        this.num = n;
+    }
+    int getNum() {
+        return this.num;
+    }
+
+    void setDenom(int d) {
+        if (d == 0) {
+            println("Denominator can't be zero");
+        } else {
+            this.denom = d;
+        }
+    }
+    int getDenom() {
+        return this.denom;
+    }
+
+    /* String representation */
+    void prettyprint() {
+        print("<", this.getNum(), "/", this.getDenom(), ">");
+    }
+    
+    void mult(Rational toMult) {
+        int p;
+        this.num = this.num * toMult.getNum();
+        this.denom = this.denom * toMult.getDenom();
+        this.simplify(this.pgcd(this.num, this.denom));
+    }
+
+    void add(Rational toAdd) {
+        this.num = this.num * toAdd.getDenom() + this.denom * toAdd.getNum();
+        this.denom = this.denom * toAdd.getDenom();
+        this.simplify(this.pgcd(this.num, this.denom));
+    }
+    
+    int pgcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        } else {
+            return pgcd(b, a%b);
+        }
+    }
+    
+    void simplify(int p) {
+        /* Simplify a fraction */
+        this.num = this.num / p;
+        this.denom = this.denom / p;
+    }
+}
+
+

@@ -1,0 +1,5 @@
+// Parser test, identifier unavailable, special character
+
+{
+    int . = 5;
+}

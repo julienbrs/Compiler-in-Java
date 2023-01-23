@@ -1,0 +1,6 @@
+// Problem of type : 2 is not a boolean
+
+{
+    boolean[] tabBool;
+    tabBool = {0, 2, 1, 0};
+}

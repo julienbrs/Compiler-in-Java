@@ -9,11 +9,17 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
+ * Unary Minus
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class UnaryMinus extends AbstractUnaryExpr {
 
+    /**
+     * Sets the operand for the operation
+     * @param operand
+     */
     public UnaryMinus(AbstractExpr operand) {
         super(operand);
     }
@@ -32,10 +38,10 @@ public class UnaryMinus extends AbstractUnaryExpr {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int nbPush = codeGenOperande(compiler, offset);
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] res = codeGenOperande(compiler, offset);
         compiler.addInstruction(new OPP(GPRegister.getR(offset), GPRegister.getR(offset)));
-        return nbPush;
+        return res;
     }
 
     @Override

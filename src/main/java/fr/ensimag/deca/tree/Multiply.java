@@ -3,19 +3,25 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 import fr.ensimag.ima.pseudocode.instructions.MUL;
 
 /**
+ * Multiply
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Multiply extends AbstractOpArith {
+
+    /**
+     * Declares the operands for the multiply operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Multiply(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
-
 
     @Override
     protected String getOperatorName() {
@@ -23,12 +29,13 @@ public class Multiply extends AbstractOpArith {
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int[] res = codeGenOperande(compiler, offset);
-        compiler.addInstruction(new MUL(GPRegister.getR(res[0]), GPRegister.getR(offset)));
-        if (getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] resOp = codeGenOperande(compiler, offset); // {offset, maxReg, maxPush}
+        compiler.addInstruction(new MUL(GPRegister.getR(resOp[0]), GPRegister.getR(offset)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BOV(new Label("debordement_arithmetique")));
         }
-        return res[1];
+        int[] res = {resOp[1], resOp[2]};
+        return res;
     }
 }

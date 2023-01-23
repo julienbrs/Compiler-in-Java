@@ -1,0 +1,12 @@
+// Test of the rule (3.42): one can instantiate an object
+// only if the class of the object exists.
+
+class A {}
+
+{
+    A a = new A();
+    // fonctionne car la classe A existe
+    
+    // B b = new B();
+    // ne fonctionne pas car la classe B n'existe pas
+}

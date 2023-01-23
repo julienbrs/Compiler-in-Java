@@ -1,0 +1,10 @@
+// Test of the rule (2.3): the declared method has the same name than 
+// a variable already declared
+
+class A  {
+    int variableName = 5;
+
+    void variableName(){
+        println("I'm an error");
+    }
+}

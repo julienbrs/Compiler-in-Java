@@ -3,6 +3,7 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
+import fr.ensimag.deca.context.ClassType;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.DecacInternalError;
@@ -33,16 +34,22 @@ public abstract class AbstractExpr extends AbstractInst {
     }
 
     /**
-     * Get the type decoration associated to this expression (i.e. the type computed by contextual verification).
+     * @return the type decoration associated to this expression (i.e. the type computed by contextual verification).
      */
     public Type getType() {
         return type;
     }
 
+    /**
+     * Set the type.
+     * 
+     * @param type
+     */
     protected void setType(Type type) {
         Validate.notNull(type);
         this.type = type;
     }
+
     private Type type;
 
     @Override
@@ -66,6 +73,7 @@ public abstract class AbstractExpr extends AbstractInst {
      *            Definition of the class containing the expression
      *            (corresponds to the "class" attribute)
      *             is null in the main bloc.
+     * @throws ContextualError
      * @return the Type of the expression
      *            (corresponds to the "type" attribute)
      */
@@ -81,7 +89,8 @@ public abstract class AbstractExpr extends AbstractInst {
      * @param compiler  contains the "env_types" attribute
      * @param localEnv corresponds to the "env_exp" attribute
      * @param currentClass corresponds to the "class" attribute
-     * @param expectedType corresponds to the "type1" attribute            
+     * @param expectedType corresponds to the "type1" attribute     
+     * @throws ContextualError       
      * @return this with an additional ConvFloat if needed...
      */
     public AbstractExpr verifyRValue(DecacCompiler compiler,
@@ -98,8 +107,19 @@ public abstract class AbstractExpr extends AbstractInst {
             newThis.setLocation(loc);
             newThis.verifyExpr(compiler, localEnv, currentClass);
             return newThis;
+        } else if (t.isNull() && expectedType.isArray()) {
+            return this;
+        } else if (t.isNull() && expectedType.isClass()) {
+            return this;
+        } else {
+            // ERROR MSG
+            ClassType cType = t.asClassType("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
+            // ERROR MSG
+            ClassType expType = expectedType.asClassType("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
+            if (cType.isSubClassOf(expType)) {
+                return this;
+            }
         }
-        // TODO : verifier les sous type dans le avec objet
         // ERROR MSG
         throw new ContextualError("Can't assign type : \""+t+"\" to type :\""+expectedType+"\" : rule 3.28", getLocation());
     }
@@ -136,12 +156,14 @@ public abstract class AbstractExpr extends AbstractInst {
 
     /**
      * Generate code to print the expression
-     *
      * @param compiler
+     * @param printHex
+     * @return {0, 0}
+     * 
      */
-    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
         // throw new UnsupportedOperationException("not yet implemented");
-        int nbPush = codeGenExpr(compiler, 2);
+        int[] res = codeGenExpr(compiler, 2);
         compiler.addInstruction(new LOAD(GPRegister.getR(2), GPRegister.R1));
         Type t = getType();
         if (t.isInt()) {
@@ -153,18 +175,34 @@ public abstract class AbstractExpr extends AbstractInst {
                 compiler.addInstruction(new WFLOAT());
             }
         }
-        return nbPush;
+        return res;
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
+    protected int[] codeGenInst(DecacCompiler compiler) {
         // throw new UnsupportedOperationException("not yet implemented");
         return codeGenExpr(compiler, 2);
     }
 
-    protected abstract int codeGenExpr(DecacCompiler compiler, int offset);
+    /**
+     * Generates code for the expression
+     * @param compiler
+     * @param offset
+     * @return maximum register used, maximum push used
+     * 
+     */
+    protected abstract int[] codeGenExpr(DecacCompiler compiler, int offset);
     
-    protected int codeGenBool(DecacCompiler compiler, boolean aim, Label dest) {
+    /**
+     * Generates code for the boolean type
+     * @param compiler
+     * @param aim
+     * @param dest
+     * @param offset
+     * @return maximum register used, maximum push used
+     * 
+     */
+    protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
         throw new UnsupportedOperationException("Should not end up here");
     }
 

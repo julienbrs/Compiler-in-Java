@@ -1,0 +1,6 @@
+// Parser test, parenthese not closed
+
+{
+    int x = 5;
+    print(x ;
+}

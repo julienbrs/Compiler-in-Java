@@ -7,12 +7,18 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
- *
+ * Comparing operations (==, !=)
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public abstract class AbstractOpExactCmp extends AbstractOpCmp {
 
+    /**
+     * Gets left and right operand
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractOpExactCmp(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
@@ -24,6 +30,10 @@ public abstract class AbstractOpExactCmp extends AbstractOpCmp {
         Type lt = getLeftOperand().verifyExpr(compiler, localEnv, currentClass);
         Type rt = getRightOperand().verifyExpr(compiler, localEnv, currentClass);
         if (lt.isBoolean() && rt.isBoolean()) {
+            setType(compiler.environmentType.BOOLEAN);
+            return this.getType();
+        }
+        if (lt.isInt() && rt.isArray() || lt.isArray() && rt.isNull()) {
             setType(compiler.environmentType.BOOLEAN);
             return this.getType();
         }

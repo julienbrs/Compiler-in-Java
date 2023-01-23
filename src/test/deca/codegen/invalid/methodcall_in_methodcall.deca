@@ -1,0 +1,12 @@
+
+class A {
+
+    boolean equals(Object other) {
+        return this.equals(other);
+    }
+}
+
+{
+    A a = new A();
+    a.equals(a);
+}

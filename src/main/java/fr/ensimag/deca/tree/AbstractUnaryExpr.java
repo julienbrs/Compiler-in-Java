@@ -13,19 +13,38 @@ import org.apache.commons.lang.Validate;
  */
 public abstract class AbstractUnaryExpr extends AbstractExpr {
 
+    /**
+     * Gets the operand
+     * @return the operand
+     */
     public AbstractExpr getOperand() {
         return operand;
     }
+
     private AbstractExpr operand;
+
+    /**
+     * Verifies the operand is not null and sets it value
+     * @param operand
+     */
     public AbstractUnaryExpr(AbstractExpr operand) {
         Validate.notNull(operand);
         this.operand = operand;
     }
 
-
+    /**
+     * Gets operator name
+     * @return operator name
+     */
     protected abstract String getOperatorName();
   
-    protected int codeGenOperande(DecacCompiler compiler, int offset) {
+    /**
+     * Generates code for the operand
+     * @param compiler
+     * @param offset
+     * @return maximum register used, maximum push used
+     */
+    protected int[] codeGenOperande(DecacCompiler compiler, int offset) {
         return operand.codeGenExpr(compiler, offset);
     }
 

@@ -1,0 +1,13 @@
+// Parser test, method call with float as parameters
+
+class Test {
+    float testMethod(float x, float y) {
+        return (x || y);
+    }
+}
+
+{
+    float a;
+    Test test = new Test();
+    a = test.testMethodOr(1.8, 3.5);
+}

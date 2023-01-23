@@ -1,0 +1,15 @@
+#include "MatrixLib.decah"
+{
+MatrixLib a = new MatrixLib();
+int[][] r = {{1,2,3},{1}};
+
+int[][] b= a.deepCopyInt(r);
+println("deepCopy");
+print("r : ");
+a.printMatInt(r);
+println();
+print("b : ");
+a.printMatInt(b);
+println();
+
+}

@@ -7,12 +7,18 @@ import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 
 /**
- *
+ * Comparing operations (<=, >=, <, >)
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public abstract class AbstractOpIneq extends AbstractOpCmp {
 
+    /**
+     * Gets left and right operand
+     * @param leftOperand
+     * @param rightOperand
+     */
     public AbstractOpIneq(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }

@@ -1,0 +1,4 @@
+Reading from stdin ...
+DEBUG fr.ensimag.deca.tree.Program.verifyProgram(Program.java:42) - verify program: start
+DEBUG fr.ensimag.deca.tree.ListDeclClass.verifyListClass(ListDeclClass.java:36) - verify listClass: start
+<unknown>:5:0: The class "A" is already declared : rule 1.3

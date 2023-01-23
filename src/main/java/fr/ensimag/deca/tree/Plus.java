@@ -3,31 +3,38 @@ package fr.ensimag.deca.tree;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.ima.pseudocode.GPRegister;
 import fr.ensimag.ima.pseudocode.Label;
-import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.instructions.ADD;
 import fr.ensimag.ima.pseudocode.instructions.BOV;
 /**
+ * Plus
+ * 
  * @author gl11
  * @date 01/01/2023
  */
 public class Plus extends AbstractOpArith {
+
+    /**
+     * Sets the operands for the plus operation
+     * @param leftOperand
+     * @param rightOperand
+     */
     public Plus(AbstractExpr leftOperand, AbstractExpr rightOperand) {
         super(leftOperand, rightOperand);
     }
  
-
     @Override
     protected String getOperatorName() {
         return "+";
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        int[] res = codeGenOperande(compiler, offset);
-        compiler.addInstruction(new ADD(GPRegister.getR(res[0]), GPRegister.getR(offset)));
-        if (getType().isFloat() && !compiler.getCompilerOptions().getNoCheck()) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        int[] resOp = codeGenOperande(compiler, offset); // {offset, maxReg, maxPush}
+        compiler.addInstruction(new ADD(GPRegister.getR(resOp[0]), GPRegister.getR(offset)));
+        if (!compiler.getCompilerOptions().getNoCheck()) {
             compiler.addInstruction(new BOV(new Label("debordement_arithmetique")));
         }
-        return res[1];
+        int[] res = {resOp[1], resOp[2]};
+        return res;
     }
 }

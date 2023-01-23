@@ -1,0 +1,18 @@
+#include "ArrayLib.decah"
+
+// Tests deepCopy on int arrays
+
+{
+ArrayLib a = new ArrayLib();
+int[] r = {1,2,3};
+
+int[] b= a.deepCopyInt(r);
+println("deepCopy");
+print("r : ");
+a.printTabInt(r);
+println();
+print("b : ");
+a.printTabInt(b);
+println();
+
+}

@@ -6,7 +6,6 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.Label;
 import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
@@ -21,14 +20,27 @@ public abstract class AbstractPrint extends AbstractInst {
     private boolean printHex;
     private ListExpr arguments = new ListExpr();
     
+    /**
+     * Gets the suffix 
+     * @return the suffix
+     */
     abstract String getSuffix();
 
+    /**
+     * Verifies the arguments of the expression and sets them
+     * @param printHex
+     * @param arguments
+     */
     public AbstractPrint(boolean printHex, ListExpr arguments) {
         Validate.notNull(arguments);
         this.arguments = arguments;
         this.printHex = printHex;
     }
 
+    /**
+     * Gets the arguments
+     * @return the arguments
+     */
     public ListExpr getArguments() {
         return arguments;
     }
@@ -48,17 +60,24 @@ public abstract class AbstractPrint extends AbstractInst {
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
-        int maxPush = 0;
+    protected int[] codeGenInst(DecacCompiler compiler) {
+        int[] res =  {0, 0};
         for (AbstractExpr a : getArguments().getList()) {
-            int nbPush = a.codeGenPrint(compiler, getPrintHex());
-            if (nbPush > maxPush) {
-                maxPush = nbPush;
+            int[] resPrint = a.codeGenPrint(compiler, getPrintHex());
+            if (resPrint[0] > res[0]) {
+                res[0] = resPrint[0];
+            }
+            if (resPrint[1] > res[1]) {
+                res[1] = resPrint[1];
             }
         }
-        return maxPush;
+        return res;
     }
 
+    /**
+     * Gets a boolean to know if it has to be a hexadecimal or not
+     * @return true if it has to be print in hexadecimal
+     */
     private boolean getPrintHex() {
         return printHex;
     }

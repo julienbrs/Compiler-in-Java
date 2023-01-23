@@ -1,0 +1,7 @@
+// Parser test, or with a number operand, syntaxically correct (not contextually)
+
+{
+    if (x || 15 ){
+        a = 5;
+    }
+}

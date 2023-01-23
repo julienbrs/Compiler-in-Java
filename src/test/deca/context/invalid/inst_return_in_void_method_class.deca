@@ -1,0 +1,15 @@
+// Test of the rule (3.24) : not possible to return something
+// when we are not expecting a return
+
+class A  {
+    float getFloat(){
+        return 3.14;
+    }
+}
+
+class B {
+    A a = new A();
+    void voidMethod(){
+        return a;
+    }
+}

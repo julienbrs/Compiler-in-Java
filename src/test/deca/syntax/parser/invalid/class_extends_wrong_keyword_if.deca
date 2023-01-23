@@ -1,0 +1,9 @@
+// Parser test, keyword "if" instead of "extends"
+
+class A {
+
+}
+
+class B if A {
+
+}

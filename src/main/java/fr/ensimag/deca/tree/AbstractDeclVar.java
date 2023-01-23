@@ -1,10 +1,10 @@
 package fr.ensimag.deca.tree;
 
-import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.ima.pseudocode.Register;
 
 /**
  * Variable declaration
@@ -30,5 +30,13 @@ public abstract class AbstractDeclVar extends Tree {
             EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
-    protected abstract void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP);
+    /**
+     * Generates code for a declared variable
+     * @param compiler
+     * @param offsetFromSP
+     * @param reg
+     * @return maximum register used, maximum push used
+     * 
+     */
+    protected abstract int[] codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg);
 }

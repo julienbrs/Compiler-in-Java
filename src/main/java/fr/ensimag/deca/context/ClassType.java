@@ -1,9 +1,7 @@
 package fr.ensimag.deca.context;
 
-import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
 import fr.ensimag.deca.tree.Location;
-import org.apache.commons.lang.Validate;
 
 /**
  * Type defined by a class.
@@ -53,15 +51,21 @@ public class ClassType extends Type {
 
     @Override
     public boolean sameType(Type otherType) {
-        throw new UnsupportedOperationException("not yet implemented");
+        // throw new UnsupportedOperationException("not yet implemented");
+        return otherType.isClass() && getName().equals(otherType.getName());
     }
 
     /**
      * Return true if potentialSuperClass is a superclass of this class.
      */
     public boolean isSubClassOf(ClassType potentialSuperClass) {
-        throw new UnsupportedOperationException("not yet implemented"); 
+        // throw new UnsupportedOperationException("not yet implemented");
+        if (getName().getName().equals("Object")) {
+            return sameType(potentialSuperClass);
+        }
+        // pas d'erreur car je suis une classe donc ma superclass est une classe
+        return isNull()
+            || sameType(potentialSuperClass)
+            || getDefinition().getSuperClass().getType().asClassType(null, null).isSubClassOf(potentialSuperClass);
     }
-
-
 }

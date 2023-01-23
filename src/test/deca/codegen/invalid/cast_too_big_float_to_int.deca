@@ -1,0 +1,4 @@
+{
+    float x = 0x1.e0ep+99;
+    int y = (int)(x);
+}

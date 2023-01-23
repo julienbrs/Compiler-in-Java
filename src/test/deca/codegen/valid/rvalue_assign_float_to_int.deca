@@ -1,0 +1,27 @@
+// Test the rule (3.28): An object of type float can be assigned a value of type int.
+
+class A {
+    float pi = 3; // OK
+    
+    int pi2 = 9;
+    float pi2Float = pi2; // OK
+}
+
+{
+    A a = new A();
+
+    float g = 10;
+    int e = 3;
+    float floatE = e; 
+
+    // in method
+    println(a.pi);
+    println(a.pi2);
+    println(a.pi2Float);
+    
+    // in main
+    println(g);
+    println(e);
+    println(floatE);
+}
+

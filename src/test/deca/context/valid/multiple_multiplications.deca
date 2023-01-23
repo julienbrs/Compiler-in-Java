@@ -1,0 +1,5 @@
+// Deca file with two multiplications in a row
+
+{
+  int x = 1 * 2 * 3;
+}

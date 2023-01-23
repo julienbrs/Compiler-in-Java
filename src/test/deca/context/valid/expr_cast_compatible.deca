@@ -1,0 +1,26 @@
+// Test of the rule (3.39): When we want to cast an
+// expression of type T2 to type T1, this is possible
+// if T1 is not the void type and if T1 is assignable to T2
+// or T2 is assignable to T1.
+
+class Animal {}
+
+class Professeur extends Animal {}
+
+{
+    Professeur p = new Professeur();
+
+    Animal a = (Animal)(p);
+    // fonctionne car p est un Professeur donc un Animal
+    
+    // Animal a2 = new Animal();
+    // Professeur p2 = (Professeur)(a2);
+    // fonctionne contextuellement car Professeur est
+    // un sous-type de Animal (un Animal peut-être un prof)
+    // ne fonctionne pas à l'exécution 
+    
+    Animal a3 = (Animal)(new Professeur());
+    Professeur p3 = (Professeur)(a3);
+    // fonctionne car p3 est un Professeur en mémoire
+}
+

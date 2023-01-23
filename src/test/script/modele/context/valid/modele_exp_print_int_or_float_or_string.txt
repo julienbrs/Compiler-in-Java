@@ -1,0 +1,93 @@
+`> [4, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [4, 0] DeclClass
+   |      +> [4, 6] Identifier (A)
+   |      |  definition: type defined at [4, 0], type=A
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [5, 4] DeclMethod
+   |             +> [5, 4] Identifier (void)
+   |             |  definition: type (builtin), type=void
+   |             +> [5, 9] Identifier (printSomeThings)
+   |             |  definition: method defined at [5, 9], type=void
+   |             +> ListParam [List with 0 elements]
+   |             `> [5, 27] MethodBody
+   |                +> ListDeclVar [List with 2 elements]
+   |                |  []> [6, 12] DeclVar
+   |                |  ||  +> [6, 8] Identifier (int)
+   |                |  ||  |  definition: type (builtin), type=int
+   |                |  ||  +> [6, 12] Identifier (i)
+   |                |  ||  |  definition: variable defined at [6, 12], type=int
+   |                |  ||  `> [6, 14] Initialization
+   |                |  ||     `> [6, 16] Int (1)
+   |                |  ||        type: int
+   |                |  []> [7, 14] DeclVar
+   |                |      +> [7, 8] Identifier (float)
+   |                |      |  definition: type (builtin), type=float
+   |                |      +> [7, 14] Identifier (pi)
+   |                |      |  definition: variable defined at [7, 14], type=float
+   |                |      `> [7, 17] Initialization
+   |                |         `> [7, 19] Float (3.14)
+   |                |            type: float
+   |                +> ListInst [List with 5 elements]
+   |                |  []> [8, 8] Println
+   |                |  ||  `> ListExpr [List with 1 elements]
+   |                |  ||     []> [8, 16] Identifier (i)
+   |                |  ||         definition: variable defined at [6, 12], type=int
+   |                |  []> [9, 8] Println
+   |                |  ||  `> ListExpr [List with 1 elements]
+   |                |  ||     []> [9, 16] Identifier (pi)
+   |                |  ||         definition: variable defined at [7, 14], type=float
+   |                |  []> [10, 8] Println
+   |                |  ||  `> ListExpr [List with 1 elements]
+   |                |  ||     []> [10, 16] Int (1)
+   |                |  ||         type: int
+   |                |  []> [11, 8] Println
+   |                |  ||  `> ListExpr [List with 1 elements]
+   |                |  ||     []> [11, 16] Float (3.14)
+   |                |  ||         type: float
+   |                |  []> [12, 8] Println
+   |                |      `> ListExpr [List with 1 elements]
+   |                |         []> [12, 16] StringLiteral (a string)
+   |                |             type: string
+   `> [16, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [17, 8] DeclVar
+      |  ||  +> [17, 4] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [17, 8] Identifier (i)
+      |  ||  |  definition: variable defined at [17, 8], type=int
+      |  ||  `> [17, 10] Initialization
+      |  ||     `> [17, 12] Int (1)
+      |  ||        type: int
+      |  []> [18, 10] DeclVar
+      |      +> [18, 4] Identifier (float)
+      |      |  definition: type (builtin), type=float
+      |      +> [18, 10] Identifier (pi)
+      |      |  definition: variable defined at [18, 10], type=float
+      |      `> [18, 13] Initialization
+      |         `> [18, 15] Float (3.14)
+      |            type: float
+      `> ListInst [List with 5 elements]
+         []> [19, 4] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [19, 12] Identifier (i)
+         ||         definition: variable defined at [17, 8], type=int
+         []> [20, 4] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [20, 12] Identifier (pi)
+         ||         definition: variable defined at [18, 10], type=float
+         []> [21, 4] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [21, 12] Int (1)
+         ||         type: int
+         []> [22, 4] Println
+         ||  `> ListExpr [List with 1 elements]
+         ||     []> [22, 12] Float (3.14)
+         ||         type: float
+         []> [23, 4] Println
+             `> ListExpr [List with 1 elements]
+                []> [23, 12] StringLiteral (a string)
+                    type: string

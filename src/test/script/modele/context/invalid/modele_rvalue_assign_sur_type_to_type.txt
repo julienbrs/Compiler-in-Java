@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/rvalue_assign_sur_type_to_type.deca:9:14: missing IDENT at '('

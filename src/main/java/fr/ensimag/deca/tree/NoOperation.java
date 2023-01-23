@@ -6,10 +6,10 @@ import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.ima.pseudocode.Label;
 import java.io.PrintStream;
 
 /**
+ * No operation
  * 
  * @author gl11
  * @date 01/01/2023
@@ -24,10 +24,11 @@ public class NoOperation extends AbstractInst {
     }
 
     @Override
-    protected int codeGenInst(DecacCompiler compiler) {
+    protected int[] codeGenInst(DecacCompiler compiler) {
         // throw new UnsupportedOperationException("not yet implemented");
         // ne genere pas de code
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
 
     @Override

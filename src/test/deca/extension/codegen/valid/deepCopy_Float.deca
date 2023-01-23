@@ -1,0 +1,18 @@
+#include "ArrayLib.decah"
+
+// Tests deepCopy on float arrays
+
+{
+ArrayLib a = new ArrayLib();
+float[] r = {1,2,3};
+
+float[] b= a.deepCopyFloat(r);
+println("deepCopy");
+print("r : ");
+a.printTabFloat(r);
+println();
+print("b : ");
+a.printTabFloat(b);
+println();
+
+}

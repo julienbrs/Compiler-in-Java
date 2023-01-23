@@ -1,0 +1,10 @@
+// Test of the rule 3.17: a variable of type void in a method
+
+class A  {
+    void diplayNumber(){
+        void x;
+    }
+}
+
+// Resultat:
+//# src/test/deca/context/invalid/decl_var_void_in_method.deca:5:13: Type can't be void : rule 3.17

@@ -23,12 +23,20 @@ import org.apache.commons.lang.Validate;
  */
 public class FloatLiteral extends AbstractExpr {
 
+    /**
+     * Gets the value of the float literal
+     * @return the value
+     */
     public float getValue() {
         return value;
     }
 
     private float value;
 
+    /**
+     * Verifies the value of the float literal and sets the value
+     * @param value
+     */
     public FloatLiteral(float value) {
         Validate.isTrue(!Float.isInfinite(value),
                 "literal values cannot be infinite");
@@ -46,20 +54,22 @@ public class FloatLiteral extends AbstractExpr {
     }
 
     @Override
-    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
         compiler.addInstruction(new LOAD(new ImmediateFloat(value), GPRegister.R1));
         if (printHex) {
             compiler.addInstruction(new WFLOATX());
         } else {
             compiler.addInstruction(new WFLOAT());
         }
-        return 0;
+        int res[] = {0, 0};
+        return res;
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new LOAD(new ImmediateFloat(value), GPRegister.getR(offset)));
-        return 0;
+        int res[] = {offset, 0};
+        return res;
     }
 
     @Override

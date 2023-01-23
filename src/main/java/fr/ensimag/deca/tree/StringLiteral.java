@@ -5,9 +5,7 @@ import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-import fr.ensimag.deca.context.StringType;
 import fr.ensimag.deca.tools.IndentPrintStream;
-import fr.ensimag.deca.tools.SymbolTable;
 import fr.ensimag.ima.pseudocode.ImmediateString;
 import fr.ensimag.ima.pseudocode.instructions.WSTR;
 import java.io.PrintStream;
@@ -28,6 +26,10 @@ public class StringLiteral extends AbstractStringLiteral {
 
     private String value;
 
+    /**
+     * Declares the value of the string literal after verifying that it is not null
+     * @param value
+     */
     public StringLiteral(String value) {
         Validate.notNull(value);
         this.value = value;
@@ -42,15 +44,15 @@ public class StringLiteral extends AbstractStringLiteral {
     }
 
     @Override
-    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
         compiler.addInstruction(new WSTR(new ImmediateString(value)));
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
-        // TODO : Erreur : un string ne peut faire part d'une expression en dehors d'un print
-        return 0;
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
+        throw new UnsupportedOperationException("Should not end up here");
     }
 
     @Override

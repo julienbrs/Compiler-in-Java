@@ -20,12 +20,21 @@ import java.io.PrintStream;
  * @date 01/01/2023
  */
 public class IntLiteral extends AbstractExpr {
+
+    /**
+     * Gets the value of the integer literal
+     * @return
+     */
     public int getValue() {
         return value;
     }
 
     private int value;
 
+    /**
+     * Sets value of the integer literal
+     * @param value
+     */
     public IntLiteral(int value) {
         this.value = value;
     }
@@ -39,16 +48,18 @@ public class IntLiteral extends AbstractExpr {
     }
 
     @Override
-    protected int codeGenPrint(DecacCompiler compiler, boolean printHex) {
+    protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
         compiler.addInstruction(new LOAD(new ImmediateInteger(value), GPRegister.R1));
         compiler.addInstruction(new WINT());
-        return 0;
+        int[] res = {0, 0};
+        return res;
     }
 
     @Override
-    protected int codeGenExpr(DecacCompiler compiler, int offset) {
+    protected int[] codeGenExpr(DecacCompiler compiler, int offset) {
         compiler.addInstruction(new LOAD(new ImmediateInteger(value), GPRegister.getR(offset)));
-        return 0;
+        int[] res = {offset, 0};
+        return res;
     }
 
     @Override

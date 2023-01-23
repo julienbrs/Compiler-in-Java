@@ -1,0 +1,6 @@
+// Test context, if without instruction
+
+{
+    if (true) {
+    }
+}

@@ -2,15 +2,14 @@ package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.context.VariableDefinition;
-import fr.ensimag.deca.context.VoidType;
 import fr.ensimag.deca.context.EnvironmentExp.DoubleDefException;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
-import fr.ensimag.deca.context.ExpDefinition;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.ima.pseudocode.GPRegister;
+import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.STORE;
 
@@ -18,6 +17,8 @@ import java.io.PrintStream;
 import org.apache.commons.lang.Validate;
 
 /**
+ * Declaration of a variable
+ * 
  * @author gl11
  * @date 01/01/2023
  */
@@ -28,6 +29,12 @@ public class DeclVar extends AbstractDeclVar {
     final private AbstractIdentifier varName;
     final private AbstractInitialization initialization;
 
+    /**
+     * Verifies that the characteristics of the variable are not null and sets their values
+     * @param type
+     * @param varName
+     * @param initialization
+     */
     public DeclVar(AbstractIdentifier type, AbstractIdentifier varName, AbstractInitialization initialization) {
         Validate.notNull(type);
         Validate.notNull(varName);
@@ -58,11 +65,12 @@ public class DeclVar extends AbstractDeclVar {
     }
 
     @Override
-    protected void codeGenDeclVar(DecacCompiler compiler, int offsetFromSP) {
+    protected int[] codeGenDeclVar(DecacCompiler compiler, int offsetFromSP, Register reg) {
         /* Initialization */
-        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, GPRegister.GB));
-        initialization.codeGenInitialization(compiler);
+        varName.getExpDefinition().setOperand(new RegisterOffset(offsetFromSP, reg));
+        int[] res = initialization.codeGenInitialization(compiler, 2);
         compiler.addInstruction(new STORE(GPRegister.getR(2), varName.getExpDefinition().getOperand()));
+        return res; // {maxReg, maxPush}
     }
     
     @Override

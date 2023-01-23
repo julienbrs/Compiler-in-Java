@@ -1,0 +1,36 @@
+// Test de codegen pour le ConvFloat, on vérifie aussi à la fin
+// que x est toujours un int
+
+class A {
+    int x = 1;
+    
+    int getInt(){
+        return 10;
+    }
+}
+
+{
+    A a = new A();
+
+    int x = 5;
+    float f = 5.5;
+    float z1, z2, z3;
+    float res1, res2, res3;
+    
+    res1 = f + x;
+    z1 = x;
+
+    res2 = f + a.x;
+    z2 = a.x;
+
+    res3 = f + a.getInt();
+    z3 = a.getInt();
+
+    println(res1);
+    println(z1);
+    println(res2);
+    println(z2);
+    println(res3);
+    println(z3);
+    println(x);
+}

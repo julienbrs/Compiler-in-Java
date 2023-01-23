@@ -1,0 +1,12 @@
+// Wrong param type when calling the function e
+
+class A{
+    int[] e(int[] r ){
+        return r;
+    }
+}
+
+{
+    A a = new A();
+    a.e(4);
+}

@@ -1,0 +1,9 @@
+// Parser test, keyword "etends" instead of "extends"
+
+class A {
+
+}
+
+class B etends A {
+
+}

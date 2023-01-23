@@ -1,0 +1,9 @@
+// Test a class returning a string
+// Contextually wrong, type string does not exist
+
+class DummyClass {
+    string getAnswer(){
+        string sensOfLife = "It's 42";
+        return sensOfLife;
+    }
+}

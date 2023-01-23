@@ -1,0 +1,7 @@
+// Missing operand after OR
+
+{
+    if (x || ){
+        x = 5;
+    }
+}

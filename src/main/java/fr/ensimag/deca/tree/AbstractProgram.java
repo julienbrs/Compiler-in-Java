@@ -11,7 +11,17 @@ import fr.ensimag.deca.context.ContextualError;
  *
  */
 public abstract class AbstractProgram extends Tree {
+    /**
+     * Contextual syntax, verifies class, class members and class body.
+     * @param compiler
+     * @throws ContextualError
+     */
     public abstract void verifyProgram(DecacCompiler compiler) throws ContextualError;
+
+    /**
+     * Generates code for the program
+     * @param compiler
+     */
     public abstract void codeGenProgram(DecacCompiler compiler) ;
 
 }

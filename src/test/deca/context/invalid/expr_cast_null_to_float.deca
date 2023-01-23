@@ -1,0 +1,10 @@
+// Test of the rule (3.39) : can't cast null to float.
+
+{
+	float var1;
+	null var2;
+	var1 = (float)(var2);
+}
+
+// Résultat :
+//# a

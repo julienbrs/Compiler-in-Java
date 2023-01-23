@@ -1,0 +1,2 @@
+INFO  fr.ensimag.deca.syntax.DecacErrorListner.syntaxError(DecacErrorListner.java:50) - no token, no LocationException => using input.getSourceName(): line=7
+src/test/deca/syntax/lexer/invalid/all-tokens-unrecognized.deca:7:0: token recognition error at: '"\n#\n&\n?\n@\n[\n]\n^\n`\n|\n~'

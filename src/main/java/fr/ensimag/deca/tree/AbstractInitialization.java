@@ -1,8 +1,6 @@
 package fr.ensimag.deca.tree;
 
 import fr.ensimag.deca.context.Type;
-import fr.ensimag.ima.pseudocode.DAddr;
-import fr.ensimag.ima.pseudocode.Register;
 import fr.ensimag.deca.DecacCompiler;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
@@ -16,10 +14,18 @@ import fr.ensimag.deca.context.EnvironmentExp;
  */
 public abstract class AbstractInitialization extends Tree {
     
+    /**
+     * Sets the type at initialization
+     * @param t
+     */
     protected void setType(Type t) {
         type = t;
     }
 
+    /**
+     * Gets the type
+     * @return the type
+     */
     protected Type getType() {
         return type;
     }
@@ -38,5 +44,11 @@ public abstract class AbstractInitialization extends Tree {
             Type t, EnvironmentExp localEnv, ClassDefinition currentClass)
             throws ContextualError;
 
-    protected abstract void codeGenInitialization(DecacCompiler compiler);
+    /**
+     * Generates code for the initialization
+     * @param compiler
+     * @param offset
+     * @return maximum register used, maximum push used
+     */
+    protected abstract int[] codeGenInitialization(DecacCompiler compiler, int offset);
 }

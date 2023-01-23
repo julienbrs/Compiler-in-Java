@@ -1,0 +1,15 @@
+// Contextual test, cast a subclass cast into class (contextually possible)
+
+class Personne {
+    int pouvoir = 10;
+}
+
+class Roi extends Personne {
+    int pouvoir = 30;
+    int corruption = 100;
+}
+
+{
+    Roi leRoi = new Roi();
+    Personne aussiUnePersonne = (Personne) (leRoi);
+}
