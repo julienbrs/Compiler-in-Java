@@ -287,7 +287,7 @@ class ArrayLib {
     // ---------- DEEPCOPY OF RANGE ----------
 
     float[] deepCopyOfRangeFloat(float[] tab, int deb, int fin) {
-        float[] newTab = new float[deb - fin + 1]();
+        float[] newTab = new float[fin - deb + 1]();
         int i = deb;
         while (i < fin+1) {
             if (i < tab.length) {
@@ -301,7 +301,7 @@ class ArrayLib {
     }
 
     int[] deepCopyOfRangeInt(int[] tab, int deb, int fin) {
-        int[] newTab = new int[deb - fin + 1]();
+        int[] newTab = new int[fin - deb + 1]();
         int i = deb;
         while (i < fin+1) {
             if (i < tab.length) {
@@ -335,7 +335,9 @@ class ArrayLib {
         int i = 0;
         while(i < tab.length) {
             newTab[i] = (int) (tab[i]);
+            i=i+1;
         }
+         return newTab;
     }
 
     float[] castArrayIntToFloat(int[] tab) {
@@ -343,6 +345,8 @@ class ArrayLib {
         int i = 0;
         while(i < tab.length) {
             newTab[i] = tab[i];
+            i=i+1;
         }
+        return newTab;
     }
 }

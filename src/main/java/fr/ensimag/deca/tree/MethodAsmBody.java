@@ -22,7 +22,7 @@ public class MethodAsmBody extends AbstractMethodBody {
     }
 
     public void codeGenBody(DecacCompiler compiler, ClassDefinition currentClass, AbstractIdentifier ident) {
-        compiler.add(new InlinePortion(asm.getValue().replace("\"", "")));
+        compiler.add(new InlinePortion(asm.getValue().substring(1, asm.getValue().length()-1).replace("\\\"","\"").replace("\\\\","\\")));
     }
 
     @Override

@@ -1,6 +1,6 @@
 // Method relative to Matrix (dim 2)
 
-class ArrayTab {
+class MatrixLib {
 
     // ---------- PRINT ----------
 
@@ -666,20 +666,20 @@ class ArrayTab {
     }
 
     int[] multMatrixArrayInt(int[][] A, int[] B) {
-        int[] vector = new int[B.length]();
+        int[] vector = new int[A.length]();
         int i = 0;
         int k = 0;
-        int nbFact;
         if (A.length == 0 || B.length == 0) {
             matrixError();
         }
-        if (A.length != B.length) {
+        if (A[0].length != B.length) {
             matrixError();
         }
-        while (i < vector.length) {
+        while (i < A.length) {
             if (A[i].length != A[0].length) {
                 matrixError();
             }
+            k = 0;
             while (k < A[0].length) {
                 vector[i] = vector[i] + A[i][k] * B[k];
                 k = k + 1;
