@@ -12,10 +12,10 @@ import fr.ensimag.deca.context.ContextualError;
 public abstract class AbstractMain extends Tree {
 
     /**
-     * // TODO
+     * Generates code for the main
      * @param compiler
      * @param offsetGP
-     * @return // TODO
+     * @return maximum register used, maximum push used
      */
     protected abstract int[] codeGenMain(DecacCompiler compiler, int offsetGP);
 

@@ -154,10 +154,9 @@ public abstract class AbstractExpr extends AbstractInst {
 
     /**
      * Generate code to print the expression
-     *
      * @param compiler
      * @param printHex
-     * @return // TODO
+     * @return {0, 0}
      * 
      */
     protected int[] codeGenPrint(DecacCompiler compiler, boolean printHex) {
@@ -184,21 +183,21 @@ public abstract class AbstractExpr extends AbstractInst {
     }
 
     /**
-     * 
+     * Generates code for the expression
      * @param compiler
      * @param offset
-     * @return // TODO
+     * @return maximum register used, maximum push used
      * 
      */
     protected abstract int[] codeGenExpr(DecacCompiler compiler, int offset);
     
     /**
-     * 
+     * Generates code for the boolean type
      * @param compiler
      * @param aim
      * @param dest
      * @param offset
-     * @return // TODO
+     * @return maximum register used, maximum push used
      * 
      */
     protected int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {

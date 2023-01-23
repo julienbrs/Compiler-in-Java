@@ -39,10 +39,10 @@ public abstract class AbstractUnaryExpr extends AbstractExpr {
     protected abstract String getOperatorName();
   
     /**
-     * // TODO
+     * Generates code for the operand
      * @param compiler
      * @param offset
-     * @return // TODO
+     * @return maximum register used, maximum push used
      */
     protected int[] codeGenOperande(DecacCompiler compiler, int offset) {
         return operand.codeGenExpr(compiler, offset);

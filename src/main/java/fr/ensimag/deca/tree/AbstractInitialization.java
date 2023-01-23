@@ -45,10 +45,10 @@ public abstract class AbstractInitialization extends Tree {
             throws ContextualError;
 
     /**
-     * // TODO
+     * Generates code for the initialization
      * @param compiler
      * @param offset
-     * @return // TODO
+     * @return maximum register used, maximum push used
      */
     protected abstract int[] codeGenInitialization(DecacCompiler compiler, int offset);
 }

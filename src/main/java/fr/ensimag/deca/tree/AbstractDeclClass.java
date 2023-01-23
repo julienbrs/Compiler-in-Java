@@ -44,7 +44,7 @@ public abstract class AbstractDeclClass extends Tree {
      * Generation of code to build the table of methods.
      * @param compiler
      * @param offset
-     * @return // TODO
+     * @return number of methods
      */    
     protected abstract int codeGenVTable(DecacCompiler compiler, int offset);
 

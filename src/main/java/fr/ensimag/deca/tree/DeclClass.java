@@ -118,7 +118,7 @@ public class DeclClass extends AbstractDeclClass {
      * Generation of code to build the table of methods.
      * @param compiler
      * @param offset
-     * @return // TODO
+     * @return number of methods
      */
     public int codeGenVTable(DecacCompiler compiler, int offset) {
         DAddr addr = new RegisterOffset(offset, GPRegister.GB);

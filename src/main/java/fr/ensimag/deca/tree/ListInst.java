@@ -34,9 +34,9 @@ public class ListInst extends TreeList<AbstractInst> {
     }
 
     /**
-     * // TODO
+     * Generates code for the list of instructions
      * @param compiler
-     * @return // TODO
+     * @return maximum register used, maximum push used
      */
     public int[] codeGenListInst(DecacCompiler compiler) {
         int[] res = {0, 0};

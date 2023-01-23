@@ -239,12 +239,12 @@ public class TabIdentifier extends AbstractIdentifier {
     }
 
     /**
-     * // TODO
+     * Generates code for the table
      * @param compiler
      * @param offset
      * @param dim
      * @param level
-     * @return // TODO
+     * @return maximum register used, maximum push used
      */
     private int[] codeGenTab(DecacCompiler compiler, int offset, ListExpr dim, int level) {
         

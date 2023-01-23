@@ -90,10 +90,10 @@ public abstract class AbstractBinaryExpr extends AbstractExpr {
     }
 
     /**
-     * // TODO
+     * Generates the code of operands
      * @param compiler
      * @param offset
-     * @return // TODO
+     * @return index of right operand register, maximum register used, maximum push used
      */
     protected int[] codeGenOperande(DecacCompiler compiler, int offset) {
         int[] res = {0, 0, 0}; // {offset, maxReg ,maxPush}

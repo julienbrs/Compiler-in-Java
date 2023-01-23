@@ -41,7 +41,7 @@ public abstract class AbstractDeclField extends Tree  {
     /**
      * Initializes fields to their values.
      * @param compiler
-     * @return // TODO
+     * @return maximum register used, maximum push used
      */
     protected abstract int[] codeGenDeclField(DecacCompiler compiler);
 
