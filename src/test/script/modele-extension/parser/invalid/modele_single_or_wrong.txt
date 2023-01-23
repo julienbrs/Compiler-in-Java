@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/single_or_wrong.deca:6:14: token recognition error at: '| '

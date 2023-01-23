@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/decl_field_type_void.deca:4:9: Field can't be of type "void" : rule 2.5

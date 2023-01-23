@@ -99,6 +99,8 @@ public abstract class AbstractExpr extends AbstractInst {
             newThis.setLocation(loc);
             newThis.verifyExpr(compiler, localEnv, currentClass);
             return newThis;
+        } else if (t.isNull() && expectedType.isArray()) {
+            return this;
         } else if (t.isNull() && expectedType.isClass()) {
             return this;
         } else {

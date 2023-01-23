@@ -1,0 +1,69 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Test)
+   |      |  definition: type defined at [3, 0], type=Test
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [4, 4] DeclMethod
+   |             +> [4, 4] Identifier (float)
+   |             |  definition: type (builtin), type=float
+   |             +> [4, 10] Identifier (testMethod)
+   |             |  definition: method defined at [4, 10], type=float
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [4, 21] DeclParam
+   |             |  ||  +> [4, 21] Identifier (float)
+   |             |  ||  |  definition: type (builtin), type=float
+   |             |  ||  `> [4, 27] Identifier (x)
+   |             |  ||     definition: parameter defined at [4, 21], type=float
+   |             |  []> [4, 30] DeclParam
+   |             |      +> [4, 30] Identifier (float)
+   |             |      |  definition: type (builtin), type=float
+   |             |      `> [4, 36] Identifier (y)
+   |             |         definition: parameter defined at [4, 30], type=float
+   |             `> [4, 39] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [5, 8] Return
+   |                |      `> [5, 15] Multiply
+   |                |         type: float
+   |                |         +> [5, 16] Identifier (x)
+   |                |         |  definition: parameter defined at [4, 21], type=float
+   |                |         `> [5, 20] Identifier (y)
+   |                |            definition: parameter defined at [4, 30], type=float
+   `> [9, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [10, 10] DeclVar
+      |  ||  +> [10, 4] Identifier (float)
+      |  ||  |  definition: type (builtin), type=float
+      |  ||  +> [10, 10] Identifier (a)
+      |  ||  |  definition: variable defined at [10, 10], type=float
+      |  ||  `> NoInitialization
+      |  []> [11, 9] DeclVar
+      |      +> [11, 4] Identifier (Test)
+      |      |  definition: type defined at [3, 0], type=Test
+      |      +> [11, 9] Identifier (test)
+      |      |  definition: variable defined at [11, 9], type=Test
+      |      `> [11, 14] Initialization
+      |         `> [11, 16] New
+      |            type: Test
+      |            `> [11, 20] Identifier (Test)
+      |               definition: type defined at [3, 0], type=Test
+      `> ListInst [List with 1 elements]
+         []> [12, 6] Assign
+             type: float
+             +> [12, 4] Identifier (a)
+             |  definition: variable defined at [10, 10], type=float
+             `> [12, 12] MethodCall
+                type: float
+                +> [12, 8] Identifier (test)
+                |  definition: variable defined at [11, 9], type=Test
+                +> [12, 13] Identifier (testMethod)
+                |  definition: method defined at [4, 10], type=float
+                `> ListExpr [List with 2 elements]
+                   []> [12, 24] Float (1.8)
+                   ||  type: float
+                   []> [12, 29] Float (3.5)
+                       type: float

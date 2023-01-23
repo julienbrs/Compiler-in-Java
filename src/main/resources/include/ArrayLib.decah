@@ -1,0 +1,348 @@
+// Method relative to Array (dim 1)
+
+class ArrayLib {
+
+    // ---------- PRINT ----------
+
+    void printTabFloat(float[] tab) {
+        int i = 0;
+        print("[");
+        while (i < tab.length) {
+            print(tab[i]);
+            if (i != tab.length - 1) {
+                print(", ");
+            }
+            i = i + 1;
+        }
+        print("]");
+    }
+
+    void printTabInt(int[] tab) {
+        int i = 0;
+        print("[");
+        while (i < tab.length) {
+            print(tab[i]);
+            if (i != tab.length - 1) {
+                print(", ");
+            }
+            i = i + 1;
+        }
+        print("]");
+    }
+
+    // ---------- FILL ----------
+
+    void fillFloat(float[] tab, float element) {
+        int i = 0;
+        while (i < tab.length) {
+            tab[i] = element;
+            i = i + 1;
+        }
+    }
+
+    void fillInt(int[] tab, int element) {
+        int i = 0;
+        while (i < tab.length) {
+            tab[i] = element;
+            i = i + 1;
+        }
+    }
+
+    void fillBoolean(boolean[] tab, boolean element) {
+        int i = 0;
+        while (i < tab.length) {
+            tab[i] = element;
+            i = i + 1;
+        }
+    }
+
+    // ---------- SEARCH ----------
+
+    int searchFloat(float[] tab, float element) {
+        int i = 0;
+
+        while (i < tab.length) {
+            if (tab[i] == element) {
+                return i;
+            }
+            i = i + 1;
+        }
+
+        return -1;
+    }
+
+    int searchInt(int[] tab, int element) {
+        int i = 0;
+
+        while (i < tab.length) {
+            if (tab[i] == element) {
+                return i;
+            }
+            i = i + 1;
+        }
+
+        return -1;
+    }
+
+    int searchBool(boolean[] tab, boolean element) {
+        int i = 0;
+
+        while (i < tab.length) {
+            if (tab[i] == element) {
+                return i;
+            }
+            i = i + 1;
+        }
+
+        return -1;
+    }
+
+    int searchObject(Object[] tab, Object element) {
+        int i = 0;
+
+        while (i < tab.length) {
+            if (tab[i].equals(element)) {
+                return i;
+            }
+            i = i + 1;
+        }
+
+        return -1;
+    }
+
+    // ---------- SORT ----------
+
+    int partitionFloat(float[] tab, int low, int high) {
+        float pivot = tab[high];
+        int index = low - 1;
+        int i = low;
+        float tmp;
+        while (i < high) {
+            if (tab[i] < pivot) {
+                index = index + 1;
+                tmp = tab[i];
+                tab[i] = tab[index];
+                tab[index] = tmp;
+            }
+            i = i + 1;
+        }
+        index = index + 1;
+        tmp = tab[high];
+        tab[high] = tab[index];
+        tab[index] = tmp;
+        return index;
+    }
+
+    void quicksortRecFloat(float[] tab, int low, int high) {
+        int part;
+        if (low < high) {
+            part = partitionFloat(tab, low, high);
+            quicksortRecFloat(tab, low, part-1);
+            quicksortRecFloat(tab, part + 1, high);
+        }
+    }
+
+    void quicksortFloat(float[] tab) {
+        quicksortRecFloat(tab, 0, tab.length - 1);
+    }
+
+    int partitionInt(int[] tab, int low, int high) {
+        int pivot = tab[high];
+        int index = low - 1;
+        int i = low;
+        int tmp;
+        while (i < high) {
+            if (tab[i] < pivot) {
+                index = index + 1;
+                tmp = tab[i];
+                tab[i] = tab[index];
+                tab[index] = tmp;
+            }
+            i = i + 1;
+        }
+        index = index + 1;
+        tmp = tab[high];
+        tab[high] = tab[index];
+        tab[index] = tmp;
+        return index;
+    }
+
+    void quicksortRecInt(int[] tab, int low, int high) {
+        int part;
+        if (low < high) {
+            part = partitionInt(tab, low, high);
+            quicksortRecInt(tab, low, part-1);
+            quicksortRecInt(tab, part + 1, high);
+        }
+    }
+
+    void quicksortInt(int[] tab) {
+        quicksortRecInt(tab, 0, tab.length - 1);
+    }
+
+    // ---------- COMPARE ----------
+
+    boolean compareFloat(float[] A, float[] B) {
+        int i = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            if (A[i] != B[i]) {
+                return false;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    boolean compareInt(int[] A, int[] B) {
+        int i = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            if (A[i] != B[i]) {
+                return false;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    boolean compareIntFloat(int[] A, float[] B) {
+        int i = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            if (A[i] != B[i]) {
+                return false;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    boolean compareBool(boolean[] A, boolean[] B) {
+        int i = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            if (A[i] != B[i]) {
+                return false;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    boolean compareObject(Object[] A, Object[] B) {
+        int i = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            if (!A[i].equals(B[i])) {
+                return false;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    // ---------- DEEPCOPY ----------
+
+    float[] deepCopyFloat(float[] tab) {
+        float[] newTab = new float[tab.length]();
+        int i = 0;
+        while (i < tab.length) {
+            newTab[i] = tab[i];
+            i = i + 1;
+        }
+        return newTab;
+    }
+
+    int[] deepCopyInt(int[] tab) {
+        int[] newTab = new int[tab.length]();
+        int i = 0;
+        while (i < tab.length) {
+            newTab[i] = tab[i];
+            i = i + 1;
+        }
+        return newTab;
+    }
+
+    boolean[] deepCopyBool(boolean[] tab) {
+        boolean[] newTab = new boolean[tab.length]();
+        int i = 0;
+        while (i < tab.length) {
+            newTab[i] = tab[i];
+            i = i + 1;
+        }
+        return newTab;
+    }
+
+    // ---------- DEEPCOPY OF RANGE ----------
+
+    float[] deepCopyOfRangeFloat(float[] tab, int deb, int fin) {
+        float[] newTab = new float[deb - fin + 1]();
+        int i = deb;
+        while (i < fin+1) {
+            if (i < tab.length) {
+                newTab[i-deb] = tab[i];
+            } else {
+                newTab[i-deb] = 0;
+            }
+            i = i + 1;
+        }
+        return newTab;
+    }
+
+    int[] deepCopyOfRangeInt(int[] tab, int deb, int fin) {
+        int[] newTab = new int[deb - fin + 1]();
+        int i = deb;
+        while (i < fin+1) {
+            if (i < tab.length) {
+                newTab[i-deb] = tab[i];
+            } else {
+                newTab[i-deb] = 0;
+            }
+            i = i + 1;
+        }
+        return newTab;
+    }
+
+    boolean[] deepCopyOfRangeBool(boolean[] tab, int deb, int fin) {
+        boolean[] newTab = new boolean[deb - fin + 1]();
+        int i = deb;
+        while (i < fin+1) {
+            if (i < tab.length) {
+                newTab[i-deb] = tab[i];
+            } else {
+                newTab[i-deb] = false;
+            }
+            i = i + 1;
+        }
+        return newTab;
+    }
+
+    // ---------- CAST ----------
+
+    int[] castArrayFloatToInt(float[] tab) {
+        int[] newTab = new int[tab.length]();
+        int i = 0;
+        while(i < tab.length) {
+            newTab[i] = (int) (tab[i]);
+        }
+    }
+
+    float[] castArrayIntToFloat(int[] tab) {
+        float[] newTab = new float[tab.length]();
+        int i = 0;
+        while(i < tab.length) {
+            newTab[i] = tab[i];
+        }
+    }
+}

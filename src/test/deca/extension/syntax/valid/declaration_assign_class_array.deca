@@ -1,0 +1,8 @@
+class a {
+    Int[] a  = {4,4,5};
+}
+
+{
+    a b = new a();
+    print(a.a[2]);
+}

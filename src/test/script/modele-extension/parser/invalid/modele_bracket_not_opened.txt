@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/bracket_not_opened.deca:4:17: extraneous input ')' expecting ';'

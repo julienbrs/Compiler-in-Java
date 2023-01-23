@@ -1,0 +1,69 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 1 elements]
+   |  []> [3, 0] DeclClass
+   |      +> [3, 6] Identifier (Test)
+   |      |  definition: type defined at [3, 0], type=Test
+   |      +> [builtin] Identifier (Object)
+   |      |  definition: type (builtin), type=Object
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 1 elements]
+   |         []> [4, 4] DeclMethod
+   |             +> [4, 4] Identifier (int)
+   |             |  definition: type (builtin), type=int
+   |             +> [4, 8] Identifier (testMethod)
+   |             |  definition: method defined at [4, 8], type=int
+   |             +> ListParam [List with 2 elements]
+   |             |  []> [4, 19] DeclParam
+   |             |  ||  +> [4, 19] Identifier (int)
+   |             |  ||  |  definition: type (builtin), type=int
+   |             |  ||  `> [4, 23] Identifier (x)
+   |             |  ||     definition: parameter defined at [4, 19], type=int
+   |             |  []> [4, 26] DeclParam
+   |             |      +> [4, 26] Identifier (int)
+   |             |      |  definition: type (builtin), type=int
+   |             |      `> [4, 30] Identifier (y)
+   |             |         definition: parameter defined at [4, 26], type=int
+   |             `> [4, 33] MethodBody
+   |                +> ListDeclVar [List with 0 elements]
+   |                +> ListInst [List with 1 elements]
+   |                |  []> [5, 8] Return
+   |                |      `> [5, 15] Plus
+   |                |         type: int
+   |                |         +> [5, 16] Identifier (x)
+   |                |         |  definition: parameter defined at [4, 19], type=int
+   |                |         `> [5, 20] Identifier (y)
+   |                |            definition: parameter defined at [4, 26], type=int
+   `> [9, 0] Main
+      +> ListDeclVar [List with 2 elements]
+      |  []> [10, 8] DeclVar
+      |  ||  +> [10, 4] Identifier (int)
+      |  ||  |  definition: type (builtin), type=int
+      |  ||  +> [10, 8] Identifier (z)
+      |  ||  |  definition: variable defined at [10, 8], type=int
+      |  ||  `> NoInitialization
+      |  []> [11, 9] DeclVar
+      |      +> [11, 4] Identifier (Test)
+      |      |  definition: type defined at [3, 0], type=Test
+      |      +> [11, 9] Identifier (test)
+      |      |  definition: variable defined at [11, 9], type=Test
+      |      `> [11, 14] Initialization
+      |         `> [11, 16] New
+      |            type: Test
+      |            `> [11, 20] Identifier (Test)
+      |               definition: type defined at [3, 0], type=Test
+      `> ListInst [List with 1 elements]
+         []> [12, 6] Assign
+             type: int
+             +> [12, 4] Identifier (z)
+             |  definition: variable defined at [10, 8], type=int
+             `> [12, 12] MethodCall
+                type: int
+                +> [12, 8] Identifier (test)
+                |  definition: variable defined at [11, 9], type=Test
+                +> [12, 13] Identifier (testMethod)
+                |  definition: method defined at [4, 8], type=int
+                `> ListExpr [List with 2 elements]
+                   []> [12, 24] Int (5)
+                   ||  type: int
+                   []> [12, 26] Int (12)
+                       type: int

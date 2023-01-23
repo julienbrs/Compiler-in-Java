@@ -1,0 +1,9 @@
+{
+	int x = 5;
+	int y = 7;
+	if (((x > 3) && (y < 10))) {
+		println("x est plus grand que 3 et y est inférieur à 10");
+	} else {
+	}
+}
+

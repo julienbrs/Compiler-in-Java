@@ -1,0 +1,1 @@
+src/test/deca/syntax/parser/invalid/decl_two_var_two_types.deca:4:12: missing ';' at 'x'

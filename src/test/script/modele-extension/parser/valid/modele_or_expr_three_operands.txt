@@ -1,0 +1,16 @@
+`> [3, 0] Program
+   +> ListDeclClass [List with 0 elements]
+   `> [3, 0] Main
+      +> ListDeclVar [List with 0 elements]
+      `> ListInst [List with 1 elements]
+         []> [4, 2] IfThenElse
+             +> [4, 13] Or
+             |  +> [4, 8] Or
+             |  |  +> [4, 6] Identifier (x)
+             |  |  `> [4, 11] Identifier (y)
+             |  `> [4, 16] Identifier (z)
+             +> ListInst [List with 1 elements]
+             |  []> [5, 6] Assign
+             |      +> [5, 4] Identifier (x)
+             |      `> [5, 8] Int (5)
+             `> ListInst [List with 0 elements]

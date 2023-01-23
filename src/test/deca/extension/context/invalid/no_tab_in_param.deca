@@ -1,0 +1,12 @@
+class A{
+    int[] e(int[] r ){
+        return r;
+    }
+
+
+
+}
+{
+    A a = new A();
+    a.e(4);
+}

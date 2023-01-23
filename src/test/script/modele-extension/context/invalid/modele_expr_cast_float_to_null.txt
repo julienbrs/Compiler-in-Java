@@ -1,0 +1,1 @@
+src/test/deca/context/invalid/expr_cast_float_to_null.deca:3:6: no viable alternative at input 'var1'

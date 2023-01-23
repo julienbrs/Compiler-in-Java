@@ -8,6 +8,7 @@ import fr.ensimag.deca.context.ArrayType;
 import fr.ensimag.deca.context.ClassDefinition;
 import fr.ensimag.deca.context.ContextualError;
 import fr.ensimag.deca.context.EnvironmentExp;
+import fr.ensimag.deca.context.NullType;
 import fr.ensimag.deca.context.Type;
 import fr.ensimag.deca.tools.IndentPrintStream;
 import fr.ensimag.deca.tools.SymbolTable.Symbol;
@@ -78,7 +79,8 @@ public class ArrayLiteral extends AbstractExpr {
                 eltType = t;
             }
         } else {
-            return new ArrayType(null, t, getLocation(), 0);
+            Symbol sym = compiler.symbolTable.create("null");
+            return new ArrayType(sym, t, getLocation(), 0);
         }
         while (ite.hasNext()) {
             current = ite.next();

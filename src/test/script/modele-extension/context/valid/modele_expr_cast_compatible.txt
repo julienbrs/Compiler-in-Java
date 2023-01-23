@@ -1,0 +1,67 @@
+`> [6, 0] Program
+   +> ListDeclClass [List with 2 elements]
+   |  []> [6, 0] DeclClass
+   |  ||  +> [6, 6] Identifier (Animal)
+   |  ||  |  definition: type defined at [6, 0], type=Animal
+   |  ||  +> [builtin] Identifier (Object)
+   |  ||  |  definition: type (builtin), type=Object
+   |  ||  +> ListDeclField [List with 0 elements]
+   |  ||  `> ListDeclMethod [List with 0 elements]
+   |  []> [8, 0] DeclClass
+   |      +> [8, 6] Identifier (Professeur)
+   |      |  definition: type defined at [8, 0], type=Professeur
+   |      +> [8, 17] Identifier (Animal)
+   |      |  definition: type defined at [6, 0], type=Animal
+   |      +> ListDeclField [List with 0 elements]
+   |      `> ListDeclMethod [List with 0 elements]
+   `> [10, 0] Main
+      +> ListDeclVar [List with 4 elements]
+      |  []> [11, 15] DeclVar
+      |  ||  +> [11, 4] Identifier (Professeur)
+      |  ||  |  definition: type defined at [8, 0], type=Professeur
+      |  ||  +> [11, 15] Identifier (p)
+      |  ||  |  definition: variable defined at [11, 15], type=Professeur
+      |  ||  `> [11, 17] Initialization
+      |  ||     `> [11, 19] New
+      |  ||        type: Professeur
+      |  ||        `> [11, 23] Identifier (Professeur)
+      |  ||           definition: type defined at [8, 0], type=Professeur
+      |  []> [13, 11] DeclVar
+      |  ||  +> [13, 4] Identifier (Animal)
+      |  ||  |  definition: type defined at [6, 0], type=Animal
+      |  ||  +> [13, 11] Identifier (a)
+      |  ||  |  definition: variable defined at [13, 11], type=Animal
+      |  ||  `> [13, 13] Initialization
+      |  ||     `> [13, 15] Cast
+      |  ||        type: Animal
+      |  ||        +> [13, 16] Identifier (Animal)
+      |  ||        |  definition: type defined at [6, 0], type=Animal
+      |  ||        `> [13, 24] Identifier (p)
+      |  ||           definition: variable defined at [11, 15], type=Professeur
+      |  []> [22, 11] DeclVar
+      |  ||  +> [22, 4] Identifier (Animal)
+      |  ||  |  definition: type defined at [6, 0], type=Animal
+      |  ||  +> [22, 11] Identifier (a3)
+      |  ||  |  definition: variable defined at [22, 11], type=Animal
+      |  ||  `> [22, 14] Initialization
+      |  ||     `> [22, 16] Cast
+      |  ||        type: Animal
+      |  ||        +> [22, 17] Identifier (Animal)
+      |  ||        |  definition: type defined at [6, 0], type=Animal
+      |  ||        `> [22, 25] New
+      |  ||           type: Professeur
+      |  ||           `> [22, 29] Identifier (Professeur)
+      |  ||              definition: type defined at [8, 0], type=Professeur
+      |  []> [23, 15] DeclVar
+      |      +> [23, 4] Identifier (Professeur)
+      |      |  definition: type defined at [8, 0], type=Professeur
+      |      +> [23, 15] Identifier (p3)
+      |      |  definition: variable defined at [23, 15], type=Professeur
+      |      `> [23, 18] Initialization
+      |         `> [23, 20] Cast
+      |            type: Professeur
+      |            +> [23, 21] Identifier (Professeur)
+      |            |  definition: type defined at [8, 0], type=Professeur
+      |            `> [23, 33] Identifier (a3)
+      |               definition: variable defined at [22, 11], type=Animal
+      `> ListInst [List with 0 elements]

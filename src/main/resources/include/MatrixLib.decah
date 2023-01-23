@@ -1,0 +1,904 @@
+// Method relative to Matrix (dim 2)
+
+class ArrayTab {
+
+    // ---------- PRINT ----------
+
+    void printMatFloat(float[][] matrice) {
+        int i = 0;
+        int j = 0;
+        print("[");
+        while (i < matrice.length) {
+            print("[");
+            j = 0;
+            while (j < matrice[0].length) {
+                print(matrice[i][j]);
+                if (j == matrice[0].length - 1) {
+                    print(", ");
+                }
+                j = j + 1;
+            }
+            print("]");
+            if (i == matrice.length - 1) {
+                print(", ");
+            }
+            i = i + 1;
+        }
+        print("]");
+    }
+
+    void printMatInt(int[][] matrice) {
+        int i = 0;
+        int j = 0;
+        print("[");
+        while (i < matrice.length) {
+            print("[");
+            j = 0;
+            while (j < matrice[0].length) {
+                print(matrice[i][j]);
+                if (j == matrice[0].length - 1) {
+                    print(", ");
+                }
+                j = j + 1;
+            }
+            print("]");
+            if (i == matrice.length - 1) {
+                print(", ");
+            }
+            i = i + 1;
+        }
+        print("]");
+    }
+
+    // ---------- FILL ----------
+
+    void fillFloat(float[][] matrice, float element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                matrice[i][j] = element;
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+    }
+
+    void fillInt(int[][] matrice, int element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                matrice[i][j] = element;
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+    }
+
+    void fillBool(boolean[][] matrice, boolean element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                matrice[i][j] = element;
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+    }
+
+    // ---------- SEARCH ----------
+
+    int[] searchFloat(float[][] matrice, float element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                if (matrice[i][j] == element) {
+                    return {i, j};
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return {-1, -1};
+    }
+
+    int[] searchInt(int[][] matrice, int element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                if (matrice[i][j] == element) {
+                    return {i, j};
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return {-1, -1};
+    }
+
+    int[] searchBool(boolean[][] matrice, boolean element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                if (matrice[i][j] == element) {
+                    return {i, j};
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return {-1, -1};
+    }
+
+    int[] searchObject(Object[][] matrice, Object element) {
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            j = 0;
+            while (j < matrice[0].length) {
+                if (matrice[i][j].equals(element)) {
+                    return {i, j};
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return {-1, -1};
+    }
+
+    // ---------- COMPARE ----------
+
+    boolean compareFloat(float[][] A, float[][] B) {
+        int i = 0;
+        int j = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            j = 0;
+            if (A[i].length != B[i].length) {
+                return false;
+            }
+            while (j < A[0].length) {
+                if (A[i][j] != B[i][j]) {
+                    return false;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    boolean compareInt(int[][] A, int[][] B) {
+        int i = 0;
+        int j = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            j = 0;
+            if (A[i].length != B[i].length) {
+                return false;
+            }
+            while (j < A[0].length) {
+                if (A[i][j] != B[i][j]) {
+                    return false;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    boolean compareIntFloat(int[][] A, float[][] B) {
+        int i = 0;
+        int j = 0;
+        if (A.length != B.length) {
+            return false;
+        }
+        while (i < A.length) {
+            j = 0;
+            if (A[i].length != B[i].length) {
+                return false;
+            }
+            while (j < A[0].length) {
+                if (A[i][j] != B[i][j]) {
+                    return false;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return true;
+    }
+
+    // ---------- DEEPCOPY ----------
+
+    float[][] deepCopyFloat(float[][] matrix) {
+        float[][] newMatrix;
+        int i = 0;
+        int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new float[matrix.length][matrix[0].length]();
+        while (i < matrix.length) {
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = matrix[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return newMatrix;
+    }
+
+    int[][] deepCopyInt(int[][] matrix) {
+        int[][] newMatrix;
+        int i = 0;
+        int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new int[matrix.length][matrix[0].length]();
+        while (i < matrix.length) {
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = matrix[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return newMatrix;
+    }
+
+    boolean[][] deepCopyBool(boolean[][] matrix) {
+        boolean[][] newMatrix = new boolean[matrix.length][matrix[0].length]();
+        int i = 0;
+        int j = 0;
+        while (i < matrix.length) {
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = matrix[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return newMatrix;
+    }
+
+    // ---------- DEEPCOPY OF RANGE ----------
+
+    float[][] deepCopyOfRangeFloat(float[][] matrix, int linStart, int colStart, int linEnd, int colEnd) {
+        float[][] newMatrix = new float[linEnd-linStart+1][colEnd-colStart+1]();
+        int i = linStart;
+        int j = colStart;
+        while (i < linEnd+1) {
+            j = colStart;
+            while (j < colEnd+1) {
+                if (i < matrix.length && j < matrix[i].length) {
+                    newMatrix[i-linStart][j-colStart] = matrix[i][j];
+                } else {
+                    newMatrix[i-linStart][j-colStart] = 0;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return newMatrix;
+    }
+
+    int[][] deepCopyOfRangeInt(int[][] matrix, int linStart, int colStart, int linEnd, int colEnd) {
+        int[][] newMatrix = new int[linEnd-linStart+1][colEnd-colStart+1]();
+        int i = linStart;
+        int j = colStart;
+        while (i < linEnd+1) {
+            j = colStart;
+            while (j < colEnd+1) {
+                if (i < matrix.length && j < matrix[i].length) {
+                    newMatrix[i-linStart][j-colStart] = matrix[i][j];
+                } else {
+                    newMatrix[i-linStart][j-colStart] = 0;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return newMatrix;
+    }
+
+    boolean[][] deepCopyOfRangeBool(boolean[][] matrix, int linStart, int colStart, int linEnd, int colEnd) {
+        boolean[][] newMatrix = new boolean[linEnd-linStart+1][colEnd-colStart+1]();
+        int i = linStart;
+        int j = colStart;
+        while (i < linEnd+1) {
+            j = colStart;
+            while (j < colEnd+1) {
+                if (i < matrix.length && j < matrix[i].length) {
+                    newMatrix[i-linStart][j-colStart] = matrix[i][j];
+                } else {
+                    newMatrix[i-linStart][j-colStart] = false;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return newMatrix;
+    }
+
+    // ---------- TRACE ----------
+
+    float traceFloat(float[][] matrice) {
+        float trace = 0;
+        int i = 0;
+        int n = matrice.length;
+        while (i < matrice.length) {
+            if (matrice[i].length == n) {
+                trace = trace + matrice[i][i];
+            } else {
+                matrixError();
+            }
+            i = i + 1;
+        }
+        return trace;
+    }
+    
+    int traceInt(int[][] matrice) {
+        int trace = 0;
+        int i = 0;
+        int n = matrice.length;
+        while (i < matrice.length) {
+            if (matrice[i].length == n) {
+                trace = trace + matrice[i][i];
+            } else {
+                matrixError();
+            }
+            i = i + 1;
+        }
+        return trace;
+    }
+
+    // ---------- ADD ----------
+
+    float[][] addFloat(float[][] A, float[][] B) {
+        float[][] matrice = deepCopyFloat(A);
+        int i = 0;
+        int j = 0;
+        int nbCol;
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < matrice.length) {
+            nbCol = A[0].length;
+            j = 0;
+            if (A[i].length != nbCol || B[i].length != nbCol) {
+                matrixError();
+            }
+            while (j < nbCol) {
+                matrice[i][j] = matrice[i][j] + B[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    int[][] addInt(int[][] A, int[][] B) {
+        int[][] matrice = deepCopyInt(A);
+        int i = 0;
+        int j = 0;
+        int nbCol;
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < matrice.length) {
+            nbCol = A[0].length;
+            j = 0;
+            if (A[i].length != nbCol || B[i].length != nbCol) {
+                matrixError();
+            }
+            while (j < nbCol) {
+                matrice[i][j] = matrice[i][j] + B[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    // ---------- SUB ----------
+
+    float[][] subFloat(float[][] A, float[][] B) {
+        float[][] matrice = deepCopyFloat(A);
+        int i = 0;
+        int j = 0;
+        int nbCol;
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < matrice.length) {
+            nbCol = A[0].length;
+            j = 0;
+            if (A[i].length != nbCol || B[i].length != nbCol) {
+                matrixError();
+            }
+            while (j < nbCol) {
+                matrice[i][j] = matrice[i][j] - B[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    int[][] subInt(int[][] A, int[][] B) {
+        int[][] matrice = deepCopyInt(A);
+        int i = 0;
+        int j = 0;
+        int nbCol;
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < matrice.length) {
+            nbCol = A[0].length;
+            j = 0;
+            if (A[i].length != nbCol || B[i].length != nbCol) {
+                matrixError();
+            }
+            while (j < nbCol) {
+                matrice[i][j] = matrice[i][j] - B[i][j];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    // ---------- MULT SCALAR ----------
+
+    float[][] multScalarFloat(float[][] A, float lambda) {
+
+        float[][] matrice = deepCopyFloat(A);
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            if (matrice[i].length != matrice[0].length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrice[0].length) {
+                matrice[i][j] = matrice[i][j] * lambda;
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    int[][] multScalarInt(int[][] A, int lambda) {
+
+        int[][] matrice = deepCopyInt(A);
+        int i = 0;
+        int j = 0;
+        while (i < matrice.length) {
+            if (matrice[i].length != matrice.length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrice[0].length) {
+                matrice[i][j] = matrice[i][j] * lambda;
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    // ---------- MULT MATRIX ----------
+
+    float[][] multMatrixFloat(float[][] A, float[][] B) {
+        float[][] matrice;
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int nbFact;
+        int nbCol;
+        if (A.length == 0 || B.length == 0 || B[0].length == 0) {
+            matrixError();
+        }
+        matrice = new float[A.length][B[0].length]();
+        nbFact = A[0].length;
+        nbCol = B[0].length;
+        if (A[0].length != B.length) {
+            matrixError();
+        }
+        while (i < matrice.length) {
+            if (A[i].length != nbFact) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrice.length) {
+                if (B[j].length != nbCol) {
+                    matrixError();
+                }
+                k = 0;
+                while (k < matrice[i].length) {
+                    matrice[i][j] = matrice[i][j] + A[i][k] * B[k][j];
+                    k = k + 1;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    int[][] multMatrixInt(int[][] A, int[][] B) {
+        int[][] matrice;
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int nbFact;
+        int nbCol;
+        if (A.length == 0 || B.length == 0 || B[0].length == 0) {
+            matrixError();
+        }
+        matrice = new int[A.length][B[0].length]();
+        nbFact = A[0].length;
+        nbCol = B[0].length;
+        if (A[0].length != B.length) {
+            matrixError();
+        }
+        while (i < matrice.length) {
+            if (A[i].length != nbFact) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrice[i].length) {
+                if (B[j].length != nbCol) {
+                    matrixError();
+                }
+                k = 0;
+                while (k < B.length) {
+                    matrice[i][j] = matrice[i][j] + A[i][k] * B[k][j];
+                    k = k + 1;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return matrice;
+    }
+
+    // ---------- MULT ARRAY MATRIX ----------
+
+    float[] multArrayMatrixFloat(float[] A, float[][] B) {
+        float[] vector;
+        int i = 0;
+        int k = 0;
+        int nbFact;
+        int nbCol;
+        if (A.length == 0 || B.length == 0 || B[0].length == 0) {
+            matrixError();
+        }
+        vector = new float[B[0].length]();
+        nbCol = B[0].length;
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < vector.length) {
+            if (B[i].length != nbCol) {
+                matrixError();
+            }
+            while (k < A.length) {
+                vector[i] = vector[i] + A[k] * B[k][i];
+                k = k + 1;
+            }
+            i = i + 1;
+        }
+        return vector;
+    }
+
+    int[] multArrayMatrixInt(int[] A, int[][] B) {
+        int[] vector;
+        int i = 0;
+        int k = 0;
+        int nbFact;
+        int nbCol;
+        if (A.length == 0 || B.length == 0 || B[0].length == 0) {
+            matrixError();
+        }
+        vector = new int[B[0].length]();
+        nbCol = B[0].length;
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < vector.length) {
+            if (B[i].length != nbCol) {
+                matrixError();
+            }
+            while (k < A.length) {
+                vector[i] = vector[i] + A[k] * B[k][i];
+                k = k + 1;
+            }
+            i = i + 1;
+        }
+        return vector;
+    }
+
+    // ---------- MULT MATRIX ARRAY ----------
+
+    float[] multMatrixArrayFloat(float[][] A, float[] B) {
+        float[] vector = new float[B.length]();
+        int i = 0;
+        int k = 0;
+        int nbFact;
+        if (A.length == 0 || B.length == 0) {
+            matrixError();
+        }
+        if (A[0].length != B.length) {
+            matrixError();
+        }
+        while (i < vector.length) {
+            if (A[i].length != A[0].length) {
+                matrixError();
+            }
+            while (k < A[0].length) {
+                vector[i] = vector[i] + A[i][k] * B[k];
+                k = k + 1;
+            }
+            i = i + 1;
+        }
+        return vector;
+    }
+
+    int[] multMatrixArrayInt(int[][] A, int[] B) {
+        int[] vector = new int[B.length]();
+        int i = 0;
+        int k = 0;
+        int nbFact;
+        if (A.length == 0 || B.length == 0) {
+            matrixError();
+        }
+        if (A.length != B.length) {
+            matrixError();
+        }
+        while (i < vector.length) {
+            if (A[i].length != A[0].length) {
+                matrixError();
+            }
+            while (k < A[0].length) {
+                vector[i] = vector[i] + A[i][k] * B[k];
+                k = k + 1;
+            }
+            i = i + 1;
+        }
+        return vector;
+    }
+
+    // ---------- GAUSS-JORDAN ----------
+
+    IntFloat gaussJordan(float[][] matrix) {
+
+
+        int indexPivot = -1;
+        float det = 1;
+        int rang = matrix.length;
+
+        int j = 0;
+        int i = 0;
+        float max;
+        int nbCol;
+        int indexMax = 0;
+        int k = 0;
+        float coeff;
+        float multiplicateur;
+        IntFloat res = new IntFloat();
+
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            matrixError();
+        }
+
+        max = matrix[0][0];
+        nbCol = matrix[0].length;
+        coeff = matrix[indexMax][0];
+        multiplicateur = matrix[0][0];
+
+
+        while (j < matrix.length) {
+            if (matrix[j].length != nbCol) {
+                matrixError();
+            }
+            // on cherche la valeur maximale de chaque colonne
+            max = matrix[0][j];
+            indexMax = 0;
+            i = 0;
+            while (i < matrix.length) {
+                if (matrix[i][j] / max > 1 || matrix[i][j] / max < -1) {
+                    max = matrix[i][j];
+                    indexMax = i;
+                }
+                i = i + 1;
+            }
+            det = det * max;
+            
+            if (max != 0) {
+                indexPivot = indexPivot + 1;
+                k = 0;
+                while (k < matrix[0].length) {
+                    matrix[indexMax][k] = matrix[indexMax][k] / max; // Diviser la ligne indexMax par max
+                    k = k + 1;
+                }
+                if (indexMax != indexPivot) {
+                    det = det * (-1);
+                    // on échange les lignes indexMax et indexPivot
+                    k = 0;
+                    while (k < matrix[0].length) {
+                        coeff = matrix[indexMax][k];
+                        matrix[indexMax][k] = matrix[indexPivot][k];
+                        matrix[indexPivot][k] = coeff;
+                        k = k + 1;
+                    }
+                }
+                i = 0;
+                while (i < matrix.length) {
+                    if (i != indexPivot) {
+                        multiplicateur = matrix[i][j];
+                        k = 0;
+                        while (k < matrix[0].length) {
+                            matrix[i][k] = matrix[i][k] - matrix[indexPivot][k] * multiplicateur;
+                            k = k + 1;
+                        }
+                    }
+                    i = i + 1;
+                }
+            } else {
+                rang = rang - 1;
+            }
+            j = j + 1;
+        }
+        res.rang = rang;
+        res.det = det;
+        return res;
+    }
+
+    // ---------- INVERSE ----------
+
+    float[][] inverse(float[][] matrix) {
+        float[][] matrixWithIdentity = new float[matrix.length][2 * matrix.length]();
+        int i = 0;
+        int j = 0;
+        IntFloat res;
+        float[][] mat = new float[matrix.length][matrix.length]();
+        if (matrix.length == 0 || matrix.length != matrix[0].length) {
+            matrixError();
+        }
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix.length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrix.length) {
+                matrixWithIdentity[i][j] = matrix[i][j];
+                j = j + 1;
+            }
+            while (j < 2 * matrix.length) {
+                if (i == j - matrix.length) {
+                    matrixWithIdentity[i][j] = 1;
+                } else {
+                    matrixWithIdentity[i][j] = 0;
+                }
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+
+        res = gaussJordan(matrixWithIdentity);
+
+        if (res.det == 0) {
+            return null;
+        }
+        
+        i = 0;
+        while (i < matrix.length) {
+            j = 0;
+            while (j < matrix.length) {
+                mat[i][j] = matrixWithIdentity[i][j+matrix.length];
+                j = j + 1;
+            }
+            i = i + 1;
+        }
+        return mat;
+    }
+    
+    // ---------- DETERMINANT ----------
+
+    float det(float[][] matrix) {
+        int i = 0;
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix.length) {
+                matrixError();
+            }
+        }
+        return gaussJordan(matrix).det;
+    }
+
+    // ---------- RANG ----------
+
+    float rang(float[][] matrix) {
+        int i = 0;
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix.length) {
+                matrixError();
+            }
+        }
+        return gaussJordan(matrix).rang;
+    }
+
+    // ---------- CAST ----------
+
+    float[][] castMatrixIntToFloat(int[][] matrix) {
+        float[][] newMatrix;
+        int i = 0;
+        int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new float[matrix.length][matrix[0].length]();
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix[0].length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = matrix[i][j];
+            }
+        }
+        return newMatrix;
+    }
+
+    int[][] castMatrixFloatToInt(float[][] matrix) {
+        int[][] newMatrix;
+        int i = 0;
+        int j = 0;
+        if (matrix.length == 0) {
+            return {};
+        }
+        newMatrix = new int[matrix.length][matrix[0].length]();
+        while (i < matrix.length) {
+            if (matrix[i].length != matrix[0].length) {
+                matrixError();
+            }
+            j = 0;
+            while (j < matrix[0].length) {
+                newMatrix[i][j] = (int) (matrix[i][j]);
+            }
+        }
+        return newMatrix;
+    }
+
+    // ---------- ERREUR ----------
+
+    void matrixError()
+    asm ("WSTR \"Erreur de dimension\"
+    WNL
+    ERROR");
+}
+
+class IntFloat {
+    int rang;
+    float det;
+}
