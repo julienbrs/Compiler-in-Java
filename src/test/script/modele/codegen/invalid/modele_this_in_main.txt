@@ -1,1 +1,0 @@
-src/test/script/create-modele/create-codegen-modele.sh: line 46: src/test/deca/codegen/invalid/this_in_main.deca:5:4: Can't call "this" in the main program : rule 3.43: No such file or directory

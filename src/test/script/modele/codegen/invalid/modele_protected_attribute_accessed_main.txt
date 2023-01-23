@@ -1,1 +1,0 @@
-src/test/script/create-modele/create-codegen-modele.sh: line 46: src/test/deca/codegen/invalid/protected_attribute_accessed_main.deca:11:36: Can't acces a protected field in main : rule 3.66: No such file or directory
