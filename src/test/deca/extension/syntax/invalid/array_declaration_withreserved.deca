@@ -1,3 +1,5 @@
+// Dimension of an array can't be null
+
 {
     int[null] a;
 }
