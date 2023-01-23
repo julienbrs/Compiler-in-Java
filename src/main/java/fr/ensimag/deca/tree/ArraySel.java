@@ -20,6 +20,7 @@ import fr.ensimag.ima.pseudocode.RegisterOffset;
 import fr.ensimag.ima.pseudocode.instructions.BEQ;
 import fr.ensimag.ima.pseudocode.instructions.BLE;
 import fr.ensimag.ima.pseudocode.instructions.BLT;
+import fr.ensimag.ima.pseudocode.instructions.BNE;
 import fr.ensimag.ima.pseudocode.instructions.CMP;
 import fr.ensimag.ima.pseudocode.instructions.LOAD;
 import fr.ensimag.ima.pseudocode.instructions.POP;
@@ -112,6 +113,18 @@ public class ArraySel extends AbstractSelection {
         }
         compiler.addInstruction(new LOAD(new RegisterOffOffset(1, GPRegister.getR(currOffset), GPRegister.getR(nextOffset)), GPRegister.getR(offset)));
         int[] res = {Math.max(resSel[0], resInd[0]), Math.max(resSel[1], resInd[1])};
+        return res;
+    }
+
+    @Override
+    public int[] codeGenBool(DecacCompiler compiler, boolean aim, Label dest, int offset) {
+        int[] res = codeGenExpr(compiler, offset);
+        compiler.addInstruction(new CMP(0, GPRegister.R0));
+        if (aim) {
+            compiler.addInstruction(new BNE(dest));
+        } else {
+            compiler.addInstruction(new BEQ(dest));
+        }
         return res;
     }
 
